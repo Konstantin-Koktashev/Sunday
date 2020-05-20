@@ -12,8 +12,20 @@
   width: 30px;
   cursor: pointer;
   transition: 0.3s;
+  padding: 5px;
 }
 
 .side-nav-img:hover {
   transform: scale(1.1);
+  background-color: rgba(190, 190, 190, 0.151);
+  border-radius: 20px;
+}
+
+.side-nav-img a {
+  width: 30px;
+}
+
+.my-week {
+  width: 30px;
+  height: 40px;
 }

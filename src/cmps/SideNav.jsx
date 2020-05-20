@@ -2,30 +2,51 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../style/cmps/sideNav.css";
 import logo from "../style/img/logo.png";
+import inbox from "../style/img/inbox.png";
+import week from "../style/img/week.png";
+import invite from "../style/img/invite.png";
+import person from "../style/img/person.svg";
 import notification from "../style/img/notification.png";
 export default function SideNav() {
   return (
     <div className="side-nav-container flex col space-evenly">
       <NavLink to="/home">
-        <img className="logo" src={logo}></img>
+        <img title="Sunday" className="logo" src={logo}></img>
       </NavLink>
       <div className="notifications">
-        <img className="side-nav-img" src={notification}></img>
+        <img
+          title="Notifications"
+          className="side-nav-img"
+          src={notification}
+        ></img>
       </div>
       <NavLink to="/user/inbox" className="inbox">
-        <img src=""></img>
-        Inbox
+        <div>
+          <img title="Inbox" className="side-nav-img" src={inbox}></img>
+        </div>
       </NavLink>
-      <NavLink to="/user/myWeek" className="my-week">
-        <img src=""></img>
+      <NavLink to="/myweek/" className="my-week">
+        <div>
+          <img
+            title="My Week"
+            className="side-nav-img"
+            src={week}
+            alt="lol"
+          ></img>
+        </div>
       </NavLink>
-      My Week
       <NavLink to="/user/invite" className="invite">
-        <img src=""></img>
+        <div>
+          <img
+            title="Invite Your Team"
+            className="side-nav-img"
+            src={invite}
+          ></img>
+        </div>
       </NavLink>
+
       <div to="/user/profile" className="search">
-        <img src=""></img>
-        Profile
+        <img title="My Profile" className="side-nav-img" src={person}></img>
       </div>
     </div>
   );
