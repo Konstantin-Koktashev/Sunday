@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   system: SystemReducer,
   review: ReviewReducer,
   user: UserReducer,
-  board:BoardReducer
+  userBoards: BoardReducer
 })
 
 export default rootReducer;

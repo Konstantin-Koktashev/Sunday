@@ -7,7 +7,7 @@ import './App.css';
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import Signup from './pages/Signup.js';
-import { BoardApp } from './pages/Boards';
+import Boards from './pages/Boards';
 import SideNav from './cmps/SideNav';
 import ProgressBar from './cmps/ProgressBar'
 
@@ -17,9 +17,10 @@ function App() {
     <div className="App">
       <Router history={history}>
         <SideNav></SideNav>
+
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/board" component={BoardApp} exact />
+          <Route path="/board/:id?" component={Boards} exact />
           <Route path="/signup" component={Signup} exact />
           <Route path="/login" component={Login} exact />
           <Route path="/progress" component={ProgressBar} exact />

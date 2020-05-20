@@ -1,126 +1,64 @@
-var gBoard = [
+import HttpService from './HttpService';
 
-    {
-        _id: "ID",
-        name: "name",
-        createdAt: "date",
-        // Aggregation
-        admins: [], // Min users
-        users: [{
-            userName: "name",
-            fullName: " full name",
-            password: "password",
-            _id: "ID",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        }, {
-            userName: "name",
-            fullName: " full name",
-            password: "password",
-            _id: "ID",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        }], // Min users
-        groups: [
-            {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people:[],
-                    status:'',
-                    priority:'',
-                    DueDate:'',
-                    budget:'',
-                    text:'',
-                    link:''
-                
-                },
-                {
-                    _id: 111,
-                    taskTitle: "Mess",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people: [],
-                    status:'',
-                    priority:'',
-                    DueDate:'',
-                    budget:'',
-                    text:'',
-                    link:''
-                
-                },
-                {
-                    _id: 12333,
-                    taskTitle: "withus",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people:[],
-                    status:'',
-                    priority:'',
-                    DueDate:'',
-                    budget:'',
-                    text:'',
-                    link:''
-                
-                }
+export default {
+  add,
+  query,
+  remove
+};
 
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 1234,
-                name: "name",
-                createdAt: "date",
-                // Aggregation
-                tasks: [], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 1235,
-                name: "name",
-                createdAt: "date",
-                // Aggregation
-                tasks: [], // Task object
-                color: "color",
-                lastUpdated: ""
-            }
 
-        ], // _Group Objects
-        // Hard coded
-        color: "color",
-        history: [] //history objects
-    }
-]
+// return axios.get('api/toy/?id=1223&balance=13');
+// return axios.get('api/toy/?', {params: {id: 1223, balanse:13}});
+//Boards
+
+ export async function query(filtetBy) {
+    var filter = '?'
+    if (filtetBy.name) filter += `&task_name=${filtetBy.name}`
+    if (filtetBy.inStock) filter += `&inStock=true`
+    if (filtetBy.sortBy) filter += `&_sort=${filtetBy.sortBy}`
+    const res = await HttpService.get(`${baseUrl}${filter}`);
+     return res.data;
+}
+
+
+function remove(boardId) {
+  return HttpService.delete(`board/${boardId}`);
+}
+async function addBoard(board) {
+  const addedBoard  = await HttpService.post(`board`, board);
+  return  addedBoard
+}
+async function UpdateBoard(board) {
+  const addedBoard  = await HttpService.post(`board`, board);
+  return  addedBoard
+}
+
+async function addGroup(group,id){
+    const newBoard  = await HttpService.post(`board`, group);
+    return  newBoard
+}
+async function removeGroup(groupId){
+    return HttpService.delete(`board/${groupId}`);
+    
+}
+
+//Groups
+
+async function removeGroup(groupId){
+    return HttpService.delete(`board/${groupId}`);
+    
+
+}
+async function addGroup(group){
+    const addedGroup  = await HttpService.post(`board`, group);
+    return  addedGrou
+
+}
+
+async function updateGroup(group) {
+    const updatedGroup  = await HttpService.post(`board`, group);
+    return  updatedGroup
+  }
+
+  
+
