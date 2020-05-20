@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
+import WeekPreview from '../cmps/WeekPreview'
+
 
 class MyWeek extends Component {
 
@@ -10,7 +12,7 @@ class MyWeek extends Component {
 
     componentDidMount() {
         this.currUser = this.props.user
-        console.log('thisuser', this.props.user)
+        console.log('thisuser', this.props)
         this.loadTasks(this.currUser)
     }
 
@@ -22,21 +24,28 @@ class MyWeek extends Component {
         await groups.forEach(group => {
             groupsArr.push(...group)
         });
-        console.log(groupsArr)
-        await groupsArr.forEach(group => {
+        groupsArr.forEach(group => {
             tasksArr.push(...group.tasks)
         })
-        var userTasks = await tasksArr.filter(task => task.users.find(user => user._id === loggedUser._id))
-        this.setState({userTasks})
+        var userTasks = tasksArr.filter(task => task.users.find(user => user._id === loggedUser._id))
+        this.setState({ userTasks })
+
+
     }
 
 
 
     render() {
+        const {userTasks} = this.state
         return (
-            <div>
-                <h1>HELLO MY WEEK</h1>
-            </div>
+
+
+            <section className="my-week">
+
+                <h3>hey {this.props.user.name}</h3>
+                {userTasks && userTasks.map((task , idx)=> <WeekPreview {...task} key={idx} />)}
+            </section>
+
         )
     }
 }

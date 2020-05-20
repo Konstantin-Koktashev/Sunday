@@ -185,18 +185,18 @@ const initialState = {
                     createdAt: "date",
                     // Aggregation
                     users: [
-                        { _id: 1234 }
+                        { _id: 1234 , name:'shahar'}
                     ], // Min users
                     // Inside Tas
                     columns: [], //  Columns Objects
                     updates: [], // updates objects
                     notes: [], // Notes objects
                     people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
+                    status: 'Done',
+                    priority: 'urgent',
+                    DueDate: '15.02',
+                    budget: '150',
+                    text: 'text about task',
                     link: ''
 
                 },
@@ -317,12 +317,13 @@ const initialState = {
                     updates: [], // updates objects
                     notes: [], // Notes objects
                     people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
+                    status: 'undone',
+                    priority: 'urgent',
+                    DueDate: '15.02',
+                    budget: '1540',
+                    text: 'text about task 31142',
                     link: ''
+                    
 
                 },
                 {

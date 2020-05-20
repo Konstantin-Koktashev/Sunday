@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/groupList.css";
+import "../style/components/groupList.css";
 import { TaskList } from "./TaskList.jsx";
 export default function GroupList(props) {
   return (
