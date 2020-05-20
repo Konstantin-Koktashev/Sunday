@@ -17,19 +17,15 @@
     "groups": [], // _Group Objects
     // Hard coded
     "color": "color",
-    "history": [ ] //history objects
+    "history": [] //history objects
 }
-
-
 // history
-
 {
-    "timestamp" : "time",
-    "byUser" : "user",
-    "actionType" : "",
-    "actionDesc" : "",
-    "isSeen" : false,
-    
+    "timestamp": "time",
+    "byUser": "user",
+    "actionType": "",
+    "actionDesc": "",
+    "isSeen": false,
 }
 //UserObject
 {
@@ -45,6 +41,8 @@
     "notifications": [], //notification object
     "boards": [] // Boards ids
 }
+<<<<<<< HEAD
+=======
 
 
 // notifications 
@@ -230,6 +228,7 @@ userReducer,boardReducer
         "boards": [] // Boards ids
     }
 ]
+>>>>>>> 4a6aa554abb55bc9980488ced3eaf7654130d299
 // notifications 
 {
     "name": "name",

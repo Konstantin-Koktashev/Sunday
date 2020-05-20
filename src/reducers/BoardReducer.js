@@ -74,7 +74,6 @@ const initialState = {
                     budget: '150',
                     text: 'text about task',
                     link: ''
-
                 },
                 {
                     _id: 111,
@@ -93,7 +92,6 @@ const initialState = {
                     budget: '',
                     text: '',
                     link: ''
-
                 },
                 {
                     _id: 12333,
@@ -124,7 +122,6 @@ const initialState = {
                             _id: "1",
                         },
                         lastUpdate: Date.now()
-
                     }], // Notes objects
                     people: [
                         {
@@ -173,8 +170,6 @@ const initialState = {
                     budget: '1540',
                     text: 'text about task 31142',
                     link: ''
-
-
                 },
                 {
                     _id: 111,
@@ -193,7 +188,6 @@ const initialState = {
                     budget: '',
                     text: '',
                     link: ''
-
                 },
                 {
                     _id: 12333,
@@ -212,9 +206,7 @@ const initialState = {
                     budget: '',
                     text: '',
                     link: ''
-
                 }
-
                 ], // Task object
                 color: "color",
                 lastUpdated: "",
@@ -277,7 +269,6 @@ const initialState = {
         ] //history objects
     }]
 };
-
 export default function (state = initialState, action = {}) {
     switch (action.type) {
         case 'SET_BOARD':

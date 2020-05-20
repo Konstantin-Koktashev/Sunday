@@ -13,7 +13,7 @@ export function BoardNav(props) {
           </div>
         ) : (
           props.boards.map((board, idx) => (
-            <div>
+            <div className="board-list-btn">
               <Link key={idx} to={`/board/${board._id}`}>
                 {board.name}
               </Link>

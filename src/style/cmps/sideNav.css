@@ -7,3 +7,13 @@
   width: 7vw;
   top: 0px;
 }
+
+.side-nav-img {
+  width: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.side-nav-img:hover {
+  transform: scale(1.1);
+}
