@@ -10,6 +10,7 @@ import Signup from './pages/Signup.js';
 import Boards from './pages/Boards';
 import SideNav from './cmps/SideNav';
 import ProgressBar from './cmps/ProgressBar'
+import Inbox from './pages/Inbox';
 
 
 function App() {
@@ -17,13 +18,13 @@ function App() {
     <div className="App">
       <Router history={history}>
         <SideNav></SideNav>
-
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/board/:id?" component={Boards} exact />
           <Route path="/signup" component={Signup} exact />
           <Route path="/login" component={Login} exact />
           <Route path="/progress" component={ProgressBar} exact />
+          <Route  path="/user/inbox" component={Inbox} exact />
         </Switch>
       </Router>
     </div>
