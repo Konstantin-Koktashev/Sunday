@@ -23,15 +23,18 @@ function App() {
       <Router history={history}>
         <SideNav></SideNav>
         <BoardNav></BoardNav>
-        <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/board/:id?" component={Boards} exact />
-          <Route path="/signup" component={Signup} exact />
-          <Route path="/login" component={Login} exact />
-          <Route path="/progress" component={ProgressBar} exact />
-          <Route path="/myweek" component={MyWeek} exact />
-          <Route path="/user/inbox" component={Inbox} exact />
-        </Switch>
+        <section className="main-board-container">
+          <Switch>
+
+            <Route path="/" component={Home} exact />
+            <Route path="/board/:id?" component={Boards} exact />
+            <Route path="/signup" component={Signup} exact />
+            <Route path="/login" component={Login} exact />
+            <Route path="/progress" component={ProgressBar} exact />
+            <Route path="/myweek" component={MyWeek} exact />
+            <Route path="/user/inbox" component={Inbox} exact />
+          </Switch>
+        </section>
       </Router>
     </div>
   );
