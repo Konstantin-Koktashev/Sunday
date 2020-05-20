@@ -1,0 +1,13 @@
+.board-nav-container {
+  position: fixed;
+  height: 100vh;
+  left: 7vw;
+  background-color: rgb(26, 143, 221);
+  border: 1px solid blue;
+  width: 18vw;
+  top: 0px;
+}
+
+.board-list {
+  height: 100vh;
+}

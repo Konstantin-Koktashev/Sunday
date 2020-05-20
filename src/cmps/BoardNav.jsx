@@ -1,21 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default function BoardNav(props) {
+import { connect } from "react-redux";
+import "../style/cmps/boardNav.css";
+export function BoardNav(props) {
   return (
-    <div className="toy-list-container scrollbar" id="style-5">
-      <div className="toy-list flex wrap j-center color-change-2x">
-        {props.toys && !props.toys.length > 0 ? (
+    <div className="board-nav-container flex col space-evenly">
+      <h3>Your Boards</h3>
+      <div className="board-list flex col space-evenly">
+        {props.boards && !props.boards.length > 0 ? (
           <div className="board-nav-container">
-            <h3>Your Boards</h3>
+            <h3>No Boards :('</h3>
           </div>
         ) : (
           props.boards.map((board, idx) => (
-            <Link key={idx} to={`/board/${board._id}`}>
-              {board.name}
-            </Link>
+            <div>
+              <Link key={idx} to={`/board/${board._id}`}>
+                {board.name}
+              </Link>
+            </div>
           ))
         )}
       </div>
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  //State of the store to props of the cmp
+  return {
+    boards: state.userBoards.board,
+  };
+};
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BoardNav);

@@ -1,0 +1,12 @@
+.task-list-container {
+  min-height: 20vh;
+  background-color: blue;
+}
+
+.task-list {
+  /* width: 80vw; */
+  height: 30vh;
+  background-color: blue;
+  min-height: 20vh;
+  padding: 0px 10px;
+}

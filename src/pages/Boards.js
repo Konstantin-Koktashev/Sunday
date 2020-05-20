@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import BoardNav from "../cmps/BoardNav.jsx";
+import BoardHeader from "../cmps/BoardHeader.jsx";
 import Board from '../cmps/Board.jsx'
-
+import '../style/pages/boards.css'
 // import { loadBoards, setFilterBy, removeBoard } from "../store/boardActions.js";
 class BoardApp extends React.Component {
     state = {
@@ -54,10 +54,8 @@ class BoardApp extends React.Component {
         return (
             <section className="main-board-container">
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
-                <h2>hey</h2>
-                {boards && <BoardNav boards={boards}></BoardNav>}
+                {currBoard && <BoardHeader board={currBoard}></BoardHeader>}
                 {currBoard && <Board board={currBoard} ></Board>}
-
             </section>
         );
     }
@@ -67,11 +65,9 @@ const mapStateToProps = (state) => {
     //State of the store to props of the cmp
     return {
         boards: state.userBoards.board,
-
     };
 };
 const mapDispatchToProps = {
-
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardApp);

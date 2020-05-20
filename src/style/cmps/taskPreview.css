@@ -1,0 +1,6 @@
+.task-bar {
+  /* width: 80vw; */
+  background-color: grey;
+  border-radius: 20px;
+  border: 1px solid black;
+}

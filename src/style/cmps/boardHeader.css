@@ -1,0 +1,9 @@
+.board-header-container {
+  height: 20vh;
+  background-color: orange;
+  padding: 0px 10px;
+}
+
+.board-header-container h2 {
+  margin: 0px;
+}

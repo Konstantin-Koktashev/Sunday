@@ -3,12 +3,14 @@ import { Router, Switch, Route } from 'react-router';
 import { Link } from 'react-router-dom'
 import history from './history';
 import './App.css';
+import './style/main.css';
 
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import Signup from './pages/Signup.js';
 import Boards from './pages/Boards';
 import SideNav from './cmps/SideNav';
+import BoardNav from './cmps/BoardNav';
 import ProgressBar from './cmps/ProgressBar'
 
 
@@ -17,7 +19,7 @@ function App() {
     <div className="App">
       <Router history={history}>
         <SideNav></SideNav>
-
+        <BoardNav></BoardNav>
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/board/:id?" component={Boards} exact />
