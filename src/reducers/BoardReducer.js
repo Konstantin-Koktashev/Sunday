@@ -1,15 +1,19 @@
 const initialState = {
     board: [{
+        // BOARD OBJECT
         _id: "1",
         name: "Board 1",
         createdAt: "date",
         // Aggregation
-        admins: [], // Min users
+        admins: [{
+            userName: "user1412",
+            _id: "1",
+        }], // Min users
         users: [{
-            userName: "name",
-            fullName: " full name",
+            userName: "user1412",
+            fullName: " full name1412",
             password: "password",
-            _id: "ID",
+            _id: "1",
             isAdmin: "true",
             imgUrl: "www.img.com",
             lastSeen: "today",
@@ -17,11 +21,25 @@ const initialState = {
             location: "tel aviv",
             notifications: [], //notification object
             boards: [] // Boards ids
-        }, {
-            userName: "name",
-            fullName: " full name",
+        },
+        {
+            userName: "user112",
+            fullName: " full name1123",
             password: "password",
-            _id: "ID",
+            _id: "1",
+            isAdmin: "true",
+            imgUrl: "www.img.com",
+            lastSeen: "today",
+            loggedAmount: 2,
+            location: "tel aviv",
+            notifications: [], //notification object
+            boards: [] // Boards ids
+        },
+        {
+            userName: "user2",
+            fullName: " full name2",
+            password: "password",
+            _id: "1",
             isAdmin: "true",
             imgUrl: "www.img.com",
             lastSeen: "today",
@@ -41,332 +59,75 @@ const initialState = {
                     taskTitle: "Todo",
                     createdAt: "date",
                     // Aggregation
-                    users: [], // Min users
+                    users: [{
+                        userName: "user1412",
+                        _id: "1",
+                    }], // Min users
                     // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
-                    link: ''
+                    updates: [{
+                        name: 'name',
+                        user: {
+                            userName: "user1412",
+                            _id: "1",
+                        },
+                        lastUpdate: Date.now(),
+                        value: "I changed all",
+                        imgUrl: "",
+                    }], // updates objects
+                    notes: [{
+                        name: "name",
+                        value: "value",
+                        user: {
+                            userName: "user1412",
+                            _id: "1",
+                        },
+                        lastUpdate: Date.now()
 
-                },
-                {
-                    _id: 111,
-                    taskTitle: "Mess",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
-                    link: ''
-
-                },
-                {
-                    _id: 12333,
-                    taskTitle: "withus",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
+                    }], // Notes objects
+                    people: [
+                        {
+                            userName: "user1412",
+                            _id: "1",
+                        },
+                        {
+                            userName: "user1412",
+                            _id: "1",
+                        }, {
+                            userName: "user1412",
+                            _id: "1",
+                        }
+                    ],
+                    status: 'done',
+                    priority: 'important',
+                    DueDate: 'tommarow',
+                    budget: '100',
+                    text: 'hey',
                     link: ''
 
                 }
-
                 ], // Task object
                 color: "color",
                 lastUpdated: ""
-            },
-            {
-                _id: 1234,
-                name: "name",
-                createdAt: "date",
-                // Aggregation
-                tasks: [], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 1235,
-                name: "name",
-                createdAt: "date",
-                // Aggregation
-                tasks: [], // Task object
-                color: "color",
-                lastUpdated: ""
             }
-
         ], // _Group Objects
         // Hard coded
         color: "color",
-        history: [] //history objects
-    },
-    {
-        _id: "2",
-        name: "Board 2",
-        createdAt: "date",
-        // Aggregation
-        admins: [], // Min users
-        users: [{
-            userName: "name",
-            fullName: " full name",
-            password: "password",
-            _id: "ID",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        }, {
-            userName: "name",
-            fullName: " full name",
-            password: "password",
-            _id: "ID",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        }], // Min users
-        groups: [
+        history: [
             {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
-                    link: ''
-
-                },
-                {
-                    _id: 111,
-                    taskTitle: "Mess",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
-                    link: ''
-
-                },
-                {
-                    _id: 12333,
-                    taskTitle: "withus",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
-                    link: ''
-
-                }
-
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 1234,
                 name: "name",
-                createdAt: "date",
-                // Aggregation
-                tasks: [], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 1235,
-                name: "name",
-                createdAt: "date",
-                // Aggregation
-                tasks: [], // Task object
-                color: "color",
-                lastUpdated: ""
+                user: [{
+                    userName: "user1412",
+                    _id: "1",
+                }, {
+                    userName: "user14as12",
+                    _id: "2",
+                }],
+                lastUpdate: Date.now(),
+                actionType: "something",
+                prevValue: "from 1",
+                nextValue: "to 2"
             }
-
-        ], // _Group Objects
-        // Hard coded
-        color: "color",
-        history: [] //history objects
-    },
-    {
-        _id: "3",
-        name: "Board 3",
-        createdAt: "date",
-        // Aggregation
-        admins: [], // Min users
-        users: [{
-            userName: "name",
-            fullName: " full name",
-            password: "password",
-            _id: "ID",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        }, {
-            userName: "name",
-            fullName: " full name",
-            password: "password",
-            _id: "ID",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        }], // Min users
-        groups: [
-            {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
-                    link: ''
-
-                },
-                {
-                    _id: 111,
-                    taskTitle: "Mess",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
-                    link: ''
-
-                },
-                {
-                    _id: 12333,
-                    taskTitle: "withus",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [], // Min users
-                    // Inside Tas
-                    columns: [], //  Columns Objects
-                    updates: [], // updates objects
-                    notes: [], // Notes objects
-                    people: [],
-                    status: '',
-                    priority: '',
-                    DueDate: '',
-                    budget: '',
-                    text: '',
-                    link: ''
-
-                }
-
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 1234,
-                name: "name",
-                createdAt: "date",
-                // Aggregation
-                tasks: [], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 1235,
-                name: "name",
-                createdAt: "date",
-                // Aggregation
-                tasks: [], // Task object
-                color: "color",
-                lastUpdated: ""
-            }
-
-        ], // _Group Objects
-        // Hard coded
-        color: "color",
-        history: [] //history objects
+        ] //history objects
     }
     ]
 };
