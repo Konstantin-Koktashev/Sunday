@@ -7,6 +7,7 @@ import './App.css';
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import About from './pages/About.js';
+import ProgressBar from './cmps/ProgressBar'
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
           <Route path="/about" component={About} exact/>
           <Route path="/login" component={Login} exact/>
           {/* <Route path="/" component={About} exact/> */}
-          {/* <Route path="/" component={Home} exact/> */}
+          <Route path="/progress" component={ProgressBar} exact/>
         </Switch>
       </Router>
     </div>
