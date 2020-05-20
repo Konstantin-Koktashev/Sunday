@@ -18,6 +18,7 @@ import Inbox from './pages/Inbox';
 
 function App() {
   return (
+    
     <div className="App">
       <Router history={history}>
         <SideNav></SideNav>
