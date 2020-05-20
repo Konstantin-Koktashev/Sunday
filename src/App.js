@@ -14,10 +14,12 @@ import BoardNav from './cmps/BoardNav';
 import ProgressBar from './cmps/ProgressBar'
 import MyWeek from './pages/MyWeek'
 import Inbox from './pages/Inbox';
+import TaskDetails from './cmps/TaskDetails';
 
 
 function App() {
   return (
+    
     <div className="App">
       <Router history={history}>
         <SideNav></SideNav>
@@ -32,6 +34,7 @@ function App() {
             <Route path="/progress" component={ProgressBar} exact />
             <Route path="/myweek" component={MyWeek} exact />
             <Route path="/user/inbox" component={Inbox} exact />
+            <Route path="/details" component={TaskDetails} exact />
           </Switch>
         </section>
       </Router>
