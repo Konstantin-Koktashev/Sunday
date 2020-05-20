@@ -1,0 +1,127 @@
+[
+    {
+        "userName": "name",
+        "fullName": " full name",
+        "password": "password",
+        "_id": "ID",
+        "isAdmin": "true",
+        "imgUrl": "www.img.com",
+        "lastSeen": "today",
+        "loggedAmount": 2,
+        "location": "tel aviv",
+        "notifications": [], //notification object
+        "boards": [] // Boards ids
+    }
+]
+// notifications 
+{
+    "name": "name",
+    "byUser": "",
+    "lastUpdate": "",
+    "isRead": "",
+    "value": "",
+}
+//Boards
+{
+    "_id": "ID",
+    "name": "name",
+    "createdAt": "date",
+    // Aggregation
+    "admins": [], // Min users
+    "users": [], // Min users
+    "groups": [], // _IDs of Groups
+    // Hard coded
+    "columnTypes": [], // Column Types
+    "color": "color",
+    "history": [] //history objects
+}
+// Log
+{
+    "name": "name",
+    "user": "",
+    "lastUpdate": "",
+    "actionType": "",
+    "prevValue": "",
+    "nextValue": ""
+}
+// Group
+{
+    "_id": "ID",
+    "name": "name",
+    "createdAt": "date",
+    // Aggregation
+    "tasks": [], // Task object
+    "color": "color",
+    "lastUpdated": ""
+}
+// Task
+{
+    "_id": "ID",
+    "taskTitle": "taskTitle",
+    "createdAt": "date",
+    // Aggregation
+    "users": [], // Min users
+    // Inside Task
+    "columns": [], //  Columns Objects
+    "updates": [], // updates objects
+    "notes": [], // Notes objects
+    "isSelected": "true"
+}
+// Column
+{
+    "type": "person",
+    "value": "",
+    "lastUpdated": "",
+    "color": "color"
+}
+// Notes 
+{
+    "name": "name",
+    "value": "",
+    "user": "",
+    "lastUpdate": ""
+}
+// Updates 
+{
+    "name": "name",
+    "user": "",
+    "lastUpdate": "",
+    "value": "",
+    "imgUrl": "",
+    "files": []
+}
+// colcetiosn     object       boards      gourps   preview
+mongo -          server - front/store - compnont - dom
+
+
+
+
+   
+    BoardStoreState={
+    "boards": []
+}
+    BoardStoreActions={
+    deleteBoard,
+    addBoard,
+    updateBoard,
+    loadBoard,
+}
+
+
+    userStoreState={
+    "loggedInUser": null,
+    "isAdmin":'',
+    "boards"=[],
+      tasks=[] //filer user tasks, My-Week
+      "masseges": [],
+    "files": [],
+}
+
+
+    userActions={
+    login,
+    logout,
+    signup,
+    update,
+    delete,
+}
