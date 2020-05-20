@@ -1,6 +1,6 @@
 @import './pages/my-week.css';
 @import './components/week-modal.css';
-
+@import './cmps/taskDetails.css';
 
 h2 {
   font-size: 16px;

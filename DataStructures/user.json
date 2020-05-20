@@ -41,10 +41,6 @@
     "notifications": [], //notification object
     "boards": [] // Boards ids
 }
-<<<<<<< HEAD
-=======
-
-
 // notifications 
 {
     "name": "name",
@@ -228,7 +224,6 @@ userReducer,boardReducer
         "boards": [] // Boards ids
     }
 ]
->>>>>>> 4a6aa554abb55bc9980488ced3eaf7654130d299
 // notifications 
 {
     "name": "name",

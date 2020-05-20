@@ -64,7 +64,13 @@ const initialState = {
                         { _id: 1234, name: 'shahar' }
                     ], // Min users
                     // Inside Tas
-                    columns: [], //  Columns Objects
+                    columns: [
+                        { type: 'done' }
+                        , { priority: 'important' }
+                        , { dueDate: 'tommarow' }
+                        , { budget: 100 }
+                        , { text: 'hey' }
+                        , { link: '' }], //  Columns Objects
                     updates: [], // updates objects
                     notes: [], // Notes objects
                     people: [],
@@ -82,7 +88,7 @@ const initialState = {
                     // Aggregation
                     users: [], // Min users
                     // Inside Tas
-                    columns: [], //  Columns Objects
+                    columns: [{ status: 'done' }, { priority: 'important' }, { dueDate: 'tommarow' }, { budget: 100 }, { text: 'hey' }, { link: '' }], //  Columns Objects
                     updates: [], // updates objects
                     notes: [], // Notes objects
                     people: [],
