@@ -1,3 +1,227 @@
+//Collections
+
+
+//Baords
+[board1,board2]
+
+//Users
+[user1,user2]
+
+
+
+//Objects
+
+//Board Object
+
+{
+    "_id": "ID",
+    "name": "name",
+    "createdAt": "date",
+    // Aggregation
+    "admins": [], // Min users
+    "users": [], // Min users
+    "groups": [], // _Group Objects
+    // Hard coded
+    "color": "color",
+    "history": [] //history objects
+}
+
+
+//UserObject
+
+{
+    "userName": "name",
+    "fullName": " full name",
+    "password": "password",
+    "_id": "ID",
+    "isAdmin": "true",
+    "imgUrl": "www.img.com",
+    "lastSeen": "today",
+    "loggedAmount": 2,
+    "location": "tel aviv",
+    "notifications": [], //notification object
+    "boards": [] // Boards ids
+}
+
+
+// notifications 
+{
+    "name": "name",
+    "byUser": "",
+    "lastUpdate": "",
+    "isRead": "",
+    "value": "",
+}
+
+// History
+{
+    "name": "name",
+    "user": "",
+    "lastUpdate": "",
+    "actionType": "",
+    "prevValue": "",
+    "nextValue": ""
+}
+
+
+// Group
+{
+    "_id": "ID",
+    "name": "name",
+    "createdAt": "date",
+    // Aggregation
+    "tasks": [], // Task object
+    "color": "color",
+    "lastUpdated": ""
+}
+
+
+// Task
+{
+    "_id": "ID",
+    "taskTitle": "taskTitle",
+    "createdAt": "date",
+    // Aggregation
+    "users": [], // Min users
+    // Inside Task
+    "columns": [], //  Columns Objects
+    "updates": [], // updates objects
+    "notes": [], // Notes objects
+    "isSelected": "true".
+    "people":[],
+    "status":'',
+    "priority":'',
+    "DueDate":'',
+    "budget":'',
+    "text":'',
+    "link":''
+
+}
+
+// notifications 
+{
+    "name": "name",
+    "byUser": "",
+    "lastUpdate": "",
+    "isRead": "",
+    "value": "",
+}
+
+
+// Notes 
+{
+    "name": "name",
+    "value": "",
+    "user": "",
+    "lastUpdate": ""
+}
+// Updates 
+{
+    "name": "name",
+    "user": "",
+    "lastUpdate": "",
+    "value": "",
+    "imgUrl": "",
+    "files": []
+}
+
+//Store State
+state={users,boards}
+
+//  bla bla
+userReducer,boardReducer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [
     {
         "userName": "name",
@@ -125,3 +349,21 @@ mongo -          server - front/store - compnont - dom
     update,
     delete,
 }
+
+
+
+// User Object
+{
+    "userName": "name",
+    "fullName": " full name",
+    "password": "password",
+    "_id": "ID",
+    "isAdmin": "true",
+    "imgUrl": "www.img.com",
+    "lastSeen": "today",
+    "loggedAmount": 2,
+    "location": "tel aviv",
+    "notifications": [], //notification object
+    "boards": [] // Boards ids
+}
+// notifications 
