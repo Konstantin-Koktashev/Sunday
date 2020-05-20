@@ -1,18 +1,17 @@
-[
-    {
-        "userName": "name",
-        "fullName": " full name",
-        "password": "password",
-        "_id": "ID",
-        "isAdmin": "true",
-        "imgUrl": "www.img.com",
-        "lastSeen": "today",
-        "loggedAmount": 2,
-        "location": "tel aviv",
-        "notifications": [], //notification object
-        "boards": [] // Boards ids
-    }
-]
+// User Object
+{
+    "userName": "name",
+    "fullName": " full name",
+    "password": "password",
+    "_id": "ID",
+    "isAdmin": "true",
+    "imgUrl": "www.img.com",
+    "lastSeen": "today",
+    "loggedAmount": 2,
+    "location": "tel aviv",
+    "notifications": [], //notification object
+    "boards": [] // Boards ids
+}
 // notifications 
 {
     "name": "name",
@@ -63,9 +62,8 @@
     "users": [], // Min users
     // Inside Task
     "columns": [], //  Columns Objects
-    "updates": [], // updates objects
-    "notes": [], // Notes objects
-    "isSelected": "true"
+    "notes": [], // Notes objects,
+    "files": []
 }
 // Column
 {
@@ -105,16 +103,12 @@ mongo -          server - front/store - compnont - dom
     addBoard,
     updateBoard,
     loadBoard,
+    loadBoards,
 }
 
 
     userStoreState={
     "loggedInUser": null,
-    "isAdmin":'',
-    "boards"=[],
-      tasks=[] //filer user tasks, My-Week
-      "masseges": [],
-    "files": [],
 }
 
 
