@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import '../style/pages/inbox.css'
 class Inbox extends Component {
 
     checkUserHistory = () => {
@@ -32,22 +33,22 @@ class Inbox extends Component {
     render() {
         const userHistory = this.checkUserHistory()
 
-  
+
         console.log("Inbox -> render -> userHistory", userHistory)
         return (
-            <div className='Inbox'>
+            <div className='inbox-container'>
                 <h2>Inbox</h2>
                 {userHistory.map(history => {
-                console.log("Inbox -> render -> history", history)
+                    console.log("Inbox -> render -> history", history)
                     return (<article className='user-history flex col'>
                         <div className='complete-Task Btn'>V</div>
                         <section className='history-header flex'>
                             <div className='user-logo'>
-                           
+
                             </div>
                             <div className='updating-user'>
                                 {history.name}
-                                
+
                                 <div className='history-origin'>
                                     {history.path}
                                 </div>
@@ -55,23 +56,23 @@ class Inbox extends Component {
                             </div>
                         </section>
                         <section className='update-msg'>
-                        {history.defaultMsg}
-                <span className='prev-value-inbox'> {history.prevValue}</span>
-                <span className='arrow-logo'>>{}</span>
-                
-                <span className='next-value-inbox'>{history.nextValue}</span>
+                            {history.defaultMsg}
+                            <span className='prev-value-inbox'> {history.prevValue}</span>
+                            <span className='arrow-logo'>>{}</span>
+
+                            <span className='next-value-inbox'>{history.nextValue}</span>
                         </section>
                         <section className='like-reply-btns'>
-                        <button className='reply'>Reply</button>
-                        <button className='like'> >Like</button>
+                            <button className='reply'>Reply</button>
+                            <button className='like'> >Like</button>
                         </section>
                         <section className='like-reply-btns'>
-                        <button className='reply'>Great Job!</button>
-                        <button className='like'> >Thanks I'll take it from here</button>
-                        <button className='like'> >Nice Work! Whats next?</button>
+                            <button className='reply'>Great Job!</button>
+                            <button className='like'> >Thanks I'll take it from here</button>
+                            <button className='like'> >Nice Work! Whats next?</button>
                         </section>
                     </article>)
-                    
+
                 })}
             </div>
         )

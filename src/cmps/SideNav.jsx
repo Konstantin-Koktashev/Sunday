@@ -25,7 +25,7 @@ export default function SideNav() {
           <img title="Inbox" className="side-nav-img" src={inbox}></img>
         </div>
       </NavLink>
-      <NavLink to="/myweek/" className="my-week">
+      <NavLink to="/myweek/" className="my-week-img">
         <div>
           <img
             title="My Week"
