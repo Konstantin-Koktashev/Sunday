@@ -375,6 +375,17 @@ export default function (state = initialState, action = {}) {
     switch (action.type) {
         case 'SET_BOARD':
             return { ...state, boards: action.reviews };
+        case 'foundTasks':
+            return {
+                ...state,
+                board: {
+                    ...state.boards,
+                    groups: {
+                        ...state.boards.groups,
+                        tasks: { ...state.board.groups.tasks }
+                    }
+                }
+            };
         default:
             return state;
     }
