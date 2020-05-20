@@ -10,6 +10,7 @@ import Signup from './pages/Signup.js';
 import Boards from './pages/Boards';
 import SideNav from './cmps/SideNav';
 import ProgressBar from './cmps/ProgressBar'
+import MyWeek from './pages/MyWeek'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/signup" component={Signup} exact />
           <Route path="/login" component={Login} exact />
           <Route path="/progress" component={ProgressBar} exact />
+          <Route path="/myweek" component={MyWeek} exact />
         </Switch>
       </Router>
     </div>

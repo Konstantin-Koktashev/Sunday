@@ -17,7 +17,19 @@
     "groups": [], // _Group Objects
     // Hard coded
     "color": "color",
-    "history": [] //history objects
+    "history": [ ] //history objects
+}
+
+
+// history
+
+{
+    "timestamp" : "time",
+    "byUser" : "user",
+    "actionType" : "",
+    "actionDesc" : "",
+    "isSeen" : false,
+    
 }
 //UserObject
 {
@@ -33,194 +45,6 @@
     "notifications": [], //notification object
     "boards": [] // Boards ids
 }
-<<<<<<< HEAD
-=======
-
-
-// notifications 
-{
-    "name": "name",
-    "byUser": "",
-    "lastUpdate": "",
-    "isRead": "",
-    "value": "",
-}
-// History
-{
-    "name": "name",
-    "user": "",
-    "lastUpdate": "",
-    "actionType": "",
-    "prevValue": "",
-    "nextValue": ""
-}
-// Group
-{
-    "_id": "ID",
-    "name": "name",
-    "createdAt": "date",
-    // Aggregation
-    "tasks": [], // Task object
-    "color": "color",
-    "lastUpdated": ""
-}
-// Task
-{
-    "_id": "ID",
-    "taskTitle": "taskTitle",
-    "createdAt": "date",
-    // Aggregation
-    "users": [], // Min users
-    // Inside Task
-    "columns": [], //  Columns Objects
-    "updates": [], // updates objects
-    "notes": [], // Notes objects
-    "isSelected": "true".
-    "people": [],
-    "status":'',
-    "priority":'',
-    "DueDate":'',
-    "budget":'',
-    "text":'',
-    "link":''
-}
-// notifications 
-{
-    "name": "name",
-    "byUser": "",
-    "lastUpdate": "",
-    "isRead": "",
-    "value": "",
-}
-// Notes 
-{
-    "name": "name",
-    "value": "",
-    "user": "",
-    "lastUpdate": ""
-}
-// Updates 
-{
-    "name": "name",
-    "user": "",
-    "lastUpdate": "",
-    "value": "",
-    "imgUrl": "",
-    "files": []
-}
-//Store State
-state={users,boards
-}
-//  bla bla
-userReducer,boardReducer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[
-    {
-        "userName": "name",
-        "fullName": " full name",
-        "password": "password",
-        "_id": "ID",
-        "isAdmin": "true",
-        "imgUrl": "www.img.com",
-        "lastSeen": "today",
-        "loggedAmount": 2,
-        "location": "tel aviv",
-        "notifications": [], //notification object
-        "boards": [] // Boards ids
-    }
-]
->>>>>>> e22f55a61487b52c68589eb319e5d5068e544d9b
 // notifications 
 {
     "name": "name",

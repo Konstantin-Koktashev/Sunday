@@ -103,7 +103,27 @@ const initialState = {
                 name: "name",
                 createdAt: "date",
                 // Aggregation
-                tasks: [], // Task object
+                tasks: [
+                    {
+                        _id: 2222,
+                        taskTitle: "Todo",
+                        createdAt: "date",
+                        // Aggregation
+                        users: [{_id:1234}], // Min users
+                        // Inside Tas
+                        columns: [], //  Columns Objects
+                        updates: [], // updates objects
+                        notes: [], // Notes objects
+                        people: [],
+                        status: '',
+                        priority: '',
+                        DueDate: '',
+                        budget: '',
+                        text: '',
+                        link: ''
+
+                    }
+                ], // Task object
                 color: "color",
                 lastUpdated: ""
             },
@@ -164,7 +184,9 @@ const initialState = {
                     taskTitle: "Todo",
                     createdAt: "date",
                     // Aggregation
-                    users: [], // Min users
+                    users: [
+                        { _id: 1234 }
+                    ], // Min users
                     // Inside Tas
                     columns: [], //  Columns Objects
                     updates: [], // updates objects
@@ -287,7 +309,9 @@ const initialState = {
                     taskTitle: "Todo",
                     createdAt: "date",
                     // Aggregation
-                    users: [], // Min users
+                    users: [
+                        { _id: 1234 }
+                    ], // Min users
                     // Inside Tas
                     columns: [], //  Columns Objects
                     updates: [], // updates objects
