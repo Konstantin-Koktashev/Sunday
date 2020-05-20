@@ -8,7 +8,7 @@ import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import Signup from './pages/Signup.js';
 import { BoardApp } from './pages/Boards';
-import About from './pages/About.js';
+import SideNav from './cmps/SideNav';
 import ProgressBar from './cmps/ProgressBar'
 
 
@@ -16,22 +16,13 @@ function App() {
   return (
     <div className="App">
       <Router history={history}>
-        <nav>
-          <Link to="/login">Login</Link> |
-          <Link to="/">User Reviews</Link> |
-          <Link to="/signup">signup</Link>
-        </nav>
+        <SideNav></SideNav>
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/board" component={BoardApp} exact />
-          <Route path="/login" component={Login} exact />
           <Route path="/signup" component={Signup} exact />
-
-          <Route path="/" component={Home} exact/>
-          <Route path="/about" component={About} exact/>
-          <Route path="/login" component={Login} exact/>
-          {/* <Route path="/" component={About} exact/> */}
-          <Route path="/progress" component={ProgressBar} exact/>
+          <Route path="/login" component={Login} exact />
+          <Route path="/progress" component={ProgressBar} exact />
         </Switch>
       </Router>
     </div>

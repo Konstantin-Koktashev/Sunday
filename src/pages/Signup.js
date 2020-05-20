@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './style/signup.css'
+// import './style/signup.css'
 import {
     loadUsers,
     removeUser,
