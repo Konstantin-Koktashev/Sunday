@@ -36,13 +36,6 @@ export default class WeekPreview extends React.Component {
                 {this.props.users.map((user, idx) => <SmallImg zindex={idx} url={user.imgUrl} name={user.name} key={idx} />)}
                 <div onClick={() => this.openModal()} className={`${this.props.status} week-status`}>{this.props.status || 'R'}</div>
                 {modal && <WeekModal closeModal={this.closeModal} task={this.props} />}
-
-
-
-
-
-
-
             </div>
         )
 
