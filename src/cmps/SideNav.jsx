@@ -1,14 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../style/cmps/sideNav.css";
+import logo from "../style/img/logo.png";
+import notification from "../style/img/notification.png";
 export default function SideNav() {
   return (
     <div className="side-nav-container flex col space-evenly">
-      <NavLink to="/home" className="logo">
-        <img src=""></img>
-        Logo
+      <NavLink to="/home">
+        <img className="logo" src={logo}></img>
       </NavLink>
-      <div className="notifications"> Notifications</div>
+      <div className="notifications">
+        <img className="side-nav-img" src={notification}></img>
+      </div>
       <NavLink to="/user/inbox" className="inbox">
         <img src=""></img>
         Inbox

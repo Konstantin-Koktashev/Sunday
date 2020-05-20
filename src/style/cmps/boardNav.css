@@ -2,12 +2,35 @@
   position: fixed;
   height: 100vh;
   left: 7vw;
-  background-color: rgb(26, 143, 221);
-  border: 1px solid blue;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(160, 160, 160, 0.466);
   width: 18vw;
   top: 0px;
 }
 
 .board-list {
   height: 100vh;
+  padding: 0px 5px;
+}
+
+.board-list-btn {
+  padding: 10px 0px;
+  width: 100%;
+  border-radius: 5px;
+  text-align: start;
+  margin: 0 auto;
+}
+
+.board-list-btn:hover {
+  background-color: rgba(197, 190, 190, 0.329);
+}
+
+.board-list-btn a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.board-list-btn a:focus {
+  color: blue;
 }
