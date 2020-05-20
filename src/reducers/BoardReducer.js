@@ -3,20 +3,21 @@ const initialState = {
         // BOARD OBJECT
         _id: "1",
         name: "Board 1",
-        createdAt: "date",
+        createdAt: 1589990735884,
         // Aggregation
         admins: [{
             userName: "user1412",
+            // fullName
             _id: "1",
         }], // Min users
         users: [{
+            _id: "1",
             userName: "user1412",
             fullName: " full name1412",
-            password: "password",
-            _id: "1",
-            isAdmin: "true",
+            password: "password", // NO PASSWORD
+            isAdmin: true,
             imgUrl: "www.img.com",
-            lastSeen: "today",
+            lastSeen: "today", // timestamp
             loggedAmount: 2,
             location: "tel aviv",
             notifications: [], //notification object
@@ -59,150 +60,68 @@ const initialState = {
                     taskTitle: "Todo",
                     createdAt: "date",
                     // Aggregation
-                    users: [{
-                        userName: "user1412",
-                        _id: "1",
-                    }], // Min users
+                    users: [
+                        { _id: 1234, name: 'shahar' }
+                    ], // Min users
                     // Inside Tas
-                    updates: [{
-                        name: 'name',
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now(),
-                        value: "I changed all",
-                        imgUrl: "",
-                    },], // updates objects
-                    notes: [{
-                        name: "name",
-                        value: "value",
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now()
-
-                    }], // Notes objects
-                    people: [
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        }, {
-                            userName: "user1412",
-                            _id: "1",
-                        }
-                    ],
-                    status: 'done',
-                    priority: 'important',
-                    DueDate: 'tommarow',
-                    budget: '100',
-                    text: 'hey',
+                    columns: [], //  Columns Objects
+                    updates: [], // updates objects
+                    notes: [], // Notes objects
+                    people: [],
+                    status: 'Done',
+                    priority: 'urgent',
+                    DueDate: '15.02',
+                    budget: '150',
+                    text: 'text about task',
                     link: ''
-
-                }
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
+                },
+                {
+                    _id: 111,
+                    taskTitle: "Mess",
                     createdAt: "date",
                     // Aggregation
-                    users: [{
-                        userName: "user1412",
-                        _id: "1",
-                    }], // Min users
+                    users: [], // Min users
                     // Inside Tas
-                    updates: [{
-                        name: 'name',
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now(),
-                        value: "I changed all",
-                        imgUrl: "",
-                    },], // updates objects
-                    notes: [{
-                        name: "name",
-                        value: "value",
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now()
-
-                    }], // Notes objects
-                    people: [
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        }, {
-                            userName: "user1412",
-                            _id: "1",
-                        }
-                    ],
-                    status: 'done',
-                    priority: 'important',
-                    DueDate: 'tommarow',
-                    budget: '100',
-                    text: 'hey',
+                    columns: [], //  Columns Objects
+                    updates: [], // updates objects
+                    notes: [], // Notes objects
+                    people: [],
+                    status: '',
+                    priority: '',
+                    DueDate: '',
+                    budget: '',
+                    text: '',
                     link: ''
-
-                }
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
+                },
+                {
+                    _id: 12333,
+                    taskTitle: "withus",
                     createdAt: "date",
                     // Aggregation
+                    users: [], // Min users
                     users: [{
                         userName: "user1412",
                         _id: "1",
                     }], // Min users
                     // Inside Tas
                     updates: [{
-                        name: 'name',
                         user: {
                             userName: "user1412",
                             _id: "1",
                         },
                         lastUpdate: Date.now(),
-                        value: "I changed all",
+                        description: "I changed all",
                         imgUrl: "",
-                    },], // updates objects
+                        aboutUser: 1234
+                    }], // updates objects
                     notes: [{
                         name: "name",
-                        value: "value",
+                        description: "value",
                         user: {
                             userName: "user1412",
                             _id: "1",
                         },
                         lastUpdate: Date.now()
-
                     }], // Notes objects
                     people: [
                         {
@@ -217,547 +136,139 @@ const initialState = {
                             _id: "1",
                         }
                     ],
-                    status: 'done',
-                    priority: 'important',
-                    DueDate: 'tommarow',
-                    budget: '100',
-                    text: 'hey',
-                    link: ''
-
+                    columns: [{ status: 'done' }, { priority: 'important' }, { dueDate: 'tommarow' }, { budget: 100 }, { text: 'hey' }, { link: '' }]
                 }
                 ], // Task object
-                color: "color",
-                lastUpdated: ""
+                color: 'blue',
+                lastUpdatedAt: ""
             }
         ], // _Group Objects
-
-
         // Hard coded
-        color: "color",
+        color: 'red',
         history: [
             {
+                _id: 123,
+                name: "",
+                createdAt: "date",
+                // Aggregation
+                tasks: [{
+                    _id: 2222,
+                    taskTitle: "Todo",
+                    createdAt: "date",
+                    // Aggregation
+                    users: [
+                        { _id: 1234 }
+                    ], // Min users
+                    // Inside Tas
+                    columns: [], //  Columns Objects
+                    updates: [], // updates objects
+                    notes: [], // Notes objects
+                    people: [],
+                    status: 'undone',
+                    priority: 'urgent',
+                    DueDate: '15.02',
+                    budget: '1540',
+                    text: 'text about task 31142',
+                    link: ''
+                },
+                {
+                    _id: 111,
+                    taskTitle: "Mess",
+                    createdAt: "date",
+                    // Aggregation
+                    users: [], // Min users
+                    // Inside Tas
+                    columns: [], //  Columns Objects
+                    updates: [], // updates objects
+                    notes: [], // Notes objects
+                    people: [],
+                    status: '',
+                    priority: '',
+                    DueDate: '',
+                    budget: '',
+                    text: '',
+                    link: ''
+                },
+                {
+                    _id: 12333,
+                    taskTitle: "withus",
+                    createdAt: "date",
+                    // Aggregation
+                    users: [], // Min users
+                    // Inside Tas
+                    columns: [], //  Columns Objects
+                    updates: [], // updates objects
+                    notes: [], // Notes objects
+                    people: [],
+                    status: '',
+                    priority: '',
+                    DueDate: '',
+                    budget: '',
+                    text: '',
+                    link: ''
+                }
+                ], // Task object
+                color: "color",
+                lastUpdated: "",
+                type: 'status',
                 name: "name",
-                user: [{
+                users: [{
                     userName: "user1412",
-                    _id: "1",
+                    _id: "1234",
                 }, {
                     userName: "user14as12",
-                    _id: "2",
+                    _id: "1234",
                 }],
                 lastUpdate: Date.now(),
-                actionType: "something",
-                prevValue: "from 1",
-                nextValue: "to 2"
-            }
-        ] //history objects
-    },
-    {
-        // BOARD OBJECT
-        _id: "1",
-        name: "Board 1",
-        createdAt: "date",
-        // Aggregation
-        admins: [{
-            userName: "user1412",
-            _id: "1",
-        }], // Min users
-        users: [{
-            userName: "user1412",
-            fullName: " full name1412",
-            password: "password",
-            _id: "1",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        },
-        {
-            userName: "user112",
-            fullName: " full name1123",
-            password: "password",
-            _id: "1",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        },
-        {
-            userName: "user2",
-            fullName: " full name2",
-            password: "password",
-            _id: "1",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        }], // Min users
-        groups: [
-            {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [{
-                        userName: "user1412",
-                        _id: "1",
-                    }], // Min users
-                    // Inside Tas
-                    updates: [{
-                        name: 'name',
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now(),
-                        value: "I changed all",
-                        imgUrl: "",
-                    },], // updates objects
-                    notes: [{
-                        name: "name",
-                        value: "value",
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now()
-
-                    }], // Notes objects
-                    people: [
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        }, {
-                            userName: "user1412",
-                            _id: "1",
-                        }
-                    ],
-                    status: 'done',
-                    priority: 'important',
-                    DueDate: 'tommarow',
-                    budget: '100',
-                    text: 'hey',
-                    link: ''
-
-                }
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
+                descryption: "status was Change From",
+                nextValue: 'urgent',
+                prevValue: 'Low',
+                assignedTo: 'Abir',
+                createdBy: 'Kosta',
+                defaultMsg: 'Assigned To',
+                historyPath: 'Sunday/FrontEnd/CreatApp',
             },
             {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [{
-                        userName: "user1412",
-                        _id: "1",
-                    }], // Min users
-                    // Inside Tas
-                    updates: [{
-                        name: 'name',
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now(),
-                        value: "I changed all",
-                        imgUrl: "",
-                    },], // updates objects
-                    notes: [{
-                        name: "name",
-                        value: "value",
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now()
-
-                    }], // Notes objects
-                    people: [
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        }, {
-                            userName: "user1412",
-                            _id: "1",
-                        }
-                    ],
-                    status: 'done',
-                    priority: 'important',
-                    DueDate: 'tommarow',
-                    budget: '100',
-                    text: 'hey',
-                    link: ''
-
-                }
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [{
-                        userName: "user1412",
-                        _id: "1",
-                    }], // Min users
-                    // Inside Tas
-                    updates: [{
-                        name: 'name',
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now(),
-                        value: "I changed all",
-                        imgUrl: "",
-                    },], // updates objects
-                    notes: [{
-                        name: "name",
-                        value: "value",
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now()
-
-                    }], // Notes objects
-                    people: [
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        }, {
-                            userName: "user1412",
-                            _id: "1",
-                        }
-                    ],
-                    status: 'done',
-                    priority: 'important',
-                    DueDate: 'tommarow',
-                    budget: '100',
-                    text: 'hey',
-                    link: ''
-
-                }
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
-            }
-        ], // _Group Objects
-
-
-        // Hard coded
-        color: "color",
-        history: [
-            {
+                type: 'priority',
                 name: "name",
-                user: [{
+                users: [{
                     userName: "user1412",
-                    _id: "1",
+                    _id: "1234",
                 }, {
                     userName: "user14as12",
-                    _id: "2",
+                    _id: "1234",
                 }],
                 lastUpdate: Date.now(),
-                actionType: "something",
-                prevValue: "from 1",
-                nextValue: "to 2"
-            }
-        ] //history objects
-    },
-    {
-        // BOARD OBJECT
-        _id: "1",
-        name: "Board 1",
-        createdAt: "date",
-        // Aggregation
-        admins: [{
-            userName: "user1412",
-            _id: "1",
-        }], // Min users
-        users: [{
-            userName: "user1412",
-            fullName: " full name1412",
-            password: "password",
-            _id: "1",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        },
-        {
-            userName: "user112",
-            fullName: " full name1123",
-            password: "password",
-            _id: "1",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        },
-        {
-            userName: "user2",
-            fullName: " full name2",
-            password: "password",
-            _id: "1",
-            isAdmin: "true",
-            imgUrl: "www.img.com",
-            lastSeen: "today",
-            loggedAmount: 2,
-            location: "tel aviv",
-            notifications: [], //notification object
-            boards: [] // Boards ids
-        }], // Min users
-        groups: [
-            {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [{
-                        userName: "user1412",
-                        _id: "1",
-                    }], // Min users
-                    // Inside Tas
-                    updates: [{
-                        name: 'name',
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now(),
-                        value: "I changed all",
-                        imgUrl: "",
-                    },], // updates objects
-                    notes: [{
-                        name: "name",
-                        value: "value",
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now()
-
-                    }], // Notes objects
-                    people: [
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        }, {
-                            userName: "user1412",
-                            _id: "1",
-                        }
-                    ],
-                    status: 'done',
-                    priority: 'important',
-                    DueDate: 'tommarow',
-                    budget: '100',
-                    text: 'hey',
-                    link: ''
-
-                }
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
+                descryption: "Priority was Changed From",
+                prevValue: 'medium',
+                prevValue: 'critical',
+                assignedTo: 'Abir',
+                createdBy: 'Kosta',
+                defaultMsg: 'Assigned To',
+                historyPath: 'Sunday/FrontEnd/CreatApp',
             },
             {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [{
-                        userName: "user1412",
-                        _id: "1",
-                    }], // Min users
-                    // Inside Tas
-                    updates: [{
-                        name: 'name',
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now(),
-                        value: "I changed all",
-                        imgUrl: "",
-                    },], // updates objects
-                    notes: [{
-                        name: "name",
-                        value: "value",
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now()
-
-                    }], // Notes objects
-                    people: [
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        }, {
-                            userName: "user1412",
-                            _id: "1",
-                        }
-                    ],
-                    status: 'done',
-                    priority: 'important',
-                    DueDate: 'tommarow',
-                    budget: '100',
-                    text: 'hey',
-                    link: ''
-
-                }
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
-            },
-            {
-                _id: 123,
-                name: "",
-                createdAt: "date",
-                // Aggregation
-                tasks: [{
-                    _id: 2222,
-                    taskTitle: "Todo",
-                    createdAt: "date",
-                    // Aggregation
-                    users: [{
-                        userName: "user1412",
-                        _id: "1",
-                    }], // Min users
-                    // Inside Tas
-                    updates: [{
-                        name: 'name',
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now(),
-                        value: "I changed all",
-                        imgUrl: "",
-                    },], // updates objects
-                    notes: [{
-                        name: "name",
-                        value: "value",
-                        user: {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        lastUpdate: Date.now()
-
-                    }], // Notes objects
-                    people: [
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        },
-                        {
-                            userName: "user1412",
-                            _id: "1",
-                        }, {
-                            userName: "user1412",
-                            _id: "1",
-                        }
-                    ],
-                    status: 'done',
-                    priority: 'important',
-                    DueDate: 'tommarow',
-                    budget: '100',
-                    text: 'hey',
-                    link: ''
-
-                }
-                ], // Task object
-                color: "color",
-                lastUpdated: ""
-            }
-        ], // _Group Objects
-
-
-        // Hard coded
-        color: "color",
-        history: [
-            {
+                type: 'people',
                 name: "name",
-                user: [{
+                users: [{
                     userName: "user1412",
-                    _id: "1",
+                    _id: "1234",
                 }, {
                     userName: "user14as12",
-                    _id: "2",
+                    _id: "1234",
                 }],
                 lastUpdate: Date.now(),
-                actionType: "something",
-                prevValue: "from 1",
-                nextValue: "to 2"
-            }
+                descryption: "taskAssigned To",
+                prevValue: [{ userName: 'Kosta' }, { userName: 'Shahar' }],
+                nextValue: [{ userName: 'Kosta' }, { userName: 'Shahar' }, { userName: 'Abir' }],
+                assignedTo: 'Abir',
+                createdBy: 'Kosta',
+                defaultMsg: 'Assigned To',
+                historyPath: 'Sunday/FrontEnd/CreatApp',
+            },
         ] //history objects
-    },
-    ]
+    }]
 };
-
 export default function (state = initialState, action = {}) {
     switch (action.type) {
         case 'SET_BOARD':
