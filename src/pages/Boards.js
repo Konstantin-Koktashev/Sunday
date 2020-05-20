@@ -52,11 +52,11 @@ class BoardApp extends React.Component {
 
 
         return (
-            <section className="main-board-container">
+            <>
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
                 {currBoard && <BoardHeader board={currBoard}></BoardHeader>}
                 {currBoard && <Board board={currBoard} ></Board>}
-            </section>
+            </>
         );
     }
 }
