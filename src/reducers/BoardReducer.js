@@ -3,20 +3,21 @@ const initialState = {
         // BOARD OBJECT
         _id: "1",
         name: "Board 1",
-        createdAt: "date",
+        createdAt: 1589990735884,
         // Aggregation
         admins: [{
             userName: "user1412",
+            // fullName
             _id: "1",
         }], // Min users
         users: [{
+            _id: "1",
             userName: "user1412",
             fullName: " full name1412",
-            password: "password",
-            _id: "1",
-            isAdmin: "true",
+            password: "password", // NO PASSWORD
+            isAdmin: true,
             imgUrl: "www.img.com",
-            lastSeen: "today",
+            lastSeen: "today", // timestamp
             loggedAmount: 2,
             location: "tel aviv",
             notifications: [], //notification object
@@ -65,18 +66,18 @@ const initialState = {
                     }], // Min users
                     // Inside Tas
                     updates: [{
-                        name: 'name',
                         user: {
                             userName: "user1412",
                             _id: "1",
                         },
                         lastUpdate: Date.now(),
-                        value: "I changed all",
+                        description: "I changed all",
                         imgUrl: "",
+                        aboutUser:1234
                     }], // updates objects
                     notes: [{
                         name: "name",
-                        value: "value",
+                        description: "value",
                         user: {
                             userName: "user1412",
                             _id: "1",
@@ -97,39 +98,75 @@ const initialState = {
                             _id: "1",
                         }
                     ],
-                    status: 'done',
-                    priority: 'important',
-                    DueDate: 'tommarow',
-                    budget: '100',
-                    text: 'hey',
-                    link: ''
-
+                    columns: [{ status: 'done' }, { priority: 'important' }, { dueDate: 'tommarow' }, { budget: 100 }, { text: 'hey' }, { link: '' }]
                 }
                 ], // Task object
-                color: "color",
-                lastUpdated: ""
+                color: 'blue',
+                lastUpdatedAt: ""
             }
         ], // _Group Objects
         // Hard coded
-        color: "color",
+        color: 'red',
         history: [
             {
+                type:'status',
                 name: "name",
-                user: [{
+                users: [{
                     userName: "user1412",
-                    _id: "1",
+                    _id: "1234",
                 }, {
                     userName: "user14as12",
-                    _id: "2",
+                    _id: "1234",
                 }],
                 lastUpdate: Date.now(),
-                actionType: "something",
-                prevValue: "from 1",
-                nextValue: "to 2"
-            }
+                descryption: "status was Change From",
+                nextValue: 'urgent',
+                prevValue: 'Low',
+                assignedTo:'Abir',
+                createdBy:'Kosta',
+                defaultMsg:'Assigned To',
+                historyPath:'Sunday/FrontEnd/CreatApp',
+            },
+            {
+                type:'priority',
+                name: "name",
+                users: [{
+                    userName: "user1412",
+                    _id: "1234",
+                }, {
+                    userName: "user14as12",
+                    _id: "1234",
+                }],
+                lastUpdate: Date.now(),
+                descryption: "Priority was Changed From",
+                prevValue: 'medium',
+                prevValue: 'critical',
+                assignedTo:'Abir',
+                createdBy:'Kosta',
+                defaultMsg:'Assigned To',
+                historyPath:'Sunday/FrontEnd/CreatApp',
+            },
+            {
+                type:'people',
+                name: "name",
+                users: [{
+                    userName: "user1412",
+                    _id: "1234",
+                }, {
+                    userName: "user14as12",
+                    _id: "1234",
+                }],
+                lastUpdate: Date.now(),
+                descryption: "taskAssigned To",
+                prevValue: [{userName:'Kosta'},{userName:'Shahar'}],
+                nextValue: [{userName:'Kosta'},{userName:'Shahar'},{userName:'Abir'}],
+                assignedTo:'Abir',
+                createdBy:'Kosta',
+                defaultMsg:'Assigned To',
+                historyPath:'Sunday/FrontEnd/CreatApp',
+            },
         ] //history objects
-    }
-    ]
+    }]
 };
 
 export default function (state = initialState, action = {}) {
