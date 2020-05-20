@@ -3,29 +3,29 @@ import { connect } from "react-redux";
 import BoardList from "../cmps/BoardList.jsx";
 
 
-import { loadBoards, setFilterBy, removeBoard } from "../store/boardActions.js";
+// import { loadBoards, setFilterBy, removeBoard } from "../store/boardActions.js";
 
 export class BoardApp extends React.Component {
     componentDidMount = () => {
-        console.log("BoardApp -> componentDidMount -> this.props", this.props.user);
+        // console.log("BoardApp -> componentDidMount -> this.props", this.props.user);
 
-        if (!this.props.user) this.props.history.push("/login");
-        this.props.loadBoards();
+        // if (!this.props.user) this.props.history.push("/login");
+        // this.props.loadBoards();
     };
 
-    onFilter = (filterBy) => {
-        console.log("BoardApp -> onFilter -> filterBy", filterBy);
+    // onFilter = (filterBy) => {
+    //     console.log("BoardApp -> onFilter -> filterBy", filterBy);
 
-        this.props.loadBoards(filterBy);
-    };
+    //     this.props.loadBoards(filterBy);
+    // };
 
-    onDeleteBoard = (boardId) => {
-        this.props.removeBoard(boardId);
-        this.props.loadBoards();
-    };
+    // onDeleteBoard = (boardId) => {
+    //     this.props.removeBoard(boardId);
+    //     this.props.loadBoards();
+    // };
 
     render() {
-        const { boards, filterBy } = this.props;
+        const { boards } = this.props;
 
 
         return (
@@ -34,7 +34,7 @@ export class BoardApp extends React.Component {
 
 
                 {boards ? (
-                    <BoardList onDeleteBoard={this.onDeleteBoard} boards={boards}></BoardList>
+                    <BoardList boards={boards}></BoardList>
                 ) : (
                         <p>No boards!</p>
                     )}
@@ -51,9 +51,7 @@ const mapStateToProps = (state) => {
     };
 };
 const mapDispatchToProps = {
-    loadBoards,
-    setFilterBy,
-    removeBoard,
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardApp);

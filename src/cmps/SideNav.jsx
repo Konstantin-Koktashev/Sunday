@@ -1,11 +1,11 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function SideNav() {
-    return (
-        <div>
-            <NavLink to='/home' className='logo'>
-        <img src=''></img>
+  return (
+    <div>
+      <NavLink to="/home" className="logo">
+        <img src=""></img>
         Logo
             </NavLink>
 
