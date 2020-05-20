@@ -1,2 +1,57 @@
 @import './pages/my-week.css';
-@import './components/week-modal.css'
+@import './components/week-modal.css';
+
+
+h2 {
+  font-size: 16px;
+}
+body {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+html {
+  margin: 0px;
+  padding: 0px;
+}
+/* FLEX HELPERS */
+
+.flex {
+  display: flex;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.a-center {
+  align-items: center;
+}
+
+.a-baseline {
+  align-items: baseline;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.j-center {
+  justify-content: center;
+}
+
+.a-start {
+  align-items: flex-start;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.space-start {
+  justify-content: flex-start;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}

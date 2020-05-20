@@ -1,0 +1,9 @@
+.side-nav-container {
+  position: fixed;
+  left: 0px;
+  background-color: #2d3436;
+  height: 100vh;
+  color: white;
+  width: 7vw;
+  top: 0px;
+}

@@ -1,0 +1,11 @@
+.group-list-container {
+  background-color: lightblue;
+  padding: 0px 10px;
+  height: 100vh;
+  margin-top: 0px;
+}
+
+.group-list {
+  margin-bottom: 10vh;
+  padding: 0px 10px;
+}

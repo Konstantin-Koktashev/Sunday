@@ -1,9 +1,9 @@
 import React from "react";
-import "../style/components/groupList.css";
+import "../style/cmps/groupList.css";
 import { TaskList } from "./TaskList.jsx";
 export default function GroupList(props) {
   return (
-    <div className="group-list-card">
+    <div className="group-list-container">
       {props.groups && !props.groups.length > 0 ? (
         <div className="group-list-container">
           <h3>No Groups Found!</h3>
@@ -11,9 +11,7 @@ export default function GroupList(props) {
       ) : (
         props.groups.map((group, idx) => {
           return (
-            <div key={idx}>
-              <h2>Group name{group.name}</h2>
-              <h2>Group id:{group._id}</h2>
+            <div className="group-list" key={idx}>
               {<TaskList tasks={group.tasks} />}
             </div>
           );
