@@ -8,7 +8,7 @@ export default function SideNav() {
         <img src=""></img>
         Logo
             </NavLink>
-
+<div className='notifications'> Notifications</div>
             <NavLink to='/user/inbox' className='inbox'>
         <img src=''></img>
         Inbox
@@ -20,10 +20,10 @@ export default function SideNav() {
             <NavLink to='/user/invite' className='invite'>
         <img src=''></img>
             </NavLink>
-            <NavLink to='/user/profile' className='search'>
+            <div to='/user/profile' className='search'>
         <img src=''></img>
         Profile
-            </NavLink>
+            </div>
             
         </div>
     )

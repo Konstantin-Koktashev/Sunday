@@ -131,7 +131,16 @@ const initialState = {
     switch (action.type) {
       case 'SET_BOARD':
         return { ...state, boards: action.reviews };
-      default:
+      case 'foundTasks':
+        return { ...state, 
+        board:{
+            ...state.boards,
+            groups:{
+                ...state.boards.groups,
+                tasks:{...state.board.groups.tasks}
+            }
+        }};
+      default:  
         return state;
     }
   }
