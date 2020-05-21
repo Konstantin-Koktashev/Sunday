@@ -1,13 +1,54 @@
-import React from "react";
 import GroupList from "./GroupList.jsx";
-export default function Board(props) {
-  const board = props.board;
-  return (
-    <>
-      {/* <h3>Board name:{board.name}</h3>
+import { connect } from "react-redux";
+import React, { Component } from "react";
+import { updateBoard } from "../actions/boardActions";
+class Board extends Component {
+  sortColumnsByBox = (order) => {
+    const board = this.props.board;
+    let newBoard = board.groups.map((group) => {
+      let res = group.tasks.map((task) => {
+        let res = this.mapOrder(task.columns, order, "order");
+        return res;
+      });
+      return res;
+    });
+  };
+
+  mapOrder = (array, order, key) => {
+    array.sort(function (a, b) {
+      var A = a[key],
+        B = b[key];
+      if (order.indexOf(A) > order.indexOf(B)) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    return array;
+  };
+  render() {
+    return (
+      <>
+        {/* <h3>Board name:{board.name}</h3>
       <h3>Board name:{board._id}</h3> */}
 
-      <GroupList groups={board.groups} />
-    </>
-  );
+        <GroupList
+          sortColumnsByBox={this.sortColumnsByBox}
+          groups={this.props.board.groups}
+        />
+      </>
+    );
+  }
 }
+
+const mapStateToProps = (state) => {
+  //State of the store to props of the cmp
+  return {
+    boards: state.userBoards.board,
+  };
+};
+const mapDispatchToProps = {
+  updateBoard,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

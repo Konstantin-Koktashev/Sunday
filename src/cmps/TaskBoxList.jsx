@@ -62,6 +62,11 @@ export class TaskBoxList extends Component {
     this.setState({
       items,
     });
+    let order = [];
+    items.forEach((item) => {
+      order.push(item.order);
+    });
+    this.props.sortColumnsByBox(order);
     console.log("items", items);
   }
 
@@ -95,7 +100,6 @@ export class TaskBoxList extends Component {
                         provided.draggableProps.style
                       )}
                     >
-                      {console.log("item is! : ", item)}
                       {<TaskBox col={item}></TaskBox>}
                     </div>
                   )}

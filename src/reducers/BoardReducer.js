@@ -68,13 +68,13 @@ const initialState = {
                     {
                         type: 'date',
                         value: 'Date',
-                        order: '4'
+                        order: '1'
 
                     },
                     {
                         type: 'poeple',
                         value: 'poeple',
-                        order: '5'
+                        order: '2'
 
                     },
                     {
@@ -86,13 +86,13 @@ const initialState = {
                     {
                         type: 'text',
                         value: 'Text',
-                        order: '1'
+                        order: '4'
 
                     },
                     {
                         type: 'number',
                         value: 'number',
-                        order: '2'
+                        order: '5'
 
                     }
                 ],
@@ -109,18 +109,18 @@ const initialState = {
                     columns: [
                         {
                             type: 'label',
-                            value: 'Done3',
-                            order: 3
+                            value: 'Done',
+                            order: '1'
                         },
                         {
                             type: 'text',
-                            value: 'im text1',
-                            order: 1
+                            value: 'im text',
+                            order: '2'
                         },
                         {
                             type: 'number',
                             value: 100,
-                            order: 2
+                            order: '3'
                         }
                     ], //  Columns Objects
                     updates: [{

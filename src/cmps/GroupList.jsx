@@ -17,6 +17,7 @@ export default function GroupList(props) {
                   name={group.name}
                   tasks={group.tasks}
                   cols={group.columns}
+                  sortColumnsByBox={props.sortColumnsByBox}
                 />
               }
             </div>

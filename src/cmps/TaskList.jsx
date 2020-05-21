@@ -31,7 +31,10 @@ export default class TaskList extends Component {
                 />
                 <h2>Group Name{this.props.name}</h2>
               </div>
-              <TaskBoxList items={this.props.cols}></TaskBoxList>
+              <TaskBoxList
+                sortColumnsByBox={this.props.sortColumnsByBox}
+                items={this.props.cols}
+              ></TaskBoxList>
             </div>
             <div
               className={`task-list flex col ${
