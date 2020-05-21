@@ -1,6 +1,5 @@
 import React from 'react';
 import { Router, Switch, Route } from 'react-router';
-import { Link } from 'react-router-dom'
 import history from './history';
 import './App.css';
 import './style/main.css';
@@ -19,7 +18,7 @@ import TaskDetails from './cmps/TaskDetails';
 
 function App() {
   return (
-    
+
     <div className="App">
       <Router history={history}>
         <SideNav></SideNav>
@@ -38,6 +37,11 @@ function App() {
           </Switch>
         </section>
       </Router>
+      <div className="loading-container fade-out">
+        <div className="col-sm-2">
+          <div id="nest6"></div>
+        </div>
+      </div>
     </div>
   );
 }

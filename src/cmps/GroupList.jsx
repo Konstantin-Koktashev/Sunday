@@ -12,7 +12,13 @@ export default function GroupList(props) {
         props.groups.map((group, idx) => {
           return (
             <div className="group-list" key={idx}>
-              {<TaskList name={group.name} tasks={group.tasks} />}
+              {
+                <TaskList
+                  name={group.name}
+                  tasks={group.tasks}
+                  cols={group.columns}
+                />
+              }
             </div>
           );
         })

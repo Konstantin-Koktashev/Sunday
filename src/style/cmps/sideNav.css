@@ -28,4 +28,11 @@
 .my-week-img {
   width: 30px;
   height: 40px;
+  /* margin: 0 auto; */
+}
+
+.my-week-img div {
+  /* text-align: center; */
+  padding: 1vw;
+  width: 5vw;
 }

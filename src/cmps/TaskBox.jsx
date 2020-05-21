@@ -1,32 +1,35 @@
 import React from "react";
+import "../style/cmps/taskBox.css";
 export class TaskBox extends React.Component {
-  componentDidMount() {}
+  dataToBox() {
+    const col = this.props.col;
+    let box;
+    switch (col.type) {
+      case "label":
+        box = <div className="label-box">{col.value}</div>;
+        break;
+      case "number":
+        box = <div className="number-box">{col.value}</div>;
+        break;
+      case "text":
+        box = <div className="text-box">{col.value}</div>;
+        break;
+      case "poeple":
+        box = <div className="poeple-box">{col.value}</div>;
+        break;
+      case "date":
+        box = <div className="date-box">{col.value}</div>;
+        break;
+      default:
+        box = <div className="text-box">{col.value}</div>;
+        break;
+    }
+    return box;
+  }
 
-  //   dataToBox() {
-  //     let box;
-  //     console.log("TaskBox -> dataToBox -> this.state.col", this.state.col);
-  //     switch (this.state.col) {
-  //       case "priority":
-  //         box = <div>hey</div>;
-  //         break;
-  //       case "status":
-  //         // code block
-  //         break;
-
-  //       // code block
-  //     }
-  //   }
-  //   <div>{col.status}</div>
-  //         <div>{col.budget}</div>
-  //         <div>{col.text}</div>
-  //         <div>{col.DueDate}</div>
-  //         <div>{col.priority}</div>
   render() {
-    return (
-      <section className="task-box">
-        {/* {this.dataToBox()} */}
-        hey
-      </section>
-    );
+    return <section>{this.dataToBox()}</section>;
   }
 }
+
+// contentEditable="true"

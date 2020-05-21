@@ -8,7 +8,16 @@
   top: 0px;
   border-radius: 33px 0px 0px 0px;
 }
-
+.board-nav-container-hidden {
+  position: fixed;
+  height: 100vh;
+  left: 7vw;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(160, 160, 160, 0.466);
+  width: 5vw;
+  top: 0px;
+  border-radius: 33px 0px 0px 0px;
+}
 .board-list {
   height: 100vh;
   padding: 0px 5px;
@@ -20,6 +29,7 @@
   border-radius: 5px;
   text-align: start;
   margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .board-list-btn:hover {
@@ -34,4 +44,17 @@
 
 .board-list-btn a:focus {
   color: blue;
+}
+
+.resize-png-boardnav {
+  width: 20px;
+  align-self: flex-end;
+  transform: rotate(90deg);
+  margin-right: -10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.resize-png-boardnav:hover {
+  transform: scale(1.1) rotate(-90deg);
 }

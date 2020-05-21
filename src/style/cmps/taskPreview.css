@@ -1,18 +1,29 @@
 .task-bar {
   /* width: 80vw; */
-  border-radius: 10px;
+  border-radius: 1px;
   border: 1px solid rgba(119, 119, 119, 0.356);
-  padding: 0px 10px;
+  padding: 0px 2px;
   margin-bottom: 5px;
   background-color: #dfe6e957;
+  height: 4vh;
 }
 
 .task-bar:hover {
   background-color: #0984e3;
 }
+.title-box {
+  width: 10vw;
+  font-size: 12px;
+}
+.task-bar h2 {
+  /* max-width: 15vw; */
+  padding: 0px 20px;
+  font-size: 14px;
+}
 
 .task-bar-columns-container {
   width: 70%;
+  font-size: 11px;
 }
 .task-bar-columns-container p {
   border-left: 1px solid rgba(119, 119, 119, 0.356);
@@ -39,4 +50,11 @@
 }
 .task-bar-columns-container img {
   height: 20px;
+}
+
+.task-bar-icon {
+  width: 20px;
+  align-self: center;
+  margin-left: 50%;
+  margin-right: 10px;
 }

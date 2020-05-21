@@ -48,9 +48,6 @@ class BoardApp extends React.Component {
 
     render() {
         const { currBoard } = this.state;
-        const { boards } = this.props;
-
-
         return (
             <>
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}

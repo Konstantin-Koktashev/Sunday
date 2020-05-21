@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../style/cmps/taskList.css";
 import { TaskPreview } from "./TaskPreview.jsx";
 import resize from "../style/img/resize.png";
+import { TaskBoxList } from "./TaskBoxList.jsx";
 export default class TaskList extends Component {
   state = {
     taskIsShown: true,
@@ -19,15 +20,19 @@ export default class TaskList extends Component {
         {this.props.tasks && !this.props.tasks.length > 0 ? (
           <h3>No Tasks Found!</h3>
         ) : (
-          <div className="task-list-card">
-            <img
-              className="resize-png"
-              onClick={this.toggleList}
-              src={resize}
-              alt="here"
-            />
-            <h2>Group Name{this.props.name}</h2>
-
+          <div className="task-list-card ">
+            <div className="flex a-center space-between">
+              <div className="flex a-center">
+                <img
+                  className="resize-png"
+                  onClick={this.toggleList}
+                  src={resize}
+                  alt="here"
+                />
+                <h2>Group Name{this.props.name}</h2>
+              </div>
+              <TaskBoxList items={this.props.cols}></TaskBoxList>
+            </div>
             <div
               className={`task-list flex col ${
                 this.state.taskIsShown ? "" : "hide"
