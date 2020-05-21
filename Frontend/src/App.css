@@ -1,0 +1,97 @@
+.App {
+  text-align: center;
+  background-color: #2d3436;
+}
+
+.loading-container {
+  background-color: rgba(221, 217, 217, 0.712);
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.fade-out {
+  animation: fade-out 1s ease-out both;
+  animation-delay: 1s;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+#nest6 {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 47.5%;
+  height: 100px;
+  width: 100px;
+  margin: -25px 0 0 -25px;
+  border: 2px solid transparent;
+  border-top-color: #008744;
+  border-radius: 50%;
+  -webkit-animation: spin12 2s linear infinite;
+  animation: spin12 2s linear infinite;
+}
+
+#nest6:before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  bottom: 7px;
+  left: 7px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  border-top-color: #ffa700;
+  -webkit-animation: spin12 3s linear infinite;
+  animation: spin12 3s linear infinite;
+}
+
+#nest6:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: #0057e7;
+  border-top-color: #d62d20;
+  -webkit-animation: spin12 1.5s linear infinite;
+  animation: spin12 1.5s linear infinite;
+}
+
+@-webkit-keyframes spin12 {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin12 {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}

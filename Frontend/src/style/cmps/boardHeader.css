@@ -1,0 +1,15 @@
+.board-header-container {
+  height: 20vh;
+  padding: 0px 10px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgba(160, 160, 160, 0.466);
+}
+
+.board-header-container h2 {
+  margin: 0px;
+  color: #0984e3;
+  font-size: 20px;
+  letter-spacing: 1px;
+  align-self: flex-start;
+  margin-top: 5px;
+}
