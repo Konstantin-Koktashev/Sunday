@@ -10,7 +10,7 @@ import notification from "../style/img/notification.png";
 export default function SideNav() {
   return (
     <div className="side-nav-container flex col space-evenly">
-      <NavLink to="/home">
+      <NavLink to="/board">
         <img title="Sunday" className="logo" src={logo} alt="Sunday"></img>
       </NavLink>
       <div className="notifications">

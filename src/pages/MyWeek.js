@@ -34,22 +34,24 @@ class MyWeek extends Component {
 
     }
 
-    
+
 
 
 
     render() {
-        const { userTasks ,color } = this.state
+        const { userTasks, color } = this.state
         return (
 
+            <>
+                <div className="header-container-myweek">
+                    <h3>hey {this.props.user.name}</h3>
+                </div>
+                <section className="my-week">
+                    {userTasks && userTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
 
-            <section className="my-week">
 
-                <h3>hey {this.props.user.name}</h3>
-                {userTasks && userTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
-
-
-            </section>
+                </section>
+            </>
 
         )
     }

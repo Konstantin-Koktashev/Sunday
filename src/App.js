@@ -22,8 +22,12 @@ function App() {
 
     <div className="App">
       <Router history={history}>
-        <SideNav></SideNav>
-        <BoardNav></BoardNav>
+        <div className="bgc-black">
+
+          <SideNav></SideNav>
+          <BoardNav></BoardNav>
+
+        </div>
         <section className="main-board-container">
           <Switch>
 

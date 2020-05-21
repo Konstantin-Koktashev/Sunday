@@ -474,12 +474,12 @@ const initialState = {
 };
 export default function (state = initialState, action = {}) {
     switch (action.type) {
-        case 'SET_BOARD':
-            return { ...state, boards: action.reviews };
+        // case 'SET_BOARD':
+        //     return { ...state, boards: action.reviews };
         case 'foundTasks':
             return {
                 ...state,
-                board: {
+                boards: {
                     ...state.boards,
                     groups: {
                         ...state.boards.groups,
@@ -487,11 +487,43 @@ export default function (state = initialState, action = {}) {
                     }
                 }
             };
+        case 'ADD_BOARD':
+            return {
+                ...state,
+                boards: { ...state.boards, board: action.savedBoard }
+            }
+        case 'UPDATE_BOARD':
+            return {
+                ...state,
+                boards: {
+                    ...state.boards.map(board => {
+                        if (board._id === action.savedBoard._id) return action.savedBoard
+                        return board
+                    })
+                }
+            }
+        case 'SET_BOARDS':
+            return {
+                ...state,
+                boards: action.boards
+            }
+        case 'BOARD_REMOVE':
+            return {
+                ...state,
+                boards: {
+                    ...state.boards.filter(board => {
+                        return board._id !== action.board._id
+                    })
+                }
+            }
         default:
             return state;
     }
 }
 
+
+//SET_BOARDS
+//BOARD_REMOVE
 
 
 

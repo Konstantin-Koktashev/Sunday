@@ -1,7 +1,7 @@
 import GroupList from "./GroupList.jsx";
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import { updateBoard } from "../actions/boardActions";
+import { saveBoard } from "../actions/boardActions";
 class Board extends Component {
   sortColumnsByBox = (order) => {
     const board = this.props.board;
@@ -48,7 +48,7 @@ const mapStateToProps = (state) => {
   };
 };
 const mapDispatchToProps = {
-  updateBoard,
+  saveBoard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
