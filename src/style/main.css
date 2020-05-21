@@ -2,6 +2,7 @@
 @import './components/week-modal.css';
 @import './cmps/taskDetails.css';
 @import './cmps/labelContainer.css';
+@import './cmps/inbox.css';
 
 h2 {
   font-size: 16px;

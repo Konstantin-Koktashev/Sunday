@@ -51,12 +51,13 @@ const initialState = {
         }], // Min users
         groups: [
             {
-                _id: 123,
+                _id: 124,
                 name: "",
                 createdAt: "date",
                 // Aggregation
                 tasks: [{
                     _id: 2222,
+                    assignedGroupId:124,
                     taskTitle: "Todo",
                     createdAt: "date",
                     // Aggregation
@@ -83,6 +84,7 @@ const initialState = {
                 },
                 {
                     _id: 111,
+                    assignedGroupId:124,
                     taskTitle: "Mess",
                     createdAt: "date",
                     // Aggregation
@@ -101,6 +103,7 @@ const initialState = {
                 },
                 {
                     _id: 12333,
+                    assignedGroupId:124,
                     taskTitle: "withus",
                     createdAt: "date",
                     // Aggregation
@@ -147,6 +150,135 @@ const initialState = {
                 ], // Task object
                 color: 'blue',
                 lastUpdatedAt: ""
+            },
+            {
+                _id: 124,
+                name: "",
+                createdAt: "date",
+                // Aggregation
+                tasks: [{
+                    _id: 2222,
+                    assignedGroupId:124,
+                    taskTitle: "Todo",
+                    createdAt: "date",
+                    // Aggregation
+                    users: [
+                        { _id: 1234, name: 'shahar' }
+                    ], // Min users
+                    // Inside Tas
+                    columns: [
+                        { type: 'done' }
+                        , { priority: 'important' }
+                        , { dueDate: 'tommarow' }
+                        , { budget: 100 }
+                        , { text: 'hey' }
+                        , { link: '' }], //  Columns Objects
+                    updates: [], // updates objects
+                    notes: [], // Notes objects
+                    people: [],
+                    status: 'Done',
+                    priority: 'urgent',
+                    DueDate: '15.02',
+                    budget: '150',
+                    text: 'text about task',
+                    link: '',
+                    
+                    assingedByUser:{  userName: "user1412",
+                    _id: "2",},
+                    assignedToUser:{
+                        userName: "user1412",
+                        _id: "1",
+                    }
+                },
+                {
+                    _id: 111,
+                    assignedGroupId:124,
+                    taskTitle: "Mess",
+                    createdAt: "date",
+                    // Aggregation
+                    users: [], // Min users
+                    // Inside Tas
+                    columns: [{ status: 'done' }, { priority: 'important' }, { dueDate: 'tommarow' }, { budget: 100 }, { text: 'hey' }, { link: '' }], //  Columns Objects
+                    updates: [], // updates objects
+                    notes: [], // Notes objects
+                    people: [],
+                    status: '',
+                    priority: '',
+                    DueDate: '',
+                    budget: '',
+                    text: '',
+                    link: '',
+                    assingedByUser:{  userName: "user1412",
+                    _id: "2",},
+                    assignedToUser:{
+                        userName: "user1412",
+                        _id: "1",
+                    }
+                    
+                },
+                {
+                    _id: 12333,
+                    assignedGroupId:124,
+                    taskTitle: "withus",
+                    createdAt: "date",
+                    // Aggregation
+                    users: [], // Min users
+                    users: [{
+                        userName: "user1412",
+                        _id: "1",
+                    }], // Min users
+                    // Inside Tas
+                    updates: [{
+                        user: {
+                            userName: "user1412",
+                            _id: "1",
+                        },
+                        lastUpdate: Date.now(),
+                        description: "I changed all",
+                        imgUrl: "",
+                        aboutUser: 1234
+                    }], // updates objects
+                    notes: [{
+                        name: "name",
+                        description: "value",
+                        user: {
+                            userName: "user1412",
+                            _id: "1",
+                        },
+                        lastUpdate: Date.now()
+                    }], // Notes objects
+                    people: [
+                        {
+                            userName: "user1412",
+                            _id: "1",
+                        },
+                        {
+                            userName: "user1412",
+                            _id: "1",
+                        }, {
+                            userName: "user1412",
+                            _id: "1",
+                        }
+                    ],
+                    columns: [{ status: 'done' }, { priority: 'important' }, { dueDate: 'tommarow' }, { budget: 100 }, { text: 'hey' }, { link: '' }],
+                    
+                    assingedByUser:{  userName: "user1412",
+                    _id: "1",},
+                    assignedToUser:{
+                        userName: "user1412",
+                        _id: "2",
+                    }
+                }
+                ], // Task object
+                color: 'blue',
+                lastUpdatedAt: "",
+                
+                    assingedByUser:{  userName: "user1412",
+                    _id: "1",},
+                    assignedToUser:{
+                        userName: "user1412",
+                        _id: "2",
+                    }
             }
         ], // _Group Objects
         // Hard coded
@@ -159,6 +291,7 @@ const initialState = {
                 // Aggregation
                 tasks: [{
                     _id: 2222,
+                    assignedGroupId:123,
                     taskTitle: "Todo",
                     createdAt: "date",
                     // Aggregation
@@ -175,11 +308,21 @@ const initialState = {
                     DueDate: '15.02',
                     budget: '1540',
                     text: 'text about task 31142',
-                    link: ''
+                    link: '',
+                    assignedBy:1234,
+                    assignedTo:1234,
+                    
+                    assingedByUser:{  userName: "user1412",
+                    _id: "1",},
+                    assignedToUser:{
+                        userName: "user1412",
+                        _id: "2",
+                    }
                 },
                 {
                     _id: 111,
                     taskTitle: "Mess",
+                    assignedGroupId:123,
                     createdAt: "date",
                     // Aggregation
                     users: [], // Min users
@@ -193,11 +336,21 @@ const initialState = {
                     DueDate: '',
                     budget: '',
                     text: '',
-                    link: ''
+                    link: '',
+                    assignedBy:1234,
+                    assignedTo:1234,
+                    
+                    assingedByUser:{  userName: "user1412",
+                    _id: "2",},
+                    assignedToUser:{
+                        userName: "user1412",
+                        _id: "1",
+                    }
                 },
                 {
                     _id: 12333,
                     taskTitle: "withus",
+                    assignedGroupId:123,
                     createdAt: "date",
                     // Aggregation
                     users: [], // Min users
@@ -211,7 +364,16 @@ const initialState = {
                     DueDate: '',
                     budget: '',
                     text: '',
-                    link: ''
+                    link: '',
+                    assignedBy:1234,
+                    assignedTo:1234,
+                    
+                    assingedByUser:{  userName: "user1412",
+                    _id: "1",},
+                    assignedToUser:{
+                        userName: "user1412",
+                        _id: "2",
+                    }
                 }
                 ], // Task object
                 color: "color",
@@ -227,13 +389,15 @@ const initialState = {
                 }],
                 lastUpdate: Date.now(),
                 descryption: "status was Change ",
-                nextValue: 'urgent',
-                prevValue: 'Low',
+                nextValue: 'Done',
+                prevValue: 'Working On It',
                 assignedTo: 'Abir',
                 createdBy: 'Kosta',
                 defaultMsg: 'status was Change ',
                 path: 'Sunday/FrontEnd/CreatApp',
-                assosicatedTaskId:'2222'
+                assosicatedTaskId:'2222',
+                assosicatedBoardID:'222',
+                associatedBoardId:'2'
             },
             {
                 type: 'priority',
@@ -253,7 +417,10 @@ const initialState = {
                 createdBy: 'Kosta',
                 defaultMsg: 'Priority changed ',
                 historyPath: 'Sunday/FrontEnd/CreatApp',
-                assosicatedTaskId:'111'
+                assosicatedTaskId:'111',
+                assosicatedBoardID:'222',
+                associatedBoardId:'2'
+
             },
             {
                 type: 'people',
@@ -273,6 +440,10 @@ const initialState = {
                 createdBy: 'Kosta',
                 defaultMsg: 'Assigned To',
                 historyPath: 'Sunday/FrontEnd/CreatApp',
+                assosicatedBoardID:'222',
+                assosicatedTaskId:'111',
+                associatedBoardId:'2'
+
             },
         ] //history objects
     },
@@ -334,6 +505,7 @@ const initialState = {
                 // Aggregation
                 tasks: [{
                     _id: 2222,
+                    assignedGroupId:123,
                     taskTitle: "Todo",
                     createdAt: "date",
                     // Aggregation
@@ -350,11 +522,15 @@ const initialState = {
                     DueDate: '15.02',
                     budget: '150',
                     text: 'text about task',
-                    link: ''
+                    link: '',
+                    assignedBy:1234,
+                    assignedTo:1234,
+                    associatedBoardId:'1'
                 },
                 {
                     _id: 111,
                     taskTitle: "Mess",
+                    assignedGroupId:123,
                     createdAt: "date",
                     // Aggregation
                     users: [], // Min users
@@ -368,11 +544,15 @@ const initialState = {
                     DueDate: '',
                     budget: '',
                     text: '',
-                    link: ''
+                    link: '',
+                    assignedBy:1234,
+                    assignedTo:1234,
+                    associatedBoardId:'1'
                 },
                 {
                     _id: 12333,
                     taskTitle: "withus",
+                    assignedGroupId:123,
                     createdAt: "date",
                     // Aggregation
                     users: [], // Min users
@@ -413,7 +593,114 @@ const initialState = {
                             _id: "1",
                         }
                     ],
-                    columns: [{ status: 'done' }, { priority: 'important' }, { dueDate: 'tommarow' }, { budget: 100 }, { text: 'hey' }, { link: '' }]
+                    columns: [{ status: 'done' }, { priority: 'important' }, { dueDate: 'tommarow' }, { budget: 100 }, { text: 'hey' }, { link: '' }],
+                    assignedBy:1234,
+                    assignedTo:1234,
+                    associatedBoardId:'1'
+                }
+                ], // Task object
+                color: 'blue',
+                lastUpdatedAt: ""
+            },
+            {
+                _id: 123,
+                name: "",
+                createdAt: "date",
+                // Aggregation
+                tasks: [{
+                    _id: 2222,
+                    assignedGroupId:123,
+                    taskTitle: "Todo",
+                    createdAt: "date",
+                    // Aggregation
+                    users: [
+                        { _id: 1234, name: 'shahar' }
+                    ], // Min users
+                    // Inside Tas
+                    columns: [], //  Columns Objects
+                    updates: [], // updates objects
+                    notes: [], // Notes objects
+                    people: [],
+                    status: 'Done',
+                    priority: 'urgent',
+                    DueDate: '15.02',
+                    budget: '150',
+                    text: 'text about task',
+                    link: '',
+                    assignedBy:1234,
+                    assignedTo:1234,
+                    associatedBoardId:'1'
+                },
+                {
+                    _id: 111,
+                    taskTitle: "Mess",
+                    assignedGroupId:123,
+                    createdAt: "date",
+                    // Aggregation
+                    users: [], // Min users
+                    // Inside Tas
+                    columns: [], //  Columns Objects
+                    updates: [], // updates objects
+                    notes: [], // Notes objects
+                    people: [],
+                    status: '',
+                    priority: '',
+                    DueDate: '',
+                    budget: '',
+                    text: '',
+                    link: '',
+                    assignedBy:1234,
+                    assignedTo:1234,
+                    associatedBoardId:'1'
+                },
+                {
+                    _id: 12333,
+                    taskTitle: "withus",
+                    assignedGroupId:123,
+                    createdAt: "date",
+                    // Aggregation
+                    users: [], // Min users
+                    users: [{
+                        userName: "user1412",
+                        _id: "1",
+                    }], // Min users
+                    // Inside Tas
+                    updates: [{
+                        user: {
+                            userName: "user1412",
+                            _id: "1",
+                        },
+                        lastUpdate: Date.now(),
+                        description: "I changed all",
+                        imgUrl: "",
+                        aboutUser: 1234
+                    }], // updates objects
+                    notes: [{
+                        name: "name",
+                        description: "value",
+                        user: {
+                            userName: "user1412",
+                            _id: "1",
+                        },
+                        lastUpdate: Date.now()
+                    }], // Notes objects
+                    people: [
+                        {
+                            userName: "user1412",
+                            _id: "1",
+                        },
+                        {
+                            userName: "user1412",
+                            _id: "1",
+                        }, {
+                            userName: "user1412",
+                            _id: "1",
+                        }
+                    ],
+                    columns: [{ status: 'done' }, { priority: 'important' }, { dueDate: 'tommarow' }, { budget: 100 }, { text: 'hey' }, { link: '' }],
+                    assignedBy:1234,
+                    assignedTo:1234,
+                    associatedBoardId:'1'
                 }
                 ], // Task object
                 color: 'blue',
@@ -498,14 +785,16 @@ const initialState = {
                 }],
                 lastUpdate: Date.now(),
                 descryption: "status was Change From",
-                nextValue: 'urgent',
-                prevValue: 'Low',
+                nextValue: 'Working On it',
+                prevValue: 'Stuck',
                 assignedTo: 'Abir',
                 createdBy: 'Kosta',
                 defaultMsg: 'status was Change From',
                 path: 'Sunday/FrontEnd/CreatApp',
                 isDone:false,
-                assosicatedTaskId:'111'
+                assosicatedTaskId:'111',
+
+                assosicatedTaskId:'111',
             },
             {
                 type: 'priority',
@@ -525,6 +814,8 @@ const initialState = {
                 createdBy: 'Kosta',
                 defaultMsg: 'Priority changed from',
                 historyPath: 'Sunday/FrontEnd/CreatApp',
+                assosicatedBoardID:'222',
+                assosicatedTaskId:'111',
             },
             {
                 type: 'people',
@@ -544,6 +835,8 @@ const initialState = {
                 createdBy: 'Kosta',
                 defaultMsg: 'Assigned To',
                 historyPath: 'Sunday/FrontEnd/CreatApp',
+                assosicatedBoardID:'222',
+                assosicatedTaskId:'111',
             },
         ] //history objects
     }]
