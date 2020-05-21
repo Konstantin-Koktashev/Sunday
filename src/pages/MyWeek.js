@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
+
 import WeekPreview from '../cmps/WeekPreview'
 
 
@@ -33,17 +34,21 @@ class MyWeek extends Component {
 
     }
 
+    
+
 
 
     render() {
-        const {userTasks} = this.state
+        const { userTasks ,color } = this.state
         return (
 
 
             <section className="my-week">
 
                 <h3>hey {this.props.user.name}</h3>
-                {userTasks && userTasks.map((task , idx)=> <WeekPreview {...task} key={idx} />)}
+                {userTasks && userTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
+
+
             </section>
 
         )

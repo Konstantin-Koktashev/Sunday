@@ -15,6 +15,7 @@ import ProgressBar from './cmps/ProgressBar'
 import MyWeek from './pages/MyWeek'
 import Inbox from './pages/Inbox';
 import TaskDetails from './cmps/TaskDetails';
+import LabelContainer from './cmps/LabelContainer';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path="/myweek" component={MyWeek} exact />
             <Route path="/user/inbox" component={Inbox} exact />
             <Route path="/details" component={TaskDetails} exact />
+            <Route path="/label" component={LabelContainer} exact />
           </Switch>
         </section>
       </Router>
