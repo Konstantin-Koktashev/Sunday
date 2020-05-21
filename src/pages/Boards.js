@@ -35,6 +35,11 @@ class BoardApp extends React.Component {
 
         this.setState({ currBoard: board })
     }
+
+
+
+
+
     // onFilter = (filterBy) => {
     //     console.log("BoardApp -> onFilter -> filterBy", filterBy);
 
