@@ -41,7 +41,7 @@ async function saveBoard(board){
   var boardToApply;
   if(!board._id) boardToApply = await HttpService.post('board' , board)
   else boardToApply = await HttpService.put('board' , board)
-  return board
+  return boardToApply
 }
 
 // async function addGroup(group, id) {
