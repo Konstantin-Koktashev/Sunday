@@ -1,0 +1,62 @@
+.inbox-container{
+    background-color: #b2b2b2;
+  
+}
+.user-history{
+    border: 2px solid black;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 1em;
+}
+.user-history-main-btns{
+
+}
+.update-msg{
+    padding: 1em;
+    justify-content: space-evenly;
+}
+.update-msg span{
+    justify-self: flex-start;
+}
+.updating-user{
+    color: #009aff;
+}
+.history-header{
+    padding: 1em;
+}
+.history-origin{
+    font-size: 0.6rem;
+}
+.update-msg{
+
+}
+.prev-value-inbox{
+    margin:0 1em 
+}
+
+.inbox-icons{
+    justify-self: flex-end;
+}
+.task-reply-btns button{
+    color: #009AFF;
+    background-image: none;
+    background-color: transparent;
+    border-color: #009AFF;
+    border-radius: 999px;
+    padding: 0.7em
+}
+
+.prev-value-inbox{
+    padding: 1em;
+    background-color: rgb(253, 171, 61);
+}
+.next-value-inbox{
+    background-color: #00c853;
+    padding: 1em;
+}
+.like-reply-btns{
+    padding: 1em;
+}
+.reply{
+    margin-right: 1em;
+}
