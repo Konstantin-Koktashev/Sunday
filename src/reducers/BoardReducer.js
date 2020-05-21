@@ -60,7 +60,7 @@ const initialState = {
         }], // Min users
         groups: [
             {
-                _id: 123,
+                _id: 124,
                 name: "",
                 createdAt: "date",
                 // ABIR COLS DONT TOUCH
@@ -99,6 +99,7 @@ const initialState = {
 
                 tasks: [{
                     _id: 2222,
+                    assignedGroupId: 124,
                     taskTitle: "Todo",
                     createdAt: "date",
                     // Aggregation
@@ -209,6 +210,7 @@ const initialState = {
                 },
                 {
                     _id: 2222,
+                    assignedGroupId: 123,
                     taskTitle: "Todo",
                     createdAt: "date",
                     // Aggregation
@@ -263,7 +265,10 @@ const initialState = {
                     DueDate: '15.02',
                     budget: '150',
                     text: 'text about task',
-                    link: ''
+                    link: '',
+                    assignedBy: 1234,
+                    assignedTo: 1234,
+                    associatedBoardId: '1'
                 },
                 {
                     _id: 2222,
@@ -410,14 +415,17 @@ const initialState = {
                     _id: "1234",
                 }],
                 lastUpdate: Date.now(),
-                descryption: "status was Change ",
-                nextValue: 'urgent',
-                prevValue: 'Low',
+                descryption: "status was Change From",
+                nextValue: 'Working On it',
+                prevValue: 'Stuck',
                 assignedTo: 'Abir',
                 createdBy: 'Kosta',
                 defaultMsg: 'status was Change ',
                 path: 'Sunday/FrontEnd/CreatApp',
-                assosicatedTaskId: '2222'
+                isDone: false,
+                assosicatedTaskId: '111',
+
+                assosicatedTaskId: '111',
             },
             {
                 type: 'priority',
@@ -437,7 +445,8 @@ const initialState = {
                 createdBy: 'Kosta',
                 defaultMsg: 'Priority changed ',
                 historyPath: 'Sunday/FrontEnd/CreatApp',
-                assosicatedTaskId: '111'
+                assosicatedBoardID: '222',
+                assosicatedTaskId: '111',
             },
             {
                 type: 'people',
@@ -457,6 +466,8 @@ const initialState = {
                 createdBy: 'Kosta',
                 defaultMsg: 'Assigned To',
                 historyPath: 'Sunday/FrontEnd/CreatApp',
+                assosicatedBoardID: '222',
+                assosicatedTaskId: '111',
             },
         ] //history objects
     }
