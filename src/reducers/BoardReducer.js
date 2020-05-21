@@ -176,7 +176,6 @@ const initialState = {
                             type: 'number',
                             value: 100,
                             order: 2
-
                         }
 
 
