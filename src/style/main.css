@@ -20,8 +20,16 @@ body {
 html {
   margin: 0px;
   padding: 0px;
+  /* margin-top: -20px; */
 }
-
+.bgc-black {
+  background-color: #2d3436;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 20vw;
+  height: 20vh;
+}
 .hide {
   visibility: hidden;
 }

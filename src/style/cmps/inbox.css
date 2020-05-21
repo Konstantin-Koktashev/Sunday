@@ -1,62 +1,130 @@
-.inbox-container{
-    background-color: #b2b2b2;
-  
+.inbox-container {
+  background-color: #b2b2b2;
 }
-.user-history{
-    border: 2px solid black;
-    width: 80%;
-    margin: 0 auto;
-    margin-bottom: 1em;
+.user-history {
+  border: 1px solid rgba(187, 186, 186, 0.295);
+  border-radius: 5px;
+  width: 80%;
+  margin-bottom: 1em;
+  margin-left: 20px;
 }
-.user-history-main-btns{
-
-}
-.update-msg{
-    padding: 1em;
-    justify-content: space-evenly;
-}
-.update-msg span{
-    justify-self: flex-start;
-}
-.updating-user{
-    color: #009aff;
-}
-.history-header{
-    padding: 1em;
-}
-.history-origin{
-    font-size: 0.6rem;
-}
-.update-msg{
-
-}
-.prev-value-inbox{
-    margin:0 1em 
+.user-history:hover {
+  box-shadow: 0px 0px 26px -4px rgba(177, 177, 177, 0.97);
 }
 
-.inbox-icons{
-    justify-self: flex-end;
-}
-.task-reply-btns button{
-    color: #009AFF;
-    background-image: none;
-    background-color: transparent;
-    border-color: #009AFF;
-    border-radius: 999px;
-    padding: 0.7em
+.user-history-main-btns {
 }
 
-.prev-value-inbox{
-    padding: 1em;
-    background-color: rgb(253, 171, 61);
+.inbox-container h2 {
+  font-size: 22px;
+  text-align: start;
+  margin-left: 20px;
 }
-.next-value-inbox{
-    background-color: #00c853;
-    padding: 1em;
+
+.update-msg {
+  padding: 1em;
+  justify-content: space-evenly;
 }
-.like-reply-btns{
-    padding: 1em;
+.update-msg span {
+  justify-self: flex-start;
 }
-.reply{
-    margin-right: 1em;
+.updating-user {
+  color: #009aff;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+.history-header {
+  padding-left: 15px;
+}
+.history-origin {
+  font-size: 13px;
+  color: rgba(179, 179, 179, 0.616);
+}
+
+.update-msg button {
+  font-size: 15px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6vh;
+  padding: 0px 20px;
+  margin: 10px;
+  border-radius: 2px;
+}
+
+.inbox-icons {
+  justify-self: flex-end;
+}
+.task-reply-btns button {
+  font-size: 15px;
+  color: #009aff;
+  background-image: none;
+  background-color: transparent;
+  border-color: #009aff;
+  border-radius: 999px;
+  padding: 0.7em;
+  margin: 10px;
+  outline: none;
+}
+
+.task-reply-btns button:hover {
+  background-color: #00aaff42;
+  color: #353b48;
+}
+.prev-value-inbox {
+  /* padding: 1em; */
+  outline: none;
+  background-color: #74b9ff;
+  border: none;
+}
+.next-value-inbox {
+  background-color: #00c853;
+  /* padding: 1em; */
+  border: none;
+  outline: none;
+}
+.like-reply-btns button {
+  /* padding: 20px; */
+  height: 5vh;
+  width: 50%;
+  /* border: none; */
+  border: none;
+  background-color: #fff;
+  outline: none;
+}
+.like-reply-btns button:hover {
+  background-color: rgba(228, 224, 224, 0.459);
+}
+
+.like-reply-btns {
+  margin-bottom: 10px;
+  border-top: 1px solid rgba(187, 186, 186, 0.295);
+  border-bottom: 1px solid rgba(187, 186, 186, 0.295);
+  user-select: none;
+  outline: none;
+}
+
+.like-reply-btns :nth-child(1) {
+  border-right: 1px solid rgba(187, 186, 186, 0.295);
+}
+
+.task-reply-btns button {
+  border: 1px #74b9ff solid;
+  color: #74b9ff;
+  background-color: rgb(255, 255, 255);
+  user-select: none;
+  outline: none;
+}
+
+.task-reply-btns {
+  margin-bottom: 10px;
+}
+
+.complete-task {
+  width: 50px;
+  align-self: flex-end;
+  margin-right: -60px;
+  margin-top: -7px;
+  filter: brightness(1.3);
 }

@@ -1,13 +1,14 @@
 .my-week {
   /* width: 80; */
   background-color: #fff;
-  padding-right: 275px;
+  padding-right: 150px;
   padding-left: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
+  padding-top: 50px;
 }
 
 .week-preview {
@@ -26,7 +27,7 @@
 }
 
 .week-prev-text {
-  margin-left: 10px;
+  margin-left: 13px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -34,14 +35,21 @@
   align-items: flex-start;
 }
 
-.week-prev-text p {
+/* .week-prev-text p {
+  margin-bottom: 5px;
+} */
+
+.week-prev-title {
+  font-size: 20px;
+  margin-top: 0px;
   margin-bottom: 5px;
 }
 
-.week-preview p {
+.week-prev-desc {
+  font-size: 15px;
   margin: 0;
+  color: rgba(61, 61, 61, 0.39);
 }
-
 .week-status {
   flex-grow: 1;
   height: 100%;
@@ -56,4 +64,18 @@
 
 .my-week .user-small-img {
   margin-right: 10px;
+}
+
+.my-week h3 {
+  text-align: start;
+  align-self: start;
+  margin: 0px;
+}
+
+.header-container-myweek {
+  text-align: start;
+  padding-left: 8vw;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.308);
+  /* width: 90%; */
+  background-color: #fff;
 }

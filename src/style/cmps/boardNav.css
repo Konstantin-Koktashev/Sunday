@@ -18,6 +18,11 @@
   top: 0px;
   border-radius: 33px 0px 0px 0px;
 }
+.board-nav-container h3 {
+  /* border-bottom: 1px solid rgba(160, 160, 160, 0.466); */
+  padding-bottom: 30px;
+}
+
 .board-list {
   height: 100vh;
   padding: 0px 5px;
