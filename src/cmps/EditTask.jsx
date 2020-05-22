@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Select from "react-select";
 import Calendar from "react-calendar";
-import TaskTimeline from "./Timeline";
+// import TaskTimeline from "./Timeline";
 import SimpleReactCalendar from "simple-react-calendar";
 import DatePicker from "./Calendar";
 // import { moment } from 'moment';
