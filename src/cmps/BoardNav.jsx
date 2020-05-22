@@ -18,6 +18,7 @@ export class BoardNav extends Component {
   };
 
   render() {
+    console.log(this.props.boards)
     return (
       <>
         {this.props.boards && (
