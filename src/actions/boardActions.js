@@ -125,38 +125,38 @@ function _removeBoard(boardId) {
 }
 
 
-function _addGroup(board) {
-  return {
-    type: 'ADD_GROUP',
-    board
-  }
-}
+// function _addGroup(board) {
+//   return {
+//     type: 'ADD_GROUP',
+//     board
+//   }
+// }
 
-function _removeGroup(board) {
-  return {
-    type: 'REMOVE_BOARD',
-    board
-  }
-}
+// function _removeGroup(board) {
+//   return {
+//     type: 'REMOVE_BOARD',
+//     board
+//   }
+// }
 
-function _addTask(board) {
-  return {
-    type: 'ADD_TASK',
-    board
-  }
-}
-function _removeTask(board) {
-  return {
-    type: 'REMOVE_TASK',
-    board
-  }
-}
-function _updateTask(board) {
-  return {
-    type: 'UPDATE_TASK',
-    board
-  }
-}
+// function _addTask(board) {
+//   return {
+//     type: 'ADD_TASK',
+//     board
+//   }
+// }
+// function _removeTask(board) {
+//   return {
+//     type: 'REMOVE_TASK',
+//     board
+//   }
+// }
+// function _updateTask(board) {
+//   return {
+//     type: 'UPDATE_TASK',
+//     board
+//   }
+// }
 // function _updateBoard={
 
 // }

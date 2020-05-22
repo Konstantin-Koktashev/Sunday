@@ -4,7 +4,10 @@ import { TaskPreview } from "./TaskPreview.jsx";
 import resize from "../style/img/resize.png";
 import { TaskBoxList } from "./TaskBoxList.jsx";
 import AddTask from "../../src/cmps/AddTask";
-export default class TaskList extends Component {
+import localBoardService from "../services/localBoardService";
+import { connect } from "react-redux";
+import { saveBoard, loadBoards, removeBoard } from "../actions/boardActions";
+class TaskList extends Component {
   state = {
     taskIsShown: true,
   };
@@ -15,6 +18,13 @@ export default class TaskList extends Component {
       this.setState({ taskIsShown: true });
     }
   };
+
+  deleteTask(task) {
+    let group = this.props.group;
+    let board = this.props.board;
+    localBoardService.removeTask(board, group, task);
+  }
+
   render() {
     return (
       <div className="task-list-container flex col space-evenly">
@@ -44,7 +54,11 @@ export default class TaskList extends Component {
               }`}
             >
               {this.props.tasks.map((task, idx) => (
-                <TaskPreview task={task} key={idx} />
+                <TaskPreview
+                  deleteTask={this.deleteTask}
+                  task={task}
+                  key={idx}
+                />
               ))}
             </div>
 
@@ -55,3 +69,18 @@ export default class TaskList extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  //State of the store to props of the cmp
+  return {
+    boards: state.userBoards.board,
+    board: state.userBoards.currBoard,
+  };
+};
+const mapDispatchToProps = {
+  saveBoard,
+  removeBoard,
+  loadBoards,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
