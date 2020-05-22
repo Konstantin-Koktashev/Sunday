@@ -11,6 +11,7 @@ import { loadBoards } from '../actions/boardActions';
 import TimeLine from '../cmps/Timeline';
 import calendar from 'simple-react-calendar/lib/calendar/calendar';
 import DatePicker from '../cmps/Calendar';
+import TimeLineTest from '../cmps/TimeLineTest';
 
 class Inbox extends Component {
 
@@ -93,8 +94,9 @@ class Inbox extends Component {
 
                 })}
                 {/* {isLoading&&<EditTask></EditTask>} */}
-                <TimeLine></TimeLine>
+                {/* <TimeLine></TimeLine> */}
                 <DatePicker></DatePicker>
+                {/* <TimeLineTest></TimeLineTest> */}
 
             </div>
         )

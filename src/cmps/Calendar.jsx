@@ -8,7 +8,7 @@ import 'react-calendar/dist/Calendar.css';
     }
 
     onChange = date => this.setState({ date })
-
+    
     render() {
         return (
             <div>

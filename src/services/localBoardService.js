@@ -22,8 +22,6 @@ export default {
     removePersonToTask,
     changeTaskDateColumn
 
-
-
 }
 
 
