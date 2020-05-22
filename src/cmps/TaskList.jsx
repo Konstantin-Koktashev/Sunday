@@ -10,6 +10,8 @@ import { saveBoard, loadBoards, removeBoard } from "../actions/boardActions";
 class TaskList extends Component {
   state = {
     taskIsShown: true,
+    groupName: this.props.name,
+    groupNameIsEdit: false,
   };
   toggleList = () => {
     if (this.state.taskIsShown) {
@@ -26,6 +28,26 @@ class TaskList extends Component {
     let newBoard = localBoardService.removeTask(board, group, task);
     this.props.saveBoard(newBoard);
     this.props.loadBoards();
+  };
+  handleChange = ({ target }) => {
+    const value = target.value;
+    this.setState({ groupName: value });
+  };
+
+  updateGroupName = (ev) => {
+    ev.preventDefault();
+    let { board, group, loadBoards, saveBoard } = this.props;
+    localBoardService.changeGroupName(board, group, this.state.groupName);
+    saveBoard(board);
+    loadBoards();
+    this.toggleEdit();
+  };
+
+  toggleEdit = (ev) => {
+    // ev.stopPropagation();
+    this.setState(({ groupNameIsEdit }) => ({
+      groupNameIsEdit: !groupNameIsEdit,
+    }));
   };
 
   render() {
@@ -44,7 +66,21 @@ class TaskList extends Component {
                   alt="here"
                   title="Toggle Group"
                 />
-                <h2>Group Name{this.props.name}</h2>
+                {!this.state.groupNameIsEdit ? (
+                  <h2 onClick={(ev) => this.toggleEdit(ev)}>
+                    {this.props.name}
+                  </h2>
+                ) : (
+                  <form onSubmit={(ev) => this.updateGroupName(ev)}>
+                    <input
+                      type="text"
+                      name="groupName"
+                      value={this.state.groupName}
+                      onChange={this.handleChange}
+                    />
+                    <button>Save</button>
+                  </form>
+                )}
               </div>
               <TaskBoxList
                 sortColumnsByBox={this.props.sortColumnsByBox}

@@ -1,13 +1,58 @@
-.label-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 10px 15px;
-    position: absolute;
-    z-index: 5;
+.label-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 15px;
+  position: absolute;
+  z-index: 5;
+  background-color: grey;
+  border-radius: 10px;
 }
 
-.box-label{
-    width: 300px;
+.box-label {
+  /* width: 300px; */
+  width: 90%;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.box-label:hover {
+  color: white;
+}
+
+.label-submit {
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 20px;
+}
+
+.label-submit:hover {
+  color: white;
+}
+
+.label-unEdit-container {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.swing-in-top-fwd {
+  animation: swing-in-top-fwd 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes swing-in-top-fwd {
+  0% {
+    transform: rotateX(-100deg);
+    transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    transform-origin: top;
+    opacity: 1;
+  }
 }
