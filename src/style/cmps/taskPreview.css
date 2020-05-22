@@ -46,7 +46,7 @@
   font-size: 13px;
 }
 
-.task-bar-columns-container div {
+.box-div {
   border-left: 1px solid rgba(119, 119, 119, 0.356);
   text-align: center;
   display: flex;
@@ -104,4 +104,15 @@
   background-color: #00a8ff;
   color: white;
   border: none;
+}
+
+.delete-icon {
+  width: 20px;
+  /* transform: rotate(-180deg); */
+  margin-left: -25px;
+  opacity: 0.7;
+}
+
+.delete-icon:hover {
+  transform: scale(1.1);
 }
