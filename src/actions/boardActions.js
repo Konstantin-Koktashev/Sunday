@@ -20,18 +20,16 @@ export function loadBoards() {
 
 
 export function saveBoard(board) {
-  console.log('anipo')
+  console.log('board', board)
   return async dispatch => {
     try {
-      console.log('kista')
       const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD'
-      console.log(type , 'type')
       const savedBoard = await boardServices.saveBoard(board)
       dispatch({ type, board: savedBoard })
+
     } catch (err) {
       console.log('boardActions: err in add or update board', err);
     }
-    console.log('hasof')
   }
 }
 

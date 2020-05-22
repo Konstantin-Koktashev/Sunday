@@ -540,7 +540,8 @@ function removeColumn(columnId) {
   return HttpService.delete(`board/${columnId}`);
 }
 function addTask(board) {
-  return HttpService.put(`board/`,board);
+  console.log('addTask')
+  return HttpService.put(`board/${board._id}`,board);
 }
 // function updateTask(board) {
 //   return HttpService.put(`board/`,board);
@@ -558,7 +559,7 @@ async function saveBoard(board) {
   console.log('ulday')
   var boardToApply;
   if (!board._id) boardToApply = await HttpService.post('board', board)
-  else boardToApply = await HttpService.put('board', board)
+  else boardToApply = await HttpService.put(`board/${board._id}`, board)
   return boardToApply
 }
 
