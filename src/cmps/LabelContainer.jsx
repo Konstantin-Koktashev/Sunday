@@ -3,6 +3,9 @@ import LabelPreviewUnEdit from './LabelPreviewUnEdit'
 import LabelPreviewEdit from './LabelPreviewEdit'
 
 import { connect } from 'react-redux'
+import localBoardService from '../services/localBoardService'
+
+import { saveBoard } from '../actions/boardActions'
 
 
 class LabelContainer extends Component {
@@ -36,8 +39,10 @@ class LabelContainer extends Component {
     }
 
     // UNEDIT
-    setLabel = (order) => {
-
+    setLabel = (label) => {
+        const { currBoard } = this.props
+        const board = localBoardService.changeColumn(currBoard, label)
+        this.props.saveBoard(board)
         //find the label with the order and set the label on the props who props column who submit the label
         console.log('got to set label with order num:', order)
 
@@ -59,7 +64,7 @@ class LabelContainer extends Component {
 
     }
 
-   
+
 
 
 
@@ -78,7 +83,7 @@ class LabelContainer extends Component {
                 {isEditAble && labels &&
                     labels.map((label, idx) => {
                         return <LabelPreviewEdit
-                            key={idx} value={label.value} color={label.color} order={label.order} onRemove={this.onRemove}  setLabel={this.setLabel}/>
+                            key={idx} value={label.value} color={label.color} order={label.order} onRemove={this.onRemove} setLabel={this.setLabel} />
                     })
                 }
 
@@ -113,6 +118,7 @@ const mapStateToProps = (state) => {
     };
 };
 const mapDispatchToProps = {
+    saveBoard
 
 };
 
