@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import './style/signup.css'
+import '../style/pages/signup.css'
 import {
     loadUsers,
     removeUser,
@@ -57,33 +57,55 @@ class Signup extends Component {
     };
     render() {
 
-        return (<form onSubmit={this.doSignup}>
-            <input
-                type="text"
-                name="email"
-                value={this.state.signupCred.email}
-                onChange={this.signupHandleChange}
-                placeholder="Email"
-            />
-            <br />
-            <input
-                name="password"
-                type="password"
-                value={this.state.signupCred.password}
-                onChange={this.signupHandleChange}
-                placeholder="Password"
-            />
-            <br />
-            <input
-                type="text"
-                name="username"
-                value={this.state.signupCred.username}
-                onChange={this.signupHandleChange}
-                placeholder="Username"
-            />
-            <br />
-            <button>Signup</button>
-        </form>
+        return (
+            <div className="signup-form-container">
+                <div className="text-float">
+                    <h2 className="fade-in">Pursue your passion <br />We'll Manage It</h2>
+                </div>
+                <div className="text-float-2">
+                    <h2 className="fade-in2"> Organized Inspiration</h2>
+                </div>
+                <div className="text-float-3">
+                    <h2 className="fade-in3"> Let us Organize Your Chaos</h2>
+                </div>
+                <form className="signup-form flex col a-center" onSubmit={this.doSignup}>
+
+                    <h3>Start Your Revolution</h3>
+                    <input
+                        type="text"
+                        name="email"
+                        value={this.state.signupCred.email}
+                        onChange={this.signupHandleChange}
+                        placeholder="Email"
+                        required
+                    />
+                    <br />
+                    <input
+                        name="password"
+                        type="password"
+                        value={this.state.signupCred.password}
+                        onChange={this.signupHandleChange}
+                        placeholder="Password"
+                        required
+                    />
+                    <br />
+                    <input
+                        type="text"
+                        name="username"
+                        value={this.state.signupCred.username}
+                        onChange={this.signupHandleChange}
+                        placeholder="Username"
+                        required
+                    />
+                    <br />
+
+                    <button>Signup</button>
+                </form>
+                <div className="signup-onlogin col a-center">
+                    <h2>Allready Have An Account?</h2>
+                    <button onClick={() => this.props.history.push('/login')}>Click Here To Login</button>
+                </div>
+            </div>
         )
     }
 }

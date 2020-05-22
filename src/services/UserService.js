@@ -27,6 +27,7 @@ function update(user) {
 
 async function login(userCred) {
     const user = await HttpService.post('auth/login', userCred)
+    if (user.username) window.location.href = '/'
     return _handleLogin(user)
 }
 async function signup(userCred) {
