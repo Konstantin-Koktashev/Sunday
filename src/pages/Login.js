@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import '../style/pages/login.css'
 import {
   loadUsers,
   removeUser,
@@ -26,6 +26,7 @@ class Login extends Component {
         [name]: value
       }
     }));
+
   };
   doLogin = async ev => {
     ev.preventDefault();
@@ -40,25 +41,46 @@ class Login extends Component {
 
   render() {
 
-    return (<form onSubmit={this.doLogin}>
-      <input
-        type="text"
-        name="email"
-        value={this.state.loginCred.email}
-        onChange={this.loginHandleChange}
-        placeholder="Email"
-      />
-      <br />
-      <input
-        type="password"
-        name="password"
-        value={this.state.loginCred.password}
-        onChange={this.loginHandleChange}
-        placeholder="Password"
-      />
-      <br />
-      <button>Login</button>
-    </form>
+    return (
+      <div className="login-form-container col flex j-center a-center">
+        <div className="text-float">
+          <h2 className="fade-in">Pursue your passion <br />We'll Manage It</h2>
+        </div>
+        <div className="text-float-2">
+          <h2 className="fade-in2"> Organized Inspiration</h2>
+        </div>
+        <div className="text-float-3">
+          <h2 className="fade-in3"> Let us Organize Your Chaos</h2>
+        </div>
+
+        <form className="login-form flex a-center col" onSubmit={this.doLogin}>
+          <h3>Simply Login</h3>
+          <input
+            type="text"
+            name="email"
+            value={this.state.loginCred.email}
+            onChange={this.loginHandleChange}
+            placeholder="Enter Your Email"
+            required
+          />
+          <br />
+          <input
+            type="password"
+            name="password"
+            value={this.state.loginCred.password}
+            onChange={this.loginHandleChange}
+            placeholder="Enter Password"
+            required
+          />
+          <br />
+          <button>Login</button>
+        </form>
+        <div className="signup-onlogin col a-center">
+
+          <h2>Still Dont Have An Account?</h2>
+          <button onClick={() => this.props.history.push('/signup')}>Click Here To Signup</button>
+        </div>
+      </div>
     )
   }
 
