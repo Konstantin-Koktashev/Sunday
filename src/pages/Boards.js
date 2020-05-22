@@ -20,7 +20,13 @@ class BoardApp extends React.Component {
 
     }
     componentDidUpdate(prevProps) {
+        console.log('update?')
         if (this.props.match.params.id !== prevProps.match.params.id) {
+            let board = this.getBoardByID(this.props.match.params.id)
+            this.setBoard(board)
+        }
+        if(this.props.boards !== prevProps.boards){
+            console.log('check')
             let board = this.getBoardByID(this.props.match.params.id)
             this.setBoard(board)
         }
@@ -45,8 +51,8 @@ class BoardApp extends React.Component {
         return board
     }
     setBoard(board) {
-        this.setState({ currBoard: board })
         this.props.setCurrBoard(board)
+        this.setState({ currBoard: board })
     }
 
 
