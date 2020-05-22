@@ -17,7 +17,7 @@ function setBoards(boards) {
     gBoards = boards
 }
 
- function addGroup(board, group) {
+function addGroup(board, group) {
     // let board = getById(boardID)
     board.groups.push(group)
     return board
@@ -34,7 +34,7 @@ function addTask(board, group, task) {
         if (g._id === group._id) return group
         return g
     })
-    console.log('board after add task' , board)
+    console.log('board after add task', board)
     return board
 }
 
