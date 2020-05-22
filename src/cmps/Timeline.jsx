@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
- export default class DatePicker extends Component {
+ export default class TimeLine extends Component {
     state = {
         date: new Date(),
     }
@@ -17,7 +17,7 @@ import 'react-calendar/dist/Calendar.css';
                     value={this.state.date}
                     howWeekNumbers
                     selectRange
-                    
+                    hover
                 />
             </div>
         );

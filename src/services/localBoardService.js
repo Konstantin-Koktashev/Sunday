@@ -21,11 +21,6 @@ export default {
     changeColumn,
     removePersonToTask,
     changeTaskDateColumn
-
-
-
-
-
 }
 
 
@@ -189,45 +184,6 @@ function changeTasklabelColumn(board, column, label) {
     return board
 }
 
-
-
-
-
-
-
-
-
-// function getGroupById(boardId, groupid) {
-//     return getbyid(boardId)
-//         .then(board => {
-//             return board.groups.filter(group => group._id === groupid)
-//         })
-// }
-
-// function getColumnById(boardId, groupId, colId) {
-//     getGroupById(boardId, groupId)
-//         .then(group => group.columns.filter(col => col._id === colId))
-// }
-
-
-// function getByid(boardId) {
-//     var board = gBoards.find(board => board._id === boardId)
-//     return Promise.resolve(board)
-// }
-
-// function save(boardId, boardToSave) {
-//     if (boardToSave.id) {
-//         const boardIdx = _getIdxById(boardToSave._id)
-//         gBoards[boardIdx] = boardToSave;
-//     } else {
-//         const newBoard = _createBoard(boardToSave.vendor, boardToSave.price)
-//         gBoards.push(newBoard)
-//     }
-// }
-
-// function query() {
-//     return gBoard  // return gBoards
-// }
 function remove(boardId) {
     const boardIdx = _getIdxById(boardId)
     gBoards.splice(boardIdx, 1)
