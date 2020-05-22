@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import { saveBoard } from "../actions/boardActions";
+import localBoardService from "../services/localBoardService";
 
 class AddTask extends Component {
   state = {
@@ -64,14 +65,20 @@ class AddTask extends Component {
 
   addTask = () => {
     let task = this.state.task;
-
-    saveBoard();
+    console.log('task' , task)
+    let board = this.props.currBoard
+    console.log('board' , board)
+    let group = this.props.group
+    console.log('group' , group)
+    let newBoard = localBoardService.addTask(board, group, task)
+    console.log('newBoard' , newBoard)
+    this.props.saveBoard(newBoard);
   };
 
   render() {
     return (
       <>
-        <div onClick={this.addTask}></div>
+        <div onClick={this.addTask}>add task</div>
       </>
     );
   }
@@ -80,6 +87,7 @@ class AddTask extends Component {
 const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
+    board: state.userBoards.currBoard
   };
 };
 const mapDispatchToProps = {

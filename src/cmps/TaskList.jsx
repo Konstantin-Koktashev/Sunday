@@ -48,7 +48,7 @@ export default class TaskList extends Component {
               ))}
             </div>
 
-            <AddTask></AddTask>
+            <AddTask group={this.props.group}></AddTask>
           </div>
         )}
       </div>

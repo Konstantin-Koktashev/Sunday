@@ -4,7 +4,7 @@ import BoardHeader from "../cmps/BoardHeader.jsx";
 import Board from '../cmps/Board.jsx'
 import '../style/pages/boards.css'
 
-import { loadBoards } from "../../src/actions/boardActions";
+import { loadBoards , setCurrBoard } from "../../src/actions/boardActions";
 class BoardApp extends React.Component {
     state = {
         currBoard: null
@@ -24,6 +24,7 @@ class BoardApp extends React.Component {
             let board = this.getBoardByID(this.props.match.params.id)
             this.setBoard(board)
         }
+        console.log('currBoardfromStore:' , this.props.currBoard)
     }
 
     loadboards = () => {
@@ -44,8 +45,8 @@ class BoardApp extends React.Component {
         return board
     }
     setBoard(board) {
-
         this.setState({ currBoard: board })
+        this.props.setCurrBoard(board)
     }
 
 
@@ -64,6 +65,7 @@ class BoardApp extends React.Component {
     // };
 
     render() {
+        
         const { currBoard } = this.state;
         return (
             <>
@@ -78,11 +80,14 @@ class BoardApp extends React.Component {
 const mapStateToProps = (state) => {
     //State of the store to props of the cmp
     return {
-        boards: state.userBoards.board
+        boards: state.userBoards.board,
+        currBoard:state.userBoards.currBoard
+
     };
 };
 const mapDispatchToProps = {
-    loadBoards
+    loadBoards,
+    setCurrBoard
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardApp);

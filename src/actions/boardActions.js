@@ -8,7 +8,6 @@ export function loadBoards() {
       // example for loading
       dispatch(loading());
       const boards = await boardServices.getBoards();
-      localBoardService.setBoards(boards)
       dispatch(setBoards(boards));
     } catch (err) {
       console.log('BoardActions: err in loadBoards', err);
@@ -21,24 +20,34 @@ export function loadBoards() {
 
 
 export function saveBoard(board) {
+  console.log('anipo')
   return async dispatch => {
     try {
+      console.log('kista')
       const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD'
+      console.log(type , 'type')
       const savedBoard = await boardServices.saveBoard(board)
-      localBoardService.setBoards(savedBoard)
       dispatch({ type, board: savedBoard })
     } catch (err) {
       console.log('boardActions: err in add or update board', err);
     }
+    console.log('hasof')
   }
 }
+
+// export function saveBoard(board){
+//   return dispatch =>{
+//     console.log('bdika')
+//     console.log(dispatch)
+//     console.log(board)
+//   }
+// }
 
 
 export function removeBoard(boardId) {
   return async dispatch => {
     try {
       await boardServices.remove(boardId);
-      localBoardService.setBoards(boardId)
       dispatch(_removeBoard(boardId));
     } catch (err) {
       console.log('BoardActions: err in removeBoard', err);
@@ -46,6 +55,11 @@ export function removeBoard(boardId) {
   };
 }
 
+export function setCurrBoard(board) {
+  return dispatch => {
+     dispatch({ type: 'SET_CURRBOARD', board });
+  }
+}
 
 // export function addGroup(boardId,group) {
 //   return async dispatch => {
@@ -78,7 +92,7 @@ export function removeBoard(boardId) {
 //     try {
 //        await boardServices.updateBoard(board)
 //     } catch (error) {
-      
+
 //     }}
 // }
 
@@ -126,21 +140,21 @@ function _removeGroup(board) {
   }
 }
 
-function _addTask(board){
+function _addTask(board) {
   return {
-    type:'ADD_TASK',
+    type: 'ADD_TASK',
     board
   }
 }
-function _removeTask(board){
+function _removeTask(board) {
   return {
-    type:'REMOVE_TASK',
+    type: 'REMOVE_TASK',
     board
   }
 }
-function _updateTask(board){
+function _updateTask(board) {
   return {
-    type:'UPDATE_TASK',
+    type: 'UPDATE_TASK',
     board
   }
 }
