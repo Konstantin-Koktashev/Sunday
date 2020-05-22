@@ -6,6 +6,8 @@ import { Button } from '@material-ui/core';
 import theme from '../style/themes/inboxTheme';
 import '../style/pages/inbox.css'
 import checkbox from '../style/img/checkbox.png'
+import SimpleReactCalendar from 'simple-react-calendar'
+
 class Inbox extends Component {
 
     checkUserHistory = () => {

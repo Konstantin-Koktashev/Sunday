@@ -16,7 +16,7 @@ import 'react-calendar/dist/Calendar.css';
                     onChange={this.onChange}
                     value={this.state.date}
                     howWeekNumbers
-                    selectRange
+                    hover
                     
                 />
             </div>

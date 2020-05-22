@@ -4,7 +4,12 @@ export default {
   query,
   remove,
   getBoards,
-  saveBoard
+  saveBoard,
+  removeGroup,
+  addGroup,
+  updateGroup,
+  removeTask,
+  addTask
 };
 
 
@@ -24,10 +29,39 @@ export async function query(filterBy) {
 function getBoards() {
   return HttpService.get(`board`)
 }
+function updateBoard(){
+
+}
+
 
 function remove(boardId) {
   return HttpService.delete(`board/${boardId}`);
 }
+function removeGroup(groupId) {
+  return HttpService.delete(`board/${groupId}`);
+}
+function addGroup(board,groupId) {
+  return HttpService.put(`board/${groupId}`,board);
+}
+function updateGroup(groupId,board) {
+  return HttpService.put(`board/${groupId}`,board);
+}
+function removeTask(taskId) {
+  return HttpService.delete(`board/${taskId}`);
+}
+
+// function updateTask(board) {
+//   return HttpService.put(`board/${groupId}`,board);
+// }
+function removeColumn(columnId) {
+  return HttpService.delete(`board/${columnId}`);
+}
+function addTask(board) {
+  return HttpService.put(`board/`,board);
+}
+// function updateTask(board) {
+//   return HttpService.put(`board/`,board);
+// }
 // async function addBoard(board) {
 //   const addedBoard = await HttpService.post(`board`, board);
 //   return addedBoard
@@ -73,3 +107,8 @@ async function saveBoard(board) {
 
 
 
+// function addGroup(boardID , group){
+//   let board = getById(boardID)
+//   board.groups.push(group)
+//   httpService.post
+// }

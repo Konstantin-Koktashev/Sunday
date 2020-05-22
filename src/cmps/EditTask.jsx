@@ -4,6 +4,11 @@ import { connect } from 'react-redux'
 import Select from 'react-select'
 import Calendar from 'react-calendar';
 import TaskTimeline from './Timeline';
+import SimpleReactCalendar from 'simple-react-calendar'
+import DatePicker from './Calendar'
+import { moment } from 'moment';
+import 'react-calendar/dist/Calendar.css';
+
 
 
 
@@ -81,7 +86,6 @@ export class EditTask extends Component {
         return this.state.columns.filter(col => col.type === 'label')
     }
     getBudget = () => {
-        debugger
         return this.state.columns.filter(col => col.type === 'number')
     }
     getPeople=()=>{
@@ -96,7 +100,6 @@ export class EditTask extends Component {
         const timeStr = res.month + res.day + '  ' + res.date
         console.log(this.state);
         this.setState({ DueDate: timeStr })
-        debugger
         console.log(this.state);
     }
 
@@ -124,15 +127,14 @@ export class EditTask extends Component {
                     <span>Reporter</span>
                     {Reporter.userName}
                 </div>
-                <div className='due-date'>
+                <div className='due-date flex'>
 
-                    <span>Due Date: </span>
+                    <span>Due Date: 
+
+                    </span>
                     <span>{this.state.DueDate}</span>
-
-                    <Calendar
-                        onChange={(date) => this.onChangeDueDate(date)}
-                    //   value={this.state.task.DueDate.toString()}
-                    />
+ <DatePicker  onchangeDate={this.onDateChange}></DatePicker>
+                    {/* <SimpleReactCalendar activeMonth={new Date()} /> */}
                 </div>
                     <div className='task-lables'>
                         <span>Labels:</span>
@@ -156,7 +158,10 @@ export class EditTask extends Component {
                     return budget.value
                 })}</span>
                 </div>
+                <div className='timeline flex'>
+                TimeLine:
                 <TaskTimeline></TaskTimeline>
+                </div>
             </div>
         )
     }
