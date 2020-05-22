@@ -1,12 +1,23 @@
 import React from "react";
 import "../style/cmps/taskBox.css";
+import LabelContainer from "./LabelContainer";
 export class TaskBox extends React.Component {
-  dataToBox() {
+  state = {
+    containerIsShown: false
+  }
+  toggleContainer = () => {
+    this.setState(({ containerIsShown }) => ({ containerIsShown: !containerIsShown }))
+  }
+
+  dataToBox = () => {
     const col = this.props.col;
     let box;
     switch (col.type) {
       case "label":
-        box = <div className="label-box">{col.value}</div>;
+        box = <><div className="label-box" onClick={this.toggleContainer}>{col.value}
+        </div>
+        {this.state.containerIsShown && <LabelContainer labels={col.labels} />}
+        </>;
         break;
       case "number":
         box = <div className="number-box">{col.value}</div>;
@@ -29,7 +40,8 @@ export class TaskBox extends React.Component {
 
   render() {
     return (
-      <section onClick={() => this.props.removeCol(this.props.col)}>
+      // <section onClick={() => this.props.removeCol(this.props.col)}>
+      <section>
         {this.dataToBox()}
       </section>
     );

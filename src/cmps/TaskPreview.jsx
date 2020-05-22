@@ -4,7 +4,7 @@ import person from "../style/img/person.svg";
 import chat from "../style/img/chat.png";
 import { TaskBox } from "../cmps/TaskBox";
 export function TaskPreview(props) {
-  const { task } = props;
+const { task } = props;
 
   sortBoxs();
   function sortBoxs() {

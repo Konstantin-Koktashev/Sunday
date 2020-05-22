@@ -15,7 +15,8 @@ export default class extends Component {
         this.setState({ color: this.props.color, text: this.props.value })
     }
 
-    toggleCirclePicker = () => {
+    toggleCirclePicker = (ev) => {
+        ev.stopPropagation()
         console.log('yey')
         this.setState(({ colorPickerIsShown }) => ({ colorPickerIsShown: !colorPickerIsShown }))
     }
@@ -37,13 +38,14 @@ export default class extends Component {
         this.setState({ text: value })
     }
 
-    handleSubmit = () => {
-        var labelObj = {
-            color: this.state.color,
-            text: this.state.text,
-        }
-        console.log('submit with obj:', labelObj)
+    handleSubmit = (ev) => {
+        ev.stopPropagation()
+        let color = this.state.color
+        let text = this.state.text
+        this.props.setLabel(color, text)
     }
+
+ 
 
 
     render() {
@@ -51,13 +53,13 @@ export default class extends Component {
         return (
             <>
                 <section className="box-label">
-                    <input name="text" type="text" value={text} onChange={(ev) => this.handleChange(ev)}></input>
-                    <div style={{ backgroundColor: `${color}` }} onClick={this.toggleCirclePicker}>
+                    <input name="text" type="text" value={text} onChange={this.handleChange}></input>
+                    <div style={{ backgroundColor: `${color}` }} onClick={(ev) => this.toggleCirclePicker(ev)}>
                         C
                     </div>
                 </section>
                 {colorPickerIsShown && <CirclePicker onChangeComplete={(color) => this.onChangeComplete(color)} />}
-                <div onClick={this.handleSubmit}>Apply</div>
+                <div onClick={(ev) => this.handleSubmit(ev)}>Apply</div>
             </>
         )
     }
