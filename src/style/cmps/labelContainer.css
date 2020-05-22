@@ -4,6 +4,8 @@
     align-items: center;
     flex-direction: column;
     padding: 10px 15px;
+    position: absolute;
+    z-index: 5;
 }
 
 .box-label{
