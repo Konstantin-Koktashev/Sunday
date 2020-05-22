@@ -29,12 +29,11 @@ function addGroup(board, group) {
     // }
 }
 
-function removeTask(board, taskToRemove) {
-    taskToRemove.
-        console.log('board after add task', board)
+function removeTask(board, group, task) {
+    const idx = group.tasks.findIndex(t => t._id === task._id)
+    group.tasks.splice(idx, 1)
     return board
 }
-
 
 function addTask(board, group, task) {
     group.tasks.push(task)

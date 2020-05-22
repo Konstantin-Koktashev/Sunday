@@ -512,22 +512,23 @@ export async function query(filterBy) {
 function getBoards() {
   return HttpService.get(`board`)
 }
-function updateBoard(){
+function updateBoard() {
 
 }
 
 
 function remove(boardId) {
+  console.log("111111111remove -> boardId", boardId)
   return HttpService.delete(`board/${boardId}`);
 }
 function removeGroup(groupId) {
   return HttpService.delete(`board/${groupId}`);
 }
-function addGroup(board,groupId) {
-  return HttpService.put(`board/${groupId}`,board);
+function addGroup(board, groupId) {
+  return HttpService.put(`board/${groupId}`, board);
 }
-function updateGroup(groupId,board) {
-  return HttpService.put(`board/${groupId}`,board);
+function updateGroup(groupId, board) {
+  return HttpService.put(`board/${groupId}`, board);
 }
 function removeTask(taskId) {
   return HttpService.delete(`board/${taskId}`);
@@ -541,7 +542,7 @@ function removeColumn(columnId) {
 }
 function addTask(board) {
   console.log('addTask')
-  return HttpService.put(`board/${board._id}`,board);
+  return HttpService.put(`board/${board._id}`, board);
 }
 // function updateTask(board) {
 //   return HttpService.put(`board/`,board);

@@ -1,15 +1,42 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import { saveBoard } from "../actions/boardActions";
+import { saveBoard, loadBoards } from "../actions/boardActions";
 import localBoardService from "../services/localBoardService";
 import add from "../../src/style/img/add.png";
 class AddBoard extends Component {
   state = {
     board: {
       // BOARD OBJECT
-
       name: "Board 1",
       createdAt: 1589990735884,
+      //CLOUMNS OBJECT
+      columns: [
+        {
+          type: "date",
+          value: "Date",
+          order: "1",
+        },
+        {
+          type: "poeple",
+          value: "poeple",
+          order: "2",
+        },
+        {
+          type: "label",
+          value: "Labels",
+          order: "3",
+        },
+        {
+          type: "text",
+          value: "Text",
+          order: "4",
+        },
+        {
+          type: "number",
+          value: "number",
+          order: "5",
+        },
+      ],
       //Label Object
       labels: [
         {
@@ -73,33 +100,6 @@ class AddBoard extends Component {
           name: "",
           createdAt: "date",
           // ABIR COLS DONT TOUCH
-          columns: [
-            {
-              type: "date",
-              value: "Date",
-              order: "1",
-            },
-            {
-              type: "poeple",
-              value: "poeple",
-              order: "2",
-            },
-            {
-              type: "label",
-              value: "Labels",
-              order: "3",
-            },
-            {
-              type: "text",
-              value: "Text",
-              order: "4",
-            },
-            {
-              type: "number",
-              value: "number",
-              order: "5",
-            },
-          ],
 
           tasks: [
             {
@@ -486,7 +486,9 @@ class AddBoard extends Component {
     console.log("Adding a Board!");
     let AddBoard = this.state.board;
 
-    localBoardService.saveBoard(AddBoard);
+    // let newBoard = localBoardService.saveBoard(AddBoard);
+    this.props.saveBoard(AddBoard);
+    this.props.loadBoards();
   };
 
   render() {
@@ -511,6 +513,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = {
   saveBoard,
+  loadBoards,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddBoard);

@@ -28,7 +28,11 @@ export class TaskBox extends React.Component {
   }
 
   render() {
-    return <section>{this.dataToBox()}</section>;
+    return (
+      <section onClick={() => this.props.removeCol(this.props.col)}>
+        {this.dataToBox()}
+      </section>
+    );
   }
 }
 

@@ -42,7 +42,7 @@ export class TaskBoxList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: this.props.items,
+      items: this.props.board.columns,
     };
     this.onDragEnd = this.onDragEnd.bind(this);
   }

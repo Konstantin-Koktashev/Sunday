@@ -19,11 +19,14 @@ class TaskList extends Component {
     }
   };
 
-  deleteTask(task) {
+  deleteTask = (task) => {
+    console.log("TaskList -> deleteTask -> task", task);
     let group = this.props.group;
     let board = this.props.board;
-    localBoardService.removeTask(board, group, task);
-  }
+    let newBoard = localBoardService.removeTask(board, group, task);
+    this.props.saveBoard(newBoard);
+    this.props.loadBoards();
+  };
 
   render() {
     return (
@@ -46,6 +49,7 @@ class TaskList extends Component {
               <TaskBoxList
                 sortColumnsByBox={this.props.sortColumnsByBox}
                 items={this.props.cols}
+                board={this.props.board}
               ></TaskBoxList>
             </div>
             <div
@@ -60,9 +64,8 @@ class TaskList extends Component {
                   key={idx}
                 />
               ))}
+              <AddTask group={this.props.group}></AddTask>
             </div>
-
-            <AddTask group={this.props.group}></AddTask>
           </div>
         )}
       </div>

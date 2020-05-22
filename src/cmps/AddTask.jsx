@@ -6,13 +6,11 @@ import localBoardService from "../services/localBoardService";
 class AddTask extends Component {
   state = {
     task: {
-      _id: 10002,
+      _id: 1000233,
       assignedGroupId: 124,
       taskTitle: "Todo",
       createdAt: "date",
-      // Aggregation
       users: [{ _id: 1234, name: "shahar" }], // Min users
-      // ABIR COLS DONT TOUCH
       columns: [
         {
           type: "label",
@@ -54,28 +52,44 @@ class AddTask extends Component {
         },
       ], // Notes objects
       people: [],
-      status: "Done",
-      priority: "urgent",
-      DueDate: "15.02",
+      status: "",
+      priority: "",
+      DueDate: "",
       budget: "150",
-      text: "text about task",
+      text: "",
       link: "",
     },
+    taskTitle: "",
   };
 
-  addTask = async () => {
+  addTask = async (ev) => {
+    ev.preventDefault();
     let task = this.state.task;
+    task.taskTitle = this.state.taskTitle;
     let board = await this.props.currBoard;
     let group = this.props.group;
     let newBoard = localBoardService.addTask(board, group, task);
     this.props.saveBoard(newBoard);
     this.props.loadBoards();
   };
+  handleChange = ({ target }) => {
+    const value = target.value;
+    this.setState({ taskTitle: value });
+  };
 
   render() {
     return (
       <>
-        <div onClick={this.addTask}>add task</div>
+        <form className="add-task-bar flex" onSubmit={this.addTask}>
+          <button>Add</button>
+          <input
+            type="text"
+            name="title"
+            placeholder="Add Task"
+            value={this.state.text}
+            onChange={(ev) => this.handleChange(ev)}
+          />
+        </form>
       </>
     );
   }

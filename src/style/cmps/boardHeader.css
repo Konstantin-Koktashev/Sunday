@@ -13,3 +13,13 @@
   align-self: flex-start;
   margin-top: 5px;
 }
+
+.add-group-btn {
+  width: 6vw;
+  height: 4vh;
+  background-color: #00a8ff;
+  cursor: pointer;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+}

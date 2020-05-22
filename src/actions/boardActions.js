@@ -20,13 +20,11 @@ export function loadBoards() {
 
 
 export function saveBoard(board) {
-  console.log('board issss', board)
   return async dispatch => {
     try {
-      console.log('board id  issss', board._id)
       const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD'
       const savedBoard = await boardServices.saveBoard(board)
-      dispatch({ type, board: savedBoard })
+      dispatch({ type, savedBoard })
 
     } catch (err) {
       console.log('boardActions: err in add or update board', err);
@@ -44,6 +42,7 @@ export function saveBoard(board) {
 
 
 export function removeBoard(boardId) {
+  console.log("REMOVING -> boardId", boardId)
   return async dispatch => {
     try {
       await boardServices.remove(boardId);
@@ -55,6 +54,7 @@ export function removeBoard(boardId) {
 }
 
 export function setCurrBoard(board) {
+  console.log("setCurrBoard -> board", board)
   return dispatch => {
     dispatch({ type: 'SET_CURRBOARD', board });
   }
@@ -118,6 +118,7 @@ function setBoards(board) {
 
 
 function _removeBoard(boardId) {
+  console.log("HELLO function_removeBoard -> boardId", boardId)
   return {
     type: 'BOARD_REMOVE',
     boardId

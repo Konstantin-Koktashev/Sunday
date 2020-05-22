@@ -1,7 +1,7 @@
 import React from "react";
 import "../style/cmps/groupList.css";
 import TaskList from "./TaskList.jsx";
-import AddGroup from "./AddGroup";
+
 export default function GroupList(props) {
   return (
     <div className="group-list-container">
@@ -26,7 +26,6 @@ export default function GroupList(props) {
           );
         })
       )}
-      <AddGroup board={props.board}></AddGroup>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import BoardHeader from "../cmps/BoardHeader.jsx";
 import Board from '../cmps/Board.jsx'
 import '../style/pages/boards.css'
 
-import { loadBoards, setCurrBoard } from "../../src/actions/boardActions";
+import { loadBoards, setCurrBoard, removeBoard } from "../../src/actions/boardActions";
 class BoardApp extends React.Component {
     state = {
         currBoard: null
@@ -25,15 +25,23 @@ class BoardApp extends React.Component {
             let board = this.getBoardByID(this.props.match.params.id)
             this.setBoard(board)
         }
-        // this.loadboards()
-        // console.log('currBoardfromStore:', this.props.currBoard)
+        if (JSON.stringify(this.props.currBoard) !== JSON.stringify(prevProps.currBoard)) {
+            console.log('Showing a new board')
+
+            this.loadboards()
+            console.log(this.state.currBoard, ' curr baord state')
+        }
+
     }
 
     loadboards = () => {
         const { boards } = this.props;
         const id = this.props.match.params.id ? this.props.match.params.id : null
         let board = boards[0]
+        console.log("BoardApp -> loadboards -> board", board)
         if (id) {
+            console.log("BoardApp -> loadboards -> id", id)
+
             board = this.getBoardByID(id)
         }
         this.setBoard(board)
@@ -65,14 +73,21 @@ class BoardApp extends React.Component {
     //     this.props.removeBoard(boardId);
     //     this.props.loadBoards();
     // };
+    removeBoard = async (boardId) => {
+        console.log("BoardApp -> removeBoard -> boardId", boardId)
+        await this.props.removeBoard(boardId)
 
+        await this.props.loadBoards()
+        await this.props.history.push('/board/')
+        this.loadboards()
+    }
     render() {
 
         const { currBoard } = this.state;
         return (
             <>
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
-                {currBoard && <BoardHeader board={currBoard}></BoardHeader>}
+                {currBoard && <BoardHeader removeBoard={this.removeBoard} board={currBoard}></BoardHeader>}
                 {currBoard && <Board board={currBoard} ></Board>}
             </>
         );
@@ -89,7 +104,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = {
     loadBoards,
-    setCurrBoard
+    setCurrBoard,
+    removeBoard
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardApp);

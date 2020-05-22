@@ -1,6 +1,6 @@
 const initialState = {
     board: null,
-    currBoard:null
+    currBoard: null
 };
 window.state = initialState
 export default function (state = initialState, action = {}) {
@@ -43,7 +43,7 @@ export default function (state = initialState, action = {}) {
                 ...state,
                 board: {
                     ...state.board.filter(board => {
-                        return board._id !== action.board._id
+                        return board._id !== action.boardId
                     })
                 }
             }
@@ -81,7 +81,7 @@ export default function (state = initialState, action = {}) {
         // case 'ADD_TASK': {
 
         // }
-       
+
         default:
             return state;
     }

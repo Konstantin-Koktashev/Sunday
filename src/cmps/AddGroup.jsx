@@ -285,7 +285,13 @@ class AddGroup extends Component {
   render() {
     return (
       <>
-        <div onClick={this.AddGroup}>ADD AddGroup</div>
+        <div
+          className="add-group-btn flex a-center j-center"
+          title="Add a New Group"
+          onClick={this.AddGroup}
+        >
+          New Group
+        </div>
       </>
     );
   }

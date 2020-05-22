@@ -1,31 +1,22 @@
 import GroupList from "./GroupList.jsx";
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import { saveBoard } from "../actions/boardActions";
+import { saveBoard, removeBoard } from "../actions/boardActions";
 import boardService from "../../src/actions/boardActions";
 import HttpService from "../../src/services/HttpService";
 import AddGroup from "./AddGroup";
 
 class Board extends Component {
   sortColumnsByBox = (order) => {
+    console.log("order", order);
     let board = this.props.board;
-
-    let newGroups = board.groups.map((group) => {
-      if (!group.tasks > 0) return;
-      group = group.tasks.map((task) => {
+    console.log("Board From Props", this.props.board);
+    board.groups.forEach((group) => {
+      group.tasks.forEach((task) => {
         task.columns = this.mapOrder(task.columns, order, "order");
-        return task;
-        // console.log("Res of Map order In Group.task.map", res);
-        // return res;
       });
-      return group;
-      // console.log("Res to In board.groups.map", res);
-      // return res23;
     });
-    board.groups = newGroups;
-    console.log("new board is :", board);
-    // HttpService.post("board", this.props.board);
-    // this.boardService.saveBoard(newBoard);
+    this.props.saveBoard(board);
   };
 
   mapOrder = (array, order, key) => {
@@ -64,6 +55,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = {
   saveBoard,
+  removeBoard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
