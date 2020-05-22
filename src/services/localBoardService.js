@@ -8,7 +8,10 @@ export default {
     getById,
     addGroup,
     setBoards,
-    addTask
+    addTask,
+    // addPersonToTask,
+    // changeTaskNumberColumn,
+    // changeTaskTextColumn,
 
 }
 
@@ -30,13 +33,40 @@ function addGroup(board, group) {
 
 function addTask(board, group, task) {
     group.tasks.push(task)
-    board.groups.map(g => {
-        if (g._id === group._id) return group
-        return g
-    })
-    console.log('board after add task', board)
     return board
 }
+
+function addPersonToTask(board, person, task) {
+    const column = task.columns.find(col => col.type === 'people')
+    column.push(person)
+    return board
+}
+function removePersonToTask(board, person, task) {
+    const columnIdx = task.columns.findIdx(col => col.type === 'people')
+    task.columns.splice(columnIdx, 1)
+    return board
+}
+
+
+function changeTaskDateColumn(board, task, date) {
+    const col = task.columns.find(col => col.type === 'number')
+    col.value = date
+    return board
+}
+function changeTaskTextColumn(board, task, text) {
+    const col = task.columns.find(col => col.type === 'text')
+    col.value = text
+    return board
+}
+function changeTasklabelColumn(board, column, label) {
+    column.value = label
+    return board
+}
+
+
+
+
+
 
 
 
