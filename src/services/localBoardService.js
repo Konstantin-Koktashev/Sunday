@@ -7,9 +7,24 @@ export default {
     remove,
     getById,
     addGroup,
-    setBoards,
     addTask,
-    removeTask
+    removeTask,
+    removeGroup,
+    changeGroupName,
+    updateTaskName,
+    addColumn,
+    removeCol,
+    updateColumnTitle,
+    updateColumnText,
+    addPersonToColumn,
+    updateNumberColumn,
+    changeColumn,
+    removePersonToTask,
+    changeTaskDateColumn
+
+
+
+
 
 }
 
@@ -95,7 +110,7 @@ function removeCol(board, column, group) {
 
 
 // update column
-function updateColumnTitle(board , column , text){
+function updateColumnTitle(board, column, text) {
     column.value = text
     return board
 }
@@ -128,7 +143,7 @@ function removePersonToTask(board, person, column) {
 
 // update number //
 
-function updateNumberColumn(board , column , num){
+function updateNumberColumn(board, column, num) {
     column.value = num
     return board
 }
@@ -146,8 +161,8 @@ function changeTaskDateColumn(board, column, date) {
 
 
 /// try generic
-function changeColumn(board , column , value){
-    column.value = value 
+function changeColumn(board, column, value) {
+    column.value = value
     return board
 }
 
