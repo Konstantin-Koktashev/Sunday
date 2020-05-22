@@ -3,6 +3,7 @@ import "../style/cmps/taskList.css";
 import { TaskPreview } from "./TaskPreview.jsx";
 import resize from "../style/img/resize.png";
 import { TaskBoxList } from "./TaskBoxList.jsx";
+import AddTask from "../../src/cmps/AddTask";
 export default class TaskList extends Component {
   state = {
     taskIsShown: true,
@@ -28,6 +29,7 @@ export default class TaskList extends Component {
                   onClick={this.toggleList}
                   src={resize}
                   alt="here"
+                  title="Toggle Group"
                 />
                 <h2>Group Name{this.props.name}</h2>
               </div>
@@ -45,6 +47,8 @@ export default class TaskList extends Component {
                 <TaskPreview task={task} key={idx} />
               ))}
             </div>
+
+            <AddTask></AddTask>
           </div>
         )}
       </div>

@@ -3,12 +3,30 @@ import { connect } from "react-redux";
 import BoardHeader from "../cmps/BoardHeader.jsx";
 import Board from '../cmps/Board.jsx'
 import '../style/pages/boards.css'
-// import { loadBoards, setFilterBy, removeBoard } from "../store/boardActions.js";
+
+import { loadBoards } from "../../src/actions/boardActions";
 class BoardApp extends React.Component {
     state = {
         currBoard: null
     }
-    componentDidMount = () => {
+
+
+
+
+    componentDidMount = async () => {
+        var allBoards = await this.props.loadBoards()
+        console.log("BoardApp -> componentDidMount -> allBoards", this.props.boards)
+        this.loadboards()
+
+    }
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+            let board = this.getBoardByID(this.props.match.params.id)
+            this.setBoard(board)
+        }
+    }
+
+    loadboards = () => {
         const { boards } = this.props;
         const id = this.props.match.params.id ? this.props.match.params.id : null
         let board = boards[0]
@@ -16,12 +34,6 @@ class BoardApp extends React.Component {
             board = this.getBoardByID(id)
         }
         this.setBoard(board)
-    }
-    componentDidUpdate(prevProps) {
-        if (this.props.match.params.id !== prevProps.match.params.id) {
-            let board = this.getBoardByID(this.props.match.params.id)
-            this.setBoard(board)
-        }
     }
 
     getBoardByID = (id) => {
@@ -66,10 +78,11 @@ class BoardApp extends React.Component {
 const mapStateToProps = (state) => {
     //State of the store to props of the cmp
     return {
-        boards: state.userBoards.board,
+        boards: state.userBoards.board
     };
 };
 const mapDispatchToProps = {
+    loadBoards
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardApp);

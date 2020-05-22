@@ -15,10 +15,16 @@ export function TaskPreview(props) {
 
   return (
     <div className="task-bar flex j-start space-between">
+      {/* <div className="task-color-box">0</div> */}
       <div className="title-box flex j-center a-center">
         <h2>{task.taskTitle}</h2>
       </div>
-      <img className="task-bar-icon" src={chat} alt="Chat" />
+      <img
+        className="task-bar-icon"
+        src={chat}
+        alt="Chat"
+        title="Click to Chat"
+      />
       <div className="task-bar-columns-container flex space-evenly a-center">
         <p>{task.createdAt}</p>
         <div>

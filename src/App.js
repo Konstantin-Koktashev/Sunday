@@ -31,7 +31,7 @@ function App() {
         <section className="main-board-container">
           <Switch>
 
-            <Route path="/" component={Home} exact />
+            <Route path="/" component={Boards} exact />
             <Route path="/board/:id?" component={Boards} exact />
             <Route path="/signup" component={Signup} exact />
             <Route path="/login" component={Login} exact />

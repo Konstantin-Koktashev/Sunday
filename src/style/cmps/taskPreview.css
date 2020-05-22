@@ -1,19 +1,23 @@
 .task-bar {
   /* width: 80vw; */
   border-radius: 1px;
-  border: 1px solid rgba(119, 119, 119, 0.356);
+  border: 1px solid rgba(119, 119, 119, 0.199);
   padding: 0px 2px;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
   background-color: #dfe6e957;
   height: 4vh;
 }
 
 .task-bar:hover {
-  background-color: #0984e3;
+  /* background-color: #0984e3; */
+  background-color: rgb(223, 223, 223);
+  border-bottom: 1px solid #00a8ff;
+  border-radius: 0px 0px 2px 2px;
 }
 .title-box {
   width: 10vw;
   font-size: 12px;
+  height: 5vh;
 }
 .task-bar h2 {
   /* max-width: 15vw; */
@@ -30,7 +34,7 @@
   padding: 0px 5px;
   margin: 0px;
   text-align: center;
-  height: 7vh;
+  height: 4vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +50,7 @@
   align-items: center;
   padding: 0px 5px;
   min-width: 5vw;
-  height: 7vh;
+  height: 4vh;
 }
 .task-bar-columns-container img {
   height: 20px;
@@ -57,4 +61,19 @@
   align-self: center;
   margin-left: 50%;
   margin-right: 10px;
+  cursor: pointer;
+}
+
+.task-color-box {
+  width: 1vw;
+  background-color: #0984e3;
+  color: #0984e3;
+  padding: 0px 10px;
+  z-index: 10;
+  margin-left: -10px;
+}
+
+.task-color-box:hover {
+  width: 2vw;
+  background-color: #0984e3;
 }
