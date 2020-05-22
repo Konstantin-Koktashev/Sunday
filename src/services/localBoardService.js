@@ -46,7 +46,7 @@ function addPersonToTask(board, person, task) {
     column.push(person)
     return board
 }
-function removePersonToTask(board, person, task) {
+function removePersonFromTask(board, person, task) {
     const columnIdx = task.columns.findIdx(col => col.type === 'people')
     task.columns.splice(columnIdx, 1)
     return board
