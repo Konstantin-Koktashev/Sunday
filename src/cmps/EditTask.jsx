@@ -156,7 +156,7 @@ export class EditTask extends Component {
         </div>
         <div className="timeline flex">
           TimeLine:
-          <TaskTimeline></TaskTimeline>
+          {/* <TaskTimeline></TaskTimeline> */}
         </div>
       </div>
     );

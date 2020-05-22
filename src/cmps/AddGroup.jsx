@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import { saveBoard } from "../actions/boardActions";
+import { saveBoard, loadBoards } from "../actions/boardActions";
 import localBoardService from "../services/localBoardService";
 
 class AddGroup extends Component {
   state = {
     group: {
-      id: 'hirbush',
+      id: "hirbush",
       name: "",
       createdAt: "date",
       // ABIR COLS DONT TOUCH
@@ -272,15 +272,14 @@ class AddGroup extends Component {
   AddGroup = () => {
     console.log("Adding a AddGroup!");
     let AddGroup = this.state.group;
-    console.log('stategroup:', AddGroup)
+    console.log("stategroup:", AddGroup);
     // let boardId = this.props.board._id;
-    let board = this.props.currBoard
-    console.log('boardfromgroups:', board)
+    let board = this.props.currBoard;
+    console.log("boardfromgroups:", board);
     let newBoard = localBoardService.addGroup(board, AddGroup);
-    this.props.saveBoard(newBoard)
-
-
-
+    this.props.saveBoard(newBoard);
+    this.props.loadBoards();
+    // console.log("AddGroup -> AddGroup -> newBoard", newBoard);
   };
 
   render() {
@@ -295,11 +294,12 @@ class AddGroup extends Component {
 const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
-    currBoard: state.userBoards.currBoard
+    currBoard: state.userBoards.currBoard,
   };
 };
 const mapDispatchToProps = {
   saveBoard,
+  loadBoards,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddGroup);

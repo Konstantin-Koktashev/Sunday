@@ -20,9 +20,10 @@ export function loadBoards() {
 
 
 export function saveBoard(board) {
-  console.log('board', board)
+  console.log('board issss', board)
   return async dispatch => {
     try {
+      console.log('board id  issss', board._id)
       const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD'
       const savedBoard = await boardServices.saveBoard(board)
       dispatch({ type, board: savedBoard })
@@ -55,7 +56,7 @@ export function removeBoard(boardId) {
 
 export function setCurrBoard(board) {
   return dispatch => {
-     dispatch({ type: 'SET_CURRBOARD', board });
+    dispatch({ type: 'SET_CURRBOARD', board });
   }
 }
 
