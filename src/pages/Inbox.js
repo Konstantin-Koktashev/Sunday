@@ -14,7 +14,6 @@ class Inbox extends Component {
         const { board } = this.props.userBoards
         const currUserId = this.props.currUser.loggedInUser._id
         var totalUserHistory = []
-        debugger
         board.forEach(board => {
             let userPersonalHistory = board.history.filter(history => {
                 return history.users.filter(user => +user._id === currUserId) && history.type === 'status'

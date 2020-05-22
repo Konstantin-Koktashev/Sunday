@@ -17,7 +17,7 @@ function setBoards(boards) {
     gBoards = boards
 }
 
-async function addGroup(board, group) {
+ function addGroup(board, group) {
     // let board = getById(boardID)
     board.groups.push(group)
     return board
