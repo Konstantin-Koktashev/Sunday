@@ -25,6 +25,8 @@ export function TaskPreview(props) {
         alt="Chat"
         title="Click to Chat"
       />
+      <button onClick={() => props.deleteTask(task)}></button>
+
       <div className="task-bar-columns-container flex space-evenly a-center">
         <p>{task.createdAt}</p>
         <div>

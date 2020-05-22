@@ -15,7 +15,7 @@ export default function GroupList(props) {
             <div className="group-list" key={idx}>
               {
                 <TaskList
-                group={group}
+                  group={group}
                   name={group.name}
                   tasks={group.tasks}
                   cols={group.columns}

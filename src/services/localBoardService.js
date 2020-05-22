@@ -8,7 +8,8 @@ export default {
     getById,
     addGroup,
     setBoards,
-    addTask
+    addTask,
+    removeTask
 
 }
 
@@ -27,6 +28,13 @@ function addGroup(board, group) {
     //     console.log('Cant Add Group')
     // }
 }
+
+function removeTask(board, taskToRemove) {
+    taskToRemove.
+        console.log('board after add task', board)
+    return board
+}
+
 
 function addTask(board, group, task) {
     group.tasks.push(task)
