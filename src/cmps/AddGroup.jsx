@@ -2,9 +2,11 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import { saveBoard, loadBoards } from "../actions/boardActions";
 import localBoardService from "../services/localBoardService";
+import { Loading } from "./Loading";
 
 class AddGroup extends Component {
   state = {
+    isLoading: true,
     group: {
       id: "hirbush",
       name: "",
@@ -290,6 +292,11 @@ class AddGroup extends Component {
           title="Add a New Group"
           onClick={this.AddGroup}
         >
+          <div
+            className={`${this.state.isLoading ? "loading" : "loading-hidden"}`}
+          >
+            <Loading></Loading>
+          </div>
           New Group
         </div>
       </>
