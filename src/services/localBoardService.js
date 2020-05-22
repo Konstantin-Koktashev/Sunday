@@ -41,21 +41,19 @@ function addTask(board, group, task) {
     return board
 }
 
-function addPersonToTask(board, person, task) {
-    const column = task.columns.find(col => col.type === 'people')
+function addPersonToColumn(board, person, column) {
     column.push(person)
     return board
 }
-function removePersonToTask(board, person, task) {
-    const columnIdx = task.columns.findIdx(col => col.type === 'people')
-    task.columns.splice(columnIdx, 1)
+function removePersonToTask(board, person, column) {
+    const personIdx = column.findIndex(pers => pers._id === person._id)
+    column.splice(personIdx , 1)
     return board
 }
 
 
-function changeTaskDateColumn(board, task, date) {
-    const col = task.columns.find(col => col.type === 'number')
-    col.value = date
+function changeTaskDateColumn(board, column, date) {
+    column.value = date
     return board
 }
 function changeTaskTextColumn(board, task, text) {
