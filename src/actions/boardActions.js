@@ -12,13 +12,12 @@ export function loadBoards() {
       dispatch(setBoards(boards));
     } catch (err) {
       console.log('BoardActions: err in loadBoards', err);
-      // example for rerouting - after changing the store
-      // history.push('/some/path');
     } finally {
       dispatch(doneLoading());
     }
   };
 }
+
 
 
 export function saveBoard(board) {
@@ -48,6 +47,49 @@ export function removeBoard(boardId) {
 }
 
 
+// export function addGroup(boardId,group) {
+//   return async dispatch => {
+//     try {
+//     const board=await boardServices.saveBoard(board)
+//       dispatch(_updateBoard(board))
+//     } catch (error) {
+//       console.log('failed to add group');
+//     }
+//   }
+// }
+
+
+// export function removeGroup(board) {
+//   return async dispatch => {
+//     try {
+//       await boardServices.removeGroup(board)
+//       dispatch(_removeGroup(group))
+//     } catch (error) {
+//       console.log('failed to remove group');
+//     }
+//   }
+
+// }
+
+// function addGroup(boardID , group){
+//   return async dispatch => {  let board = getById(boardID)
+//     board.groups.push(group)
+//     dispatch(_addGroup(group))
+//     try {
+//        await boardServices.updateBoard(board)
+//     } catch (error) {
+      
+//     }}
+// }
+
+// export async function addGroup(group) {
+//   try {
+//     await boardServices.removeGroup(group)
+//     dispatch(_addGroup)
+//   } catch (error) {
+//     console.log('failed to add group');
+//   }
+// }
 
 
 
@@ -68,3 +110,40 @@ function _removeBoard(boardId) {
     boardId
   };
 }
+
+
+function _addGroup(board) {
+  return {
+    type: 'ADD_GROUP',
+    board
+  }
+}
+
+function _removeGroup(board) {
+  return {
+    type: 'REMOVE_BOARD',
+    board
+  }
+}
+
+function _addTask(board){
+  return {
+    type:'ADD_TASK',
+    board
+  }
+}
+function _removeTask(board){
+  return {
+    type:'REMOVE_TASK',
+    board
+  }
+}
+function _updateTask(board){
+  return {
+    type:'UPDATE_TASK',
+    board
+  }
+}
+// function _updateBoard={
+
+// }

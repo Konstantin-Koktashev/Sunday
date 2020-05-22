@@ -46,6 +46,35 @@ export default function (state = initialState, action = {}) {
                     })
                 }
             }
+        case 'ADD_GROUP':
+            return {
+                ...state,
+                boards: action.board
+            }
+        case 'REMOVE_GROUP':
+            return {
+                ...state,
+                boards: {
+                    ...state.board, groups:
+                        [...state.board.groups.filter(group => {
+                            return group.id !== action.id
+                        })]
+                }
+            }
+        // case 'UPDATE_GROUP':
+        //     return {
+        //         ...state,
+        //         boards:{
+        //             ...state.boards,groups:
+        //             [...state.board.group.map(group => {
+        //             ((group.id)===action.groupId)?action.payload:group
+        //         })]
+
+        //         }
+        //     }
+        case 'ADD_TASK': {
+
+        }
         default:
             return state;
     }
