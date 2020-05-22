@@ -555,6 +555,7 @@ function addTask(board) {
 // }
 
 async function saveBoard(board) {
+  console.log('ulday')
   var boardToApply;
   if (!board._id) boardToApply = await HttpService.post('board', board)
   else boardToApply = await HttpService.put('board', board)

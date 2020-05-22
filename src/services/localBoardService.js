@@ -7,26 +7,56 @@ export default {
     remove,
     getById,
     addGroup,
-    setBoards
+    setBoards,
+    addTask
 
 }
 
 function setBoards(boards) {
     console.log("setBoards -> boards", boards)
-
     gBoards = boards
 }
 
-async function addGroup(boardID, group) {
-    let board = getById(boardID)
+async function addGroup(board, group) {
+    // let board = getById(boardID)
     board.groups.push(group)
-    try {
-        await saveBoard(board)
-    } catch (error) {
-        console.log('Cant Add Group')
-    }
+    return board
+    // try {
+    //      saveBoard(board)
+    // } catch (error) {
+    //     console.log('Cant Add Group')
+    // }
 }
 
+function addTask(board, group, task) {
+    group.tasks.push(task)
+    board.groups.map(g => {
+        if (g._id === group._id) return group
+        return g
+    })
+    console.log('board after add task' , board)
+    return board
+}
+
+
+
+// function getGroupById(boardId, groupid) {
+//     return getbyid(boardId)
+//         .then(board => {
+//             return board.groups.filter(group => group._id === groupid)
+//         })
+// }
+
+// function getColumnById(boardId, groupId, colId) {
+//     getGroupById(boardId, groupId)
+//         .then(group => group.columns.filter(col => col._id === colId))
+// }
+
+
+// function getByid(boardId) {
+//     var board = gBoards.find(board => board._id === boardId)
+//     return Promise.resolve(board)
+// }
 
 // function save(boardId, boardToSave) {
 //     if (boardToSave.id) {

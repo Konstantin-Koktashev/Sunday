@@ -6,7 +6,7 @@ import localBoardService from "../services/localBoardService";
 class AddGroup extends Component {
   state = {
     group: {
-      _id: 124,
+      id: 'hirbush',
       name: "",
       createdAt: "date",
       // ABIR COLS DONT TOUCH
@@ -272,9 +272,15 @@ class AddGroup extends Component {
   AddGroup = () => {
     console.log("Adding a AddGroup!");
     let AddGroup = this.state.group;
+    console.log('stategroup:', AddGroup)
+    // let boardId = this.props.board._id;
+    let board = this.props.currBoard
+    console.log('boardfromgroups:', board)
+    let newBoard = localBoardService.addGroup(board, AddGroup);
+    this.props.saveBoard(newBoard)
 
-    let boardId = this.props.board._id;
-    localBoardService.addGroup(boardId, AddGroup);
+
+
   };
 
   render() {
@@ -289,6 +295,7 @@ class AddGroup extends Component {
 const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
+    currBoard: state.userBoards.currBoard
   };
 };
 const mapDispatchToProps = {

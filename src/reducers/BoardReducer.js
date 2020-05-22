@@ -1,5 +1,6 @@
 const initialState = {
-    board: null
+    board: null,
+    currBoard:null
 };
 window.state = initialState
 export default function (state = initialState, action = {}) {
@@ -51,6 +52,11 @@ export default function (state = initialState, action = {}) {
                 ...state,
                 boards: action.board
             }
+        case 'SET_CURRBOARD':
+            return {
+                ...state,
+                currBoard: action.board
+            }
         case 'REMOVE_GROUP':
             return {
                 ...state,
@@ -72,9 +78,10 @@ export default function (state = initialState, action = {}) {
 
         //         }
         //     }
-        case 'ADD_TASK': {
+        // case 'ADD_TASK': {
 
-        }
+        // }
+       
         default:
             return state;
     }
