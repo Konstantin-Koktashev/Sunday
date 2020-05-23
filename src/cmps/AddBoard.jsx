@@ -11,11 +11,11 @@ class AddBoard extends Component {
       createdAt: 1589990735884,
       //CLOUMNS OBJECT
       columns: [
-        {
-          type: "date",
-          value: "Date",
-          order: "1",
-        },
+        // {
+        //   type: "date",
+        //   value: "Date",
+        //   order: "1",
+        // },
         {
           type: "people",
           value: "people",

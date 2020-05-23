@@ -2,11 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "../style/cmps/sideNav.css";
 import logo from "../style/img/logo.png";
-import inbox from "../style/img/inbox.png";
-import week from "../style/img/week.png";
-import invite from "../style/img/invite.png";
+import inbox from "../style/img/mail.svg";
+import week from "../style/img/calendar.svg";
+import invite from "../style/img/invitation.svg";
 import person from "../style/img/person.svg";
-import notification from "../style/img/notification.png";
+import notification from "../style/img/notification.svg";
 export default function SideNav() {
   return (
     <div className="side-nav-container flex col space-evenly">

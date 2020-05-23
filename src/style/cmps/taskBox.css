@@ -5,29 +5,34 @@
   /* padding: 0px 2px; */
   text-align: center;
   height: 4vh;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-/* 
 .text-box {
-  background-color: rgba(233, 230, 230, 0.171);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .number-box {
-  background-color: rgba(233, 230, 230, 0.171);
-} */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.label-box {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-/* .label-box {
-  width: 7vw;
-  padding-right: 5vw;
-} */
-/* 
 .date-box {
   background-color: rgba(233, 230, 230, 0.171);
 }
 
 .poeple-box {
   background-color: rgba(233, 230, 230, 0.171);
-
-} */
+}
 
 .task-box-list-container {
   /* width: 20vw; */
@@ -57,4 +62,16 @@
 .task-box-list-cont {
   /* width: 25vw; */
   /* margin-right: 10vw; */
+}
+
+.colEdit-input {
+  width: 5vw;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0);
+  border-left: 1px solid rgba(128, 128, 128, 0.301);
+  height: 4vh;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -66,3 +66,19 @@
     opacity: 1;
   }
 }
+
+.add-label-btn {
+  color: white;
+  background-color: #74b9ff;
+  /* border-radius: 0px 0px 15px 14px; */
+  /* padding: 10px 20px; */
+  width: 100%;
+  font-size: 15px;
+  text-align: center;
+  height: 4vh;
+  padding-top: 10px;
+  cursor: pointer;
+}
+.add-label-btn:hover {
+  background-color: #82c0fd;
+}

@@ -44,7 +44,7 @@ class MyWeek extends Component {
 
             <>
                 <div className="header-container-myweek">
-                    <h3>hey {this.props.user.name}</h3>
+                    <h3>Wellcome {this.props.user.name}</h3>
                 </div>
                 <section className="my-week">
                     {userTasks && userTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}

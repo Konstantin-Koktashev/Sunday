@@ -108,6 +108,7 @@ class TaskPreview extends Component {
               <input
                 type="text"
                 name="taskName"
+                className="input-edit-taskName"
                 value={this.state.taskTitle}
                 onChange={this.handleChange}
                 onBlur={(ev) => this.updateTaskName(ev, task)}
