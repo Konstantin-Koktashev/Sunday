@@ -13,11 +13,11 @@ import HttpService from "../../src/services/HttpService";
 import AddGroup from "./AddGroup";
 
 class Board extends Component {
-  sortColumnsByBox = (order) => {
+  sortColumnsByBox = async (order) => {
     let board = localBoardService.sortColumnsByBox(this.props.currBoard, order);
     this.props.saveBoard(board);
     this.props.setCurrBoard(board);
-    this.props.loadBoards();
+    await this.props.loadBoards();
   };
 
   render() {
