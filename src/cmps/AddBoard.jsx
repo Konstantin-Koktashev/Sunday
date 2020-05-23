@@ -137,7 +137,7 @@ class AddBoard extends Component {
               people: [],
               status: "Done",
               priority: "urgent",
-              DueDate: "15.02",
+              DueDate: '1590852189',
               budget: "150",
               text: "text about task",
               link: "",
@@ -177,7 +177,7 @@ class AddBoard extends Component {
               people: [],
               status: "Done",
               priority: "urgent",
-              DueDate: "15.02",
+              DueDate: "1592925789",
               budget: "150",
               text: "text about task",
               link: "",
@@ -217,7 +217,7 @@ class AddBoard extends Component {
               people: [],
               status: "Done",
               priority: "urgent",
-              DueDate: "15.02",
+              DueDate: "1595517789",
               budget: "150",
               text: "text about task",
               link: "",
@@ -257,7 +257,7 @@ class AddBoard extends Component {
               people: [],
               status: "Done",
               priority: "urgent",
-              DueDate: "15.02",
+              DueDate: "1606148589",
               budget: "150",
               text: "text about task",
               link: "",
@@ -292,7 +292,7 @@ class AddBoard extends Component {
               people: [],
               status: "undone",
               priority: "urgent",
-              DueDate: "15.02",
+              DueDate: "1590250989",
               budget: "1540",
               text: "text about task 31142",
               link: "",
@@ -310,7 +310,7 @@ class AddBoard extends Component {
               people: [],
               status: "",
               priority: "",
-              DueDate: "",
+              DueDate: "1590268989",
               budget: "",
               text: "",
               link: "",
@@ -328,7 +328,7 @@ class AddBoard extends Component {
               people: [],
               status: "",
               priority: "",
-              DueDate: "",
+              DueDate: "1590420189",
               budget: "",
               text: "",
               link: "",
@@ -417,13 +417,13 @@ class AddBoard extends Component {
     },
   };
 
-  AddBoard = () => {
+  AddBoard = async() => {
     console.log("Adding a Board!");
     let AddBoard = this.state.board;
 
     // let newBoard = localBoardService.saveBoard(AddBoard);
-    this.props.saveBoard(AddBoard);
-    this.props.loadBoards();
+   await this.props.saveBoard(AddBoard);
+  await   this.props.loadBoards();
   };
 
   render() {

@@ -11,8 +11,17 @@ import {
 } from "../../src/actions/boardActions";
 export class BoardNav extends Component {
   state = {
-    boardIsShown: true,
+    boardIsShown: true
   };
+
+
+componentDidUpdate(prevProps, prevState) {
+  console.log('teete', this.props.boards)
+}
+
+
+
+
   toggleList = () => {
     if (this.state.boardIsShown) {
       this.setState({ boardIsShown: false });
@@ -21,8 +30,8 @@ export class BoardNav extends Component {
     }
   };
 
-  render() {
-    console.log(this.props.boards);
+   render() {
+    const {boards} =  this.props
     return (
       <>
         {this.props.boards && (
@@ -31,7 +40,7 @@ export class BoardNav extends Component {
               this.state.boardIsShown
                 ? "board-nav-container"
                 : "board-nav-container-hidden"
-            } flex col`}
+              } flex col`}
           >
             <img
               className="resize-png-boardnav"
@@ -44,18 +53,18 @@ export class BoardNav extends Component {
               <AddBoard></AddBoard>
             </div>
             <div className="board-list flex col">
-              {this.props.boards && !this.props.boards.length > 0 ? (
+              {this.props.boards && !this.props.boards.length ? (
                 <div className="board-nav-container">
                   <AddBoard></AddBoard>
                   <h3>No Boards :('</h3>
                 </div>
               ) : (
-                this.props.boards.map((board, idx) => (
-                  <div key={idx} className="board-list-btn">
-                    <Link to={`/board/${board._id}`}>{board.name}</Link>
-                  </div>
-                ))
-              )}
+                  this.props.boards.map((board, idx) => (
+                    <div key={idx} className="board-list-btn">
+                      <Link to={`/board/${board._id}`}>{board.name}</Link>
+                    </div>
+                  ))
+                )}
             </div>
           </div>
         )}
@@ -67,7 +76,7 @@ export class BoardNav extends Component {
 const mapStateToProps = (state) => {
   //State of the store to props of the cmp
   return {
-    boards: state.userBoards.board,
+    boards: state.userBoards.board
   };
 };
 const mapDispatchToProps = {
