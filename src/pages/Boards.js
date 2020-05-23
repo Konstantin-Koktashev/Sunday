@@ -5,6 +5,7 @@ import Board from '../cmps/Board.jsx'
 import '../style/pages/boards.css'
 
 import { loadBoards, setCurrBoard, removeBoard } from "../../src/actions/boardActions";
+import {loadUsers} from '../../src/actions/UserActions'
 class BoardApp extends React.Component {
     state = {
         currBoard: null
@@ -14,6 +15,7 @@ class BoardApp extends React.Component {
 
 
     componentDidMount = async () => {
+        this.props.loadUsers();
         var allBoards = await this.props.loadBoards()
         this.loadboards()
 
@@ -100,7 +102,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     loadBoards,
     setCurrBoard,
-    removeBoard
+    removeBoard,
+    loadUsers
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardApp);
