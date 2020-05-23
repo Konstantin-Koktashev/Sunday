@@ -11,11 +11,11 @@ class AddBoard extends Component {
       createdAt: 1589990735884,
       //CLOUMNS OBJECT
       columns: [
-        // {
-        //   type: "date",
-        //   value: "Date",
-        //   order: "1",
-        // },
+        {
+          type: "date",
+          value: "Date",
+          order: "1",
+        },
         {
           type: "people",
           value: "people",
@@ -111,7 +111,7 @@ class AddBoard extends Component {
               _id: 2222,
               assignedGroupId: 124,
               taskTitle: "Todo",
-              createdAt: "date",
+              createdAt: "",
               // Aggregation
               users: [{ _id: 1234, name: "shahar" }], // Min users
               // ABIR COLS DONT TOUCH
@@ -125,7 +125,7 @@ class AddBoard extends Component {
                   lastUpdate: Date.now(),
                   description: "I changed all",
                   imgUrl: "",
-                  aboutUser: 1234,
+                  aboutUser: 9000,
                 },
               ], // updates objects
               notes: [
@@ -142,7 +142,7 @@ class AddBoard extends Component {
               people: [],
               status: "Done",
               priority: "urgent",
-              DueDate: "1590852189",
+              DueDate: "",
               budget: "150",
               text: "text about task",
               link: "",

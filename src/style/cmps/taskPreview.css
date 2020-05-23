@@ -58,10 +58,11 @@
   width: 5vw;
   cursor: pointer;
   height: 4vh;
+  font-weight: bold;
 }
 
 .box-div:hover {
-  color: rgb(255, 255, 255);
+  /* color: rgb(5, 5, 5); */
 }
 .task-bar-columns-container img {
   height: 20px;
@@ -133,4 +134,13 @@
   background-color: rgba(128, 128, 128, 0);
   font-size: 14px;
   outline: none;
+}
+
+.colEdit-input-date input {
+  width: 5vw;
+  font-size: 12px;
+  height: 4vh;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
 }

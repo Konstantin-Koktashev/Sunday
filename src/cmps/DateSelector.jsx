@@ -31,7 +31,7 @@ class DateSelector extends Component {
     const value = column.value === "Date" ? new Date() : column.value;
     return (
       <div>
-        <form className={"classes.container"} noValidate>
+        <form className={"classes.container "} noValidate>
           <DatePicker
             // id="date"
             // type="date"

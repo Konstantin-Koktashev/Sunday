@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import "../style/cmps/progressBar.css";
 
 class ProgressBar extends React.Component {
   componentDidMount() {
@@ -7,16 +8,14 @@ class ProgressBar extends React.Component {
   }
 
   showStatus = () => {
-    const { boards } = this.props.boards;
+    const { group, boards } = this.props;
     // console.log(boards[0])
     // place 0 boards = this.props.boardIndex = the indexnumber of the currBoard.
     // place 0 groups = this.props.groupIndex = the indexnumber of the currGruop.
-    const doneMissions = boards[0].groups[0].tasks.filter(
-      (task) => task.status === "done"
-    );
+    const doneMissions = group.tasks.filter((task) => task.status === "Done");
     console.log("dm", doneMissions);
     if (doneMissions.length !== 0) {
-      var precent = parseInt((doneMissions.length / boards.length) * 100);
+      var precent = parseInt((doneMissions.length / group.tasks.length) * 100);
     } else precent = 0;
     return precent;
   };
@@ -27,8 +26,9 @@ class ProgressBar extends React.Component {
     return (
       <section className="progress-bar">
         <div className="full-width grey-status"></div>
-        <div style={pStyle} className="color-status"></div>
-        <div className="the-nubmer">{this.showStatus()}%</div>
+        <div style={pStyle} className="color-status">
+          <div>{this.showStatus()}%</div>
+        </div>
       </section>
     );
   }

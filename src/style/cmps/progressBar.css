@@ -1,0 +1,41 @@
+.status-bar {
+  width: 70vw;
+  height: 20px;
+  text-align: center;
+  border-radius: 999px;
+  position: relative;
+  background-color: rgba(128, 128, 128, 0.329);
+  margin-top: 5px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.color-status {
+  height: 4vh;
+  border-radius: 999px;
+  background-color: rgba(61, 236, 84, 0.726);
+  z-index: 1;
+  color: aliceblue;
+}
+
+.color-status div {
+  margin-right: 20px;
+  margin-left: 10px;
+  padding-top: 4px;
+}
+
+.the-number {
+  /* position: relative; */
+  z-index: 3;
+  color: rgb(255, 255, 255);
+}
+
+.progress-bar {
+  width: 70vw;
+  border-radius: 999px;
+  background-color: rgba(159, 173, 161, 0.418);
+  text-align: right;
+  margin-right: 15px;
+}
