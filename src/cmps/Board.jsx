@@ -11,6 +11,7 @@ import {
 import boardService from "../../src/actions/boardActions";
 import HttpService from "../../src/services/HttpService";
 import AddGroup from "./AddGroup";
+import FilterByText from "./FilterByText.jsx";
 
 class Board extends Component {
   sortColumnsByBox = (order) => {
@@ -23,6 +24,7 @@ class Board extends Component {
   render() {
     return (
       <>
+      <FilterByText currBoard={this.props.currBoard}/>
         {/* <h3>Board name:{board.name}</h3>
       <h3>Board name:{board._id}</h3> */}
         {/* <AddGroup board={this.props.board}></AddGroup> */}

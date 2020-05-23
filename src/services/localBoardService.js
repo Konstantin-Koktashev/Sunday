@@ -26,7 +26,8 @@ export default {
     changeDueDateColumn,
     sortColumnsByBox,
     updateColumnOrder,
-    setColumn
+    setColumn,
+    filter
 }
 
 
@@ -193,10 +194,10 @@ function changeTaskDateColumn(board, column, date) {
     column.value = date
     return board
 }
-function changeDueDateColumn(board,column,date){
-    column.stateDate=date.newStateDay
-    column.endDate=date.newEndDate
-    column.month=date.newMonth
+function changeDueDateColumn(board, column, date) {
+    column.stateDate = date.newStateDay
+    column.endDate = date.newEndDate
+    column.month = date.newMonth
     return board
 }
 
@@ -209,18 +210,18 @@ function changeColumn(board, column, value) {
     return board
 }
 
-function changeLabelColumn(board,  label , color , text) {
-    console.log('labelBefore:',  label)
+function changeLabelColumn(board, label, color, text) {
+    console.log('labelBefore:', label)
     label.value = text
     label.color = color
-    console.log('labelafter' , label)
+    console.log('labelafter', label)
     return board
 }
 
 
 
 
-function setColumn(board, column, color , value) {
+function setColumn(board, column, color, value) {
     column.value = value
     column.color = color
     return board
@@ -247,9 +248,9 @@ function changeTasklabelColumn(board, column, label) {
     return board
 }
 
-function addLabel(board ,  column , label) {
-    if(!column.labels && !column.length) column.labels = [];
-    if(!label._id) label._id = makeId()
+function addLabel(board, column, label) {
+    if (!column.labels && !column.length) column.labels = [];
+    if (!label._id) label._id = makeId()
     column.labels.push(label)
     return board
 }
@@ -305,6 +306,27 @@ function getById(boardId) {
 function _getIdxById(boardId) {
     return gBoards.findIndex(board => board._id === boardId)
 }
+
+
+
+
+function filter(board, value) {
+    var newBoard = board
+
+    if (value) {
+        const groupsAfterFilter = board.groups.filter(group => {
+            return group.name.includes(value)
+        })
+        const tasksAfterFilter = board.groups.map(group => {
+            return group.tasks.filter(task => {
+                return task.taskTitle.includes(value)
+            })
+        })
+    }
+    return newBoard
+
+}
+
 
 
 function makeId(length = 3) {

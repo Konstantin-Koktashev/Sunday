@@ -15,6 +15,7 @@ import MyWeek from './pages/MyWeek'
 import Inbox from './pages/Inbox';
 import TaskDetails from './cmps/TaskDetails';
 import LabelContainer from './cmps/LabelContainer';
+import FilterByText from './cmps/FilterByText';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
             <Route path="/user/inbox" component={Inbox} exact />
             <Route path="/details" component={TaskDetails} exact />
             <Route path="/label" component={LabelContainer} exact />
+            <Route path="/filter" component={FilterByText} exact />
           </Switch>
         </section>
       </Router>
