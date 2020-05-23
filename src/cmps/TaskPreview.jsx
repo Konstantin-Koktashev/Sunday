@@ -35,12 +35,8 @@ class TaskPreview extends Component {
   // First Function
   matchTaskBoxToBoardColumns = () => {
     // debugger;
-<<<<<<< HEAD
-    let board = props.board;
-=======
     let { board, task } = this.props;
     console.log("matchTaskBoxToBoardColumns -> board ", board);
->>>>>>> c39e9b0fc27edb4cc704f5a06d24aed7ea051b3c
     let boardBox = [];
     board.columns.forEach((box) => {
       boardBox.push(box);
