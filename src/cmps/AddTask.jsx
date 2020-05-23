@@ -81,13 +81,13 @@ class AddTask extends Component {
     return (
       <>
         <form className="add-task-bar flex" onSubmit={this.addTask}>
-          <button>Add</button>
           <input
             type="text"
             name="title"
             placeholder="Add Task"
             value={this.state.text}
             onChange={(ev) => this.handleChange(ev)}
+            onBlur={this.addTask}
             required
           />
         </form>

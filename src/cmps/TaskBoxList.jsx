@@ -4,7 +4,8 @@ import {
   Droppable,
   Draggable,
 } from "../../node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.cjs";
-import { TaskBox } from "./TaskBox";
+import TaskBox from "./TaskBox";
+import localBoardService from "../../src/services/localBoardService";
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -62,12 +63,14 @@ export class TaskBoxList extends Component {
     this.setState({
       items,
     });
-    let order = [];
-    items.forEach((item) => {
-      order.push(item.order);
-    });
-    this.props.sortColumnsByBox(order);
-    console.log("items", items);
+    // let order = [];
+    // items.forEach((item) => {
+    //   order.push(item.order);
+    // });
+    let board = this.props.board;
+    let cols = this.props.board.columns;
+    let newBoard = localBoardService.updateColumnOrder(board, cols, items);
+    this.props.updateBoardColOrder(newBoard);
   }
 
   // Normally you would want to split things out into separate components.
