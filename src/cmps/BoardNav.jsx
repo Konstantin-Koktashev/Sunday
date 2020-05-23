@@ -13,6 +13,8 @@ export class BoardNav extends Component {
   state = {
     boardIsShown: true,
   };
+
+  
   toggleList = () => {
     if (this.state.boardIsShown) {
       this.setState({ boardIsShown: false });
@@ -22,8 +24,9 @@ export class BoardNav extends Component {
   };
 
   render() {
-    console.log(this.props.boards);
+    
     return (
+      
       <>
         {this.props.boards && (
           <div
@@ -44,7 +47,7 @@ export class BoardNav extends Component {
               <AddBoard></AddBoard>
             </div>
             <div className="board-list flex col">
-              {this.props.boards && !this.props.boards.length > 0 ? (
+              {this.props.boards && !this.props.boards.length ? (
                 <div className="board-nav-container">
                   <AddBoard></AddBoard>
                   <h3>No Boards :('</h3>

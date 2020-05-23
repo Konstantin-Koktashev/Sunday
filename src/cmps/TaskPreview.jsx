@@ -25,7 +25,6 @@ export function TaskPreview(props) {
   function matchTaskBoxToBoardColumns(props) {
     // debugger;
     let board = props.board;
-    console.log("matchTaskBoxToBoardColumns -> board ", board);
     let boardBox = [];
     board.columns.forEach((box) => {
       boardBox.push(box);
@@ -34,17 +33,7 @@ export function TaskPreview(props) {
       boardBox.forEach((box) => {
         let isFound = false;
         for (var i = 0; i < task.columns.length; i++) {
-          console.log(
-            "matchTaskBoxToBoardColumns -> task.columns",
-            task.columns
-          );
           if (task.columns[i].order === box.order) isFound = true;
-          console.log(
-            "box order",
-            box.order,
-            "task order",
-            task.columns[i].order
-          );
         }
         if (!isFound) {
           console.log("adding", box, "with order ", box.order);
