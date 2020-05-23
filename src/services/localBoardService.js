@@ -194,8 +194,9 @@ function updateNumberColumn(board, column, num) {
 
 // date column //
 
-function changeTaskDateColumn(board, column, date) {
-    column.value = date
+function changeTaskDateColumn(board, column, momentToSet,task,date) {
+    task.dueDate=date.getTime()
+    column.value = momentToSet
     return board
 }
 function changeDueDateColumn(board, column, date) {

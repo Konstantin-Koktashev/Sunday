@@ -417,13 +417,13 @@ class AddBoard extends Component {
     },
   };
 
-  AddBoard = () => {
+  AddBoard = async() => {
     console.log("Adding a Board!");
     let AddBoard = this.state.board;
 
     // let newBoard = localBoardService.saveBoard(AddBoard);
-    this.props.saveBoard(AddBoard);
-    this.props.loadBoards();
+   await this.props.saveBoard(AddBoard);
+  await   this.props.loadBoards();
   };
 
   render() {

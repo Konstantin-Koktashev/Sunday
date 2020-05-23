@@ -14,9 +14,11 @@ import { saveBoard } from '../actions/boardActions';
 
     onChange = async date =>{
         let currBoard=this.props.currBoard
+        let currTask=this.props.currTask
+        const column=this.props.column
         const dateToSet=date.getMonth()+' ' +date.getDate()
         const momentToSet=moment(date).format('MM-DD')
-       const newBoard= localBoardService.changeColumn(currBoard,this.props.column,momentToSet)
+       const newBoard= localBoardService.changeTaskDateColumn(currBoard,column,momentToSet,currTask,date)
         saveBoard(newBoard)
         
     }
