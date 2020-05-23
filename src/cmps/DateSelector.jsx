@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import React, { Component } from "react";
-import { TextField } from "@material-ui/core";
-import localBoardService from "../services/localBoardService";
-import { connect } from "react-redux";
-
-import { saveBoard } from "../actions/boardActions";
-
-class DateSelector extends Component {
-  handleChange = async ({ target }) => {
-    let value = target.value;
-    const { currBoard, column } = this.props;
-    let board = localBoardService.changeColumn(currBoard, column, value);
-    await this.props.saveBoard(board);
-  };
-=======
 import React, { Component } from 'react'
 import { TextField } from '@material-ui/core';
 import localBoardService from '../services/localBoardService';
@@ -46,7 +30,6 @@ class DateSelector extends Component {
 
 
   }
->>>>>>> 9bacb30650f704e3cf7b57fe5deb9736904a5d28
   render() {
     const { column } = this.props
     const value = (column.value === 'Date') ? (new Date()) : column.value
