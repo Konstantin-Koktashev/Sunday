@@ -7,6 +7,7 @@
 @import "./cmps/taskDetails.css";
 @import "./cmps/labelContainer.css";
 @import "./cmps/inbox.css";
+@import "./cmps/PersonComponent.css";
 
 h2 {
   font-size: 16px;
