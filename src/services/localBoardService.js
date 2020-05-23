@@ -22,24 +22,24 @@ export default {
     removePersonToTask,
     changeTaskDateColumn,
     changeLabelColumn,
-    addLabel
-
+    addLabel,
+    sortColumnsByBox,
+    updateColumnOrder,
+    setColumn
 
 
 }
+
+
+
+
 //Sort Cols
 
-function sortColumnsByBox(board, order) {
-
-    board.groups.forEach((group) => {
-        group.tasks.forEach((task) => {
-            task.columns = _mapOrder(task.columns, order, "order");
-        });
-    });
-    debugger
-
+function sortColumnsByBox(board, cols, order) {
+    cols = _mapOrder(cols, order, 'order')
     return board
-};
+}
+
 
 
 function _mapOrder(array, order, key) {
@@ -54,6 +54,14 @@ function _mapOrder(array, order, key) {
     });
     return array;
 };
+
+
+/// Update Columns (ON BOARD ) Order 
+function updateColumnOrder(board, columns, reOrderedCols) {
+    columns = reOrderedCols
+    return board
+}
+
 
 // groups //
 
@@ -136,6 +144,9 @@ function removeCol(board, column, group) {
 }
 
 
+
+
+
 // update column
 function updateColumnTitle(board, column, text) {
     column.value = text
@@ -204,6 +215,15 @@ function changeLabelColumn(board,  label , color , text) {
 
 
 
+function setColumn(board, column, color , value) {
+    column.value = value
+    column.color = color
+    return board
+}
+
+
+
+
 
 
 
@@ -227,7 +247,6 @@ function addLabel(board ,  column , label) {
     if(!label._id) label._id = makeId()
     column.labels.push(label)
     return board
-
 }
 
 

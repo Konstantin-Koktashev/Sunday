@@ -18,7 +18,7 @@ class LabelContainer extends Component {
     componentDidMount() {
         console.log('labels', this.props.labels)
         var HardCoded;
-        if (this.props.labels) {
+        if (this.props.type === 'label') {
             HardCoded = [
                 {
                     _id: '111a',
@@ -37,7 +37,7 @@ class LabelContainer extends Component {
             ]
         }
 
-        else if (this.props.priority) {
+        else if (this.props.type === 'priority') {
             HardCoded = [
                 {
                     _id: '111safa',
@@ -66,18 +66,18 @@ class LabelContainer extends Component {
 
     loadAllLabels = () => {
         const labels = this.state.labels
-        labels.push(...this.props.labels)
+        if (this.props.labels) labels.push(...this.props.labels)
+
+
         this.setState({ allLabels: labels }, () => console.log('2', this.state))
     }
 
     // UNEDIT
-    setLabel = (label, color, text, id) => {
-        console.log('label' , label)
-        console.log('color' , color)
-        console.log('text' , text)
-
+    setLabel = (label, color, text) => {
+        console.log('label', label)
+        console.log('color', color)
+        console.log('text', text)
         const { currBoard } = this.props
-        // const column = this.props.column
         const board = localBoardService.changeLabelColumn(currBoard, label, color, text)
         console.log('board after change', board)
         this.props.saveBoard(board)
@@ -87,6 +87,17 @@ class LabelContainer extends Component {
 
         //find the label with the order and set the label on the props who props column who submit the label
 
+
+    }
+
+    setColumn = (color, text) => {
+        const { currBoard, column } = this.props
+        const board = localBoardService.setColumn(currBoard, column, color, text)
+        console.log('board after change', board)
+        this.props.saveBoard(board)
+        this.props.toggleContainer()
+        this.props.loadBoards()
+        this.props.setCurrBoard(board)
 
     }
 
@@ -132,11 +143,12 @@ class LabelContainer extends Component {
     render() {
         const { isEditAble, labels, allLabels } = this.state
         console.log('thisthis', this.state)
+        let labelsFromProps = (this.props.labels && this.props.labels.length > 0) ? this.props.labels : []
         return (
             <section className="label-container">
 
-                {isEditAble && labels &&
-                    this.props.labels.map((label, idx) => {
+                {isEditAble && labelsFromProps &&
+                    labelsFromProps.map((label, idx) => {
                         return <LabelPreviewEdit
                             key={idx} label={label} onRemove={this.onRemove} setLabel={this.setLabel} />
                     })
@@ -152,14 +164,9 @@ class LabelContainer extends Component {
                 }
 
 
-
-
-
-
-
                 {!isEditAble && allLabels &&
                     allLabels.map((label, idx) => {
-                        return <LabelPreviewUnEdit setLabel={this.setLabel} key={idx} isEdit={false} label={label} />
+                        return <LabelPreviewUnEdit setColumn={this.setColumn} key={idx} isEdit={false} label={label} />
                     })
                 }
 

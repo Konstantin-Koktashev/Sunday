@@ -16,7 +16,6 @@ import TimeLineTest from '../cmps/TimeLineTest';
 class Inbox extends Component {
 
     checkUserHistory = () => {
-        debugger
     //   await  this.props.loadBoards()
         const { board } = this.props.userBoards
         const currUserId = this.props.currUser.loggedInUser._id
