@@ -7,10 +7,17 @@ import theme from '../style/themes/inboxTheme';
 import '../style/pages/inbox.css'
 import checkbox from '../style/img/checkbox.png'
 import SimpleReactCalendar from 'simple-react-calendar'
+import { loadBoards } from '../actions/boardActions';
+import TimeLine from '../cmps/Timeline';
+import calendar from 'simple-react-calendar/lib/calendar/calendar';
+import DatePicker from '../cmps/Calendar';
+import TimeLineTest from '../cmps/TimeLineTest';
 
 class Inbox extends Component {
 
     checkUserHistory = () => {
+        debugger
+    //   await  this.props.loadBoards()
         const { board } = this.props.userBoards
         const currUserId = this.props.currUser.loggedInUser._id
         var totalUserHistory = []
@@ -33,22 +40,24 @@ class Inbox extends Component {
     // }
 
     componentDidMount() {
+        console.log('I JUST MOUNTEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD');
     }
     componentDidUpdate() { }
-
-    render() {
+    removeFromInbox=()=>{
+        
+    }
+     render() {
         const userHistory = this.checkUserHistory()
-
-
-        console.log("Inbox -> render -> userHistory", userHistory)
+    //  this.props.loadBoards()
+        const isLoading=this.props.currBoard
         return (
-
+            
             <div className='inbox-container'>
                 <h2>Inbox</h2>
-                {userHistory.map(history => {
+                {isLoading&&userHistory.map(history => {
                     console.log("Inbox -> render -> history", history)
                     return (<article className='user-history flex col'>
-                        <img className='complete-task' src={checkbox}></img>
+                        <img  className='complete-task' src={checkbox} onClick={()=>{this.removeFromInbox()}}></img>
                         <section className='history-header flex col a-start'>
                             <div className='user-logo'>
 
@@ -84,7 +93,10 @@ class Inbox extends Component {
                     </article>)
 
                 })}
-                <EditTask></EditTask>
+                {/* {isLoading&&<EditTask></EditTask>} */}
+                {/* <TimeLine></TimeLine> */}
+                <DatePicker></DatePicker>
+                {/* <TimeLineTest></TimeLineTest> */}
 
             </div>
         )
@@ -94,11 +106,14 @@ class Inbox extends Component {
 
 const mapStateToProps = (state) => ({
     userBoards: state.userBoards,
-    currUser: state.user
+    currUser: state.user,
+    currBoard:state.userBoards.currBoard
 })
 
 const mapDispatchToProps = {
-
+loadBoards
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inbox)
+
+
