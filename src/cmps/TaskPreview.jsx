@@ -3,7 +3,7 @@ import "../style/cmps/taskPreview.css";
 import person from "../style/img/person.svg";
 import chat from "../style/img/chat.png";
 import TaskBox from "../cmps/TaskBox.jsx";
-import deletePng from "../style/img/close.svg";
+import deletePng from "../style/img/delete.svg";
 import localBoardService from "../services/localBoardService";
 import pencil from "../style/img/pencil.svg";
 import { connect } from "react-redux";

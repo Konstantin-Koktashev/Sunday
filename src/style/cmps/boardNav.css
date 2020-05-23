@@ -7,6 +7,7 @@
   width: 15vw;
   top: 0px;
   border-radius: 25px 0px 0px 0px;
+  z-index: -1;
 }
 .board-nav-container-hidden {
   position: fixed;
