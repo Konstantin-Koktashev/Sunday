@@ -6,7 +6,7 @@
   height: 4vh;
 }
 
-.text-box {
+/* .text-box {
   background-color: rgba(233, 230, 230, 0.171);
 }
 
@@ -24,4 +24,24 @@
 
 .poeple-box {
   background-color: rgba(233, 230, 230, 0.171);
+
+} */
+
+.task-box-list-container {
+  width: 40vw;
+}
+
+.task-box-toplist-container {
+  width: 71.5vw;
+  padding: 0px 2px;
+}
+
+.back-screen-label-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 5;
+  left: 0px;
+  top: 0px;
 }

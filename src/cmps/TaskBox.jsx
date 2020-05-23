@@ -51,7 +51,32 @@ class TaskBox extends React.Component {
       case "label":
         box = (
           <>
-            <div className="label-box box-div" onClick={this.toggleContainer}>
+            <div
+              className="label-box box-div"
+              style={{ backgroundColor: col.color }}
+              onClick={this.toggleContainer}
+            >
+              {col.value}
+            </div>
+            {containerIsShown && (
+              <LabelContainer
+                toggleContainer={this.toggleContainer}
+                labels={col.labels}
+                column={col}
+                type={col.type}
+              />
+            )}
+          </>
+        );
+        break;
+      case "priority":
+        box = (
+          <>
+            <div
+              className="label-box box-div"
+              style={{ backgroundColor: col.color }}
+              onClick={this.toggleContainer}
+            >
               {col.value}
             </div>
             {containerIsShown && (
@@ -111,7 +136,15 @@ class TaskBox extends React.Component {
   render() {
     return (
       // <section onClick={() => this.props.removeCol(this.props.col)}>
-      <section>{this.dataToBox()}</section>
+      <section>
+        {this.dataToBox()}
+        {this.state.containerIsShown && (
+          <div
+            onClick={this.toggleContainer}
+            className="back-screen-label-container"
+          ></div>
+        )}
+      </section>
     );
   }
 }

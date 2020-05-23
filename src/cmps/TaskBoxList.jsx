@@ -48,6 +48,12 @@ export class TaskBoxList extends Component {
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({
+      items: this.props.board.columns,
+    });
+  }
+
   onDragEnd(result) {
     // dropped outside the list
     if (!result.destination) {
@@ -96,7 +102,7 @@ export class TaskBoxList extends Component {
                 >
                   {(provided, snapshot) => (
                     <div
-                      className="group-col-box flex space-evenly"
+                      className="group-col-box"
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
@@ -118,13 +124,3 @@ export class TaskBoxList extends Component {
     );
   }
 }
-// {
-//   /* <div className="group-col-names flex space-evenly">
-// {this.props.cols.map((col) => {
-//   return (
-//     <div contentEditable={true} className="task-box-names">
-//       {col.value}
-//     </div>
-//   );
-// })} */
-// }

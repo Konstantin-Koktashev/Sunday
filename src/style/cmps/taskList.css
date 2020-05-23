@@ -7,13 +7,13 @@
   /* height: 30vh; */
   min-height: 20vh;
   border-radius: 10px;
-  padding: 0px 10px;
 }
 
 .task-list-card {
   /* height: 40vh; */
   color: black;
   text-align: start;
+  padding: 0px 10px;
 }
 
 .resize-png {
@@ -41,14 +41,9 @@
   font-size: 13px;
 }
 .group-col-box {
-  /* margin-right: 10px; */
-  /* width: 30vw; */
-  /* border-top: 1px solid rgba(119, 119, 119, 0.356);
-  border-right: 1px solid rgba(119, 119, 119, 0.356); */
-  /* border: 1px solid rgba(119, 119, 119, 0.356); */
-  padding: 10px;
+  /* padding: 10px; */
   border-collapse: collapse;
-  width: 5vw;
+  width: 100%;
 }
 
 .group-col-box:hover {

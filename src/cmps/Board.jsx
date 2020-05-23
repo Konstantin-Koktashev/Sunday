@@ -24,10 +24,8 @@ class Board extends Component {
   render() {
     return (
       <>
-      <FilterByText currBoard={this.props.currBoard}/>
-        {/* <h3>Board name:{board.name}</h3>
-      <h3>Board name:{board._id}</h3> */}
-        {/* <AddGroup board={this.props.board}></AddGroup> */}
+        <FilterByText currBoard={this.props.currBoard} />
+
         <GroupList
           sortColumnsByBox={this.sortColumnsByBox}
           groups={this.props.board.groups}

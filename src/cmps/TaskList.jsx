@@ -58,8 +58,8 @@ class TaskList extends Component {
 
   updateBoardColOrder = async (board) => {
     await this.props.saveBoard(board);
-    // await this.props.setCurrBoard(board);
-    // await this.props.loadBoards();
+    await this.props.setCurrBoard(board);
+    await this.props.loadBoards();
   };
 
   updateBoardColOrderTest = async (board) => {
@@ -75,7 +75,7 @@ class TaskList extends Component {
           <h3>No Tasks Found!</h3>
         ) : (
           <div className="task-list-card ">
-            <div className="flex a-center space-between">
+            <div className="task-box-toplist-container flex a-center space-between">
               <div className="flex a-center">
                 <img
                   className="resize-png"
@@ -107,11 +107,13 @@ class TaskList extends Component {
                   </form>
                 )}
               </div>
-              <TaskBoxList
-                updateBoardColOrderTest={this.updateBoardColOrderTest}
-                items={this.props.cols}
-                board={this.props.board}
-              ></TaskBoxList>
+              <div className="task-box-list-container">
+                <TaskBoxList
+                  updateBoardColOrderTest={this.updateBoardColOrderTest}
+                  items={this.props.cols}
+                  board={this.props.board}
+                ></TaskBoxList>
+              </div>
             </div>
             <div
               className={`task-list flex col ${
