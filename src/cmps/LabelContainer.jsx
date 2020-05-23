@@ -119,7 +119,7 @@ class LabelContainer extends Component {
     addLabel = (ev) => {
         ev.stopPropagation()
         let label = {
-            color: 'gray',
+            color: 'lightgray',
             value: 'New Label'
         }
         const column = this.props.column
