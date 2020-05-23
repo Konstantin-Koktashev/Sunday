@@ -17,6 +17,8 @@ import TaskDetails from './cmps/TaskDetails';
 import LabelContainer from './cmps/LabelContainer';
 import FilterByText from './cmps/FilterByText';
 import AddPerson from './cmps/AddPerson';
+import page from './cmps/DateSelector';
+import DateSelector from './cmps/DateSelector';
 
 
 function App() {
@@ -43,7 +45,7 @@ function App() {
             <Route path="/details" component={TaskDetails} exact />
             <Route path="/label" component={LabelContainer} exact />
             <Route path="/filter" component={FilterByText} exact />
-            <Route path="/people" component={AddPerson} exact />
+            <Route path="/c" component={DateSelector} exact />
           </Switch>
         </section>
       </Router>
