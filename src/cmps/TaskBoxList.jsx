@@ -48,10 +48,15 @@ export class TaskBoxList extends Component {
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({
-      items: this.props.board.columns,
-    });
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      JSON.stringify(prevState.items) !==
+      JSON.stringify(this.props.board.columns)
+    ) {
+      this.setState({
+        items: this.props.board.columns,
+      });
+    }
   }
 
   onDragEnd(result) {
@@ -69,7 +74,7 @@ export class TaskBoxList extends Component {
     this.setState({
       items,
     });
-    let order = [];
+    // let order = [];
     // items.forEach((item) => {
     //   order.push(item.order);
     // });

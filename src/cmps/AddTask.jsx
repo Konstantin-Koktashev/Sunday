@@ -58,8 +58,10 @@ class AddTask extends Component {
 
   addTask = async (ev) => {
     ev.preventDefault();
+    if (!this.state.taskTitle) return;
     let task = this.state.task;
     task.taskTitle = this.state.taskTitle;
+
     let board = await this.props.currBoard;
     let group = this.props.group;
     let newBoard = localBoardService.addTask(board, group, task);
