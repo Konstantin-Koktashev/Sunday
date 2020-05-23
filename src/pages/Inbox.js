@@ -14,6 +14,8 @@ import DatePicker from '../cmps/Calendar';
 import TimeLineTest from '../cmps/TimeLineTest';
 import AddPerson from '../cmps/AddPerson';
 import {loadUsers} from '../actions/UserActions'
+import { MaterialPicker } from 'react-color';
+import MaterialUIPickers from '.././cmps/calendar2'
 
 
 class Inbox extends Component {
@@ -106,6 +108,7 @@ class Inbox extends Component {
                 {/* {isLoading&&<EditTask></EditTask>} */}
                 <TimeLine></TimeLine>
                 <DatePicker></DatePicker>
+                <MaterialUIPickers></MaterialUIPickers>
                 {/* <AddPerson></AddPerson> */}
                 {/* <TimeLineTest></TimeLineTest> */}
 
