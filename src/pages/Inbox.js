@@ -106,9 +106,9 @@ class Inbox extends Component {
 
                 })}
                 {/* {isLoading&&<EditTask></EditTask>} */}
-                <TimeLine></TimeLine>
+                {/* <TimeLine></TimeLine>
                 <DatePicker></DatePicker>
-                <MaterialUIPickers></MaterialUIPickers>
+                <MaterialUIPickers></MaterialUIPickers> */}
                 {/* <AddPerson></AddPerson> */}
                 {/* <TimeLineTest></TimeLineTest> */}
 

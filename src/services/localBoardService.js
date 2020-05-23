@@ -167,8 +167,9 @@ function updateColumnText(board, column, text) {
 
 /// person column ///
 
-function addPersonToColumn(board, person, column) {
-    column.persons = column.persons.length ? column.persons : [];
+function addPersonToColumn(board, column, person) {
+    column.persons =typeof column.persons==='array' ? column.persons : [];
+    // column.persons = column.persons.length ? column.persons : [];
     column.persons.push(person)
     return board
 }
@@ -225,7 +226,6 @@ function changeColumn(board, column, value) {
 }
 
 function changeLabelColumn(board, label, color, text) {
-    debugger
     console.log('labelBefore:', label)
     label.value = text
     label.color = color

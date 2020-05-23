@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import localBoardService from '../services/localBoardService'
 import { saveBoard, loadBoards } from '../actions/boardActions'
 import { loadUsers } from '../actions/UserActions'
+import UsersPreviewBox from './UsersPreviewBox'
 
 
 class AddPerson extends Component {
@@ -16,6 +17,7 @@ class AddPerson extends Component {
     }
 
     addPerson = (person) => {
+        this.setState({isShown:false})
         const column = this.props.column
         const currBoard = this.props.currBoard
         const newBoard = localBoardService.addPersonToColumn(currBoard, column, person)
@@ -23,7 +25,6 @@ class AddPerson extends Component {
         loadBoards()
     }
     searchPeople = (e) => {
-        debugger
         e.preventDefault()
         const users = this.props.users
         const usersToAdd = users.filter(user => {
@@ -39,15 +40,20 @@ class AddPerson extends Component {
         this.props.saveBoard(newBoard)
         this.props.loadBoards()
     }
+    togglePersonBox=()=>{
+        this.setState({isShown:true})
+    }
 
     render() {
         const isShows=this.state.isShows
         const users = this.props.column.persons
         const allUsers=this.props.users
-        console.log('user', users)
+        const isShown=this.state.isShown
         const usersToAdd = this.state.usersToAdd
         return (
-            <div className='person-component flex col'>
+            <React.Fragment>
+                <UsersPreviewBox people={users} togglePersonBox={this.togglePersonBox}></UsersPreviewBox>
+            {isShown &&< div className='person-component flex col'>
               
                     < input onChange={(e) => this.searchPeople(e)}/>
            
@@ -65,7 +71,6 @@ class AddPerson extends Component {
                 <span>People:</span>
                 <section className='found-people'>
                     {usersToAdd && usersToAdd.map(user => {
-                        debugger
                         return (
                             <article className='min-user-card' onClick={() => this.addPerson(user)}>
                                 <img></img>
@@ -78,7 +83,8 @@ class AddPerson extends Component {
                         <span>Invite User By Email</span>
                     </div>
                 </section>
-            </div>
+            </div>}
+            </React.Fragment>
         )
     }
 }
