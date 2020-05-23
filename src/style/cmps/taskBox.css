@@ -33,7 +33,9 @@
 
 .task-box-toplist-container {
   width: 71.5vw;
-  padding: 0px 2px;
+  padding: 0px 3px;
+  /* border-left: 1px solid black;
+  border-right: 1px solid black; */
 }
 
 .back-screen-label-container {
@@ -41,6 +43,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(255, 255, 255, 0);
+
   z-index: 5;
   left: 0px;
   top: 0px;

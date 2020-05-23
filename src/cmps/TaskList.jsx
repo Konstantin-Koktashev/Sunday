@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../style/cmps/taskList.css";
-import { TaskPreview } from "./TaskPreview.jsx";
+import TaskPreview from "./TaskPreview.jsx";
 import resize from "../style/img/resize.png";
 import pencil from "../style/img/pencil.svg";
 import { TaskBoxList } from "./TaskBoxList.jsx";
@@ -127,6 +127,10 @@ class TaskList extends Component {
                   key={idx}
                   board={this.props.board}
                   updateBoardColOrder={this.updateBoardColOrder}
+                  toggleTaskEdit={this.toggleTaskEdit}
+                  updateTaskName={this.updateTaskName}
+                  handleChangeTask={this.handleChangeTask}
+                  taskNameIsEdit={this.state.taskNameIsEdit}
                 />
               ))}
               <AddTask group={this.props.group}></AddTask>
