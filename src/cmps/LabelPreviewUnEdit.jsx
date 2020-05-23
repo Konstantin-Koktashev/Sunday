@@ -5,29 +5,13 @@ import React from 'react'
 
 export default class LabelPreviewUnEdit extends React.Component {
 
-    state = {
-        text: '',
-        value: '',
-        order: ''
-    }
-
-    componentDidMount() {
-        this.setState({
-            text: this.props.value,
-            color: this.props.color,
-            order: this.props.order
-
-        })
-    }
-
-
-
     render() {
-        const {color , text ,order} = this.state
+        const {color , value , _id} = this.props.label
+        const {label} = this.props
 
         return (
-            <section onClick={() => this.props.setLabel(color , text)} className="box-label" style={{ backgroundColor: `${this.props.color}` }} >
-                <p>{this.props.value}</p>
+            <section onClick={() => this.props.setLabel(label , color , value , _id)} className="box-label" style={{ backgroundColor: `${color}` }} >
+                <p>{value}</p>
             </section>
         )
     }

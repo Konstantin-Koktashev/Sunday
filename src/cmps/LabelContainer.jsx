@@ -12,38 +12,74 @@ class LabelContainer extends Component {
     state = {
         isEditAble: false,
         labels: null,
+        allLabels: null
     }
 
     componentDidMount() {
-        this.loadLabels()
+        console.log('labels', this.props.labels)
+        var HardCoded;
+        if (this.props.labels) {
+            HardCoded = [
+                {
+                    _id: '111a',
+                    color: 'green',
+                    value: 'Done'
+                },
+                {
+                    _id: '222v',
+                    color: 'orange',
+                    value: 'Working'
+                }, {
+                    _id: '333b',
+                    color: 'red',
+                    value: 'Stuck'
+                }
+            ]
+        }
+
+        else if (this.props.priority) {
+            HardCoded = [
+                {
+                    _id: '111safa',
+                    color: 'red',
+                    value: 'High'
+                },
+                {
+                    _id: '22afs2v',
+                    color: 'purple',
+                    value: 'Medium'
+                }, {
+                    _id: '3fsa33b',
+                    color: 'blue',
+                    value: 'Low'
+                }
+            ]
+
+        }
+
+        this.setState({ labels: HardCoded }, () => {
+            this.loadAllLabels()
+        })
+
+
     }
 
-    loadLabels = () => {
-        this.setState({
-            labels: [{
-                order: 1,
-                color: 'green',
-                value: 'Done'
-            },
-            {
-                order: 2,
-                color: 'orange',
-                value: 'Working'
-            }, {
-                order: 3,
-                color: 'red',
-                value: 'Stuck'
-            }]
-
-        })
+    loadAllLabels = () => {
+        const labels = this.state.labels
+        labels.push(...this.props.labels)
+        this.setState({ allLabels: labels }, () => console.log('2', this.state))
     }
 
     // UNEDIT
-    setLabel = (color, text) => {
-        console.log('color', color, 'text', text)
+    setLabel = (label, color, text, id) => {
+        console.log('label' , label)
+        console.log('color' , color)
+        console.log('text' , text)
+
         const { currBoard } = this.props
-        const column = this.props.column
-        const board = localBoardService.changeLabelColumn(currBoard, column, text, color)
+        // const column = this.props.column
+        const board = localBoardService.changeLabelColumn(currBoard, label, color, text)
+        console.log('board after change', board)
         this.props.saveBoard(board)
         this.props.toggleContainer()
         this.props.loadBoards()
@@ -71,8 +107,8 @@ class LabelContainer extends Component {
 
     addLabel = (ev) => {
         ev.stopPropagation()
-        const label = {
-            color: 'blue',
+        let label = {
+            color: 'gray',
             value: 'New Label'
         }
         const column = this.props.column
@@ -94,19 +130,36 @@ class LabelContainer extends Component {
 
 
     render() {
-        const { isEditAble, labels } = this.state
+        const { isEditAble, labels, allLabels } = this.state
+        console.log('thisthis', this.state)
         return (
             <section className="label-container">
-                {!isEditAble && labels &&
-                    labels.map((label, idx) => {
-                        return <LabelPreviewUnEdit setLabel={this.setLabel} key={idx} isEdit={false} value={label.value} color={label.color} order={label.order} />
+
+                {isEditAble && labels &&
+                    this.props.labels.map((label, idx) => {
+                        return <LabelPreviewEdit
+                            key={idx} label={label} onRemove={this.onRemove} setLabel={this.setLabel} />
                     })
                 }
 
-                {isEditAble && labels &&
-                    labels.map((label, idx) => {
-                        return <LabelPreviewEdit
-                            key={idx} value={label.value} color={label.color} order={label.order} onRemove={this.onRemove} setLabel={this.setLabel} />
+                {isEditAble &&
+                    <>
+                        <div onClick={ev => this.addLabel(ev)}>Add Label</div>
+                        <div className="label-submit" onClick={(ev) => this.saveChanges(ev)}>Apply</div>
+
+                    </>
+
+                }
+
+
+
+
+
+
+
+                {!isEditAble && allLabels &&
+                    allLabels.map((label, idx) => {
+                        return <LabelPreviewUnEdit setLabel={this.setLabel} key={idx} isEdit={false} label={label} />
                     })
                 }
 
@@ -114,16 +167,6 @@ class LabelContainer extends Component {
                     <div className="label-submit" onClick={(ev) => this.toggleEdit(ev)}>
                         Add / Edit Labels
                 </div>
-                }
-                {isEditAble &&
-                    <>
-
-                        <div onClick={ev => this.addLabel(ev)}>Add Label</div>
-
-                        <div className="label-submit" onClick={(ev) => this.saveChanges(ev)}>Apply</div>
-
-                    </>
-
                 }
 
 
@@ -150,3 +193,6 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LabelContainer);
+
+
+///value={label.value} color={label.color} id={label._id} order={label.order}

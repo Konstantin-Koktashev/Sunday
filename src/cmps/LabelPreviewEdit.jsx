@@ -8,11 +8,19 @@ export default class extends Component {
     state = {
         text: '',
         color: '',
+        id:'',
         colorPickerIsShown: false
     }
 
     componentDidMount() {
-        this.setState({ color: this.props.color, text: this.props.value })
+        console.log('propsprops' , this.props)
+        const {label }= this.props
+        this.setState({
+            text: label.value,
+            color: label.color,
+            id: label.id
+
+        },()=>console.log('edit' , this.state))
     }
 
     toggleCirclePicker = (ev) => {
@@ -38,11 +46,11 @@ export default class extends Component {
         this.setState({ text: value })
     }
 
-    handleSubmit = (ev) => {
+    handleSubmit = (ev , label) => {
         ev.stopPropagation()
         let color = this.state.color
         let text = this.state.text
-        this.props.setLabel(color, text)
+        this.props.setLabel(label , color , text)
     }
 
  
@@ -59,7 +67,7 @@ export default class extends Component {
                     </div>
                 </section>
                 {colorPickerIsShown && <CirclePicker onChangeComplete={(color) => this.onChangeComplete(color)} />}
-                <div onClick={(ev) => this.handleSubmit(ev)}>Save Changes</div>
+                <div onClick={(ev) => this.handleSubmit(ev , this.props.label)}>Save Changes</div>
             </>
         )
     }
