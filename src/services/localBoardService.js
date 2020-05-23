@@ -197,8 +197,8 @@ function updateNumberColumn(board, column, num) {
 
 // date column //
 
-function changeTaskDateColumn(board, column, momentToSet,task,date) {
-    task.dueDate=date.getTime()
+function changeTaskDateColumn(board, column, momentToSet, task, date) {
+    task.dueDate = date.getTime()
     column.value = momentToSet
     return board
 }
@@ -209,8 +209,8 @@ function changeDueDateColumn(board, column, date) {
     return board
 }
 
-function changeDueDateColumn2(board,column,date){
-    column.startDate=date.from
+function changeDueDateColumn2(board, column, date) {
+    column.startDate = date.from
     column.endDate = date.to
     return board
 }
@@ -225,6 +225,7 @@ function changeColumn(board, column, value) {
 }
 
 function changeLabelColumn(board, label, color, text) {
+    debugger
     console.log('labelBefore:', label)
     label.value = text
     label.color = color

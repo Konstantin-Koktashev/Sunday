@@ -83,13 +83,18 @@ class TaskBox extends React.Component {
       case "priority":
         box = (
           <>
-            <div
-              className="label-box box-div"
-              style={{ backgroundColor: col.color }}
-              onClick={this.toggleContainer}
-            >
-              {col.value}
-            </div>
+            {" "}
+            {isTaskBox ? (
+              <div className="label-box box-div">{col.value}</div>
+            ) : (
+              <div
+                className="label-box box-div"
+                style={{ backgroundColor: col.color }}
+                onClick={this.toggleContainer}
+              >
+                {col.value}
+              </div>
+            )}
             {containerIsShown && (
               <LabelContainer
                 toggleContainer={this.toggleContainer}
@@ -131,8 +136,7 @@ class TaskBox extends React.Component {
           </div>
         );
         break;
-      case "poeple":
-        
+      case "people":
         box = <div className="poeple-box box-div">
           <AddPerson  column={col}/>
 

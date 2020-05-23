@@ -7,14 +7,12 @@ import { loadUsers } from '../actions/UserActions'
 
 class AddPerson extends Component {
     state = {
-        usersToAdd: null
+        usersToAdd: null,
+        isShown:false
     }
 
     async componentDidMount() {
         await this.props.loadUsers()
-        // this.props.column.persons =  await this.props.column.persons ? this.props.column : [];
-        console.log('this.proops' , this.props.column)
-
     }
 
     addPerson = (person) => {
@@ -25,10 +23,11 @@ class AddPerson extends Component {
         loadBoards()
     }
     searchPeople = (e) => {
+        debugger
         e.preventDefault()
         const users = this.props.users
         const usersToAdd = users.filter(user => {
-            user.name.includes(e.target.value)
+          return  user.username.includes(e.target.value)
         })
         this.setState({ usersToAdd })
     }
@@ -42,11 +41,17 @@ class AddPerson extends Component {
     }
 
     render() {
+        const isShows=this.state.isShows
         const users = this.props.column.persons
+        const allUsers=this.props.users
         console.log('user', users)
         const usersToAdd = this.state.usersToAdd
         return (
-            <div className='person-component'>
+            <div className='person-component flex col'>
+              
+                    < input onChange={(e) => this.searchPeople(e)}/>
+           
+                  
                 <section className='people-in-task'>
                     {users && users.map(user => {
                         return (<section className='peron-preview-delet'>
@@ -56,16 +61,15 @@ class AddPerson extends Component {
                     })}
                     {/* {!users&&    <input onChange={(e)=>this.searchPeople(e)}></input>} */}
                 </section>
-                < input onChange={(e) => this.searchPeople(e)}>
-                </input>
                 <hr></hr>
                 <span>People:</span>
                 <section className='found-people'>
                     {usersToAdd && usersToAdd.map(user => {
+                        debugger
                         return (
                             <article className='min-user-card' onClick={() => this.addPerson(user)}>
                                 <img></img>
-                                <span>{user.name}</span>
+                                <span>{user.username}</span>
                             </article>
                         )
                     })}
