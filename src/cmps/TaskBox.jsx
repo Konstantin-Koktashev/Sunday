@@ -134,7 +134,7 @@ class TaskBox extends React.Component {
       case "poeple":
         
         box = <div className="poeple-box box-div">
-          {/* <AddPerson  column={col}/> */}
+          <AddPerson  column={col}/>
 
           {col.value}
           </div>;
