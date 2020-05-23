@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-
+import { loadBoards} from '../actions/boardActions'
 
 import WeekPreview from '../cmps/WeekPreview'
 
@@ -11,16 +11,19 @@ class MyWeek extends Component {
         userTasks: null
     }
 
-    componentDidMount() {
-        this.currUser = this.props.user
+    async componentDidMount() {
+        await this.props.loadBoards()
+        this.currUser = await this.props.user
         console.log('thisuser', this.props)
+        if (!this.currUser) return
         this.loadTasks(this.currUser)
     }
 
     loadTasks = async (loggedUser) => {
         var groupsArr = [];
         var tasksArr = [];
-        let { board } = this.props.boards
+        let { board } = await this.props.boards
+        console.log('board' , board)
         const groups = await board.map(b => b.groups)
         await groups.forEach(group => {
             groupsArr.push(...group)
@@ -30,8 +33,6 @@ class MyWeek extends Component {
         })
         var userTasks = tasksArr.filter(task => task.users.find(user => user._id === loggedUser._id))
         this.setState({ userTasks })
-
-
     }
 
 
@@ -39,6 +40,7 @@ class MyWeek extends Component {
 
 
     render() {
+        const user = this.props.user ? this.props.user.name : 'guest - please login to view your week'
         const { userTasks, color } = this.state
         return (
 
@@ -64,7 +66,7 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-
+    loadBoards
 }
 
 

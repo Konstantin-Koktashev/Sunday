@@ -3,21 +3,21 @@ import { connect } from 'react-redux'
 import localBoardService from '../services/localBoardService'
 import { saveBoard, loadBoards } from '../actions/boardActions'
 import { loadUsers } from '../actions/UserActions'
+import UsersPreviewBox from './UsersPreviewBox'
 
 
 class AddPerson extends Component {
     state = {
-        usersToAdd: null
+        usersToAdd: null,
+        isShown:false
     }
 
     async componentDidMount() {
         await this.props.loadUsers()
-        // this.props.column.persons =  await this.props.column.persons ? this.props.column : [];
-        console.log('this.proops' , this.props.column)
-
     }
 
     addPerson = (person) => {
+        this.setState({isShown:false})
         const column = this.props.column
         const currBoard = this.props.currBoard
         const newBoard = localBoardService.addPersonToColumn(currBoard, column, person)
@@ -28,7 +28,7 @@ class AddPerson extends Component {
         e.preventDefault()
         const users = this.props.users
         const usersToAdd = users.filter(user => {
-            user.name.includes(e.target.value)
+          return  user.username.includes(e.target.value)
         })
         this.setState({ usersToAdd })
     }
@@ -40,13 +40,24 @@ class AddPerson extends Component {
         this.props.saveBoard(newBoard)
         this.props.loadBoards()
     }
+    togglePersonBox=()=>{
+        this.setState({isShown:true})
+    }
 
     render() {
+        const isShows=this.state.isShows
         const users = this.props.column.persons
-        console.log('user', users)
+        const allUsers=this.props.users
+        const isShown=this.state.isShown
         const usersToAdd = this.state.usersToAdd
         return (
-            <div className='person-component'>
+            <React.Fragment>
+                <UsersPreviewBox people={users} togglePersonBox={this.togglePersonBox}></UsersPreviewBox>
+            {isShown &&< div className='person-component flex col'>
+              
+                    < input onChange={(e) => this.searchPeople(e)}/>
+           
+                  
                 <section className='people-in-task'>
                     {users && users.map(user => {
                         return (<section className='peron-preview-delet'>
@@ -56,8 +67,6 @@ class AddPerson extends Component {
                     })}
                     {/* {!users&&    <input onChange={(e)=>this.searchPeople(e)}></input>} */}
                 </section>
-                < input onChange={(e) => this.searchPeople(e)}>
-                </input>
                 <hr></hr>
                 <span>People:</span>
                 <section className='found-people'>
@@ -65,7 +74,7 @@ class AddPerson extends Component {
                         return (
                             <article className='min-user-card' onClick={() => this.addPerson(user)}>
                                 <img></img>
-                                <span>{user.name}</span>
+                                <span>{user.username}</span>
                             </article>
                         )
                     })}
@@ -74,7 +83,8 @@ class AddPerson extends Component {
                         <span>Invite User By Email</span>
                     </div>
                 </section>
-            </div>
+            </div>}
+            </React.Fragment>
         )
     }
 }

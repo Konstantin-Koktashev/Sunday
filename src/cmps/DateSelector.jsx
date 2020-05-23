@@ -33,14 +33,6 @@ class DateSelector extends Component {
       <div>
         <form className={"classes.container "} noValidate>
           <DatePicker
-            // id="date"
-            // type="date"
-            // defaultValue={this.props.column.value}
-            // className={"classes.textField"}
-            // InputLabelProps={{
-            //   shrink: true,
-            // }}
-            // placeholderText="Click to select a date"
             selected={this.state.startDate}
             onChange={(ev) => this.handleChange(ev)}
           />
