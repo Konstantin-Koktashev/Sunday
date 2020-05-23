@@ -16,8 +16,9 @@ import { saveBoard } from '../actions/boardActions';
         let currBoard=this.props.currBoard
         const dateToSet=date.getMonth()+' ' +date.getDate()
         const momentToSet=moment(date).format('MM-DD')
-       const newBoard= localBoardService.changeColumn(currBoard,this.props.column,dateToSet)
+       const newBoard= localBoardService.changeColumn(currBoard,this.props.column,momentToSet)
         saveBoard(newBoard)
+        
     }
     render() {
         // const taskDueDate=new Date(this.props.column.value)
