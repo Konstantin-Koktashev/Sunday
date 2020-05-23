@@ -79,7 +79,7 @@ class AddTask extends Component {
           <input
             type="text"
             name="title"
-            placeholder="Add Task"
+            placeholder="+ Add Task"
             value={this.state.taskTitle}
             onChange={(ev) => this.handleChange(ev)}
             onBlur={this.addTask}

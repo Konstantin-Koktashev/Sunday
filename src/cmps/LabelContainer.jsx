@@ -151,7 +151,9 @@ class LabelContainer extends Component {
 
         {isEditAble && (
           <>
-            <div onClick={(ev) => this.addLabel(ev)}>Add Label</div>
+            <div className="add-label-btn" onClick={(ev) => this.addLabel(ev)}>
+              Add Label
+            </div>
             <div
               className="label-submit"
               onClick={(ev) => this.saveChanges(ev)}

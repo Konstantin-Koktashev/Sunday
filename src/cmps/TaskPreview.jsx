@@ -108,6 +108,7 @@ class TaskPreview extends Component {
               <input
                 type="text"
                 name="taskName"
+                className="input-edit-taskName"
                 value={this.state.taskTitle}
                 onChange={this.handleChange}
                 onBlur={(ev) => this.updateTaskName(ev, task)}
@@ -165,7 +166,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(TaskPreview);
 //   // First Function
 //   let SortedCols = matchTaskBoxToBoardColumns(props);
 //   function matchTaskBoxToBoardColumns(props) {
-//     // debugger;
 //     let board = props.board;
 //     let boardBox = [];
 //     board.columns.forEach((box) => {

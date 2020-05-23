@@ -12,11 +12,11 @@
   width: 30px;
   cursor: pointer;
   transition: 0.3s;
-  padding: 5px;
+  padding: 8px;
 }
 
 .side-nav-img:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   background-color: rgba(190, 190, 190, 0.151);
   border-radius: 20px;
 }

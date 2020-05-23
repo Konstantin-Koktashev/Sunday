@@ -3,8 +3,8 @@ import "../style/cmps/taskBox.css";
 import LabelContainer from "./LabelContainer";
 import localBoardService from "../../src/services/localBoardService";
 import { connect } from "react-redux";
-import DatePicker from './Calendar'
-import AddPerson from './AddPerson'
+import DatePicker from "./Calendar";
+import AddPerson from "./AddPerson";
 import {
   saveBoard,
   removeBoard,
@@ -19,7 +19,6 @@ class TaskBox extends React.Component {
     colText: "",
   };
 
-  
   toggleContainer = () => {
     this.setState(({ containerIsShown }) => ({
       containerIsShown: !containerIsShown,
@@ -109,6 +108,7 @@ class TaskBox extends React.Component {
           <input
             type="text"
             name="colEdit"
+            className="colEdit-input"
             value={colText}
             onChange={this.handleChange}
             onBlur={(ev) => this.updateColTitle(ev)}
@@ -124,6 +124,7 @@ class TaskBox extends React.Component {
           <input
             type="text"
             name="colEdit"
+            className="colEdit-input"
             value={colText}
             onChange={this.handleChange}
             onBlur={(ev) => this.updateColTitle(ev)}
@@ -135,17 +136,20 @@ class TaskBox extends React.Component {
         );
         break;
       case "poeple":
-        
-        box = <div className="poeple-box box-div">
-          <AddPerson  column={col}/>
+        box = (
+          <div className="poeple-box box-div">
+            <AddPerson column={col} />
 
-          {col.value}
-          </div>;
+            {col.value}
+          </div>
+        );
         break;
       case "date":
-        box = <div className="date-box box-div">
-          <DateSelector column={col}/>
-          </div>;
+        box = (
+          <div className="date-box box-div">
+            {/* <DateSelector column={col}/> */}
+          </div>
+        );
         break;
       default:
         box = <div className="text-box box-div">{col.value}</div>;
@@ -175,7 +179,6 @@ const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
     currBoard: state.userBoards.currBoard,
-    
   };
 };
 const mapDispatchToProps = {
