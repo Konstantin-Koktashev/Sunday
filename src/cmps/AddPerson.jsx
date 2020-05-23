@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import localBoardService from '../services/localBoardService'
 import { saveBoard, loadBoards } from '../actions/boardActions'
 
-export class AddPerson extends Component {
+
+ class AddPerson extends Component {
     state={
         usersToAdd:null
     }
@@ -31,10 +32,11 @@ export class AddPerson extends Component {
   }
 
     render() {
+        debugger
         const users= this.props.users
         const usersToAdd=this.state.usersToAdd
         return (
-            <div>
+            <div className='person-component'>
                 <section className='people-in-task'>
                     {users&&users.map(user=>{
                         return(<section className='peron-preview-delet'>
@@ -42,9 +44,10 @@ export class AddPerson extends Component {
                         <button className='person-remove' onClick={()=>this.removePerson(user)}>X</button>
                         </section>)
                     })}
-                    {!users&&    <input onChange={(e)=>this.searchPeople(e)}></input>}
+                    {/* {!users&&    <input onChange={(e)=>this.searchPeople(e)}></input>} */}
                 </section>
                 < input onChange={(e)=>this.searchPeople(e)}>
+                        </input>
                     <hr></hr>
                     <span>People:</span>
                     <section className='found-people'>
@@ -61,7 +64,6 @@ export class AddPerson extends Component {
                             <span>Invite User By Email</span>
                         </div>
                     </section>
-                </input>
             </div>
         )
     }
@@ -70,7 +72,7 @@ export class AddPerson extends Component {
 const mapStateToProps = (state) => ({
     users:state.user.users,
     currBoard:state.userBoards.board,
-    currUser:state.users.loggedInUser
+    currUser:state.user.loggedInUser
 })
 
 

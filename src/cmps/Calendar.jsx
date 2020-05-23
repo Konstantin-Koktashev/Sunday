@@ -29,7 +29,6 @@ import { saveBoard } from '../actions/boardActions';
                     value={x}
                     howWeekNumbers
                     hover
-                    
                 />
             </div>
         );
