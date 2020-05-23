@@ -225,8 +225,9 @@ function changeColumn(board, column, value) {
 }
 
 function changeLabelColumn(board, label, color, text) {
-    debugger
+    
     console.log('labelBefore:', label)
+    label.status = text
     label.value = text
     label.color = color
     console.log('labelafter', label)
