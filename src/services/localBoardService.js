@@ -226,10 +226,7 @@ function changeColumn(board, column, value) {
 }
 
 function changeLabelColumn(board, label, color, text) {
-<<<<<<< HEAD
     
-=======
->>>>>>> 6c1345c2612108e576876353889edf55df121f2a
     console.log('labelBefore:', label)
     label.status = text
     label.value = text
