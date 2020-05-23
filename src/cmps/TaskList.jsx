@@ -71,14 +71,14 @@ class TaskList extends Component {
                     {this.props.name}
                   </h2>
                 ) : (
-                  <form onSubmit={(ev) => this.updateGroupName(ev)}>
+                  <form>
                     <input
                       type="text"
                       name="groupName"
                       value={this.state.groupName}
                       onChange={this.handleChange}
+                      onBlur={(ev) => this.updateGroupName(ev)}
                     />
-                    <button>Save</button>
                   </form>
                 )}
               </div>
