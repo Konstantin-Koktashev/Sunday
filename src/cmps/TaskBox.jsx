@@ -44,20 +44,24 @@ class TaskBox extends React.Component {
   };
 
   dataToBox = () => {
-    const col = this.props.col;
+    const { col, isTaskBox } = this.props;
     const { colIsEdit, containerIsShown, colText } = this.state;
     let box;
     switch (col.type) {
       case "label":
         box = (
           <>
-            <div
-              className="label-box box-div"
-              style={{ backgroundColor: col.color }}
-              onClick={this.toggleContainer}
-            >
-              {col.value}
-            </div>
+            {isTaskBox ? (
+              <div className="label-box box-div">{col.value}</div>
+            ) : (
+              <div
+                className="label-box box-div"
+                style={{ backgroundColor: col.color }}
+                onClick={this.toggleContainer}
+              >
+                {col.value}
+              </div>
+            )}
             {containerIsShown && (
               <LabelContainer
                 toggleContainer={this.toggleContainer}

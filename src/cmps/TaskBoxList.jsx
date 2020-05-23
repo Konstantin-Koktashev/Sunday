@@ -116,7 +116,7 @@ export class TaskBoxList extends Component {
                         provided.draggableProps.style
                       )}
                     >
-                      {<TaskBox col={item}></TaskBox>}
+                      {<TaskBox isTaskBox={true} col={item}></TaskBox>}
                     </div>
                   )}
                 </Draggable>
