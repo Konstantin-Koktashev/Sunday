@@ -59,6 +59,7 @@ class TaskBox extends React.Component {
                 toggleContainer={this.toggleContainer}
                 labels={col.labels}
                 column={col}
+                type={col.type}
               />
             )}
           </>

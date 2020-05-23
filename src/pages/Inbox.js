@@ -13,10 +13,10 @@ import calendar from 'simple-react-calendar/lib/calendar/calendar';
 import DatePicker from '../cmps/Calendar';
 import TimeLineTest from '../cmps/TimeLineTest';
 
+
 class Inbox extends Component {
 
     checkUserHistory = () => {
-        debugger
     //   await  this.props.loadBoards()
         const { board } = this.props.userBoards
         const currUserId = this.props.currUser.loggedInUser._id
@@ -94,7 +94,7 @@ class Inbox extends Component {
 
                 })}
                 {/* {isLoading&&<EditTask></EditTask>} */}
-                {/* <TimeLine></TimeLine> */}
+                <TimeLine></TimeLine>
                 <DatePicker></DatePicker>
                 {/* <TimeLineTest></TimeLineTest> */}
 

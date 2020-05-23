@@ -23,10 +23,10 @@ export default {
     changeTaskDateColumn,
     changeLabelColumn,
     addLabel,
+    changeDueDateColumn,
     sortColumnsByBox,
-    updateColumnOrder
-
-
+    updateColumnOrder,
+    setColumn
 }
 
 
@@ -193,6 +193,12 @@ function changeTaskDateColumn(board, column, date) {
     column.value = date
     return board
 }
+function changeDueDateColumn(board,column,date){
+    column.stateDate=date.newStateDay
+    column.endDate=date.newEndDate
+    column.month=date.newMonth
+    return board
+}
 
 
 
@@ -203,9 +209,20 @@ function changeColumn(board, column, value) {
     return board
 }
 
-function changeLabelColumn(board, column, text, color) {
+function changeLabelColumn(board,  label , color , text) {
+    console.log('labelBefore:',  label)
+    label.value = text
+    label.color = color
+    console.log('labelafter' , label)
+    return board
+}
+
+
+
+
+function setColumn(board, column, color , value) {
+    column.value = value
     column.color = color
-    column.value = text
     return board
 }
 
@@ -230,13 +247,11 @@ function changeTasklabelColumn(board, column, label) {
     return board
 }
 
-function addLabel(board, column, label) {
-    console.log('column before', column)
-    if (!column.labels && column.length) column.labels = [];
-    console.log('column after', column)
+function addLabel(board ,  column , label) {
+    if(!column.labels && !column.length) column.labels = [];
+    if(!label._id) label._id = makeId()
     column.labels.push(label)
     return board
-
 }
 
 
