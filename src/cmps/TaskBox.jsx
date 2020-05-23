@@ -3,6 +3,8 @@ import "../style/cmps/taskBox.css";
 import LabelContainer from "./LabelContainer";
 import localBoardService from "../../src/services/localBoardService";
 import { connect } from "react-redux";
+import DatePicker from './Calendar'
+import AddPerson from './AddPerson'
 import {
   saveBoard,
   removeBoard,
@@ -15,6 +17,11 @@ class TaskBox extends React.Component {
     colIsEdit: false,
     colText: "",
   };
+
+  componentDidMount() {
+    console.log('wawawawawa' , this.props)
+  }
+  
   toggleContainer = () => {
     this.setState(({ containerIsShown }) => ({
       containerIsShown: !containerIsShown,
@@ -125,10 +132,16 @@ class TaskBox extends React.Component {
         );
         break;
       case "poeple":
-        box = <div className="poeple-box box-div">{col.value}</div>;
+        
+        box = <div className="poeple-box box-div">
+          <AddPerson  column={col}/>
+
+          {col.value}
+          </div>;
         break;
       case "date":
-        box = <div className="date-box box-div">{col.value}</div>;
+        box = <div className="date-box box-div">
+          {col.value}</div>;
         break;
       default:
         box = <div className="text-box box-div">{col.value}</div>;
@@ -140,7 +153,7 @@ class TaskBox extends React.Component {
   render() {
     return (
       // <section onClick={() => this.props.removeCol(this.props.col)}>
-      <section>
+      <>
         {this.dataToBox()}
         {this.state.containerIsShown && (
           <div
@@ -148,7 +161,7 @@ class TaskBox extends React.Component {
             className="back-screen-label-container"
           ></div>
         )}
-      </section>
+      </>
     );
   }
 }
@@ -158,6 +171,7 @@ const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
     currBoard: state.userBoards.currBoard,
+    
   };
 };
 const mapDispatchToProps = {

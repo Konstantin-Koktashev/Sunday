@@ -8,7 +8,10 @@ export default function BoardHeader(props) {
       <h2>{board.name}</h2>
       <div className="flex space-between">
         <AddGroup board={props.board}></AddGroup>
-        <button onClick={() => props.removeBoard(board._id)}>
+        <button
+          className="header-remove-board"
+          onClick={() => props.removeBoard(board._id)}
+        >
           Remove board
         </button>
       </div>

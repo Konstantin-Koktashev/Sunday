@@ -2,22 +2,24 @@
   width: 100%;
   border: 1px solid rgba(128, 128, 128, 0.281);
   font-size: 9px;
+  /* padding: 0px 2px; */
   text-align: center;
   height: 4vh;
 }
-
-/* .text-box {
+/* 
+.text-box {
   background-color: rgba(233, 230, 230, 0.171);
 }
 
 .number-box {
   background-color: rgba(233, 230, 230, 0.171);
-}
+} */
 
-.label-box {
-  background-color: rgba(233, 230, 230, 0.171);
-}
-
+/* .label-box {
+  width: 7vw;
+  padding-right: 5vw;
+} */
+/* 
 .date-box {
   background-color: rgba(233, 230, 230, 0.171);
 }
@@ -28,14 +30,17 @@
 } */
 
 .task-box-list-container {
-  width: 40vw;
+  /* width: 20vw; */
+  /* margin-right: 10vw; */
+  /* justify-self: end; */
 }
 
 .task-box-toplist-container {
   width: 71.5vw;
-  padding: 0px 3px;
-  /* border-left: 1px solid black;
-  border-right: 1px solid black; */
+  padding: 0px 2px;
+  height: 4vh;
+  /* border-left: 1px solid black; */
+  border-right: 1px solid rgba(128, 128, 128, 0.281);
 }
 
 .back-screen-label-container {
@@ -47,4 +52,9 @@
   z-index: 5;
   left: 0px;
   top: 0px;
+}
+
+.task-box-list-cont {
+  /* width: 25vw; */
+  /* margin-right: 10vw; */
 }

@@ -15,11 +15,25 @@
 }
 
 .add-group-btn {
-  width: 6vw;
+  width: 7vw;
   height: 4vh;
   background-color: #00a8ff;
   cursor: pointer;
   color: white;
   border-radius: 20px;
   font-size: 12px;
+  text-align: center;
+}
+
+.header-remove-board {
+  width: 7vw;
+  text-align: center;
+  height: 4vh;
+  background-color: #00a8ff;
+  cursor: pointer;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  border: none;
+  margin-left: 3px;
 }

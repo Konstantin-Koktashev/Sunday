@@ -30,7 +30,8 @@
 }
 
 .task-bar-columns-container {
-  width: 70%;
+  /* width: 70%; */
+  /* width: 40vw; */
   font-size: 11px;
 }
 .task-bar-columns-container p {
@@ -52,8 +53,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 5px;
+  padding: 0px 0px;
   min-width: 5vw;
+  width: 5vw;
   height: 4vh;
 }
 .task-bar-columns-container img {
