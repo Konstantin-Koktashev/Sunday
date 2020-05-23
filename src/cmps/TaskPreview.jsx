@@ -2,16 +2,24 @@ import React from "react";
 import "../style/cmps/taskPreview.css";
 import person from "../style/img/person.svg";
 import chat from "../style/img/chat.png";
-import { TaskBox } from "../cmps/TaskBox";
+import TaskBox from "../cmps/TaskBox.jsx";
 import deletePng from "../style/img/close.svg";
+import localBoardService from "../services/localBoardService";
 export function TaskPreview(props) {
-  const { task } = props;
+  const { task, board } = props;
 
-  sortBoxs();
-  function sortBoxs() {
-    task.columns.sort(function (a, b) {
-      return a.order - b.order;
+  const cols = task.columns;
+  SortCols(board, cols);
+  function SortCols(board, cols) {
+    debugger;
+    let order = [];
+    board.columns.forEach((col) => {
+      order.push(col.order);
     });
+
+    console.log("SortCols -> order", order);
+
+    let newBoard = localBoardService.sortColumnsByBox(board, cols, order);
   }
 
   return (
@@ -36,10 +44,10 @@ export function TaskPreview(props) {
       />
 
       <div className="task-bar-columns-container flex space-evenly a-center">
-        <p>{task.createdAt}</p>
-        <div className="box-div">
+        {/* <p>{task.createdAt}</p> */}
+        {/* <div className="box-div">
           <img src={person} alt="Person" />
-        </div>
+        </div> */}
         {task.columns.map((col, idx) => {
           return <TaskBox key={idx} col={col} />;
         })}

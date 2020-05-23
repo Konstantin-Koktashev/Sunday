@@ -20,25 +20,25 @@ export default {
     updateNumberColumn,
     changeColumn,
     removePersonToTask,
-    changeTaskDateColumn
-    ,
-    sortColumnsByBox
+    changeTaskDateColumn,
+    changeLabelColumn,
+    addLabel,
+    sortColumnsByBox,
+    updateColumnOrder
 
 
 }
+
+
+
+
 //Sort Cols
 
-function sortColumnsByBox(board, order) {
-
-    board.groups.forEach((group) => {
-        group.tasks.forEach((task) => {
-            task.columns = _mapOrder(task.columns, order, "order");
-        });
-    });
-    debugger
-
+function sortColumnsByBox(board, cols, order) {
+    cols = _mapOrder(cols, order, 'order')
     return board
-};
+}
+
 
 
 function _mapOrder(array, order, key) {
@@ -53,6 +53,14 @@ function _mapOrder(array, order, key) {
     });
     return array;
 };
+
+
+/// Update Columns (ON BOARD ) Order 
+function updateColumnOrder(board, columns, reOrderedCols) {
+    columns = reOrderedCols
+    return board
+}
+
 
 // groups //
 
@@ -135,6 +143,9 @@ function removeCol(board, column, group) {
 }
 
 
+
+
+
 // update column
 function updateColumnTitle(board, column, text) {
     column.value = text
@@ -192,6 +203,12 @@ function changeColumn(board, column, value) {
     return board
 }
 
+function changeLabelColumn(board, column, text, color) {
+    column.color = color
+    column.value = text
+    return board
+}
+
 
 
 
@@ -211,6 +228,15 @@ function changeColumn(board, column, value) {
 function changeTasklabelColumn(board, column, label) {
     column.value = label
     return board
+}
+
+function addLabel(board, column, label) {
+    console.log('column before', column)
+    if (!column.labels && column.length) column.labels = [];
+    console.log('column after', column)
+    column.labels.push(label)
+    return board
+
 }
 
 

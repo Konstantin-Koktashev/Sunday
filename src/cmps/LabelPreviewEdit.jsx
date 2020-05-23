@@ -59,7 +59,7 @@ export default class extends Component {
                     </div>
                 </section>
                 {colorPickerIsShown && <CirclePicker onChangeComplete={(color) => this.onChangeComplete(color)} />}
-                <div onClick={(ev) => this.handleSubmit(ev)}>Apply</div>
+                <div onClick={(ev) => this.handleSubmit(ev)}>Save Changes</div>
             </>
         )
     }

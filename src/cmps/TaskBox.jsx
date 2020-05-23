@@ -1,9 +1,19 @@
 import React from "react";
 import "../style/cmps/taskBox.css";
 import LabelContainer from "./LabelContainer";
-export class TaskBox extends React.Component {
+import localBoardService from "../../src/services/localBoardService";
+import { connect } from "react-redux";
+import {
+  saveBoard,
+  removeBoard,
+  setCurrBoard,
+  loadBoards,
+} from "../actions/boardActions";
+class TaskBox extends React.Component {
   state = {
     containerIsShown: false,
+    colIsEdit: false,
+    colText: "",
   };
   toggleContainer = () => {
     this.setState(({ containerIsShown }) => ({
@@ -11,8 +21,31 @@ export class TaskBox extends React.Component {
     }));
   };
 
+  toggleColEdit = () => {
+    this.setState(({ colIsEdit }) => ({
+      colIsEdit: !colIsEdit,
+      colText: this.props.col.value,
+    }));
+  };
+
+  handleChange = ({ target }) => {
+    const value = target.value;
+    this.setState({ colText: value });
+  };
+
+  updateColTitle = (ev) => {
+    ev.preventDefault();
+    let { currBoard, col } = this.props;
+    let text = this.state.colText;
+    let newBoard = localBoardService.updateColumnTitle(currBoard, col, text);
+    this.props.saveBoard(newBoard);
+    this.props.loadBoards();
+    this.toggleColEdit();
+  };
+
   dataToBox = () => {
     const col = this.props.col;
+    const { colIsEdit, containerIsShown, colText } = this.state;
     let box;
     switch (col.type) {
       case "label":
@@ -21,17 +54,45 @@ export class TaskBox extends React.Component {
             <div className="label-box box-div" onClick={this.toggleContainer}>
               {col.value}
             </div>
-            {this.state.containerIsShown && (
-              <LabelContainer labels={col.labels} />
+            {containerIsShown && (
+              <LabelContainer
+                toggleContainer={this.toggleContainer}
+                labels={col.labels}
+                column={col}
+              />
             )}
           </>
         );
         break;
       case "number":
-        box = <div className="number-box box-div">{col.value}</div>;
+        box = colIsEdit ? (
+          <input
+            type="text"
+            name="colEdit"
+            value={colText}
+            onChange={this.handleChange}
+            onBlur={(ev) => this.updateColTitle(ev)}
+          />
+        ) : (
+          <div onClick={this.toggleColEdit} className="number-box box-div">
+            {col.value}
+          </div>
+        );
         break;
       case "text":
-        box = <div className="text-box box-div">{col.value}</div>;
+        box = colIsEdit ? (
+          <input
+            type="text"
+            name="colEdit"
+            value={colText}
+            onChange={this.handleChange}
+            onBlur={(ev) => this.updateColTitle(ev)}
+          />
+        ) : (
+          <div onClick={this.toggleColEdit} className="text-box box-div">
+            {col.value}
+          </div>
+        );
         break;
       case "poeple":
         box = <div className="poeple-box box-div">{col.value}</div>;
@@ -54,4 +115,18 @@ export class TaskBox extends React.Component {
   }
 }
 
-// contentEditable="true"
+const mapStateToProps = (state) => {
+  //State of the store to props of the cmp
+  return {
+    boards: state.userBoards.board,
+    currBoard: state.userBoards.currBoard,
+  };
+};
+const mapDispatchToProps = {
+  saveBoard,
+  removeBoard,
+  setCurrBoard,
+  loadBoards,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskBox);

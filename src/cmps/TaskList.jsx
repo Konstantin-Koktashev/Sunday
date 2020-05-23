@@ -2,11 +2,17 @@ import React, { Component } from "react";
 import "../style/cmps/taskList.css";
 import { TaskPreview } from "./TaskPreview.jsx";
 import resize from "../style/img/resize.png";
+import pencil from "../style/img/pencil.svg";
 import { TaskBoxList } from "./TaskBoxList.jsx";
 import AddTask from "../../src/cmps/AddTask";
 import localBoardService from "../services/localBoardService";
 import { connect } from "react-redux";
-import { saveBoard, loadBoards, removeBoard } from "../actions/boardActions";
+import {
+  saveBoard,
+  loadBoards,
+  removeBoard,
+  setCurrBoard,
+} from "../actions/boardActions";
 class TaskList extends Component {
   state = {
     taskIsShown: true,
@@ -50,6 +56,12 @@ class TaskList extends Component {
     }));
   };
 
+  updateBoardColOrder = (board) => {
+    this.props.saveBoard(board);
+    this.props.loadBoards();
+    this.props.setCurrBoard();
+  };
+
   render() {
     return (
       <div className="task-list-container flex col space-evenly">
@@ -63,12 +75,19 @@ class TaskList extends Component {
                   className="resize-png"
                   onClick={this.toggleList}
                   src={resize}
-                  alt="here"
+                  alt="Resize"
                   title="Toggle Group"
                 />
                 {!this.state.groupNameIsEdit ? (
                   <h2 onClick={(ev) => this.toggleEdit(ev)}>
                     {this.props.name}
+                    <img
+                      className="pencil-svg"
+                      onClick={(ev) => this.toggleEdit(ev)}
+                      src={pencil}
+                      alt="Edit"
+                      title="Edit"
+                    />
                   </h2>
                 ) : (
                   <form>
@@ -83,7 +102,7 @@ class TaskList extends Component {
                 )}
               </div>
               <TaskBoxList
-                sortColumnsByBox={this.props.sortColumnsByBox}
+                updateBoardColOrder={this.updateBoardColOrder}
                 items={this.props.cols}
                 board={this.props.board}
               ></TaskBoxList>
@@ -98,6 +117,7 @@ class TaskList extends Component {
                   deleteTask={this.deleteTask}
                   task={task}
                   key={idx}
+                  board={this.props.board}
                 />
               ))}
               <AddTask group={this.props.group}></AddTask>
@@ -120,6 +140,7 @@ const mapDispatchToProps = {
   saveBoard,
   removeBoard,
   loadBoards,
+  setCurrBoard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

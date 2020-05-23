@@ -67,6 +67,18 @@ html {
   margin-bottom: 25px;
 }
 
+.pencil-svg {
+  width: 14px;
+  filter: grayscale(1.5);
+  opacity: 0;
+  margin-left: 5px;
+}
+
+.pencil-svg:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
 .logo {
   width: 50px;
 }
