@@ -41,7 +41,7 @@ class LabelContainer extends Component {
     // UNEDIT
     setLabel = (label) => {
         const { currBoard } = this.props
-        const board = localBoardService.changeColumn(currBoard, label)
+        const board = localBoardService.changeColumn(currBoard, label , label.value)
         this.props.saveBoard(board)
         //find the label with the order and set the label on the props who props column who submit the label
         // console.log('got to set label with order num:', order)
@@ -86,8 +86,6 @@ class LabelContainer extends Component {
                             key={idx} value={label.value} color={label.color} order={label.order} onRemove={this.onRemove} setLabel={this.setLabel} />
                     })
                 }
-
-
 
                 {!isEditAble &&
                     <div className="label-submit" onClick={(ev) => this.toggleEdit(ev)}>

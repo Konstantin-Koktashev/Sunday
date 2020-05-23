@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import "../style/cmps/boardNav.css";
 import resize from "../style/img/resize.png";
 import AddBoard from "./AddBoard.jsx";
-
+import {
+  loadBoards,
+  setCurrBoard,
+  removeBoard,
+} from "../../src/actions/boardActions";
 export class BoardNav extends Component {
   state = {
     boardIsShown: true,
@@ -18,7 +22,7 @@ export class BoardNav extends Component {
   };
 
   render() {
-    console.log(this.props.boards)
+    console.log(this.props.boards);
     return (
       <>
         {this.props.boards && (
@@ -66,6 +70,10 @@ const mapStateToProps = (state) => {
     boards: state.userBoards.board,
   };
 };
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  loadBoards,
+  setCurrBoard,
+  removeBoard,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardNav);

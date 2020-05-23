@@ -88,6 +88,7 @@ class AddTask extends Component {
             placeholder="Add Task"
             value={this.state.text}
             onChange={(ev) => this.handleChange(ev)}
+            required
           />
         </form>
       </>

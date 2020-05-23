@@ -15,21 +15,16 @@ class BoardApp extends React.Component {
 
     componentDidMount = async () => {
         var allBoards = await this.props.loadBoards()
-        console.log("BoardApp -> componentDidMount -> allBoards", this.props.boards)
         this.loadboards()
 
     }
     componentDidUpdate(prevProps) {
-        console.log('update?')
         if (this.props.match.params.id !== prevProps.match.params.id) {
             let board = this.getBoardByID(this.props.match.params.id)
             this.setBoard(board)
         }
         if (JSON.stringify(this.props.currBoard) !== JSON.stringify(prevProps.currBoard)) {
-            console.log('Showing a new board')
-
             this.loadboards()
-            console.log(this.state.currBoard, ' curr baord state')
         }
 
     }
