@@ -22,7 +22,8 @@ export default {
     removePersonToTask,
     changeTaskDateColumn,
     changeLabelColumn,
-    addLabel
+    addLabel,
+    changeDueDateColumn,
 
 
 
@@ -181,6 +182,12 @@ function updateNumberColumn(board, column, num) {
 
 function changeTaskDateColumn(board, column, date) {
     column.value = date
+    return board
+}
+function changeDueDateColumn(board,column,date){
+    column.stateDate=date.newStateDay
+    column.endDate=date.newEndDate
+    column.month=date.newMonth
     return board
 }
 
