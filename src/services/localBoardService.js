@@ -26,7 +26,8 @@ export default {
     changeDueDateColumn,
     sortColumnsByBox,
     updateColumnOrder,
-    setColumn
+    setColumn,
+    
 }
 
 
