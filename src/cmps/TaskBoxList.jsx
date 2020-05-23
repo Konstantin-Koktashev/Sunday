@@ -63,14 +63,16 @@ export class TaskBoxList extends Component {
     this.setState({
       items,
     });
-    // let order = [];
+    let order = [];
     // items.forEach((item) => {
     //   order.push(item.order);
     // });
+
+    console.log("TaskBoxList -> onDragEnd -> items", items);
+
     let board = this.props.board;
-    let cols = this.props.board.columns;
-    let newBoard = localBoardService.updateColumnOrder(board, cols, items);
-    this.props.updateBoardColOrder(newBoard);
+    let newBoard = localBoardService.updateColumnOrder(board, items);
+    this.props.updateBoardColOrderTest(newBoard);
   }
 
   // Normally you would want to split things out into separate components.

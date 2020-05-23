@@ -7,26 +7,26 @@ class AddTask extends Component {
   state = {
     task: {
       _id: 1000233,
-      assignedGroupId: 124,
+      assignedGroupId: null,
       taskTitle: "Todo",
       createdAt: "date",
       users: [{ _id: 1234, name: "shahar" }], // Min users
       columns: [
-        {
-          type: "label",
-          value: "Done",
-          order: "1",
-        },
-        {
-          type: "text",
-          value: "im text",
-          order: "2",
-        },
-        {
-          type: "number",
-          value: 100,
-          order: "3",
-        },
+        // {
+        //   type: "label",
+        //   value: "Done",
+        //   order: "1",
+        // },
+        // {
+        //   type: "text",
+        //   value: "im text",
+        //   order: "2",
+        // },
+        // {
+        //   type: "number",
+        //   value: 100,
+        //   order: "3",
+        // },
       ], //  Columns Objects
       updates: [
         {
@@ -52,12 +52,6 @@ class AddTask extends Component {
         },
       ], // Notes objects
       people: [],
-      status: "",
-      priority: "",
-      DueDate: "",
-      budget: "150",
-      text: "",
-      link: "",
     },
     taskTitle: "",
   };

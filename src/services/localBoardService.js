@@ -35,9 +35,9 @@ export default {
 
 //Sort Cols
 
-function sortColumnsByBox(board, cols, order) {
+function sortColumnsByBox(cols, order) {
     cols = _mapOrder(cols, order, 'order')
-    return board
+    return cols
 }
 
 
@@ -57,8 +57,10 @@ function _mapOrder(array, order, key) {
 
 
 /// Update Columns (ON BOARD ) Order 
-function updateColumnOrder(board, columns, reOrderedCols) {
-    columns = reOrderedCols
+function updateColumnOrder(board, reOrderedCols) {
+    console.log("@@@@@@@@@@@ -> reOrderedCols", reOrderedCols)
+    board.columns = reOrderedCols
+    console.log('@@@@@@@@ Board', board)
     return board
 }
 
@@ -95,6 +97,7 @@ function changeGroupName(board, group, name) {
 //add task
 function addTask(board, group, task) {
     task._id = makeId()
+    task.assignedGroupId = group._id
     group.tasks.push(task)
     return board
 }

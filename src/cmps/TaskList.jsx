@@ -56,10 +56,16 @@ class TaskList extends Component {
     }));
   };
 
-  updateBoardColOrder = (board) => {
-    this.props.saveBoard(board);
-    this.props.loadBoards();
-    this.props.setCurrBoard();
+  updateBoardColOrder = async (board) => {
+    await this.props.saveBoard(board);
+    // await this.props.setCurrBoard(board);
+    // await this.props.loadBoards();
+  };
+
+  updateBoardColOrderTest = async (board) => {
+    await this.props.saveBoard(board);
+    await this.props.setCurrBoard(board);
+    await this.props.loadBoards();
   };
 
   render() {
@@ -102,7 +108,7 @@ class TaskList extends Component {
                 )}
               </div>
               <TaskBoxList
-                updateBoardColOrder={this.updateBoardColOrder}
+                updateBoardColOrderTest={this.updateBoardColOrderTest}
                 items={this.props.cols}
                 board={this.props.board}
               ></TaskBoxList>
@@ -118,6 +124,7 @@ class TaskList extends Component {
                   task={task}
                   key={idx}
                   board={this.props.board}
+                  updateBoardColOrder={this.updateBoardColOrder}
                 />
               ))}
               <AddTask group={this.props.group}></AddTask>
