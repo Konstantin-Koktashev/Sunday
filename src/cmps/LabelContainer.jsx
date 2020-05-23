@@ -102,7 +102,7 @@ class LabelContainer extends Component {
     }
 
     onRemove = (onRemove, orderId) => {
-
+        
     }
 
     toggleEdit = (ev) => {

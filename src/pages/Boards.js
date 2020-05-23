@@ -29,7 +29,7 @@ class BoardApp extends React.Component {
 
     }
 
-    loadboards = () => {
+    loadboards = async () => {
         const { boards } = this.props;
         const id = this.props.match.params.id ? this.props.match.params.id : null
         let board = boards[0]
@@ -74,7 +74,7 @@ class BoardApp extends React.Component {
 
         await this.props.loadBoards()
         await this.props.history.push('/board/')
-        this.loadboards()
+        await this.loadboards()
     }
     render() {
 
