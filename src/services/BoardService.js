@@ -518,6 +518,7 @@ function updateBoard() {
 
 
 function remove(boardId) {
+  debugger
   console.log("111111111remove -> boardId", boardId)
   return HttpService.delete(`board/${boardId}`);
 }

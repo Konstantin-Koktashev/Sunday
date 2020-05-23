@@ -100,7 +100,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     loadBoards,
     setCurrBoard,
-    removeBoard
+    removeBoard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardApp);
