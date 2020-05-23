@@ -22,7 +22,7 @@ export class TaskBox extends React.Component {
               {col.value}
             </div>
             {this.state.containerIsShown && (
-              <LabelContainer labels={col.labels} />
+              <LabelContainer toggleContainer={this.toggleContainer} labels={col.labels} column={col} />
             )}
           </>
         );

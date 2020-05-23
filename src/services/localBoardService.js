@@ -20,7 +20,9 @@ export default {
     updateNumberColumn,
     changeColumn,
     removePersonToTask,
-    changeTaskDateColumn
+    changeTaskDateColumn,
+    changeLabelColumn,
+    addLabel
 
 
 
@@ -166,6 +168,12 @@ function changeColumn(board, column, value) {
     return board
 }
 
+function changeLabelColumn(board, column, text, color) {
+    column.color = color
+    column.value = text
+    return board
+}
+
 
 
 
@@ -185,6 +193,15 @@ function changeColumn(board, column, value) {
 function changeTasklabelColumn(board, column, label) {
     column.value = label
     return board
+}
+
+function addLabel(board ,  column , label) {
+    console.log('column before' , column)
+    if(!column.labels && column.length) column.labels = [];
+    console.log('column after' , column)
+    column.labels.push(label)
+    return board
+
 }
 
 
