@@ -118,13 +118,3 @@ export class TaskBoxList extends Component {
     );
   }
 }
-// {
-//   /* <div className="group-col-names flex space-evenly">
-// {this.props.cols.map((col) => {
-//   return (
-//     <div contentEditable={true} className="task-box-names">
-//       {col.value}
-//     </div>
-//   );
-// })} */
-// }

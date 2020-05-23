@@ -110,23 +110,7 @@ class AddBoard extends Component {
               // Aggregation
               users: [{ _id: 1234, name: "shahar" }], // Min users
               // ABIR COLS DONT TOUCH
-              columns: [
-                {
-                  type: "label",
-                  value: "Done",
-                  order: "1",
-                },
-                {
-                  type: "text",
-                  value: "im text",
-                  order: "2",
-                },
-                {
-                  type: "number",
-                  value: 100,
-                  order: "3",
-                },
-              ], //  Columns Objects
+              columns: [], //  Columns Objects
               updates: [
                 {
                   user: {
@@ -160,28 +144,13 @@ class AddBoard extends Component {
             },
             {
               _id: 2222,
+              assignedGroupId: 124,
               taskTitle: "Todo",
               createdAt: "date",
               // Aggregation
               users: [{ _id: 1234, name: "shahar" }], // Min users
               // ABIR COLS DONT TOUCH
-              columns: [
-                {
-                  type: "label",
-                  value: "Done3",
-                  order: 3,
-                },
-                {
-                  type: "text",
-                  value: "im text1",
-                  order: 1,
-                },
-                {
-                  type: "number",
-                  value: 100,
-                  order: 2,
-                },
-              ], //  Columns Objects
+              columns: [], //  Columns Objects
               updates: [
                 {
                   user: {
@@ -215,29 +184,13 @@ class AddBoard extends Component {
             },
             {
               _id: 2222,
-              assignedGroupId: 123,
+              assignedGroupId: 124,
               taskTitle: "Todo",
               createdAt: "date",
               // Aggregation
               users: [{ _id: 1234, name: "shahar" }], // Min users
               // ABIR COLS DONT TOUCH
-              columns: [
-                {
-                  type: "label",
-                  value: "Done3",
-                  order: 3,
-                },
-                {
-                  type: "text",
-                  value: "im text1",
-                  order: 1,
-                },
-                {
-                  type: "number",
-                  value: 100,
-                  order: 2,
-                },
-              ], //  Columns Objects
+              columns: [], //  Columns Objects
               updates: [
                 {
                   user: {
@@ -268,34 +221,16 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
-              assignedBy: 1234,
-              assignedTo: 1234,
-              associatedBoardId: "1",
             },
             {
               _id: 2222,
+              assignedGroupId: 124,
               taskTitle: "Todo",
               createdAt: "date",
               // Aggregation
               users: [{ _id: 1234, name: "shahar" }], // Min users
               // ABIR COLS DONT TOUCH
-              columns: [
-                {
-                  type: "label",
-                  value: "Done3",
-                  order: 3,
-                },
-                {
-                  type: "text",
-                  value: "im text1",
-                  order: 1,
-                },
-                {
-                  type: "number",
-                  value: 100,
-                  order: 2,
-                },
-              ], //  Columns Objects
+              columns: [], //  Columns Objects
               updates: [
                 {
                   user: {
