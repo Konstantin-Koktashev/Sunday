@@ -27,7 +27,8 @@ export default {
     sortColumnsByBox,
     updateColumnOrder,
     setColumn,
-    filter
+    filter,
+    changeDueDateColumn2
 }
 
 
@@ -201,6 +202,12 @@ function changeDueDateColumn(board, column, date) {
     column.stateDate = date.newStateDay
     column.endDate = date.newEndDate
     column.month = date.newMonth
+    return board
+}
+
+function changeDueDateColumn2(board,column,date){
+    column.startDate=date.from
+    column.endDate = date.to
     return board
 }
 

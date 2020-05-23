@@ -4,6 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import { connect } from 'react-redux'
 import localBoardService from '../services/localBoardService';
 import { saveBoard } from '../actions/boardActions';
+import { moment } from 'moment';
 
  class Timeline extends Component {
 
@@ -21,6 +22,20 @@ import { saveBoard } from '../actions/boardActions';
             }
             const newBoard=localBoardService.changeDueDateColumn(currBoard,column,newDate)
             saveBoard(newBoard)
+        }
+        onchange2=(dates)=>{
+            let currBoard=this.props.currBoard
+            const column=this.props.column
+            let moments=[]
+            dates.forEach(date=>{
+              moments.push(moment(date).format('DD/MMM'))
+            })
+            const newTimeLine={
+               from: moments[0],
+               to:moments[1]
+            }
+            const newBoard=localBoardService.changeDueDateColumn2(currBoard,column,newTimeLine)
+            saveBoard(newBoard)   
         }
     
         render() {
