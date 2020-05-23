@@ -50,3 +50,19 @@ export default class TaskDetails extends Component {
     );
   }
 }
+function filter(board, value) {
+  var newBoard = board
+
+  if (value) {
+      const groupsAfterFilter = board.groups.filter(group => {
+          return group.name.includes(value)
+      })
+      const tasksAfterFilter = board.groups.map(group => {
+          return group.tasks.filter(task => {
+              return task.taskTitle.includes(value)
+          })
+      })
+  }
+  return newBoard
+
+}
