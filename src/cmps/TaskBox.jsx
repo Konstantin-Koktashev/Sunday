@@ -140,7 +140,7 @@ class TaskBox extends React.Component {
   render() {
     return (
       // <section onClick={() => this.props.removeCol(this.props.col)}>
-      <section>
+      <>
         {this.dataToBox()}
         {this.state.containerIsShown && (
           <div
@@ -148,7 +148,7 @@ class TaskBox extends React.Component {
             className="back-screen-label-container"
           ></div>
         )}
-      </section>
+      </>
     );
   }
 }

@@ -35,7 +35,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 const getListStyle = (isDraggingOver) => ({
   background: isDraggingOver ? "#74b9ff" : "white",
   display: "flex",
-  padding: grid,
+  // padding: grid, // No n eed
   overflow: "auto",
 });
 
@@ -94,7 +94,7 @@ export class TaskBoxList extends Component {
         <Droppable droppableId="droppable" direction="horizontal">
           {(provided, snapshot) => (
             <div
-              className="flex a-center j-center"
+              className="task-box-list-cont flex a-center j-center"
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver)}
               {...provided.droppableProps}

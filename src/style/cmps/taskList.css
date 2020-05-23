@@ -42,10 +42,15 @@
 }
 .group-col-box {
   /* padding: 10px; */
-  border-collapse: collapse;
-  width: 100%;
+  /* border-collapse: collapse; */
+  /* width: 100%; */
+  padding: 0px;
 }
 
 .group-col-box:hover {
   color: #2d3436a2;
+}
+
+.task-list-top {
+  padding: 0px;
 }
