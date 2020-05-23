@@ -35,3 +35,13 @@
   width: 71.5vw;
   padding: 0px 2px;
 }
+
+.back-screen-label-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 5;
+  left: 0px;
+  top: 0px;
+}
