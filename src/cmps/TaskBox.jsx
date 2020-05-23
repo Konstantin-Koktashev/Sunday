@@ -11,6 +11,7 @@ import {
   setCurrBoard,
   loadBoards,
 } from "../actions/boardActions";
+import DateSelector from "./DateSelector";
 class TaskBox extends React.Component {
   state = {
     containerIsShown: false,
@@ -18,9 +19,6 @@ class TaskBox extends React.Component {
     colText: "",
   };
 
-  componentDidMount() {
-    console.log('wawawawawa' , this.props)
-  }
   
   toggleContainer = () => {
     this.setState(({ containerIsShown }) => ({
@@ -146,7 +144,8 @@ class TaskBox extends React.Component {
         break;
       case "date":
         box = <div className="date-box box-div">
-          {col.value}</div>;
+          <DateSelector column={col}/>
+          </div>;
         break;
       default:
         box = <div className="text-box box-div">{col.value}</div>;
