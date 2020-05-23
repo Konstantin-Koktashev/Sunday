@@ -61,7 +61,6 @@ class AddTask extends Component {
     if (!this.state.taskTitle) return;
     let task = this.state.task;
     task.taskTitle = this.state.taskTitle;
-
     let board = await this.props.currBoard;
     let group = this.props.group;
     let newBoard = localBoardService.addTask(board, group, task);
@@ -80,8 +79,8 @@ class AddTask extends Component {
           <input
             type="text"
             name="title"
-            placeholder="Add Task"
-            value={this.state.text}
+            placeholder="+ Add Task"
+            value={this.state.taskTitle}
             onChange={(ev) => this.handleChange(ev)}
             onBlur={this.addTask}
             required

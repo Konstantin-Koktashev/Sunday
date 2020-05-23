@@ -21,17 +21,17 @@ class LabelContainer extends Component {
       HardCoded = [
         {
           _id: "111a",
-          color: "green",
+          color: "#44bd32",
           value: "Done",
         },
         {
           _id: "222v",
-          color: "orange",
+          color: "#00a8ff",
           value: "Working",
         },
         {
           _id: "333b",
-          color: "red",
+          color: "#eb2f06",
           value: "Stuck",
         },
       ];
@@ -39,18 +39,18 @@ class LabelContainer extends Component {
       HardCoded = [
         {
           _id: "111safa",
-          color: "red",
+          color: "#eb2f06",
           value: "High",
         },
         {
           _id: "22afs2v",
-          color: "purple",
+          color: "#5f27cd",
           value: "Medium",
         },
         {
           _id: "3fsa33b",
-          color: "blue",
-          value: "Low",
+          color: "#00a8ff",
+          value: "low",
         },
       ];
     }
@@ -131,7 +131,7 @@ class LabelContainer extends Component {
         ? this.props.labels
         : [];
     return (
-      <section className="label-container">
+      <section className="label-container fade-in-editor flex col">
         {isEditAble &&
           labelsFromProps &&
           labelsFromProps.map((label, idx) => {
@@ -147,7 +147,9 @@ class LabelContainer extends Component {
 
         {isEditAble && (
           <>
-            <div onClick={(ev) => this.addLabel(ev)}>Add Label</div>
+            <div className="add-label-btn" onClick={(ev) => this.addLabel(ev)}>
+              Add Label
+            </div>
             <div
               className="label-submit"
               onClick={(ev) => this.saveChanges(ev)}

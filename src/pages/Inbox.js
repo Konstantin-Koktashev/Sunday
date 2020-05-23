@@ -23,14 +23,14 @@ class Inbox extends Component {
     componentDidMount() {
         this.props.loadUsers()
     }
-    
+
 
     checkUserHistory = () => {
-    //   await  this.props.loadBoards()
+        //   await  this.props.loadBoards()
         const { board } = this.props.userBoards
-        if(!this.props.currUser.loggedInUser) return
+        if (!this.props.currUser.loggedInUser) return
         const currUserId = this.props.currUser.loggedInUser._id
-       
+
         var totalUserHistory = []
         board.forEach(board => {
             let userPersonalHistory = board.history.filter(history => {
@@ -54,22 +54,22 @@ class Inbox extends Component {
         console.log('I JUST MOUNTEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD');
     }
     componentDidUpdate() { }
-    removeFromInbox=()=>{
-        
+    removeFromInbox = () => {
+
     }
-     render() {
+    render() {
         const userHistory = this.checkUserHistory()
-    //  this.props.loadBoards()
-        const isLoading=this.props.currBoard
-        if(!this.props.currUser.loggedInUser)return <h1>No Logged User . </h1>
+        //  this.props.loadBoards()
+        const isLoading = this.props.currBoard
+        if (!this.props.currUser.loggedInUser) return <h1>No Logged User . </h1>
         return (
-            
+
             <div className='inbox-container'>
                 <h2>Inbox</h2>
-                {isLoading&&userHistory.map(history => {
+                {isLoading && userHistory.map(history => {
                     console.log("Inbox -> render -> history", history)
                     return (<article className='user-history flex col'>
-                        <img  className='complete-task' src={checkbox} onClick={()=>{this.removeFromInbox()}}></img>
+                        <img className='complete-task' src={checkbox} onClick={() => { this.removeFromInbox() }}></img>
                         <section className='history-header flex col a-start'>
                             <div className='user-logo'>
 
@@ -121,12 +121,12 @@ class Inbox extends Component {
 const mapStateToProps = (state) => ({
     userBoards: state.userBoards,
     currUser: state.user,
-    currBoard:state.userBoards.currBoard
+    currBoard: state.userBoards.currBoard
 })
 
 const mapDispatchToProps = {
-loadBoards,
-loadUsers
+    loadBoards,
+    loadUsers
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inbox)

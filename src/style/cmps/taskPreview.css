@@ -3,7 +3,7 @@
   border-radius: 1px;
   border: 1px solid rgba(119, 119, 119, 0.199);
   padding: 0px 2px;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   background-color: #dfe6e957;
   height: 4vh;
 }
@@ -26,7 +26,7 @@
   width: 10vw;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis; */
 }
 
 .task-bar-columns-container {
@@ -56,7 +56,12 @@
   padding: 0px 0px;
   min-width: 5vw;
   width: 5vw;
+  cursor: pointer;
   height: 4vh;
+}
+
+.box-div:hover {
+  color: rgb(255, 255, 255);
 }
 .task-bar-columns-container img {
   height: 20px;
@@ -113,9 +118,19 @@
   width: 20px;
   /* transform: rotate(-180deg); */
   margin-left: -25px;
-  opacity: 0.7;
+  opacity: 0.4;
 }
 
 .delete-icon:hover {
   transform: scale(1.1);
+  opacity: 1;
+}
+
+.input-edit-taskName {
+  width: 10vw;
+  border: none;
+  margin-left: 40px;
+  background-color: rgba(128, 128, 128, 0);
+  font-size: 14px;
+  outline: none;
 }
