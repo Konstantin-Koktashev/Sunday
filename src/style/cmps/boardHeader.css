@@ -15,7 +15,7 @@
 }
 
 .add-group-btn {
-  width: 7vw;
+  /* width: 7vw; */
   height: 4vh;
   background-color: #00a8ff;
   cursor: pointer;
@@ -23,10 +23,14 @@
   border-radius: 20px;
   font-size: 12px;
   text-align: center;
+  padding: 0px 10px;
+}
+.add-group-btn:hover {
+  background-color: #21b0f8;
 }
 
 .header-remove-board {
-  width: 7vw;
+  /* width: 7vw; */
   text-align: center;
   height: 4vh;
   background-color: #00a8ff;
@@ -36,4 +40,9 @@
   font-size: 12px;
   border: none;
   margin-left: 3px;
+  padding: 0px 15px;
+}
+
+.header-remove-board:hover {
+  background-color: #21b0f8;
 }

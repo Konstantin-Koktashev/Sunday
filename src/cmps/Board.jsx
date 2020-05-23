@@ -8,10 +8,6 @@ import {
   setCurrBoard,
   loadBoards,
 } from "../actions/boardActions";
-import boardService from "../../src/actions/boardActions";
-import HttpService from "../../src/services/HttpService";
-import AddGroup from "./AddGroup";
-import FilterByText from "./FilterByText.jsx";
 
 class Board extends Component {
   sortColumnsByBox = async (order) => {
@@ -24,8 +20,6 @@ class Board extends Component {
   render() {
     return (
       <>
-        <FilterByText currBoard={this.props.currBoard} />
-
         <GroupList
           sortColumnsByBox={this.sortColumnsByBox}
           groups={this.props.board.groups}

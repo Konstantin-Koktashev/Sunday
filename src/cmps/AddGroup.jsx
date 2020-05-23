@@ -259,11 +259,6 @@ class AddGroup extends Component {
           title="Add a New Group"
           onClick={this.AddGroup}
         >
-          <div
-            className={`${this.state.isLoading ? "loading" : "loading-hidden"}`}
-          >
-            <Loading></Loading>
-          </div>
           New Group
         </div>
       </>
