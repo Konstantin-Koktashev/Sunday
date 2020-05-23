@@ -11,7 +11,6 @@ export function TaskPreview(props) {
   const cols = task.columns;
   SortCols(board, cols);
   function SortCols(board, cols) {
-    debugger;
     let order = [];
     board.columns.forEach((col) => {
       order.push(col.order);
