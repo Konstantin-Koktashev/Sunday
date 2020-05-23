@@ -46,7 +46,8 @@ class TaskPreview extends Component {
           if (task.columns[i].order === box.order) isFound = true;
         }
         if (!isFound) {
-          task.columns.push(box);
+          let boxCopy = JSON.stringify(box);
+          task.columns.push(JSON.parse(boxCopy));
         }
       });
     }

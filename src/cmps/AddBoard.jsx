@@ -17,8 +17,8 @@ class AddBoard extends Component {
           order: "1",
         },
         {
-          type: "poeple",
-          value: "poeple",
+          type: "people",
+          value: "people",
           order: "2",
         },
         {
@@ -35,6 +35,11 @@ class AddBoard extends Component {
           type: "number",
           value: "number",
           order: "5",
+        },
+        {
+          type: "priority",
+          value: "priority",
+          order: "6",
         },
       ],
       //Label Object
@@ -137,7 +142,7 @@ class AddBoard extends Component {
               people: [],
               status: "Done",
               priority: "urgent",
-              DueDate: '1590852189',
+              DueDate: "1590852189",
               budget: "150",
               text: "text about task",
               link: "",
@@ -417,13 +422,13 @@ class AddBoard extends Component {
     },
   };
 
-  AddBoard = async() => {
+  AddBoard = async () => {
     console.log("Adding a Board!");
     let AddBoard = this.state.board;
 
     // let newBoard = localBoardService.saveBoard(AddBoard);
-   await this.props.saveBoard(AddBoard);
-  await   this.props.loadBoards();
+    await this.props.saveBoard(AddBoard);
+    await this.props.loadBoards();
   };
 
   render() {
