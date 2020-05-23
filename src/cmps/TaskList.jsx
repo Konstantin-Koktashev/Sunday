@@ -62,12 +62,6 @@ class TaskList extends Component {
     await this.props.loadBoards();
   };
 
-  updateBoardColOrderTest = async (board) => {
-    await this.props.saveBoard(board);
-    await this.props.setCurrBoard(board);
-    await this.props.loadBoards();
-  };
-
   render() {
     return (
       <div className="task-list-container flex col space-evenly">
@@ -109,7 +103,7 @@ class TaskList extends Component {
               </div>
               <div className="task-box-list-container">
                 <TaskBoxList
-                  updateBoardColOrderTest={this.updateBoardColOrderTest}
+                  updateBoardColOrder={this.updateBoardColOrder}
                   items={this.props.cols}
                   board={this.props.board}
                 ></TaskBoxList>
@@ -126,7 +120,6 @@ class TaskList extends Component {
                   task={task}
                   key={idx}
                   board={this.props.board}
-                  updateBoardColOrder={this.updateBoardColOrder}
                   toggleTaskEdit={this.toggleTaskEdit}
                   updateTaskName={this.updateTaskName}
                   handleChangeTask={this.handleChangeTask}

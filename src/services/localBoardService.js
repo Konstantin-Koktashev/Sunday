@@ -58,9 +58,7 @@ function _mapOrder(array, order, key) {
 
 /// Update Columns (ON BOARD ) Order 
 function updateColumnOrder(board, reOrderedCols) {
-    console.log("@@@@@@@@@@@ -> reOrderedCols", reOrderedCols)
     board.columns = reOrderedCols
-    console.log('@@@@@@@@ Board', board)
     return board
 }
 

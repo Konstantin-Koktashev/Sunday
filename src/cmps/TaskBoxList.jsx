@@ -83,7 +83,7 @@ export class TaskBoxList extends Component {
 
     let board = this.props.board;
     let newBoard = localBoardService.updateColumnOrder(board, items);
-    this.props.updateBoardColOrderTest(newBoard);
+    this.props.updateBoardColOrder(newBoard);
   }
 
   // Normally you would want to split things out into separate components.
