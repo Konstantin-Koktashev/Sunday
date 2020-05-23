@@ -71,7 +71,7 @@ class TaskList extends Component {
         ) : (
           <div className="task-list-card ">
             <div className="task-box-toplist-container flex a-center space-between">
-              <div className="flex a-center">
+              <div className="task-list-top flex a-center">
                 <img
                   className="resize-png"
                   onClick={this.toggleList}
