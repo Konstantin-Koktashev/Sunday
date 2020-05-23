@@ -13,18 +13,26 @@ import calendar from 'simple-react-calendar/lib/calendar/calendar';
 import DatePicker from '../cmps/Calendar';
 import TimeLineTest from '../cmps/TimeLineTest';
 import AddPerson from '../cmps/AddPerson';
+import {loadUsers} from '../actions/UserActions'
 
 
 class Inbox extends Component {
 
+    componentDidMount() {
+        this.props.loadUsers()
+    }
+    
+
     checkUserHistory = () => {
     //   await  this.props.loadBoards()
         const { board } = this.props.userBoards
+        if(!this.props.currUser.loggedInUser) return
         const currUserId = this.props.currUser.loggedInUser._id
+       
         var totalUserHistory = []
         board.forEach(board => {
             let userPersonalHistory = board.history.filter(history => {
-                return history.users.filter(user => +user._id === currUserId) && history.type === 'status'
+                return history.users.filter(user => user._id === currUserId) && history.type === 'status'
             })
             totalUserHistory.push(...userPersonalHistory)
         });
@@ -51,6 +59,7 @@ class Inbox extends Component {
         const userHistory = this.checkUserHistory()
     //  this.props.loadBoards()
         const isLoading=this.props.currBoard
+        if(!this.props.currUser.loggedInUser)return <h1>No Logged User . </h1>
         return (
             
             <div className='inbox-container'>
@@ -97,7 +106,7 @@ class Inbox extends Component {
                 {/* {isLoading&&<EditTask></EditTask>} */}
                 <TimeLine></TimeLine>
                 <DatePicker></DatePicker>
-                <AddPerson></AddPerson>
+                {/* <AddPerson></AddPerson> */}
                 {/* <TimeLineTest></TimeLineTest> */}
 
             </div>
@@ -113,7 +122,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-loadBoards
+loadBoards,
+loadUsers
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inbox)

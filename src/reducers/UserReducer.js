@@ -2,11 +2,7 @@ let localLoggedinUser = null;
 if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
 
 const initialState = {
-  // loggedInUser: localLoggedinUser,
-  loggedInUser: {
-    _id:1234,
-    name:'currUser'
-  },
+  loggedInUser: localLoggedinUser,
   users: []
 };
 

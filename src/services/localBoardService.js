@@ -168,12 +168,17 @@ function updateColumnText(board, column, text) {
 /// person column ///
 
 function addPersonToColumn(board, person, column) {
-    column.push(person)
+    column.persons = column.persons.length ? column.persons : [];
+    column.persons.push(person)
     return board
 }
+
+
 function removePersonToTask(board, person, column) {
-    const personIdx = column.findIndex(pers => pers._id === person._id)
-    column.splice(personIdx, 1)
+    column.persons = (column.persons && column.persons.length) ? column.persons : [];
+    const personIdx = column.persons.findIndex(pers => pers._id === person._id)
+    console.log('idx' , personIdx)
+    column.persons.splice(personIdx, 1)
     return board
 }
 
