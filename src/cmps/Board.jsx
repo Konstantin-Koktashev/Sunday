@@ -17,13 +17,20 @@ class Board extends Component {
     await this.props.loadBoards();
   };
 
+  get boardToDisplay() {
+    const {filterByText , currBoard} = this.props
+    return localBoardService.filter(currBoard ,filterByText) 
+
+    // return filteredBoard
+  }
   render() {
+    const board = this.boardToDisplay
     return (
       <>
         <GroupList
           sortColumnsByBox={this.sortColumnsByBox}
-          groups={this.props.board.groups}
-          board={this.props.board}
+          groups={board.groups}
+          board={board}
         />
       </>
     );
@@ -35,6 +42,7 @@ const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
     currBoard: state.userBoards.currBoard,
+    filterByText : state.userBoards.filterByText
   };
 };
 const mapDispatchToProps = {
