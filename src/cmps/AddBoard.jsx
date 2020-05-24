@@ -109,7 +109,7 @@ class AddBoard extends Component {
       groups: [
         {
           _id: 124,
-          name: "",
+          name: "New Project",
           createdAt: "date",
           // ABIR COLS DONT TOUCH
 
@@ -121,7 +121,7 @@ class AddBoard extends Component {
               taskTitle: "Todo",
               createdAt: "",
               // Aggregation
-              users: [{ _id: 1234, name: "shahar" }], // Min users
+              users: [], // Min users
               // ABIR COLS DONT TOUCH
               columns: [], //  Columns Objects
               updates: [
@@ -162,7 +162,7 @@ class AddBoard extends Component {
               taskTitle: "Todo",
               createdAt: "date",
               // Aggregation
-              users: [{ _id: 1234, name: "shahar" }], // Min users
+              users: [], // Min users
               // ABIR COLS DONT TOUCH
               columns: [], //  Columns Objects
               updates: [
@@ -203,7 +203,7 @@ class AddBoard extends Component {
               taskTitle: "Todo",
               createdAt: "date",
               // Aggregation
-              users: [{ _id: 1234, name: "shahar" }], // Min users
+              users: [], // Min users
               // ABIR COLS DONT TOUCH
               columns: [], //  Columns Objects
               updates: [
@@ -244,7 +244,7 @@ class AddBoard extends Component {
               taskTitle: "Todo",
               createdAt: "date",
               // Aggregation
-              users: [{ _id: 1234, name: "shahar" }], // Min users
+              users: [], // Min users
               // ABIR COLS DONT TOUCH
               columns: [], //  Columns Objects
               updates: [

@@ -9,7 +9,7 @@ class AddGroup extends Component {
     isLoading: true,
     group: {
       id: "hirbush",
-      name: "",
+      name: "New Project",
       createdAt: "date",
       // ABIR COLS DONT TOUCH
       columns: [
@@ -46,7 +46,7 @@ class AddGroup extends Component {
           assignedGroupId: null,
           taskTitle: "Todo",
           createdAt: "date",
-          users: [{ _id: 1234, name: "shahar" }], // Min users
+          users: [], // Min users
           columns: [
             // {
             //   type: "label",
@@ -94,7 +94,7 @@ class AddGroup extends Component {
           assignedGroupId: null,
           taskTitle: "Todo",
           createdAt: "date",
-          users: [{ _id: 1234, name: "shahar" }], // Min users
+          users: [], // Min users
           columns: [
             // {
             //   type: "label",
@@ -142,7 +142,7 @@ class AddGroup extends Component {
           assignedGroupId: null,
           taskTitle: "Todo",
           createdAt: "date",
-          users: [{ _id: 1234, name: "shahar" }], // Min users
+          users: [], // Min users
           columns: [
             // {
             //   type: "label",
@@ -190,7 +190,7 @@ class AddGroup extends Component {
           assignedGroupId: null,
           taskTitle: "Todo",
           createdAt: "date",
-          users: [{ _id: 1234, name: "shahar" }], // Min users
+          users: [], // Min users
           columns: [
             // {
             //   type: "label",
