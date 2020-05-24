@@ -27,22 +27,19 @@ class Chat extends Component {
     // let userId = this.props.user._id;
     // SocketService.emit(`openChat`, userId);
     this.openBoardChat();
-    SocketService.on(`openBoardChat`, (msgData) => {
-      let msg = `${msgData.author} \n\n ${msgData.text}`;
-      console.log(" HERE GOT MSG");
+    SocketService.on(`openBoardChat`, (data) => {
+      let msg = `${data.msgData.author} \n\n ${data.msgData.text}`;
+      console.log(" HERE GOT MSG", msg);
       this._onMessageWasSent(msg);
     });
   };
 
   openBoardChat = () => {
-    SocketService.emit(`openBoardChat`, this.props.board._id);
+    let data = {
+      boardChatId: this.props.board._id,
+    };
+    SocketService.emit(`openBoardChat`, data);
   };
-
-  //   componentWillUnmount() {
-  //     // SocketService.off("doRefresh", (data) => {
-  //     //   _onMessageWasSent(message);
-  //     // });
-  //   }
 
   _onMessageWasSent(message) {
     this.setState({
@@ -69,7 +66,10 @@ class Chat extends Component {
         data: { text },
       };
       console.log(" HERE GOT MSG");
-      SocketService.emit(`sendMsg`, msgData);
+      let data = {
+        msgData,
+      };
+      SocketService.emit(`openBoardChat`, data);
     }
   }
 
@@ -83,7 +83,11 @@ class Chat extends Component {
               "https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png",
           }}
           onMessageWasSent={this._onMessageWasSent.bind(this)}
+          onFilesSelected={this._onFilesSelected.bind(this)}
           messageList={this.state.messageList}
+          newMessagesCount={this.state.newMessagesCount}
+          handleClick={this._handleClick.bind(this)}
+          isOpen={this.state.isOpen}
           showEmoji
         />
       </div>
