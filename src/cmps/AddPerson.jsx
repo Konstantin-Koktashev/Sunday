@@ -4,7 +4,7 @@ import localBoardService from "../services/localBoardService";
 import { saveBoard, loadBoards } from "../actions/boardActions";
 import { loadUsers } from "../actions/UserActions";
 import UsersPreviewBox from "./UsersPreviewBox";
-
+import deletePng from "../style/img/delete.svg";
 class AddPerson extends Component {
   state = {
     usersToAdd: null,
@@ -65,29 +65,38 @@ class AddPerson extends Component {
         ></UsersPreviewBox>
         {isShown && (
           <div className="person-component flex col">
-            <input onChange={(e) => this.searchPeople(e)} />
+            <div onClick={this.togglePersonBox} className="">
+              X
+            </div>
+            <input
+              placeholder="Search People"
+              onChange={(e) => this.searchPeople(e)}
+            />
 
             <section className="people-in-task">
               {users &&
                 users.map((user, idx) => {
                   return (
                     <section key={idx} className="peron-preview-delet">
-                      <button className="person-preview">
-                        {user.username}
-                      </button>
-                      <button
-                        className="person-remove"
-                        onClick={() => this.removePerson(user)}
-                      >
-                        X
-                      </button>
+                      <div className="flex space-between">
+                        <button className="person-preview-btn">
+                          {user.username}
+                        </button>
+                        <img
+                          className="delete-icon person-remove"
+                          src={deletePng}
+                          alt="Delete"
+                          title="Delete Task"
+                          onClick={() => this.removePerson(user)}
+                        />
+                      </div>
                     </section>
                   );
                 })}
               {/* {!users&&    <input onChange={(e)=>this.searchPeople(e)}></input>} */}
             </section>
             <hr></hr>
-            <span>People:</span>
+            <span>Invite your Team:</span>
             <section className="found-people">
               {usersToAdd &&
                 usersToAdd.map((user, idx) => {

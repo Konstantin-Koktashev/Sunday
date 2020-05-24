@@ -1,10 +1,41 @@
 .person-component {
-  background-color: black;
+  background-color: #b2bec3;
   color: white;
   z-index: 21;
+  width: 25vw;
+  height: 30vh;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.171);
 }
+
+.person-component > * {
+  margin-bottom: 10px;
+}
+
+.person-component input {
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid rgba(136, 136, 136, 0.288);
+}
+
 .person-preview {
-  background-color: rgb(0, 81, 255);
+  /* background-color: rgb(0, 81, 255); */
   width: 5vw;
   height: 4vh;
+}
+
+.person-preview-btn {
+  border: none;
+  width: 10vw;
+  font-size: 15px;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.356);
+  border-radius: 15px;
+}
+
+.person-remove {
+  margin-left: 15px;
 }
