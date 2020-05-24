@@ -116,6 +116,7 @@ class TaskList extends Component {
                 this.state.taskIsShown ? "" : "hide"
               }`}
             >
+              {/* // HERE Is the Task List */}
               {this.props.tasks.map((task, idx) => (
                 <TaskPreview
                   deleteTask={this.deleteTask}
@@ -128,6 +129,8 @@ class TaskList extends Component {
                   taskNameIsEdit={this.state.taskNameIsEdit}
                 />
               ))}
+
+              {/* /// Until Here           */}
               <AddTask group={this.props.group}></AddTask>
             </div>
           </div>
