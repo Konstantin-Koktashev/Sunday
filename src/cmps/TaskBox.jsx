@@ -142,7 +142,7 @@ class TaskBox extends React.Component {
           <div className="poeple-box box-div">{col.value}</div>
         ) : (
           <div className="poeple-box box-div">
-            <AddPerson column={col} />
+            <AddPerson task={this.props.task} column={col} />
           </div>
         );
         break;

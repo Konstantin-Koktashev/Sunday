@@ -167,9 +167,10 @@ function updateColumnText(board, column, text) {
 
 /// person column ///
 
-function addPersonToColumn(board, column, person) {
-    column.persons = typeof column.persons === 'array' ? column.persons : [];
-    // column.persons = column.persons.length ? column.persons : [];
+function addPersonToColumn(board, column, task, person) {
+    column.persons = column.persons && column.persons.length > 0 ? column.persons : []
+    task.users = task.users && task.users.length > 0 ? task.users : []
+    task.users.push(person)
     column.persons.push(person)
     return board
 }
@@ -210,9 +211,9 @@ function changeDueDateColumn(board, column, date) {
     return board
 }
 
-function changeDueDateColumn2(board, column, date,originalDates) {
-    column.startDate=originalDates[0].getTime()
-    column.endDate=originalDates[1].getTime()
+function changeDueDateColumn2(board, column, date, originalDates) {
+    column.startDate = originalDates[0].getTime()
+    column.endDate = originalDates[1].getTime()
     column.startDate = date.from
     column.endDate = date.to
     return board
@@ -342,7 +343,7 @@ function filter(board, text) {
 
     newBoard.groups = newBoard.groups.map(group => {
         const isNameValid = group.name.toLowerCase().includes(text)
-        if(isNameValid) return group;
+        if (isNameValid) return group;
 
         const validTasks = group.tasks.filter(task => {
             return task.taskTitle.includes(text)

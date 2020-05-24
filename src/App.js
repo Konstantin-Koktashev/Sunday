@@ -19,6 +19,7 @@ import FilterByText from './cmps/FilterByText';
 import AddPerson from './cmps/AddPerson';
 import page from './cmps/DateSelector';
 import DateSelector from './cmps/DateSelector';
+import Profile from './pages/Profile.js';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
             <Route path="/details" component={TaskDetails} exact />
             <Route path="/label" component={LabelContainer} exact />
             <Route path="/filter" component={FilterByText} exact />
+            <Route path="/profile/:id?" component={Profile} exact />
             <Route path="/c" component={DateSelector} exact />
           </Switch>
         </section>

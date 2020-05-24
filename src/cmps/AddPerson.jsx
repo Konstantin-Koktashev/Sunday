@@ -17,9 +17,11 @@ class AddPerson extends Component {
     this.setState({ isShown: false });
     const column = this.props.column;
     const currBoard = this.props.currBoard;
+    const task = this.props.task;
     const newBoard = localBoardService.addPersonToColumn(
       currBoard,
       column,
+      task,
       person
     );
     this.props.saveBoard(newBoard);
@@ -46,7 +48,9 @@ class AddPerson extends Component {
     this.props.loadBoards();
   };
   togglePersonBox = () => {
-    this.setState({ isShown: true });
+    this.setState(({ isShown }) => ({
+      isShown: !isShown,
+    }));
   };
   render() {
     const isShows = this.state.isShows;
@@ -109,10 +113,16 @@ class AddPerson extends Component {
                 })}
               <div className="invite-with-email">
                 <img></img>
-                <span>Invite User By Email</span>
               </div>
             </section>
           </div>
+        )}
+
+        {this.state.isShown && (
+          <div
+            onClick={this.togglePersonBox}
+            className="back-screen-label-container"
+          ></div>
         )}
       </React.Fragment>
     );
@@ -129,8 +139,3 @@ const mapDispatchToProps = {
   loadUsers,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AddPerson);
-
-
-
-
-

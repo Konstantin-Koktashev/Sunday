@@ -74,4 +74,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: center;
+  outline: 1px dotted #b8b6b6d2;
 }
