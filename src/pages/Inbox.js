@@ -45,8 +45,7 @@ class Inbox extends Component {
     // }
     checkUserHistory = () => {
         //   await  this.props.loadBoards()
-        // debugger
-        const  board  = this.props.userBoards.board
+        const board = this.props.userBoards.board
         if (!this.props.currUser.loggedInUser) return
         const currUserId = this.props.currUser.loggedInUser._id
         let totalUserHistory = []
@@ -54,8 +53,7 @@ class Inbox extends Component {
             board.groups.forEach(group => {
                 group.tasks.forEach(task => {
                     task.columns.forEach(column => {
-                        debugger
-                        if (column.type === 'people' &&  column.persons &&column.persons.length>0 && column.persons.some(person => person._id === currUserId) && task.isDone===true)totalUserHistory.push(task)
+                        if (column.type === 'people' && column.persons && column.persons.length > 0 && column.persons.some(person => person._id === currUserId) && task.isDone === true) totalUserHistory.push(task)
                     })
                 })
             })
