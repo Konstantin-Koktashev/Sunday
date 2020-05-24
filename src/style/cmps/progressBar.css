@@ -39,3 +39,15 @@
   text-align: right;
   margin-right: 15px;
 }
+
+.progress-bar-anim {
+  animation: progress-bar-anim 3.3s linear both;
+}
+
+@keyframes progress-bar-anim {
+  0% {
+    width: 0%;
+  }
+  100% {
+  }
+}
