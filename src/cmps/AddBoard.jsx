@@ -140,7 +140,7 @@ class AddBoard extends Component {
                 },
               ], // Notes objects
               people: [],
-              status: "Done",
+              status: "new",
               priority: "urgent",
               DueDate: "",
               budget: "150",
@@ -180,7 +180,7 @@ class AddBoard extends Component {
                 },
               ], // Notes objects
               people: [],
-              status: "Done",
+              status: "new",
               priority: "urgent",
               DueDate: "1592925789",
               budget: "150",
@@ -220,7 +220,7 @@ class AddBoard extends Component {
                 },
               ], // Notes objects
               people: [],
-              status: "Done",
+              status: "new",
               priority: "urgent",
               DueDate: "1595517789",
               budget: "150",
@@ -260,7 +260,7 @@ class AddBoard extends Component {
                 },
               ], // Notes objects
               people: [],
-              status: "Done",
+              status: "new",
               priority: "urgent",
               DueDate: "1606148589",
               budget: "150",
