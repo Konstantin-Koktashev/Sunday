@@ -8,7 +8,7 @@ export default class WeekPreview extends React.Component {
     modal: false,
   };
   componentDidMount() {
-    console.log(this.props);
+    console.log('props from wweeek' , this.props);
   }
 
   openModal = () => {
@@ -22,14 +22,15 @@ export default class WeekPreview extends React.Component {
   render() {
     console.log("props", this.props);
     const { modal } = this.state;
+    const {text , tasktitle , status , priority , users } =this.props
     return (
       <div className="week-preview">
         <div className="week-prev-text">
-          <p className="week-prev-title"> {this.props.text}</p>
+          <p className="week-prev-title"> {text}</p>
           <p className="week-prev-desc"> Board -> Source</p>
         </div>
-        {this.props.users.map((user, idx) => (
-          <SmallImg zindex={idx} url={user.imgUrl} name={user.name} key={idx} />
+        {users.map((user, idx) => (
+          <SmallImg zindex={idx} url={user.imgUrl} name={user.username} key={idx} />
         ))}
         <div
           onClick={() => this.openModal()}
