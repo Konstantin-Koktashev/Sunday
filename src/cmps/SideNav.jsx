@@ -7,7 +7,7 @@ import week from "../style/img/calendar.svg";
 import invite from "../style/img/invitation.svg";
 import person from "../style/img/person.svg";
 import notification from "../style/img/notification.svg";
-export default function SideNav() {
+export default function SideNav(props) {
   return (
     <div className="side-nav-container flex col space-evenly">
       <NavLink to="/board">
@@ -55,7 +55,7 @@ export default function SideNav() {
         </div>
       </NavLink>
 
-      <div to="/user/profile" className="search">
+      <div to={`/profile/${props.user}`} className="search">
         <img
           title="My Profile"
           className="side-nav-img"

@@ -1,5 +1,16 @@
 .profile-page-container {
-  width: 70vw;
+  width: 80vw;
   height: 100vh;
-  background-color: green;
+  background-color: white;
+}
+
+.profile-header-container {
+  height: 40vh;
+  width: 80vw;
+  background-color: #009aff;
+}
+
+.profile-header-container h2 {
+  font-size: 30px;
+  color: white;
 }
