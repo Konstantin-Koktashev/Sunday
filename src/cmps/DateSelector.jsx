@@ -19,12 +19,15 @@ class DateSelector extends Component {
     if (startDate !== "Date") this.setState({ startDate: fixedDate });
   }
 
+  
+
   handleChange = async (date) => {
     let fixedDate = date.getTime();
     const { currBoard, column } = this.props;
     const board = localBoardService.changeColumn(currBoard, column, fixedDate);
     await this.props.saveBoard(board);
-    await this.props.loadBoards();
+    this.setState({startDate : fixedDate})
+    // await this.props.loadBoards();
   };
   render() {
     const { column } = this.props;
