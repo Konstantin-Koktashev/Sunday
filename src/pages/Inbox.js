@@ -13,7 +13,7 @@ import calendar from 'simple-react-calendar/lib/calendar/calendar';
 import DatePicker from '../cmps/Calendar';
 import TimeLineTest from '../cmps/TimeLineTest';
 import AddPerson from '../cmps/AddPerson';
-import {loadUsers} from '../actions/UserActions'
+import { loadUsers } from '../actions/UserActions'
 import { MaterialPicker } from 'react-color';
 import MaterialUIPickers from '.././cmps/calendar2'
 
@@ -25,19 +25,41 @@ class Inbox extends Component {
     }
 
 
+    // checkUserHistory = () => {
+    //     //   await  this.props.loadBoards()
+    //     const { board } = this.props.userBoards
+    //     if (!this.props.currUser.loggedInUser) return
+    //     const currUserId = this.props.currUser.loggedInUser._id
+
+    //     var totalUserHistory = []
+    //     board.forEach(board => {
+    //         let userPersonalHistory = board.history.filter(history => {
+    //             return history.users.filter(user => user._id === currUserId) && history.type === 'status'
+    //         })
+    //         totalUserHistory.push(...userPersonalHistory)
+    //     });
+    //     const test ={
+
+    //     }
+    //     return totalUserHistory
+    // }
     checkUserHistory = () => {
         //   await  this.props.loadBoards()
-        const { board } = this.props.userBoards
+        // debugger
+        const  board  = this.props.userBoards.board
         if (!this.props.currUser.loggedInUser) return
         const currUserId = this.props.currUser.loggedInUser._id
-
-        var totalUserHistory = []
+        let totalUserHistory = []
         board.forEach(board => {
-            let userPersonalHistory = board.history.filter(history => {
-                return history.users.filter(user => user._id === currUserId) && history.type === 'status'
+            board.groups.forEach(group => {
+                group.tasks.forEach(task => {
+                    task.columns.forEach(column => {
+                        debugger
+                        if (column.type === 'people' &&  column.persons &&column.persons.length>0 && column.persons.some(person => person._id === currUserId) && task.isDone===true)totalUserHistory.push(task)
+                    })
+                })
             })
-            totalUserHistory.push(...userPersonalHistory)
-        });
+        })
         return totalUserHistory
     }
     // checkAssociatedTaskIds=()=>{
@@ -66,8 +88,8 @@ class Inbox extends Component {
 
             <div className='inbox-container'>
                 <h2>Inbox</h2>
-                {isLoading && userHistory.map(history => {
-                    console.log("Inbox -> render -> history", history)
+                {isLoading && userHistory.map(task => {
+                    console.log("Inbox -> render -> history", task)
                     return (<article className='user-history flex col'>
                         <img className='complete-task' src={checkbox} onClick={() => { this.removeFromInbox() }}></img>
                         <section className='history-header flex col a-start'>
@@ -75,22 +97,22 @@ class Inbox extends Component {
 
                             </div>
                             <div className='updating-user'>
-                                {history.name}
+                                {task.name}
 
                             </div>
                             <div className='history-origin'>
-                                {history.path}
+                                {task.path}
                             </div>
                             <div className='inbox-icons'>11 22 33</div>
                         </section>
                         <section className='update-msg flex a-center'>
-                            <span>{history.defaultMsg}</span>
+                            <span>{task.taskTitle}</span>
                             <div className='user-history-main-btns flex a-center '>
 
-                                <button className='prev-value-inbox'> {history.prevValue}</button>
+                                <button className='prev-value-inbox'> {task.prevValue}</button>
                                 <span className='arrow-logo'> </span>
 
-                                <button className='next-value-inbox'>{history.nextValue}</button>
+                                <button className='next-value-inbox'>{task.nextValue}</button>
                             </div>
                         </section>
                         <section className='like-reply-btns'>
@@ -115,6 +137,64 @@ class Inbox extends Component {
             </div>
         )
     }
+    // render() {
+    //     const userHistory = this.checkUserHistory()
+    //     //  this.props.loadBoards()
+    //     const isLoading = this.props.currBoard
+    //     if (!this.props.currUser.loggedInUser) return <h1>No Logged User . </h1>
+    //     return (
+
+    //         <div className='inbox-container'>
+    //             <h2>Inbox</h2>
+    //             {isLoading && userHistory.map(history => {
+    //                 console.log("Inbox -> render -> history", history)
+    //                 return (<article className='user-history flex col'>
+    //                     <img className='complete-task' src={checkbox} onClick={() => { this.removeFromInbox() }}></img>
+    //                     <section className='history-header flex col a-start'>
+    //                         <div className='user-logo'>
+
+    //                         </div>
+    //                         <div className='updating-user'>
+    //                             {history.name}
+
+    //                         </div>
+    //                         <div className='history-origin'>
+    //                             {history.path}
+    //                         </div>
+    //                         <div className='inbox-icons'>11 22 33</div>
+    //                     </section>
+    //                     <section className='update-msg flex a-center'>
+    //                         <span>{history.defaultMsg}</span>
+    //                         <div className='user-history-main-btns flex a-center '>
+
+    //                             <button className='prev-value-inbox'> {history.prevValue}</button>
+    //                             <span className='arrow-logo'> </span>
+
+    //                             <button className='next-value-inbox'>{history.nextValue}</button>
+    //                         </div>
+    //                     </section>
+    //                     <section className='like-reply-btns'>
+    //                         <button className='reply'>Reply</button>
+    //                         <button className='like'> Like</button>
+    //                     </section>
+    //                     <section className='task-reply-btns'>
+    //                         <button className='great-job'>Great Job!</button>
+    //                         <button className='take-it-from-here'> Thanks I'll take it from here</button>
+    //                         <button className='next'> Nice Work! Whats next?</button>
+    //                     </section>
+    //                 </article>)
+
+    //             })}
+    //             {/* {isLoading&&<EditTask></EditTask>} */}
+    //             {/* <TimeLine></TimeLine>
+    //             <DatePicker></DatePicker>
+    //             <MaterialUIPickers></MaterialUIPickers> */}
+    //             {/* <AddPerson></AddPerson> */}
+    //             {/* <TimeLineTest></TimeLineTest> */}
+
+    //         </div>
+    //     )
+    // }
 }
 
 

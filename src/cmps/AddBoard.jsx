@@ -109,6 +109,7 @@ class AddBoard extends Component {
           tasks: [
             {
               _id: 2222,
+              isDone:true,
               assignedGroupId: 124,
               taskTitle: "Todo",
               createdAt: "",
@@ -149,6 +150,7 @@ class AddBoard extends Component {
             },
             {
               _id: 2222,
+              isDone:true,
               assignedGroupId: 124,
               taskTitle: "Todo",
               createdAt: "date",
@@ -189,6 +191,7 @@ class AddBoard extends Component {
             },
             {
               _id: 2222,
+              isDone:true,
               assignedGroupId: 124,
               taskTitle: "Todo",
               createdAt: "date",
@@ -229,6 +232,7 @@ class AddBoard extends Component {
             },
             {
               _id: 2222,
+              isDone:true,
               assignedGroupId: 124,
               taskTitle: "Todo",
               createdAt: "date",
@@ -286,6 +290,7 @@ class AddBoard extends Component {
           tasks: [
             {
               _id: 2222,
+              isDone:true,
               taskTitle: "Todo",
               createdAt: "date",
               // Aggregation
@@ -301,9 +306,11 @@ class AddBoard extends Component {
               budget: "1540",
               text: "text about task 31142",
               link: "",
+              history:[]
             },
             {
               _id: 111,
+              isDone:true,
               taskTitle: "Mess",
               createdAt: "date",
               // Aggregation
@@ -322,6 +329,7 @@ class AddBoard extends Component {
             },
             {
               _id: 12333,
+              isDone:true,
               taskTitle: "withus",
               createdAt: "date",
               // Aggregation
@@ -361,7 +369,7 @@ class AddBoard extends Component {
           createdBy: "Kosta",
           defaultMsg: "status was Change ",
           path: "Sunday/FrontEnd/CreatApp",
-          isDone: false,
+          isDone: true,
           assosicatedTaskId: "111",
 
           assosicatedTaskId: "111",

@@ -324,6 +324,11 @@ function _getIdxById(boardId) {
     return gBoards.findIndex(board => board._id === boardId)
 }
 
+function creatTaskInboxHistory(board,task,column,nextValue,path=''){
+task.isDone=true
+return board
+}
+
 
 
 
