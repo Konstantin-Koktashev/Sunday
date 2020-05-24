@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Launcher } from "react-chat-window";
 import "../style/cmps/chat.css";
 import SocketService from "../services/SocketService";
+import { loadUsers } from "../actions/UserActions";
 import {
   saveBoard,
   loadBoards,
@@ -15,25 +16,33 @@ class Chat extends Component {
     super();
     this.state = {
       messageList: [],
-      connectedUserId: null,
+      //   loggedInUser: this.props.user,
+      chatWith: null,
     };
   }
 
-  // componentDidMount = async () => {
-  //   SocketService.setup();
-  //   let userId = this.props.user._id;
-  //   SocketService.emit(`openChat`, userId);
+  componentDidMount = async () => {
+    await this.props.loadUsers();
+    // SocketService.setup();
+    // let userId = this.props.user._id;
+    // SocketService.emit(`openChat`, userId);
+    this.openBoardChat();
+    SocketService.on(`openBoardChat`, (msgData) => {
+      let msg = `${msgData.author} \n\n ${msgData.text}`;
+      console.log(" HERE GOT MSG");
+      this._onMessageWasSent(msg);
+    });
+  };
 
-  //   SocketService.on(`openChat`, async (data) => {
-  //     this._onMessageWasSent(data.msg);
-  //   });
-  // };
+  openBoardChat = () => {
+    SocketService.emit(`openBoardChat`, this.props.board._id);
+  };
 
-  componentWillUnmount() {
-    // SocketService.off("doRefresh", (data) => {
-    //   _onMessageWasSent(message);
-    // });
-  }
+  //   componentWillUnmount() {
+  //     // SocketService.off("doRefresh", (data) => {
+  //     //   _onMessageWasSent(message);
+  //     // });
+  //   }
 
   _onMessageWasSent(message) {
     this.setState({
@@ -53,11 +62,15 @@ class Chat extends Component {
           },
         ],
       });
+
+      let msgData = {
+        author: `${this.props.user.username}`,
+        type: "text",
+        data: { text },
+      };
+      console.log(" HERE GOT MSG");
+      SocketService.emit(`sendMsg`, msgData);
     }
-    let userId = this.props.user._id;
-    SocketService.on(`chatTo/${userId}`, async (data) => {
-      this._onMessageWasSent(data.msg);
-    });
   }
 
   render() {
@@ -83,6 +96,7 @@ const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
     board: state.userBoards.currBoard,
+    user: state.user.loggedInUser,
   };
 };
 const mapDispatchToProps = {
@@ -90,6 +104,7 @@ const mapDispatchToProps = {
   removeBoard,
   loadBoards,
   setCurrBoard,
+  loadUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

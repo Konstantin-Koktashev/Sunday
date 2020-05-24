@@ -45,7 +45,7 @@ class App extends React.Component {
               {this.props.currUser && <BoardNav></BoardNav>}
             </>
           </div>
-          <Chat user={this.props.currUser} ></Chat>
+          {this.props.currUser && this.props.board && <Chat user={this.props.currUser} ></Chat>}
           <section className="main-board-container">
             <Switch>
               <Route path="/" component={Boards} exact />
@@ -68,12 +68,13 @@ class App extends React.Component {
             <div id="nest6"></div>
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }
 const mapStateToProps = (state) => ({
-  currUser: state.user.loggedInUser
+  currUser: state.user.loggedInUser,
+  board: state.userBoards.currBoard
 });
 const mapDispatchToProps = {
   loadUsers
