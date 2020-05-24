@@ -129,7 +129,7 @@ class TaskPreview extends Component {
           <img src={person} alt="Person" />
         </div> */}
           {this.matchTaskBoxToBoardColumns().map((col, idx) => {
-            return <TaskBox key={idx} col={col} />;
+            return <TaskBox key={idx} col={col} task={this.props.task} />;
           })}
         </div>
       </div>

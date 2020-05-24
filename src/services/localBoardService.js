@@ -226,10 +226,7 @@ function changeColumn(board, column, value) {
 }
 
 function changeLabelColumn(board, label, color, text) {
-<<<<<<< HEAD
     
-=======
->>>>>>> 0097c64b5e237b152bd67d41eb8f70c98f547bdd
     console.log('labelBefore:', label)
     label.status = text
     label.value = text
@@ -241,9 +238,11 @@ function changeLabelColumn(board, label, color, text) {
 
 
 
-function setColumn(board, column, color, value) {
+function setColumn(board, column, color, value , task) {
+    task.status = value
     column.value = value
     column.color = color
+    console.log(task , 'taststatsasta')
     return board
 }
 

@@ -5,6 +5,7 @@ import "../style/cmps/progressBar.css";
 class ProgressBar extends React.Component {
   componentDidMount() {
     console.log("e", this.props.boards);
+    console.log('progressbargroups' , this.props.group)
   }
 
   showStatus = () => {
@@ -17,6 +18,7 @@ class ProgressBar extends React.Component {
     if (doneMissions.length !== 0) {
       var precent = parseInt((doneMissions.length / group.tasks.length) * 100);
     } else precent = 0;
+    console.log(precent)
     return precent;
   };
   render() {

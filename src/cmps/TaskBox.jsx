@@ -58,16 +58,18 @@ class TaskBox extends React.Component {
             {isTaskBox ? (
               <div className="label-box box-div">{col.value}</div>
             ) : (
-              <div
-                className="label-box box-div"
-                style={{ backgroundColor: col.color }}
-                onClick={this.toggleContainer}
-              >
-                {col.value}
-              </div>
-            )}
+                <div
+                  className="label-box box-div"
+                  style={{ backgroundColor: col.color }}
+                  onClick={this.toggleContainer}
+
+                >
+                  {col.value}
+                </div>
+              )}
             {containerIsShown && (
               <LabelContainer
+                task={this.props.task}
                 toggleContainer={this.toggleContainer}
                 labels={col.labels}
                 column={col}
@@ -84,14 +86,14 @@ class TaskBox extends React.Component {
             {isTaskBox ? (
               <div className="label-box box-div">{col.value}</div>
             ) : (
-              <div
-                className="label-box box-div"
-                style={{ backgroundColor: col.color }}
-                onClick={this.toggleContainer}
-              >
-                {col.value}
-              </div>
-            )}
+                <div
+                  className="label-box box-div"
+                  style={{ backgroundColor: col.color }}
+                  onClick={this.toggleContainer}
+                >
+                  {col.value}
+                </div>
+              )}
             {containerIsShown && (
               <LabelContainer
                 toggleContainer={this.toggleContainer}
@@ -114,10 +116,10 @@ class TaskBox extends React.Component {
             onBlur={(ev) => this.updateColTitle(ev)}
           />
         ) : (
-          <div onClick={this.toggleColEdit} className="number-box box-div">
-            {col.value}
-          </div>
-        );
+            <div onClick={this.toggleColEdit} className="number-box box-div">
+              {col.value}
+            </div>
+          );
         break;
       case "text":
         box = colIsEdit ? (
@@ -130,10 +132,10 @@ class TaskBox extends React.Component {
             onBlur={(ev) => this.updateColTitle(ev)}
           />
         ) : (
-          <div onClick={this.toggleColEdit} className="text-box box-div">
-            {col.value}
-          </div>
-        );
+            <div onClick={this.toggleColEdit} className="text-box box-div">
+              {col.value}
+            </div>
+          );
         break;
       case "poeple":
         box = (
@@ -156,15 +158,15 @@ class TaskBox extends React.Component {
               onBlur={(ev) => this.updateColTitle(ev)}
             />
           ) : (
-            <div className="date-box box-div colEdit-input-date">
-              <DateSelector column={col} />
-            </div>
-          )
+              <div className="date-box box-div colEdit-input-date">
+                <DateSelector column={col} />
+              </div>
+            )
         ) : (
-          <div className="date-box box-div " onClick={this.toggleColEdit}>
-            {col.value}
-          </div>
-        );
+            <div className="date-box box-div " onClick={this.toggleColEdit}>
+              {col.value}
+            </div>
+          );
         break;
       default:
         box = <div className="text-box box-div">{col.value}</div>;

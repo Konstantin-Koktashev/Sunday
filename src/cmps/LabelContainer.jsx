@@ -92,8 +92,9 @@ class LabelContainer extends Component {
   };
 
   setColumn = (color, text) => {
+    const task = this.props.task
     const { currBoard, column } = this.props;
-    const board = localBoardService.setColumn(currBoard, column, color, text);
+    const board = localBoardService.setColumn(currBoard, column, color, text , task);
     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
