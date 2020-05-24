@@ -22,21 +22,33 @@ class Chat extends Component {
   }
 
   componentDidMount = async () => {
+    SocketService.emit('boardChat' , this.props.board._id)
     await this.props.loadUsers();
+    
     // SocketService.setup();
     // let userId = this.props.user._id;
     // SocketService.emit(`openChat`, userId);
-    this.openBoardChat();
-    SocketService.on(`openBoardChat`, (msgData) => {
-      let msg = `${msgData.author} \n\n ${msgData.text}`;
-      console.log(" HERE GOT MSG");
-      this._onMessageWasSent(msg);
-    });
+    // this.openBoardChat();
+    // SocketService.on(`openBoardChat`, (msgData) => {
+    //   let msg = `${msgData.author} \n\n ${msgData.text}`;
+    //   console.log(" HERE GOT MSG");
+    //   this._onMessageWasSent(msg);
+    // });
+
+    // let msgToShow = `${msg.author} \n\n ${msg.text}`;
+    // this._onMessageWasSent(msg)
+    SocketService.on('sendMsg', msg => {
+      console.log('heagati lepo')
+      this.setState({
+        messageList: [...this.state.messageList, msg],
+      });
+
+    })
   };
 
-  openBoardChat = () => {
-    SocketService.emit(`openBoardChat`, this.props.board._id);
-  };
+  // openBoardChat = () => {
+  //   SocketService.emit(`openBoardChat`, this.props.board._id);
+  // };
 
   //   componentWillUnmount() {
   //     // SocketService.off("doRefresh", (data) => {
@@ -48,6 +60,8 @@ class Chat extends Component {
     this.setState({
       messageList: [...this.state.messageList, message],
     });
+    console.log('send msg')
+    SocketService.emit(`sendMsg`, message);
   }
 
   _sendMessage(text) {
@@ -69,7 +83,6 @@ class Chat extends Component {
         data: { text },
       };
       console.log(" HERE GOT MSG");
-      SocketService.emit(`sendMsg`, msgData);
     }
   }
 
