@@ -122,6 +122,7 @@
   /* transform: rotate(-180deg); */
   margin-left: -25px;
   opacity: 0.4;
+  cursor: pointer;
 }
 
 .delete-icon:hover {
