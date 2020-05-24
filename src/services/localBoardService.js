@@ -210,7 +210,9 @@ function changeDueDateColumn(board, column, date) {
     return board
 }
 
-function changeDueDateColumn2(board, column, date) {
+function changeDueDateColumn2(board, column, date,originalDates) {
+    column.startDate=originalDates[0].getTime()
+    column.endDate=originalDates[1].getTime()
     column.startDate = date.from
     column.endDate = date.to
     return board

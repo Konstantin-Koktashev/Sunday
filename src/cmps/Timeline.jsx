@@ -34,13 +34,14 @@ import { moment } from 'moment';
                from: moments[0],
                to:moments[1]
             }
-            const newBoard=localBoardService.changeDueDateColumn2(currBoard,column,newTimeLine)
+            
+            const newBoard=localBoardService.changeDueDateColumn2(currBoard,column,newTimeLine,dates)
             saveBoard(newBoard)   
         }
     
         render() {
                     // const taskDueDate=new Date(this.props.column.value)
-
+            
             var x= new Date(1590831130)
             return (
                 <div>
