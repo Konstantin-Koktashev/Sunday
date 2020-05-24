@@ -1,9 +1,10 @@
-.person-component{
-    background-color: black;
-    color: white;
-    z-index: 21;
+.person-component {
+  background-color: black;
+  color: white;
+  z-index: 21;
 }
-.person-preview{
-    background-color: yellow;
-    width:5vw;
+.person-preview {
+  background-color: rgb(0, 81, 255);
+  width: 5vw;
+  height: 4vh;
 }

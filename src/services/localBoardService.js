@@ -228,23 +228,21 @@ function changeColumn(board, column, value) {
 }
 
 function changeLabelColumn(board, label, color, text) {
-    
-    console.log('labelBefore:', label)
+
     label.status = text
     label.value = text
     label.color = color
-    console.log('labelafter', label)
     return board
 }
 
 
 
 
-function setColumn(board, column, color, value , task) {
+function setColumn(board, column, color, value, task) {
+    console.log("setColumn -> task", task)
     task.status = value
     column.value = value
     column.color = color
-    console.log(task , 'taststatsasta')
     return board
 }
 

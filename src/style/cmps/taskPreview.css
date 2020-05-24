@@ -21,6 +21,7 @@
   height: 5vh;
 }
 .task-bar h2 {
+  cursor: pointer;
   /* max-width: 15vw; */
   padding: 0px 20px;
   font-size: 14px;
