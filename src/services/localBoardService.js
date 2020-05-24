@@ -99,6 +99,7 @@ function changeGroupName(board, group, name) {
 function addTask(board, group, task) {
     task._id = makeId()
     task.assignedGroupId = group._id
+    task.groupName = group.name
     group.tasks.push(task)
     return board
 }

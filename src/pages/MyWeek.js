@@ -63,8 +63,10 @@ class MyWeek extends Component {
                     <h3>Wellcome {user}</h3>
                 </div>
 
+                {!openTasks && !closeTasks && <h3>No tasks for this week</h3>}
+
                 <section className="my-week">
-                    <h3>Open Tasks</h3>
+                    {openTasks &&  <h3>Open Tasks</h3>}           
                     {openTasks && openTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
                 </section>
 
@@ -72,7 +74,7 @@ class MyWeek extends Component {
 
 
                 <section className="my-week">
-                    <h3>Closed Tasks</h3>
+                    {closeTasks && <h3>Closed Tasks</h3>}
                     {closeTasks && closeTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
                 </section>
             </>
