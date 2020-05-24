@@ -317,6 +317,8 @@ function remove(boardId) {
     gBoards.splice(boardIdx, 1)
 
 }
+
+
 function getById(boardId) {
     const board = gBoards.find(board => board._id === boardId)
     return board;
@@ -325,9 +327,11 @@ function _getIdxById(boardId) {
     return gBoards.findIndex(board => board._id === boardId)
 }
 
-function creatTaskInboxHistory(board,task,column,nextValue,path=''){
-task.isDone=true
-return board
+function userHistory(user,column,nextValue='',path='',timeStamp=Date.now()){
+user.history.push({
+
+})
+return user
 }
 
 

@@ -1,13 +1,10 @@
 import React from 'react';
 import { Router, Switch, Route } from 'react-router';
 import { connect } from 'react-redux'
-
 import { loadUsers } from './actions/UserActions'
-
 import history from './history';
 import './App.css';
 import './style/main.css';
-
 import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import Signup from './pages/Signup.js';
@@ -24,29 +21,33 @@ import AddPerson from './cmps/AddPerson';
 import page from './cmps/DateSelector';
 import DateSelector from './cmps/DateSelector';
 import Profile from './pages/Profile.js';
-
-
+import SocketService from './services/SocketService';
+import Chat from './cmps/Chat';
 class App extends React.Component {
   state = {
-
   }
-
-
-
-
+  async componentDidMount() {
+    SocketService.setup()
+    await this.props.loadUsers()
+    const { currUser } = this.props
+    this.setState({ currUser })
+    // SocketService.on('hello' , data=>{
+    //   console.log('data' , data)
+    // })
+  }
   render() {
     return (
       <div className="App">
         <Router history={history}>
           <div className="bgc-black">
-
-            <SideNav user={this.props.currUser}></SideNav>
-            <BoardNav></BoardNav>
-
+            <>
+              {this.props.currUser && <SideNav user={this.props.currUser}></SideNav>}
+              {this.props.currUser && <BoardNav></BoardNav>}
+            </>
           </div>
+          <Chat></Chat>
           <section className="main-board-container">
             <Switch>
-
               <Route path="/" component={Boards} exact />
               <Route path="/board/:id?" component={Boards} exact />
               <Route path="/signup" component={Signup} exact />
@@ -59,7 +60,6 @@ class App extends React.Component {
               <Route path="/filter" component={FilterByText} exact />
               <Route path="/c" component={DateSelector} exact />
               <Route path="/profile/:id?" component={Profile} exact />
-
             </Switch>
           </section>
         </Router>
@@ -72,15 +72,10 @@ class App extends React.Component {
     );
   }
 }
-
 const mapStateToProps = (state) => ({
   currUser: state.user.loggedInUser
 });
-
 const mapDispatchToProps = {
   loadUsers
-
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
