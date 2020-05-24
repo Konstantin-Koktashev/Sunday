@@ -240,12 +240,18 @@ class AddGroup extends Component {
   };
   AddGroup = () => {
     console.log("Adding a AddGroup!");
-    let AddGroup = this.state.group;
-    console.log("stategroup:", AddGroup);
+    let addGroup = this.state.group;
     // let boardId = this.props.board._id;
     let board = this.props.currBoard;
     console.log("boardfromgroups:", board);
-    let newBoard = localBoardService.addGroup(board, AddGroup);
+    let updateInfo = {
+      group: this.state.group,
+      user: this.props.user,
+      nextValue: addGroup.name,
+      updateType: 'New Group'
+    }
+    let newBoard = localBoardService.addGroup(board, addGroup);
+    newBoard = localBoardService.addBoardHistory(board, updateInfo)
     this.props.saveBoard(newBoard);
     this.props.loadBoards();
     // console.log("AddGroup -> AddGroup -> newBoard", newBoard);
@@ -270,6 +276,7 @@ const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
     currBoard: state.userBoards.currBoard,
+    user: state.user.loggedInUser
   };
 };
 const mapDispatchToProps = {
