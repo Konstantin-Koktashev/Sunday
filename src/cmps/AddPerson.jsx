@@ -65,7 +65,7 @@ class AddPerson extends Component {
         ></UsersPreviewBox>
         {isShown && (
           <div className="person-component flex col">
-            <div onClick={this.togglePersonBox} className="">
+            <div onClick={this.togglePersonBox} className="exit-btn-person">
               X
             </div>
             <input
