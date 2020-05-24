@@ -52,20 +52,9 @@ class App extends React.Component {
       <div className="App">
         <Router history={history}>
           <div className="bgc-black">
-<<<<<<< HEAD
             <SideNav user={this.props.currUser}></SideNav>
             <BoardNav></BoardNav>
           </div>
-=======
-            <>
-              {this.props.currUser && <SideNav user={this.props.currUser}></SideNav>}
-              {this.props.currUser && <BoardNav></BoardNav>}
-            </>
-          </div>
-
-
-          <Chat></Chat>
->>>>>>> 1ed281fcff228edabfe82020270f807eaa224b49
           <section className="main-board-container">
             <Switch>
 

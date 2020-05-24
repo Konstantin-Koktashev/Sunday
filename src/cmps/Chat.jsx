@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import localBoardService from "../services/localBoardService";
 import { connect } from "react-redux";
 import { Launcher } from "react-chat-window";
+import "../style/cmps/chat.css";
 
 import {
   saveBoard,
