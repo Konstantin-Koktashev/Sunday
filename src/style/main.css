@@ -160,6 +160,10 @@ html {
   }
 }
 
+.react-datepicker__input-container input {
+  font-weight: bold;
+}
+
 @keyframes preloader_2_1 {
   0% {
     -webkit-transform: translateX(0px) translateY(0px) rotate(0deg);

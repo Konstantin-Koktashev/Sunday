@@ -1,9 +1,16 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import { saveBoard, loadBoards } from "../actions/boardActions";
+import {loadUsers} from '../actions/UserActions'
 import localBoardService from "../services/localBoardService";
 import add from "../../src/style/img/add.png";
 class AddBoard extends Component {
+
+
+  componentDidMount() {
+    this.props.loadUsers()
+  }
+  
   state = {
     board: {
       // BOARD OBJECT
@@ -457,11 +464,13 @@ class AddBoard extends Component {
 const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
+    users:state.users
   };
 };
 const mapDispatchToProps = {
   saveBoard,
   loadBoards,
+  loadUsers
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddBoard);
