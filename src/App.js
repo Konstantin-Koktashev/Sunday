@@ -24,6 +24,7 @@ import AddPerson from './cmps/AddPerson';
 import page from './cmps/DateSelector';
 import DateSelector from './cmps/DateSelector';
 import Profile from './pages/Profile.js';
+import SocketService from './services/SocketService';
 
 
 class App extends React.Component {
@@ -31,6 +32,17 @@ class App extends React.Component {
 
   }
 
+  async componentDidMount() {
+    SocketService.setup()
+    await this.props.loadUsers()
+    const { currUser } = this.props
+    this.setState({ currUser })
+    
+    // SocketService.on('hello' , data=>{
+    //   console.log('data' , data)
+
+    // })
+  }
 
 
 

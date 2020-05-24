@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import '../style/pages/profile.css'
 import { loadReviews, addReview } from '../actions/ReviewActions.js';
 import { loadUsers } from '../actions/UserActions.js';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+
 import UserService from '../../src/services/UserService'
 class Profile extends Component {
     state = {

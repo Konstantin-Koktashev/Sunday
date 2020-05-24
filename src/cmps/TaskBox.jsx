@@ -3,7 +3,7 @@ import "../style/cmps/taskBox.css";
 import LabelContainer from "./LabelContainer";
 import localBoardService from "../../src/services/localBoardService";
 import { connect } from "react-redux";
-import DatePicker from "./Calendar";
+// import DatePicker from "./Calendar";
 import AddPerson from "./AddPerson";
 import {
   saveBoard,
