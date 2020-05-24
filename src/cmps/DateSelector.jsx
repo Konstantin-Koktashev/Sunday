@@ -27,13 +27,8 @@ class DateSelector extends Component {
     const board = localBoardService.changeColumn(currBoard, column, fixedDate);
 
     await this.props.saveBoard(board);
-<<<<<<< HEAD
     this.setState({startDate : fixedDate})
     // await this.props.loadBoards();
-=======
-    await this.props.setCurrBoard(board);
-    await this.props.loadBoards();
->>>>>>> bc2d33bf49c314e708697607f794fa274c0da345
   };
   render() {
     const { column } = this.props;

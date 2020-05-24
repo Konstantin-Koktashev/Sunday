@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { loadReviews, addReview } from '../actions/ReviewActions.js';
 import { loadUsers } from '../actions/UserActions.js';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class Profile extends Component {
     state = {

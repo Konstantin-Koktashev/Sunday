@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import BoardHeader from "../cmps/BoardHeader.jsx";
 import Board from '../cmps/Board.jsx'
 import '../style/pages/boards.css'
+import SocketService from '../services/SocketService'
 
 import { loadBoards, setCurrBoard, removeBoard } from "../../src/actions/boardActions";
 import {loadUsers} from '../../src/actions/UserActions'
@@ -15,10 +16,23 @@ class BoardApp extends React.Component {
 
 
     componentDidMount = async () => {
+
         this.props.loadUsers();
         var allBoards = await this.props.loadBoards()
         this.loadboards()
+        const boardId = this.props.currBoard._id
+        console.log('boardid check' , boardId)
+        SocketService.emit('boardViewed' , boardId)
+        SocketService.on('doRefresh' , data=>{
+            this.loadboards()
+        })
 
+    }
+
+    componentWillUnmount(){
+        SocketService.off('doRefresh' , data=>{
+            this.loadboards()
+        })
     }
     componentDidUpdate(prevProps) {
         if (this.props.match.params.id !== prevProps.match.params.id) {
@@ -31,7 +45,7 @@ class BoardApp extends React.Component {
 
     }
 
-    loadboards = async () => {
+    loadboards = () => {
         const { boards } = this.props;
         const id = this.props.match.params.id ? this.props.match.params.id : null
         let board = boards[0]
