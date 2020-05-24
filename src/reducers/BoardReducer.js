@@ -26,12 +26,12 @@ export default function (state = initialState, action = {}) {
         case 'UPDATE_BOARD':
             return {
                 ...state,
-                board: {
+                board: [
                     ...state.board.map(board => {
                         if (board._id === action.savedBoard._id) return action.savedBoard
                         return board
                     })
-                }
+                ]
             }
         case 'SET_BOARDS':
             return {
@@ -41,11 +41,11 @@ export default function (state = initialState, action = {}) {
         case 'BOARD_REMOVE':
             return {
                 ...state,
-                board: {
+                board: [
                     ...state.board.filter(board => {
                         return board._id !== action.boardId
                     })
-                }
+                ]
             }
         case 'ADD_GROUP':
             return {

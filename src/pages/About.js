@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SocketService from '../services/SocketService';
+
 export default class About extends Component {
   state = {
     msg: { from: 'Me', txt: '' },
