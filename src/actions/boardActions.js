@@ -3,6 +3,7 @@ import localBoardService from '../services/localBoardService'
 import { loading, doneLoading } from './SystemActions';
 import SocketService from '../services/SocketService'
 
+
 export function loadBoards() {
   return async dispatch => {
     try {
@@ -35,10 +36,8 @@ export function saveBoard(board) {
     try {
       const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD'
       const savedBoard = await boardServices.saveBoard(board)
+      SocketService.emit('doRefresh', 'js')
       dispatch({ type, savedBoard })
-      SocketService.emit('doRefresh' , 'shtut' )
-
-
     } catch (err) {
       console.log('boardActions: err in add or update board', err);
     }
