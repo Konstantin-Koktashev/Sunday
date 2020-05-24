@@ -21,7 +21,7 @@ export default class FilterByText extends Component {
       <div>
         <TextField
           id="standard-basic"
-          label="Standard"
+          label="Filter"
           placeholder="Search By Text"
           onChange={(ev) => this.handleChange(ev)}
         />
