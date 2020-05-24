@@ -45,7 +45,7 @@ class App extends React.Component {
               {this.props.currUser && <BoardNav></BoardNav>}
             </>
           </div>
-          <Chat></Chat>
+          <Chat user={this.props.currUser} ></Chat>
           <section className="main-board-container">
             <Switch>
               <Route path="/" component={Boards} exact />

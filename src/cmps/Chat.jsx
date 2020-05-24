@@ -3,7 +3,7 @@ import localBoardService from "../services/localBoardService";
 import { connect } from "react-redux";
 import { Launcher } from "react-chat-window";
 import "../style/cmps/chat.css";
-
+import SocketService from "../services/SocketService";
 import {
   saveBoard,
   loadBoards,
@@ -15,7 +15,24 @@ class Chat extends Component {
     super();
     this.state = {
       messageList: [],
+      connectedUserId: null,
     };
+  }
+
+  componentDidMount = async () => {
+    SocketService.setup();
+    let userId = this.props.user._id;
+    SocketService.emit(`openChat`, userId);
+
+    SocketService.on(`openChat`, async (data) => {
+      this._onMessageWasSent(data.msg);
+    });
+  };
+
+  componentWillUnmount() {
+    // SocketService.off("doRefresh", (data) => {
+    //   _onMessageWasSent(message);
+    // });
   }
 
   _onMessageWasSent(message) {
@@ -37,6 +54,10 @@ class Chat extends Component {
         ],
       });
     }
+    let userId = this.props.user._id;
+    SocketService.on(`chatTo/${userId}`, async (data) => {
+      this._onMessageWasSent(data.msg);
+    });
   }
 
   render() {
