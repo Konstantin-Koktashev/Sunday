@@ -25,6 +25,7 @@ import page from './cmps/DateSelector';
 import DateSelector from './cmps/DateSelector';
 import Profile from './pages/Profile.js';
 import SocketService from './services/SocketService';
+import Chat from './cmps/Chat';
 
 
 class App extends React.Component {
@@ -37,7 +38,7 @@ class App extends React.Component {
     await this.props.loadUsers()
     const { currUser } = this.props
     this.setState({ currUser })
-    
+
     // SocketService.on('hello' , data=>{
     //   console.log('data' , data)
 
@@ -51,11 +52,14 @@ class App extends React.Component {
       <div className="App">
         <Router history={history}>
           <div className="bgc-black">
-
-            <SideNav user={this.props.currUser}></SideNav>
-            <BoardNav></BoardNav>
-
+            <>
+              {this.props.currUser && <SideNav user={this.props.currUser}></SideNav>}
+              {this.props.currUser && <BoardNav></BoardNav>}
+            </>
           </div>
+
+
+          <Chat></Chat>
           <section className="main-board-container">
             <Switch>
 
