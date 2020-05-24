@@ -19,15 +19,15 @@ class Chat extends Component {
     };
   }
 
-  componentDidMount = async () => {
-    SocketService.setup();
-    let userId = this.props.user._id;
-    SocketService.emit(`openChat`, userId);
+  // componentDidMount = async () => {
+  //   SocketService.setup();
+  //   let userId = this.props.user._id;
+  //   SocketService.emit(`openChat`, userId);
 
-    SocketService.on(`openChat`, async (data) => {
-      this._onMessageWasSent(data.msg);
-    });
-  };
+  //   SocketService.on(`openChat`, async (data) => {
+  //     this._onMessageWasSent(data.msg);
+  //   });
+  // };
 
   componentWillUnmount() {
     // SocketService.off("doRefresh", (data) => {
