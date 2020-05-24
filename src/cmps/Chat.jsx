@@ -1,36 +1,8 @@
-// import React, { Component } from "react";
-// import "../style/cmps/taskList.css";
-
-// class Chat extends Component {
-//   state = {
-//     chatIsShown: true,
-//     chatMsg: "",
-//   };
-
-//   handleChange = ({ target }) => {
-//     const value = target.value;
-//     this.setState({ groupName: value });
-//   };
-
-//   toggleEdit = (ev) => {
-//     // ev.stopPropagation();
-//     this.setState(({ groupNameIsEdit }) => ({
-//       groupNameIsEdit: !groupNameIsEdit,
-//     }));
-//   };
-
-//   render() {
-//     return (
-//       <section className="chat-container chat-open ">
-//         <h2> CHAT</h2>
-//       </section>
-//     );
-//   }
-// }
 import React, { Component } from "react";
 import localBoardService from "../services/localBoardService";
 import { connect } from "react-redux";
 import { Launcher } from "react-chat-window";
+import "../style/cmps/chat.css";
 
 import {
   saveBoard,
