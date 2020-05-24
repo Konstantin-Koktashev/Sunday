@@ -29,9 +29,8 @@ import SocketService from './services/SocketService';
 
 class App extends React.Component {
   state = {
-    currUser: null
-  }
 
+  }
 
   async componentDidMount() {
     SocketService.setup()
@@ -43,9 +42,8 @@ class App extends React.Component {
     //   console.log('data' , data)
 
     // })
-
-
   }
+
 
 
   render() {
@@ -54,7 +52,7 @@ class App extends React.Component {
         <Router history={history}>
           <div className="bgc-black">
 
-            <SideNav></SideNav>
+            <SideNav user={this.props.currUser}></SideNav>
             <BoardNav></BoardNav>
 
           </div>
@@ -72,6 +70,8 @@ class App extends React.Component {
               <Route path="/label" component={LabelContainer} exact />
               <Route path="/filter" component={FilterByText} exact />
               <Route path="/c" component={DateSelector} exact />
+              <Route path="/profile/:id?" component={Profile} exact />
+
             </Switch>
           </section>
         </Router>

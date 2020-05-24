@@ -79,7 +79,12 @@ class AddPerson extends Component {
                   return (
                     <section key={idx} className="peron-preview-delet">
                       <div className="flex space-between">
-                        <button className="person-preview-btn">
+                        <button
+                          onClick={() =>
+                            (window.location.href = `/profile/${user._id}`)
+                          }
+                          className="person-preview-btn"
+                        >
                           {user.username}
                         </button>
                         <img

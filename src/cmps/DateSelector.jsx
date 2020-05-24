@@ -19,8 +19,6 @@ class DateSelector extends Component {
     if (startDate !== "Date") this.setState({ startDate: fixedDate });
   }
 
-  
-
   handleChange = async (date) => {
     let fixedDate = date.getTime();
     const { currBoard, column } = this.props;
@@ -29,6 +27,8 @@ class DateSelector extends Component {
     await this.props.saveBoard(board);
     this.setState({startDate : fixedDate})
     // await this.props.loadBoards();
+    await this.props.setCurrBoard(board);
+    await this.props.loadBoards();
   };
   render() {
     const { column } = this.props;
