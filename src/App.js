@@ -46,7 +46,7 @@ class App extends React.Component {
         <Router history={history}>
           <div className="bgc-black">
 
-            <SideNav></SideNav>
+            <SideNav user={this.state.currUser}></SideNav>
             <BoardNav></BoardNav>
 
           </div>

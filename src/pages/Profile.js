@@ -43,7 +43,7 @@ class Profile extends Component {
 
                 </div>
                 <div className="over-view-profile">
-
+                    <h2></h2>
                     <p>Title:{user.username}</p>
                     <p>Email: {user.email}</p>
                     <p>Hello</p>
