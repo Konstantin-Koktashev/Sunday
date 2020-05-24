@@ -17,6 +17,14 @@ export function loadBoards() {
   };
 }
 
+// function setFilter(text){
+//   return async dispatch =>{
+//     try{
+
+//     }
+//   }
+// }
+
 
 
 export function saveBoard(board) {

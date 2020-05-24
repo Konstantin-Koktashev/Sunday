@@ -1,6 +1,7 @@
 const initialState = {
     board: null,
-    currBoard: null
+    currBoard: null,
+    filterByText:''
 };
 window.state = initialState
 export default function (state = initialState, action = {}) {

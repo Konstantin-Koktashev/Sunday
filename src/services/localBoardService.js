@@ -226,7 +226,7 @@ function changeColumn(board, column, value) {
 }
 
 function changeLabelColumn(board, label, color, text) {
-    
+
     console.log('labelBefore:', label)
     label.status = text
     label.value = text
@@ -238,11 +238,11 @@ function changeLabelColumn(board, label, color, text) {
 
 
 
-function setColumn(board, column, color, value , task) {
+function setColumn(board, column, color, value, task) {
     task.status = value
     column.value = value
     column.color = color
-    console.log(task , 'taststatsasta')
+    console.log(task, 'taststatsasta')
     return board
 }
 
@@ -329,20 +329,39 @@ function _getIdxById(boardId) {
 
 
 
-function filter(board, value) {
-    var newBoard = board
+function filter(board, text) {
+    let newBoard = JSON.parse(JSON.stringify(board));
+    text = text.toLowerCase();
+    // Guard Clause
+    if (!text) return board;
+    newBoard.groups = newBoard.groups.filter(group => {
+        const isNameValid = group.name.toLowerCase().includes(text)
+        const hasValidTasks = group.tasks.some(task => {
+            return task.taskTitle.toLowerCase().includes(text)
+        });
+        return hasValidTasks || isNameValid
+    });
 
-    if (value) {
-        const groupsAfterFilter = board.groups.filter(group => {
-            return group.name.includes(value)
+    newBoard.groups = newBoard.groups.map(group => {
+        const isNameValid = group.name.toLowerCase().includes(text)
+        if(isNameValid) return group;
+
+        const validTasks = group.tasks.filter(task => {
+            return task.taskTitle.includes(text)
         })
-        const tasksAfterFilter = board.groups.map(group => {
-            return group.tasks.filter(task => {
-                return task.taskTitle.includes(value)
-            })
-        })
-    }
+        group.tasks = validTasks;
+        return group
+
+    });
+
+    // console.log('newBoards' , tasksAfterFilter)
     return newBoard
+
+
+
+
+
+
 
 }
 
