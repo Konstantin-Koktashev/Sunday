@@ -5,18 +5,49 @@ import { saveBoard, loadBoards } from "../actions/boardActions";
 import { loadUsers } from "../actions/UserActions";
 import UsersPreviewBox from "./UsersPreviewBox";
 import deletePng from "../style/img/delete.svg";
-
-
 class AddPerson extends Component {
-    state = {
-        usersToAdd: null,
-        isShown:false
-    }
-
-    async componentDidMount() {
-        await this.props.loadUsers()
-    }
-
+  state = {
+    usersToAdd: null,
+    isShown: false,
+  };
+  async componentDidMount() {
+    await this.props.loadUsers();
+  }
+  addPerson = (person) => {
+    this.setState({ isShown: false });
+    const column = this.props.column;
+    const currBoard = this.props.currBoard;
+    const newBoard = localBoardService.addPersonToColumn(
+      currBoard,
+      column,
+      person
+    );
+    this.props.saveBoard(newBoard);
+    this.props.loadBoards();
+  };
+  searchPeople = (e) => {
+    e.preventDefault();
+    const users = this.props.users;
+    const usersToAdd = users.filter((user) => {
+      return user.username.includes(e.target.value);
+    });
+    this.setState({ usersToAdd });
+  };
+  removePerson = (person) => {
+    // const column=this.props.column
+    // const currBoard=this.props.currBoard
+    const { column, currBoard } = this.props;
+    const newBoard = localBoardService.removePersonToTask(
+      currBoard,
+      person,
+      column
+    );
+    this.props.saveBoard(newBoard);
+    this.props.loadBoards();
+  };
+  togglePersonBox = () => {
+    this.setState({ isShown: true });
+  };
   render() {
     const isShows = this.state.isShows;
     const users = this.props.column.persons;
@@ -38,7 +69,6 @@ class AddPerson extends Component {
               placeholder="Search People"
               onChange={(e) => this.searchPeople(e)}
             />
-
             <section className="people-in-task">
               {users &&
                 users.map((user, idx) => {
@@ -88,19 +118,19 @@ class AddPerson extends Component {
     );
   }
 }
-
 const mapStateToProps = (state) => ({
-    users: state.user.users,
-    currBoard: state.userBoards.board,
-    currUser: state.user.loggedInUser
-})
-
-
+  users: state.user.users,
+  currBoard: state.userBoards.currBoard,
+  currUser: state.user.loggedInUser,
+});
 const mapDispatchToProps = {
-    saveBoard,
-    loadBoards,
-    loadUsers
+  saveBoard,
+  loadBoards,
+  loadUsers,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(AddPerson);
 
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddPerson)
+
+
+
