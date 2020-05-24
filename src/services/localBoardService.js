@@ -330,10 +330,10 @@ function _getIdxById(boardId) {
     return gBoards.findIndex(board => board._id === boardId)
 }
 
-function userHistory(user,column,nextValue='',path='',timeStamp=Date.now()){
-user.history.push({
+function addUserHistory(board,user,column,nextValue='',path='',timeStamp=Date.now()){
+if(!user.history) user.history=[]
 
-})
+
 return user
 }
 
