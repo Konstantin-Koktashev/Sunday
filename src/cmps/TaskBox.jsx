@@ -145,9 +145,24 @@ class TaskBox extends React.Component {
         );
         break;
       case "date":
-        box = (
-          <div className="date-box box-div">
-            {/* <DateSelector column={col}/> */}
+        box = !isTaskBox ? (
+          colIsEdit ? (
+            <input
+              type="text"
+              name="colEdit"
+              className="colEdit-input"
+              value={colText}
+              onChange={this.handleChange}
+              onBlur={(ev) => this.updateColTitle(ev)}
+            />
+          ) : (
+            <div className="date-box box-div colEdit-input-date">
+              <DateSelector column={col} />
+            </div>
+          )
+        ) : (
+          <div className="date-box box-div " onClick={this.toggleColEdit}>
+            {col.value}
           </div>
         );
         break;

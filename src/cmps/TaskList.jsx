@@ -7,6 +7,7 @@ import { TaskBoxList } from "./TaskBoxList.jsx";
 import AddTask from "../../src/cmps/AddTask";
 import localBoardService from "../services/localBoardService";
 import { connect } from "react-redux";
+import ProgressBar from "../../src/cmps/ProgressBar.jsx";
 
 import {
   saveBoard,
@@ -131,6 +132,7 @@ class TaskList extends Component {
             </div>
           </div>
         )}
+        <ProgressBar group={this.props.group}></ProgressBar>
       </div>
     );
   }

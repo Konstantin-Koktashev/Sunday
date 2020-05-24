@@ -168,7 +168,7 @@ function updateColumnText(board, column, text) {
 /// person column ///
 
 function addPersonToColumn(board, column, person) {
-    column.persons =typeof column.persons==='array' ? column.persons : [];
+    column.persons = typeof column.persons === 'array' ? column.persons : [];
     // column.persons = column.persons.length ? column.persons : [];
     column.persons.push(person)
     return board
@@ -178,7 +178,7 @@ function addPersonToColumn(board, column, person) {
 function removePersonToTask(board, person, column) {
     column.persons = (column.persons && column.persons.length) ? column.persons : [];
     const personIdx = column.persons.findIndex(pers => pers._id === person._id)
-    console.log('idx' , personIdx)
+    console.log('idx', personIdx)
     column.persons.splice(personIdx, 1)
     return board
 }
@@ -226,7 +226,10 @@ function changeColumn(board, column, value) {
 }
 
 function changeLabelColumn(board, label, color, text) {
+<<<<<<< HEAD
     
+=======
+>>>>>>> 0097c64b5e237b152bd67d41eb8f70c98f547bdd
     console.log('labelBefore:', label)
     label.status = text
     label.value = text
