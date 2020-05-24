@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { loadBoards} from '../actions/boardActions'
-
+import { loadBoards } from '../actions/boardActions'
 import WeekPreview from '../cmps/WeekPreview'
 
 
 class MyWeek extends Component {
 
     state = {
-        userTasks: null
+        openTasks: null,
+        closeTasks: null
+
     }
 
     async componentDidMount() {
@@ -23,7 +24,7 @@ class MyWeek extends Component {
         var groupsArr = [];
         var tasksArr = [];
         let { board } = await this.props.boards
-        console.log('board' , board)
+        console.log('board', board)
         const groups = await board.map(b => b.groups)
         await groups.forEach(group => {
             groupsArr.push(...group)
@@ -32,7 +33,20 @@ class MyWeek extends Component {
             tasksArr.push(...group.tasks)
         })
         var userTasks = tasksArr.filter(task => task.users.find(user => user._id === loggedUser._id))
-        this.setState({ userTasks })
+        let openTasks = [];
+        let closeTasks = []
+        userTasks.forEach(task => {
+            if (task.status === 'Done') closeTasks.push(task)
+            else openTasks.push(task)
+        })
+
+        console.log('opentask', openTasks)
+        console.log('closedTasks', closeTasks)
+        this.setState({ openTasks, closeTasks })
+
+
+        console.log('thissate', this.state)
+
     }
 
 
@@ -41,17 +55,25 @@ class MyWeek extends Component {
 
     render() {
         const user = this.props.user ? this.props.user.name : 'guest - please login to view your week'
-        const { userTasks, color } = this.state
+        const { closeTasks, openTasks } = this.state
         return (
 
             <>
                 <div className="header-container-myweek">
-                    <h3>Wellcome {this.props.user.name}</h3>
+                    <h3>Wellcome {user}</h3>
                 </div>
+
                 <section className="my-week">
-                    {userTasks && userTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
+                    <h3>Open Tasks</h3>
+                    {openTasks && openTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
+                </section>
 
 
+
+
+                <section className="my-week">
+                    <h3>Closed Tasks</h3>
+                    {closeTasks && closeTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
                 </section>
             </>
 

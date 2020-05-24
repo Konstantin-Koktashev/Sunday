@@ -30,7 +30,8 @@ export default {
     updateColumnOrder,
     setColumn,
     filter,
-    changeDueDateColumn2
+    changeDueDateColumn2,
+    addBoardHistory
 }
 
 
@@ -241,7 +242,7 @@ function changeLabelColumn(board, label, color, text) {
 
 
 function setColumn(board, column, color, value, task) {
-    
+
     task.status = value
     column.value = value
     column.color = color
@@ -320,6 +321,8 @@ function remove(boardId) {
     gBoards.splice(boardIdx, 1)
 
 }
+
+
 function getById(boardId) {
     const board = gBoards.find(board => board._id === boardId)
     return board;
@@ -327,6 +330,29 @@ function getById(boardId) {
 function _getIdxById(boardId) {
     return gBoards.findIndex(board => board._id === boardId)
 }
+
+function addBoardHistory(board,updateInfo) {
+    const {user, group, task,column, nextValue,updateType } = updateInfo
+    const prevValue = column?column.value:''
+    const boardId = board._id
+    const update = {
+        timeStamp: Date.now(),
+        prevValue,
+        nextValue,
+        boardId,
+        assignedBy: user._id,
+        taskTitle:(task)?task.taskTitle:'',
+        user,
+        taskId: (task)?task._id:false,
+        group:(group)? group: false,
+        updateType
+        
+    }
+    board.history.unshift(update)
+    return board
+}
+
+
 
 
 

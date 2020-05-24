@@ -14,7 +14,8 @@ class Signup extends Component {
         signupCred: {
             email: '',
             password: '',
-            username: ''
+            username: '',
+            history:[]
         }
     };
 
@@ -43,11 +44,11 @@ class Signup extends Component {
 
     doSignup = async ev => {
         ev.preventDefault();
-        const { email, password, username } = this.state.signupCred;
+        const { email, password, username,history } = this.state.signupCred;
         if (!email || !password || !username) {
             return this.setState({ msg: 'All inputs are required!' });
         }
-        const signupCreds = { email, password, username };
+        const signupCreds = { email, password, username,history };
         this.props.signup(signupCreds);
         this.setState({ signupCred: { email: '', password: '', username: '' } });
     };
