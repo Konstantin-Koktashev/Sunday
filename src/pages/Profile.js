@@ -35,23 +35,25 @@ class Profile extends Component {
     render() {
         const user = this.state.user
         return (
-            <div className="profile-page-container">
+            <>
+                {user && <div className="profile-page-container">
 
-                <div className="profile-header-container">header
-        <h2>Well'come To {user.username} Profile</h2>
-                    <img className="user-image-profile" src="google" alt="USER IMAGE"></img>
+                    <div className="profile-header-container">
+                        {/* <img className="user-image-profile" src="google" alt="USER IMAGE"></img> */}
+                        <div className="profile-circle-big flex a-center j-center">{user.username.charAt(0).toUpperCase()}</div>
+                        <h2>{user.username} Profile</h2>
 
-                </div>
-                <div className="over-view-profile">
-                    <h2></h2>
-                    <p>Title:{user.username}</p>
-                    <p>Email: {user.email}</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                </div>
+                    </div>
+                    <div className="over-view-profile flex col">
+                        <h2>Over View</h2>
+                        <p>Title: <span>{user.username}</span></p>
+                        <p>Email: <span>{user.email}</span></p>
 
 
-            </div>
+                    </div>
+
+
+                </div>}</>
         );
     }
 }

@@ -54,15 +54,16 @@ export default function SideNav(props) {
           ></img>
         </div>
       </NavLink>
-
-      <div to={`/profile/${props.user}`} className="search">
-        <img
-          title="My Profile"
-          className="side-nav-img"
-          src={person}
-          alt="Profile"
-        ></img>
-      </div>
+      <NavLink to={`/profile/${props.user._id}`}>
+        <div className="search">
+          <img
+            title="My Profile"
+            className="side-nav-img"
+            src={person}
+            alt="Profile"
+          ></img>
+        </div>
+      </NavLink>
     </div>
   );
 }
