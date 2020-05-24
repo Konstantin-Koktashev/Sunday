@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import localBoardService from "../services/localBoardService";
 
 import { saveBoard, loadBoards, setCurrBoard } from "../actions/boardActions";
+import SocketService from "../services/SocketService";
 
 class LabelContainer extends Component {
   state = {
@@ -72,9 +73,6 @@ class LabelContainer extends Component {
 
   // UNEDIT
   setLabel = (label, color, text) => {
-    console.log("label", label);
-    console.log("color", color);
-    console.log("text", text);
     const { currBoard } = this.props;
     const board = localBoardService.changeLabelColumn(
       currBoard,
@@ -82,11 +80,11 @@ class LabelContainer extends Component {
       color,
       text
     );
-    console.log("board after change", board);
     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
     this.props.setCurrBoard(board);
+    
 
     //find the label with the order and set the label on the props who props column who submit the label
   };

@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import BoardHeader from "../cmps/BoardHeader.jsx";
 import Board from '../cmps/Board.jsx'
 import '../style/pages/boards.css'
+import SocketService from '../services/SocketService'
 
 import { loadBoards, setCurrBoard, removeBoard } from "../../src/actions/boardActions";
-import {loadUsers} from '../../src/actions/UserActions'
+import { loadUsers } from '../../src/actions/UserActions'
 class BoardApp extends React.Component {
     state = {
         currBoard: null
@@ -15,11 +16,25 @@ class BoardApp extends React.Component {
 
 
     componentDidMount = async () => {
+
         this.props.loadUsers();
         var allBoards = await this.props.loadBoards()
         this.loadboards()
+        const boardId = this.props.currBoard._id
+        console.log('boardid check', boardId)
+        SocketService.emit('boardViewed', boardId)
+        SocketService.on('doRefresh', async data => {
+            await this.props.loadBoards()
+            let board = this.getBoardByID(boardId)
+            this.setBoard(board)
+        })
 
     }
+
+    // componentWillUnmount(){
+    //     SocketService.off('doRefresh' , data=>{
+    //     })
+    // }
     componentDidUpdate(prevProps) {
         if (this.props.match.params.id !== prevProps.match.params.id) {
             let board = this.getBoardByID(this.props.match.params.id)
@@ -31,7 +46,7 @@ class BoardApp extends React.Component {
 
     }
 
-    loadboards = async () => {
+    loadboards = () => {
         const { boards } = this.props;
         const id = this.props.match.params.id ? this.props.match.params.id : null
         let board = boards[0]
@@ -83,6 +98,7 @@ class BoardApp extends React.Component {
         const { currBoard } = this.state;
         return (
             <>
+
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
                 {currBoard && <BoardHeader removeBoard={this.removeBoard} board={currBoard}></BoardHeader>}
                 {currBoard && <Board board={currBoard} ></Board>}

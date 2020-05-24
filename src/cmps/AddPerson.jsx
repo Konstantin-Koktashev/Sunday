@@ -5,6 +5,7 @@ import { saveBoard, loadBoards } from "../actions/boardActions";
 import { loadUsers } from "../actions/UserActions";
 import UsersPreviewBox from "./UsersPreviewBox";
 import deletePng from "../style/img/delete.svg";
+import { NavLink } from "react-router-dom";
 class AddPerson extends Component {
   state = {
     usersToAdd: null,
@@ -79,14 +80,11 @@ class AddPerson extends Component {
                   return (
                     <section key={idx} className="peron-preview-delet">
                       <div className="flex space-between">
-                        <button
-                          onClick={() =>
-                            (window.location.href = `/profile/${user._id}`)
-                          }
-                          className="person-preview-btn"
-                        >
-                          {user.username}
-                        </button>
+                        <NavLink to={`/profile/${user._id}`}>
+                          <button className="person-preview-btn">
+                            {user.username}
+                          </button>
+                        </NavLink>
                         <img
                           className="delete-icon person-remove"
                           src={deletePng}

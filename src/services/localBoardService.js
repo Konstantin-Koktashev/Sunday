@@ -1,4 +1,6 @@
-import { saveBoard } from '../actions/boardActions.js'
+
+
+
 
 let gBoards = null
 export default {
@@ -239,6 +241,7 @@ function changeLabelColumn(board, label, color, text) {
 
 
 function setColumn(board, column, color, value, task) {
+    
     task.status = value
     column.value = value
     column.color = color
