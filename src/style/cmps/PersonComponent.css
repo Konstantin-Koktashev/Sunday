@@ -39,3 +39,9 @@
 .person-remove {
   margin-left: 15px;
 }
+
+.exit-btn-person {
+  width: 3vw;
+  height: 3vh;
+  font-size: 20px;
+}
