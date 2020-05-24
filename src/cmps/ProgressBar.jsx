@@ -28,7 +28,7 @@ class ProgressBar extends React.Component {
     return (
       <section className="progress-bar">
         <div className="full-width grey-status"></div>
-        <div style={pStyle} className="color-status">
+        <div style={pStyle} className="color-status progress-bar-anim">
           <div>{this.showStatus()}%</div>
         </div>
       </section>
