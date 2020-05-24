@@ -23,19 +23,19 @@ class LabelContainer extends Component {
           _id: "111a",
           color: "#44bd32",
           value: "Done",
-          status:"Done"
+          status: "Done",
         },
         {
           _id: "222v",
           color: "#00a8ff",
           value: "Working",
-          status:"Working"
+          status: "Working",
         },
         {
           _id: "333b",
           color: "#eb2f06",
           value: "Stuck",
-          status:"Stuck"
+          status: "Stuck",
         },
       ];
     } else if (this.props.type === "priority") {
@@ -92,9 +92,16 @@ class LabelContainer extends Component {
   };
 
   setColumn = (color, text) => {
-    const task = this.props.task
+    const task = this.props.task;
+    console.log("setColumn q2weqweqw-> task", task);
     const { currBoard, column } = this.props;
-    const board = localBoardService.setColumn(currBoard, column, color, text , task);
+    const board = localBoardService.setColumn(
+      currBoard,
+      column,
+      color,
+      text,
+      task
+    );
     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
@@ -118,7 +125,7 @@ class LabelContainer extends Component {
     let label = {
       color: "lightgray",
       value: "New Label",
-      status:"new"
+      status: "new",
     };
     const column = this.props.column;
     const currBoard = this.props.currBoard;

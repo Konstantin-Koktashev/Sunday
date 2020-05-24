@@ -16,6 +16,10 @@
   padding-top: 10px;
 }
 
+.label-container p {
+  cursor: pointer;
+}
+
 .box-label {
   /* width: 300px; */
   width: 90%;

@@ -17,13 +17,15 @@ export function loadBoards() {
   };
 }
 
-// function setFilter(text){
-//   return async dispatch =>{
-//     try{
-
-//     }
-//   }
-// }
+export function setFilter(text){
+  return async dispatch =>{
+    try{
+      dispatch({ type: 'SET_FILTER', text });
+    } catch(err){
+      console.log('BoardActions: err in setfilter', err);
+    }
+  }
+}
 
 
 

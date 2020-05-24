@@ -210,7 +210,9 @@ function changeDueDateColumn(board, column, date) {
     return board
 }
 
-function changeDueDateColumn2(board, column, date) {
+function changeDueDateColumn2(board, column, date,originalDates) {
+    column.startDate=originalDates[0].getTime()
+    column.endDate=originalDates[1].getTime()
     column.startDate = date.from
     column.endDate = date.to
     return board
@@ -226,12 +228,9 @@ function changeColumn(board, column, value) {
 }
 
 function changeLabelColumn(board, label, color, text) {
-
-    console.log('labelBefore:', label)
     label.status = text
     label.value = text
     label.color = color
-    console.log('labelafter', label)
     return board
 }
 
@@ -242,7 +241,6 @@ function setColumn(board, column, color, value, task) {
     task.status = value
     column.value = value
     column.color = color
-    console.log(task, 'taststatsasta')
     return board
 }
 
