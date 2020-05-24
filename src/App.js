@@ -23,6 +23,7 @@ import FilterByText from './cmps/FilterByText';
 import AddPerson from './cmps/AddPerson';
 import page from './cmps/DateSelector';
 import DateSelector from './cmps/DateSelector';
+import Profile from './pages/Profile.js';
 
 
 class App extends React.Component {

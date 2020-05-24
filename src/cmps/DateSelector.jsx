@@ -3,7 +3,7 @@ import { TextField } from "@material-ui/core";
 import localBoardService from "../services/localBoardService";
 import { connect } from "react-redux";
 
-import { saveBoard, loadBoards } from "../actions/boardActions";
+import { saveBoard, loadBoards, setCurrBoard } from "../actions/boardActions";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -25,9 +25,15 @@ class DateSelector extends Component {
     let fixedDate = date.getTime();
     const { currBoard, column } = this.props;
     const board = localBoardService.changeColumn(currBoard, column, fixedDate);
+
     await this.props.saveBoard(board);
+<<<<<<< HEAD
     this.setState({startDate : fixedDate})
     // await this.props.loadBoards();
+=======
+    await this.props.setCurrBoard(board);
+    await this.props.loadBoards();
+>>>>>>> bc2d33bf49c314e708697607f794fa274c0da345
   };
   render() {
     const { column } = this.props;
@@ -37,7 +43,7 @@ class DateSelector extends Component {
         <form className={"classes.container "} noValidate>
           <DatePicker
             selected={this.state.startDate}
-            onChange={(ev) => this.handleChange(ev)}
+            onChange={(date) => this.handleChange(date)}
           />
         </form>
       </div>
@@ -52,6 +58,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   saveBoard,
   loadBoards,
+  setCurrBoard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DateSelector);

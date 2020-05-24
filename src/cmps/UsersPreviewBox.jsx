@@ -14,14 +14,22 @@ class UsersPreviewBox extends Component {
     const people = this.props.people ?? [];
     return (
       <div
-        className="person-preview flex"
+        className="person-preview flex a-center j-center"
         onClick={() => {
           this.props.togglePersonBox();
         }}
       >
         {people.map((person, idx) => {
           console.log("person", person.username);
-          return <div key={idx}>{person.username}</div>;
+          return (
+            <div
+              className="user-preview-circle"
+              title={`${person.username} Last seen at ${person.lastSeenAt}`} //// NEED TO FIX LAST SEEN
+              key={idx}
+            >
+              {person.username.charAt(0).toUpperCase()}
+            </div>
+          );
         })}
         {/* Add */}
       </div>
