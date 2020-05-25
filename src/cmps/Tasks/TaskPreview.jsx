@@ -84,7 +84,6 @@ class TaskPreview extends Component {
   };
   changeHistoryTaskNames = (boards, task) => {
     boards.forEach((board) => {
-      // debugger
       board.history.forEach((history) => {
         if (history.taskId === task._id) history.title = this.state.taskTitle;
       });

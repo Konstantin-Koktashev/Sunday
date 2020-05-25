@@ -42,7 +42,6 @@ class Inbox extends Component {
         }
 
 
-        debugger;
         let filtertedUpdates = []
         historyToRender.forEach(update => {
             let isSeen = false
@@ -55,7 +54,6 @@ class Inbox extends Component {
             })
             if (!isSeen) filtertedUpdates.push(update)
         })
-        debugger;
         this.setState({ filtertedUpdates })
         return Promise.resolve()
     }
