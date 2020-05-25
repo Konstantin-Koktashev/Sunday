@@ -21,13 +21,13 @@ class BoardApp extends React.Component {
         var allBoards = await this.props.loadBoards()
         this.loadboards()
         const boardId = this.props.currBoard._id
-        console.log('boardid check', boardId)
-        SocketService.emit('boardViewed', boardId)
+        // SocketService.emit('boardViewed', boardId)
         SocketService.on('doRefresh', async data => {
             await this.props.loadBoards()
             let board = this.getBoardByID(boardId)
             this.setBoard(board)
         })
+
 
     }
 

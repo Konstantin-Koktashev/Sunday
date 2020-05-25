@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Launcher } from "react-chat-window";
 import "../style/cmps/chat.css";
 import SocketService from "../services/SocketService";
+import { loadUsers } from "../actions/UserActions";
 import {
   saveBoard,
   loadBoards,
@@ -15,30 +16,28 @@ class Chat extends Component {
     super();
     this.state = {
       messageList: [],
-      connectedUserId: null,
+      //   loggedInUser: this.props.user,
+      chatWith: null,
     };
   }
 
-  // componentDidMount = async () => {
-  //   SocketService.setup();
-  //   let userId = this.props.user._id;
-  //   SocketService.emit(`openChat`, userId);
-
-  //   SocketService.on(`openChat`, async (data) => {
-  //     this._onMessageWasSent(data.msg);
-  //   });
-  // };
-
-  componentWillUnmount() {
-    // SocketService.off("doRefresh", (data) => {
-    //   _onMessageWasSent(message);
-    // });
-  }
+  componentDidMount = async () => {
+    SocketService.emit("boardChat", this.props.board._id);
+    await this.props.loadUsers();
+    SocketService.on("sendMsg", (msg) => {
+      console.log("heagati lepo");
+      this.setState({
+        messageList: [...this.state.messageList, msg],
+      });
+    });
+  };
 
   _onMessageWasSent(message) {
     this.setState({
       messageList: [...this.state.messageList, message],
     });
+    console.log("send msg");
+    SocketService.emit(`sendMsg`, message);
   }
 
   _sendMessage(text) {
@@ -54,10 +53,6 @@ class Chat extends Component {
         ],
       });
     }
-    let userId = this.props.user._id;
-    SocketService.on(`chatTo/${userId}`, async (data) => {
-      this._onMessageWasSent(data.msg);
-    });
   }
 
   render() {
@@ -83,6 +78,7 @@ const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
     board: state.userBoards.currBoard,
+    user: state.user.loggedInUser,
   };
 };
 const mapDispatchToProps = {
@@ -90,6 +86,7 @@ const mapDispatchToProps = {
   removeBoard,
   loadBoards,
   setCurrBoard,
+  loadUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);
