@@ -50,6 +50,12 @@ export function logout() {
   };
 }
 
+export function setChatType(chatWith) {
+  return async dispatch => {
+    dispatch({ type: 'SET_USER_CHAT', chatWith })
+  }
+}
+
 export function setUser(user) {
   return {
     type: 'SET_USER',

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import "../style/cmps/boardNav.css";
 import resize from "../style/img/resize.png";
@@ -11,16 +11,12 @@ import {
 } from "../../src/actions/boardActions";
 export class BoardNav extends Component {
   state = {
-    boardIsShown: true
+    boardIsShown: true,
   };
 
-
-componentDidUpdate(prevProps, prevState) {
-  console.log('teete', this.props.boards)
-}
-
-
-
+  componentDidUpdate(prevProps, prevState) {
+    console.log("teete", this.props.boards);
+  }
 
   toggleList = () => {
     if (this.state.boardIsShown) {
@@ -30,8 +26,18 @@ componentDidUpdate(prevProps, prevState) {
     }
   };
 
-   render() {
-    const {boards} =  this.props
+  setBoardChat = async (myId, toUserId) => {
+    console.log("App -> setPrivateChat -> userId, toUserId", myId, toUserId);
+    let chatWith = {
+      id: { myId, toUserId },
+      type: "board",
+    };
+    await this.props.setChatType(chatWith);
+    console.log("user porps ", this.props.userState);
+  };
+
+  render() {
+    const { boards } = this.props;
     return (
       <>
         {this.props.boards && (
@@ -40,7 +46,7 @@ componentDidUpdate(prevProps, prevState) {
               this.state.boardIsShown
                 ? "board-nav-container"
                 : "board-nav-container-hidden"
-              } flex col`}
+            } flex col`}
           >
             <img
               className="resize-png-boardnav"
@@ -59,12 +65,16 @@ componentDidUpdate(prevProps, prevState) {
                   <h3>No Boards :('</h3>
                 </div>
               ) : (
-                  this.props.boards.map((board, idx) => (
-                    <div key={idx} className="board-list-btn">
-                      <Link to={`/board/${board._id}`}>{board.name}</Link>
-                    </div>
-                  ))
-                )}
+                this.props.boards.map((board, idx) => (
+                  <div
+                    onClick={() => this.setBoardChat(board._id, board._id)}
+                    key={idx}
+                    className="board-list-btn"
+                  >
+                    <NavLink to={`/board/${board._id}`}>{board.name}</NavLink>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         )}
@@ -76,7 +86,7 @@ componentDidUpdate(prevProps, prevState) {
 const mapStateToProps = (state) => {
   //State of the store to props of the cmp
   return {
-    boards: state.userBoards.board
+    boards: state.userBoards.board,
   };
 };
 const mapDispatchToProps = {

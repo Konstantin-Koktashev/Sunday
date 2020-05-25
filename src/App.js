@@ -26,6 +26,7 @@ import SocketService from './services/SocketService';
 import Chat from './cmps/Chat';
 import DoughnutChart from './cmps/DoughnutChart'
 import Notifications from './cmps/Notifications';
+import userChatList from './cmps/userChatList';
 class App extends React.Component {
   state = {
     notificationsIsShown: false,
@@ -36,10 +37,12 @@ class App extends React.Component {
     await this.props.loadUsers()
     await this.props.loadBoards()
     const { currUser } = this.props
-    this.setState({ currUser, chatWith: {
-      id : this.props.boards[0]._id,
-      type : 'board'
-    } })
+    this.setState({
+      currUser, chatWith: {
+        id: this.props.boards[0]._id,
+        type: 'board'
+      }
+    })
     // SocketService.on('hello' , data=>{
     //   console.log('data' , data)
     // })
@@ -48,19 +51,25 @@ class App extends React.Component {
 
 
 
-  setPrivateChat = (userId , toUserId) =>{
-    this.setState({ chatWith: {
-      id : {userId , toUserId},
-      type : 'private'
-    } })
+  setPrivateChat = (userId, toUserId) => {
+    console.log("App -> setPrivateChat -> userId, toUserId", userId, toUserId)
+
+    this.setState({
+      chatWith: {
+        id: { userId, toUserId },
+        type: 'private'
+      }
+    })
   }
 
-  
-  setBoardChat = (boardId) =>{
-    this.setState({ chatWith: {
-      id : boardId,
-      type : 'board'
-    } })
+
+  setBoardChat = (boardId) => {
+    this.setState({
+      chatWith: {
+        id: boardId,
+        type: 'board'
+      }
+    })
   }
 
   toggleNotifications = () => {
@@ -78,12 +87,13 @@ class App extends React.Component {
 
           <div className="bgc-black">
             <>
+              {/* <userChatList chatObjects={} ></userChatList> */}
               {this.props.currUser && <SideNav toggleNotifications={this.toggleNotifications} user={this.props.currUser}></SideNav>}
               {this.props.currUser && <BoardNav></BoardNav>}
               {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
             </>
           </div>
-          {this.props.currUser && this.props.board && this.state.chatWith && <Chat chatWith={this.state.chatWith} user={this.props.currUser} ></Chat>}
+          {this.props.currUser && this.props.board && <Chat chatWith={this.state.chatWith} user={this.props.currUser} ></Chat>}
           <section className="main-board-container ">
             <Switch>
               <Route path="/" component={Boards} exact />
@@ -101,11 +111,11 @@ class App extends React.Component {
             </Switch>
           </section >
         </Router >
-        <div className="loading-container fade-out">
+        {/* <div className="loading-container fade-out">
           <div className="col-sm-2">
             <div id="nest6"></div>
           </div>
-        </div>
+        </div> */}
       </div >
     );
   }
@@ -113,7 +123,7 @@ class App extends React.Component {
 const mapStateToProps = (state) => ({
   currUser: state.user.loggedInUser,
   board: state.userBoards.currBoard,
-  boards: state.userBoards.board
+  boards: state.userBoards.board,
 });
 const mapDispatchToProps = {
   loadUsers,

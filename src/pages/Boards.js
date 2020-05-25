@@ -19,7 +19,7 @@ class BoardApp extends React.Component {
 
         this.props.loadUsers();
         var allBoards = await this.props.loadBoards()
-         this.loadboards()
+        this.loadboards()
         const boardId = this.props.currBoard._id
         // SocketService.emit('boardViewed', boardId)
         SocketService.on('doRefresh', async data => {
@@ -48,6 +48,10 @@ class BoardApp extends React.Component {
         }
 
     }
+
+
+
+
 
     loadboards = () => {
         const { boards } = this.props;
@@ -96,13 +100,13 @@ class BoardApp extends React.Component {
         await this.props.history.push('/board/')
         await this.loadboards()
     }
-    removeHistory=()=>{
+    removeHistory = () => {
         const { boards } = this.props;
         const { currBoard } = this.state;
-        boards.forEach(board=>{
-            const historyToRemoveIdx=  board.history.findIndex(history=>history.boardId===currBoard.id)
-            board.history.forEach(history=>{         
-                board.history.splice(historyToRemoveIdx,1)
+        boards.forEach(board => {
+            const historyToRemoveIdx = board.history.findIndex(history => history.boardId === currBoard.id)
+            board.history.forEach(history => {
+                board.history.splice(historyToRemoveIdx, 1)
             })
         })
     }
