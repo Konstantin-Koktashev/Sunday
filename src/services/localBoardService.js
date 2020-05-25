@@ -31,7 +31,8 @@ export default {
     setColumn,
     filter,
     changeDueDateColumn2,
-    addBoardHistory
+    addBoardHistory,
+    removeFromHistory
 }
 
 
@@ -255,9 +256,12 @@ function setColumn(board, column, color, value, task) {
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 6f8af55d4ab4b8a566e0a62abe9abc6a8f0ba1bc
 
 function changeTasklabelColumn(board, column, label) {
     column.value = label
@@ -271,45 +275,6 @@ function addLabel(board, column, label) {
     return board
 }
 
-
-
-
-
-
-
-
-
-// function getGroupById(boardId, groupid) {
-//     return getbyid(boardId)
-//         .then(board => {
-//             return board.groups.filter(group => group._id === groupid)
-//         })
-// }
-
-// function getColumnById(boardId, groupId, colId) {
-//     getGroupById(boardId, groupId)
-//         .then(group => group.columns.filter(col => col._id === colId))
-// }
-
-
-// function getByid(boardId) {
-//     var board = gBoards.find(board => board._id === boardId)
-//     return Promise.resolve(board)
-// }
-
-// function save(boardId, boardToSave) {
-//     if (boardToSave.id) {
-//         const boardIdx = _getIdxById(boardToSave._id)
-//         gBoards[boardIdx] = boardToSave;
-//     } else {
-//         const newBoard = _createBoard(boardToSave.vendor, boardToSave.price)
-//         gBoards.push(newBoard)
-//     }
-// }
-
-// function query() {
-//     return gBoard  // return gBoards
-// }
 function remove(boardId) {
     const boardIdx = _getIdxById(boardId)
     gBoards.splice(boardIdx, 1)
@@ -325,10 +290,10 @@ function _getIdxById(boardId) {
     return gBoards.findIndex(board => board._id === boardId)
 }
 
-function addBoardHistory(board,updateInfo) {
-    
-    const {user, group, task,column, nextValue,updateType } = updateInfo
-    const prevValue = column?column.value:''
+function addBoardHistory(board, updateInfo) {
+
+    const { user, group, task, column, nextValue, updateType, seenBy, } = updateInfo
+    const prevValue = column ? column.value : ''
     const boardId = board._id
     const update = {
         timeStamp: Date.now(),
@@ -337,18 +302,29 @@ function addBoardHistory(board,updateInfo) {
         boardId,
         assignedBy: user._id,
         user,
-        taskId: (task)?task._id:false,
-        group:(group)? group: false,
+        taskId: (task) ? task._id : false,
+        group: (group) ? group : false,
         updateType,
-        _id:uuidv4(),
-        title: (task)? task.taskTitle:'',
-        boardName:board.name
-        
+        _id: uuidv4(),
+        title: (task) ? task.taskTitle : '',
+        boardName: board.name,
+        seenBy: [],
+        messeges:[]
+
     }
     board.history.unshift(update)
     return board
 }
 
+function removeFromHistory(board, taskId, currUserId) {
+    board.forEach(board => {
+        const historyIdx = board.history.findIndex(history => {
+            return (history.taskId === taskId && history.user._id === currUserId&&history.updateType==='Label Change')
+        })
+        board.history.splice(historyIdx, 1)
+    })
+    return board
+}
 
 
 

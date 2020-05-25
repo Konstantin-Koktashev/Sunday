@@ -1,132 +1,144 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
+=======
+import PropTypes from 'prop-types'
+// import Editupdate from '../cmps/Editupdate'
+>>>>>>> 6f8af55d4ab4b8a566e0a62abe9abc6a8f0ba1bc
 import { connect } from 'react-redux'
 import theme from '../style/themes/inboxTheme';
 import '../style/pages/inbox.css'
 import checkbox from '../style/img/checkbox.png'
 import SimpleReactCalendar from 'simple-react-calendar'
+<<<<<<< HEAD
 import { loadBoards } from '../actions/BoardActions';
+=======
+import { loadBoards, saveBoard, setCurrBoard } from '../actions/boardActions';
+>>>>>>> 6f8af55d4ab4b8a566e0a62abe9abc6a8f0ba1bc
 import TimeLine from '../cmps/Timeline';
 import calendar from 'simple-react-calendar/lib/calendar/calendar';
 import DatePicker from '../cmps/Calendar';
 import TimeLineTest from '../cmps/TimeLineTest';
 import { loadUsers } from '../actions/UserActions'
 import { NavLink } from 'react-router-dom';
+import localBoardService from '../services/localBoardService';
 
 
 class Inbox extends Component {
-
-    componentDidMount() {
-        this.props.loadUsers()
+    state = {
+        user: this.props.currUser,
+        filtertedUpdates: []
     }
-    uniqueArray = a => [...new Set(a.map(o => JSON.stringify(o)))].map(s => JSON.parse(s))
+    async componentDidMount() {
+        await this.props.loadUsers()
+        await this.checkUserHistory()
+    }
 
-
-
-    // checkUserHistory = () => {
-    //     //   await  this.props.loadBoards()
-    //     const { board } = this.props.userBoards
-    //     if (!this.props.currUser.loggedInUser) return
-    //     const currUserId = this.props.currUser.loggedInUser._id
-
-    //     var totalUserHistory = []
-    //     board.forEach(board => {
-    //         let userPersonalHistory = board.history.filter(history => {
-    //             return history.users.filter(user => user._id === currUserId) && history.type === 'status'
-    //         })
-    //         totalUserHistory.push(...userPersonalHistory)
-    //     });
-    //     const test ={
-
-    //     }
-    //     return totalUserHistory
-    // }
     checkUserHistory = () => {
-        const { board } = this.props.userBoards
-        if (!this.props.currUser.loggedInUser) return
-        const currUserId = this.props.currUser.loggedInUser._id
-        const historyToRender=[]
-        for(var i=0;i<board.length;i++){
-            let currBoard=board[i]
-            for(var j=0;j<currBoard.history.length;j++){
-                let currHistory=currBoard.history[j]
-                if(!currHistory.user) continue;
-                if(currHistory.user._id===currUserId&&currHistory.updateType==='Label Change') historyToRender.push(currHistory)
+
+        console.log('ggggggggggggggggggggggggggggggg');
+        const board = this.props.userBoards.board
+        if (!this.props.currUser) return
+        const currUserId = this.props.currUser._id
+        const historyToRender = []
+        for (var i = 0; i < board.length; i++) {
+            let currBoard = board[i]
+            for (var j = 0; j < currBoard.history.length; j++) {
+                let currHistory = currBoard.history[j]
+                if (!currHistory.user) continue;
+                if (currHistory.user._id === currUserId && currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
             }
         }
-        return historyToRender
-    }
-    // checkUserHistory = () => {
-    //     //   await  this.props.loadBoards()
-    //     // debugger
-    //     const  board  = this.props.userBoards.board
-    //     if (!this.props.currUser.loggedInUser) return
-    //     const currUserId = this.props.currUser.loggedInUser._id
-    //     let totalUserHistory = []
-    //     board.forEach(board => {
-    //         board.groups.forEach(group => {
-    //             group.tasks.forEach(task => {
-    //                 task.columns.forEach(column => {
-    //                     debugger
-    //                     if (column.type === 'people' &&  column.persons &&column.persons.length>0 && column.persons.some(person => person._id === currUserId) && task.isDone===true)totalUserHistory.push(task)
-    //                 })
-    //             })
-    //         })
-    //     })
-    //     return totalUserHistory
-    // }
-    // checkAssociatedTaskIds=()=>{
-    //     const { board } = this.props.userBoards
-    //     board.forEach(board => {
-    //         let userPersonalHistory = board.tasks.filter(task => {
-    //             return task.filter(user => +user._id === currUserId) && history.type === 'status'
-    //         })
-    //         totalUserHistory.push(...userPersonalHistory)
-    //     });
-    // }
 
-    componentDidMount() {
-        console.log('I JUST MOUNTEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD');
+
+        debugger;
+        let filtertedUpdates = []
+        historyToRender.forEach(update => {
+            let isSeen = false
+            update.seenBy.forEach(user => {
+                if (user._id === currUserId) {
+                    isSeen = true
+                    console.log("checking", user._id, 'and curr user id ', currUserId)
+                }
+
+            })
+            if (!isSeen) filtertedUpdates.push(update)
+        })
+        debugger;
+        this.setState({ filtertedUpdates })
+        return Promise.resolve()
     }
-    componentDidUpdate() { }
-    removeFromInbox = () => {
+
+    async updateById(newUpdate) {
+        const user = this.props.currUser
+        let board = this.props.userBoards.board
+        board.forEach(board => {
+            board.history.forEach(async update => {
+                if (update._id === newUpdate._id) {
+                    update.seenBy.push(user)
+                    await this.props.saveBoard(board)
+                    await this.props.setCurrBoard(board)
+                    await this.props.loadBoards()
+                    await this.checkUserHistory()
+                }
+            })
+        })
+
+
+    }
+
+
+    setUpdateAsSeen = async (update) => {
+        await this.updateById(update)
+
+    }
+    sendUpdateMsg = async (e, update) => {
+        const currBoard = this.props.currBoard
+        e.preventDefault()
+        const value = e.target.value
+        const updateMsg = { msg: value, sendBy: this.props.currUser }
+        update.messeges.unshift(value)
+        await this.props.saveBoard(currBoard)
+        await this.props.setCurrBoard(currBoard)
+        await this.props.loadBoards()
+        await this.checkUserHistory()
     }
     render() {
-        let userHistory = this.checkUserHistory()
-        userHistory=this.uniqueArray(userHistory)
-        const isHistory=(userHistory.length)?true:false
-        //  this.props.loadBoards()
+
+        let userHistory = this.state.filtertedUpdates
+        const isHistory = (userHistory.length) ? true : false
         const isLoading = this.props.currBoard
-        if (!this.props.currUser.loggedInUser) return <h1>No Logged User . </h1>
+        if (!this.props.currUser) return <h1>No Logged User . </h1>
         return (
 
             <div className='inbox-container'>
                 {!isHistory && <h1>Inbox Is Empty</h1>}
                 <h2>Inbox</h2>
-                {isHistory&&isLoading && userHistory.map(task => {
+                {isHistory && isLoading && userHistory.map(update => {
                     return (<article className='user-history flex col'>
-                        <img className='complete-task' src={checkbox} onClick={() => { this.removeFromInbox() }}></img>
+                        <img className='complete-task' src={checkbox} onClick={() => { this.setUpdateAsSeen(update) }}></img>
                         <section className='history-header flex col a-start'>
                             <div className='user-logo'>
+                                <NavLink to={`/profile/${update.user._id}`}>{update.user.username}</NavLink>
 
                             </div>
                             <div className='updating-user'>
-                                {task.title}
+                                {update.title}
 
                             </div>
                             <div className='history-origin'>
-                <NavLink to={`/board/${task.boardId}`}>{task.boardName  }</NavLink>
-                                
+                                <NavLink to={`/board/${update.boardId}`}>{update.boardName}</NavLink>
+
                             </div>
                             <div className='inbox-icons'>11 22 33</div>
                         </section>
                         <section className='update-msg flex a-center'>
-                            <span>{task.title}</span>
+                            <span>{update.title}</span>
                             <div className='user-history-main-btns flex a-center '>
 
-                                <button className='prev-value-inbox'> {task.prevValue}</button>
+                                <button className='prev-value-inbox'> {update.prevValue}</button>
                                 <span className='arrow-logo'> </span>
 
-                                <button className='next-value-inbox'>{task.nextValue}</button>
+                                <button className='next-value-inbox'>{update.nextValue}</button>
                             </div>
                         </section>
                         <section className='like-reply-btns'>
@@ -138,10 +150,26 @@ class Inbox extends Component {
                             <button className='take-it-from-here'> Thanks I'll take it from here</button>
                             <button className='next'> Nice Work! Whats next?</button>
                         </section>
+                        <section className='add-update-msg flex'>
+                            <NavLink to={`/profile/${this.props.currUser._id}`}>{this.props.currUser.username}</NavLink>
+
+                            <form onSubmit={(e, update) => { this.sendUpdateMsg(e, update) }}>
+                                <input clasName='inbox-reply'></input>
+                                <button type='submit'>Send</button>
+                            </form>
+                        </section>
+                        <section className='update-msgs'>
+                            {update.messeges.length && update.messges.map(msg => {
+                                return <div className='sent-msg-box'>
+                                    <NavLink to={`/profile/${msg.sendBy._id}`}>{msg.sendBy.username}</NavLink>
+                                    <div className='update-msg-content'>{msg.msg}</div>
+                                </div>
+                            })}
+                        </section>
                     </article>)
 
                 })}
-                {/* {isLoading&&<EditTask></EditTask>} */}
+                {/* {isLoading&&<Editupdate></Editupdate>} */}
                 {/* <TimeLine></TimeLine>
                 <DatePicker></DatePicker>
                 <MaterialUIPickers></MaterialUIPickers> */}
@@ -151,76 +179,22 @@ class Inbox extends Component {
             </div>
         )
     }
-    // render() {
-    //     const userHistory = this.checkUserHistory()
-    //     //  this.props.loadBoards()
-    //     const isLoading = this.props.currBoard
-    //     if (!this.props.currUser.loggedInUser) return <h1>No Logged User . </h1>
-    //     return (
 
-    //         <div className='inbox-container'>
-    //             <h2>Inbox</h2>
-    //             {isLoading && userHistory.map(history => {
-    //                 console.log("Inbox -> render -> history", history)
-    //                 return (<article className='user-history flex col'>
-    //                     <img className='complete-task' src={checkbox} onClick={() => { this.removeFromInbox() }}></img>
-    //                     <section className='history-header flex col a-start'>
-    //                         <div className='user-logo'>
-
-    //                         </div>
-    //                         <div className='updating-user'>
-    //                             {history.name}
-
-    //                         </div>
-    //                         <div className='history-origin'>
-    //                             {history.path}
-    //                         </div>
-    //                         <div className='inbox-icons'>11 22 33</div>
-    //                     </section>
-    //                     <section className='update-msg flex a-center'>
-    //                         <span>{history.defaultMsg}</span>
-    //                         <div className='user-history-main-btns flex a-center '>
-
-    //                             <button className='prev-value-inbox'> {history.prevValue}</button>
-    //                             <span className='arrow-logo'> </span>
-
-    //                             <button className='next-value-inbox'>{history.nextValue}</button>
-    //                         </div>
-    //                     </section>
-    //                     <section className='like-reply-btns'>
-    //                         <button className='reply'>Reply</button>
-    //                         <button className='like'> Like</button>
-    //                     </section>
-    //                     <section className='task-reply-btns'>
-    //                         <button className='great-job'>Great Job!</button>
-    //                         <button className='take-it-from-here'> Thanks I'll take it from here</button>
-    //                         <button className='next'> Nice Work! Whats next?</button>
-    //                     </section>
-    //                 </article>)
-
-    //             })}
-    //             {/* {isLoading&&<EditTask></EditTask>} */}
-    //             {/* <TimeLine></TimeLine>
-    //             <DatePicker></DatePicker>
-    //             <MaterialUIPickers></MaterialUIPickers> */}
-    //             {/* <AddPerson></AddPerson> */}
-    //             {/* <TimeLineTest></TimeLineTest> */}
-
-    //         </div>
-    //     )
-    // }
 }
 
 
 const mapStateToProps = (state) => ({
     userBoards: state.userBoards,
-    currUser: state.user,
+    currUser: state.user.loggedInUser,
     currBoard: state.userBoards.currBoard
 })
 
+
 const mapDispatchToProps = {
     loadBoards,
-    loadUsers
+    loadUsers,
+    saveBoard,
+    setCurrBoard
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Inbox)

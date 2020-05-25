@@ -71,7 +71,7 @@ class LabelContainer extends Component {
   };
 
   // UNEDIT
-  setLabel = (label, color, text) => {
+  setLabel =async (label, color, text) => {
     const { currBoard } = this.props;
     const board = LocalBoardService.changeLabelColumn(
       currBoard,
@@ -79,10 +79,10 @@ class LabelContainer extends Component {
       color,
       text
     );
-    this.props.saveBoard(board);
-    this.props.toggleContainer();
-    this.props.loadBoards();
-    this.props.setCurrBoard(board);
+   await this.props.saveBoard(board);
+   await this.props.toggleContainer();
+  await  this.props.loadBoards();
+   await this.props.setCurrBoard(board);
     
 
     //find the label with the order and set the label on the props who props column who submit the label
