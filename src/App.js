@@ -23,11 +23,8 @@ import DateSelector from './cmps/DateSelector';
 import Profile from './pages/Profile.js';
 import SocketService from './services/SocketService';
 import Chat from './cmps/Chat';
-<<<<<<< HEAD
 import DoughnutChart from './cmps/DoughnutChart'
-=======
 import Notifications from './cmps/Notifications';
->>>>>>> 11b9781f4656150d540e3c7f8af71081caa8260c
 class App extends React.Component {
   state = {
     notificationsIsShown: false,
