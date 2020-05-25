@@ -19,24 +19,27 @@ class BoardApp extends React.Component {
 
         this.props.loadUsers();
         var allBoards = await this.props.loadBoards()
-        this.loadboards()
+        await this.loadboards()
         const boardId = this.props.currBoard._id
-        // SocketService.emit('boardViewed', boardId)
-        SocketService.on('doRefresh', async data => {
-            await this.props.loadBoards()
-            let board = this.getBoardByID(boardId)
-            this.setBoard(board)
-        })
+        SocketService.emit('boardViewed', boardId)
+        SocketService.on('doRefresh', this.loadAndSetBoards)
 
 
     }
 
-    componentWillUnmount() {
-        SocketService.off('doRefresh', data => {
-            // await this.props.loadBoards()
-            // let board = this.getBoardByID(boardId)
-            // this.setBoard(board)
-        })
+    loadAndSetBoards = () => {
+        const boardId = this.props.currBoard._id
+        this.props.loadBoards()
+        let board = this.getBoardByID(boardId)
+        this.setBoard(board)
+
+    }
+
+    async componentWillUnmount() {
+        if (!this.props.currBoard._id) return
+        const boardId = this.props.currBoard._id
+
+        SocketService.off('doRefresh', this.loadAndSetBoards)
     }
     componentDidUpdate(prevProps) {
         if (this.props.match.params.id !== prevProps.match.params.id) {
@@ -53,7 +56,7 @@ class BoardApp extends React.Component {
 
 
 
-    loadboards = () => {
+    loadboards = async () => {
         const { boards } = this.props;
         const id = this.props.match.params.id ? this.props.match.params.id : null
         let board = boards[0]

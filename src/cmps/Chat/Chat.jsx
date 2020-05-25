@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Launcher } from "react-chat-window";
 import "../../style/cmps/chat.css";
 import SocketService from "../../services/SocketService";
+import UserService from "../../services/UserService";
 import { loadUsers } from "../../actions/UserActions";
 import {
   saveBoard,
@@ -15,6 +16,7 @@ class Chat extends Component {
     super();
     this.state = {
       messageList: [],
+      newMessagesCount: 0,
       //   loggedInUser: this.props.user,
       // chatWith: null,
     };
@@ -43,12 +45,12 @@ class Chat extends Component {
     this.setState({
       messageList: [...this.state.messageList, msg],
     });
-  }; 
+  };
   startChat = () => {
     if (!this.props.userState.chatWith) return;
     let { type, id } = this.props.userState.chatWith;
     console.log("Chat -> startChat -> type", type);
-    if (type === "private") { 
+    if (type === "private") {
       SocketService.emit("join_private_room", this.props.userState.chatWith);
       SocketService.on("private_room_new_msg", this.renderMessage);
     } else {
@@ -77,7 +79,9 @@ class Chat extends Component {
   //     }
   //   }
   // }
-  _onMessageWasSent(message) {
+
+  //Sending message
+  _onMessageWasSent = (message) => {
     console.log("send msg : ", message);
     this.setState({
       messageList: [...this.state.messageList, message],
@@ -92,7 +96,7 @@ class Chat extends Component {
     } else {
       SocketService.emit("board_room_new_msg", obj);
     }
-  }
+  };
 
   _sendMessage(text) {
     console.log("text send messege", text);
@@ -110,18 +114,43 @@ class Chat extends Component {
     }
   }
 
+  _handleClick() {
+    this.setState({
+      newMessagesCount: 0,
+    });
+  }
+
+  getUserName = (chatWith) => {
+    if (!chatWith) return;
+    const { board } = this.props;
+    if (chatWith.type === "board") {
+      return board.name;
+    } else {
+      let users = this.props.users;
+      let user = users.find((user) => user._id === chatWith.id.toUserId);
+      return user.username;
+    }
+  };
+
   render() {
+    const { chatWith } = this.props.userState;
+    const { board } = this.props;
+    let userName = this.getUserName(chatWith);
+    console.log("Chat -> render -> userName", userName);
     return (
       <div>
         <Launcher
           agentProfile={{
-            teamName: "react-chat-window",
+            teamName: "asd",
             imageUrl:
               "https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png",
           }}
           onMessageWasSent={this._onMessageWasSent.bind(this)}
           messageList={this.state.messageList}
           showEmoji
+          // mute={false}
+          // newMessagesCount={this.state.newMessagesCount}
+          // handleClick={this._handleClick.bind(this)}
         />
       </div>
     );
@@ -135,6 +164,7 @@ const mapStateToProps = (state) => {
     board: state.userBoards.currBoard,
     user: state.user.loggedInUser,
     userState: state.user,
+    users: state.user.users,
   };
 };
 const mapDispatchToProps = {
@@ -146,3 +176,9 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);
+
+// let chatMsgObject = {
+// chatRoomId: boardId + boardId, //Sort function
+// chatHistory: [],
+// users: [userA , userB]
+// }

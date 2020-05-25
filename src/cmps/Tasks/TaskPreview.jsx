@@ -65,7 +65,10 @@ class TaskPreview extends Component {
   updateTaskName = async (ev, task) => {
     ev.preventDefault();
     let { boards, board, group, loadBoards, saveBoard } = this.props;
-
+    if (!this.state.taskTitle) {
+      this.toggleTaskEdit();
+      return;
+    }
     LocalBoardService.updateTaskName(board, task, this.state.taskTitle);
     console.log("---- before: ", board.history.length, board);
     this.changeHistoryTaskNames(boards, task);

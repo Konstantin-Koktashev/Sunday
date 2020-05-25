@@ -18,6 +18,10 @@
   animation-delay: 1s;
 }
 
+.active{
+  color: #0057e7 !important;
+}
+
 @keyframes fade-out {
   0% {
     opacity: 1;
