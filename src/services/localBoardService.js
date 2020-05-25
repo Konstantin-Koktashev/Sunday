@@ -343,13 +343,12 @@ function addBoardHistory(board,updateInfo) {
         nextValue,
         boardId,
         assignedBy: user._id,
-        taskTitle:(task)?task.taskTitle:'',
         user,
         taskId: (task)?task._id:false,
         group:(group)? group: false,
         updateType,
         _id:uuidv4(),
-        title:task.taskTitle? task.taskTitle:'',
+        title: (task)? task.taskTitle:'',
         boardName:board.name
         
     }
