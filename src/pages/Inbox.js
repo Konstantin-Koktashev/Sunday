@@ -13,7 +13,7 @@ import DatePicker from '../cmps/Calendar';
 import TimeLineTest from '../cmps/TimeLineTest';
 import { loadUsers } from '../actions/UserActions'
 import { NavLink } from 'react-router-dom';
-import LocalBoardService from '../services/LocalBoardService';
+import LocalBoardService from '../services/LocalBoardService.js';
 
 
 class Inbox extends Component {
@@ -24,7 +24,7 @@ class Inbox extends Component {
     }
     async componentDidMount() {
         await this.props.loadUsers()
-         this.checkUserHistory()
+        this.checkUserHistory()
     }
     findBoard = (boardId) => {
         const board = this.props.userBoards.board.find(b => {
@@ -110,13 +110,13 @@ class Inbox extends Component {
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
         await this.saveAndUpdate(newBoard)
     }
-    sendTakeItFromHere = async(update, boardId) => {
+    sendTakeItFromHere = async (update, boardId) => {
         const board = this.findBoard(boardId)
         const updateMsg = { msg: 'Thanks Ill Take It From Here', sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
         await this.saveAndUpdate(newBoard)
     }
-    sendNiceWork = async(update, boardId) => {
+    sendNiceWork = async (update, boardId) => {
         const board = this.findBoard(boardId)
         const updateMsg = { msg: 'Nice Work! Whats Next?', sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)

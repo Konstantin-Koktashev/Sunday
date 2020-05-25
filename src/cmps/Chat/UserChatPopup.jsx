@@ -1,22 +1,42 @@
 import React, { Component } from "react";
-import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
-import "../style/cmps/chatPopup.css";
-import { saveBoard, loadBoards, setCurrBoard } from "../../actions/BoardActions";
+import "../../style/cmps/chatPopup.css";
+import { setChatType } from "../../actions/UserActions";
 
 class UserChatPopup extends Component {
   state = {};
 
-  makeRight = (idx) => { 
-    let right = idx * 3 + 15;
+  makeRight = (idx) => {
+    let right = idx * 6 + 4;
     return right;
   };
+
+  setPrivateChat = async (myId, toUserId) => {
+    let chatWith = {
+      id: { myId, toUserId },
+      type: "private",
+    };
+    await this.props.setChatType(chatWith);
+  };
+
+  getToUserId = () => {
+    let myUser = this.props.user;
+    const { chatRoom } = this.props;
+    if (chatRoom.userA._id === myUser._id) {
+      return chatRoom.userB;
+    } else {
+      return chatRoom.userA;
+    }
+  };
+
   /// needs to get a user Obj
   render() {
-    const { user } = this.props;
+    const { chatRoom } = this.props;
+    const toUserId = this.getToUserId();
     return (
       <div
-        style={{ right: `${this.makeRight(this.props.idx)}vw` }}  
+        onClick={() => this.setPrivateChat(this.props.user._id, toUserId)}
+        style={{ right: `${this.makeRight(this.props.idx)}vw` }}
         className="user-chat-popup-card"
       >
         <h2>IM A USER</h2>
@@ -25,12 +45,12 @@ class UserChatPopup extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  user: state.user.loggedInUser,
+});
 
 const mapDispatchToProps = {
-  saveBoard,
-  loadBoards,
-  setCurrBoard,
+  setChatType,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserChatPopup);

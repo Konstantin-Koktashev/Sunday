@@ -22,6 +22,7 @@ import SocketService from './services/SocketService';
 import Chat from './cmps/Chat/Chat';
 import DoughnutChart from './cmps/Statistics/DoughnutChart'
 import Notifications from './cmps/Notifications';
+import UserChatList from '../src/cmps/Chat/UserChatList'
 class App extends React.Component {
   state = {
     notificationsIsShown: false,
@@ -93,6 +94,11 @@ class App extends React.Component {
             </>
           </div>
           {this.props.currUser && this.props.board && this.props.chatWith && <Chat user={this.props.currUser} ></Chat>}
+          <UserChatList></UserChatList>
+
+
+
+
           <section className="main-board-container ">
             <Switch>
               <Route path="/" component={Boards} exact />
