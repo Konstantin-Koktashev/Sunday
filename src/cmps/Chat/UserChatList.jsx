@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import LocalBoardService from "../services/LocalBoardService";
+import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
 import "../style/cmps/chatPopup.css";
-import { saveBoard, loadBoards, setCurrBoard } from "../actions/BoardActions";
+import { saveBoard, loadBoards, setCurrBoard } from "../../actions/BoardActions";
 import UserChatPopup from "./UserChatPopup";
 class UserChatList extends Component {
   /// needs to get a Open Chat Array Obj

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import "../style/cmps/progressBar.css";
+import "../../style/cmps/progressBar.css";
 
 class ProgressBar extends React.Component {
 

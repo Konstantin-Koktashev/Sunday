@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import LocalBoardService from "../services/LocalBoardService";
+import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
 import "../style/cmps/chatPopup.css";
-import { saveBoard, loadBoards, setCurrBoard } from "../actions/BoardActions";
+import { saveBoard, loadBoards, setCurrBoard } from "../../actions/BoardActions";
 
 class UserChatPopup extends Component {
   state = {};
 
-  makeRight = (idx) => {
+  makeRight = (idx) => { 
     let right = idx * 3 + 15;
     return right;
   };

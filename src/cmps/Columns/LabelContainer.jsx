@@ -3,9 +3,9 @@ import LabelPreviewUnEdit from "./LabelPreviewUnEdit";
 import LabelPreviewEdit from "./LabelPreviewEdit";
 
 import { connect } from "react-redux";
-import LocalBoardService from "../services/LocalBoardService";
+import LocalBoardService from "../../services/LocalBoardService";
 
-import { saveBoard, loadBoards, setCurrBoard } from "../actions/BoardActions";
+import { saveBoard, loadBoards, setCurrBoard } from "../../actions/BoardActions";
 
 class LabelContainer extends Component {
   state = {

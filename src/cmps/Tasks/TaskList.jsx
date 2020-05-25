@@ -7,7 +7,7 @@ import { TaskBoxList } from "./TaskBoxList.jsx";
 import AddTask from "./AddTask";
 import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
-import ProgressBar from "../ProgressBar";
+import ProgressBar from "../Statistics/ProgressBar";
 
 import {
   saveBoard,

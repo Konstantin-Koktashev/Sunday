@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import LocalBoardService from "../services/LocalBoardService";
-import { saveBoard, loadBoards } from "../actions/BoardActions";
-import { loadUsers } from "../actions/UserActions";
-import UsersPreviewBox from "./UsersPreviewBox";
-import deletePng from "../style/img/delete.svg";
+import LocalBoardService from "../../services/LocalBoardService";
+import { saveBoard, loadBoards } from "../../actions/BoardActions";
+import { loadUsers } from "../../actions/UserActions";
+import UsersPreviewBox from "../UsersPreviewBox";
+import deletePng from "../../style/img/delete.svg";
 import { NavLink } from "react-router-dom";
 class AddPerson extends Component {
   state = {

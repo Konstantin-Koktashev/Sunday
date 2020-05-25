@@ -1,17 +1,17 @@
 import React from "react";
 import "../../style/cmps/taskBox.css";
-import LabelContainer from "../LabelContainer";
+import LabelContainer from "../Columns/LabelContainer";
 import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
 // import DatePicker from "./Calendar";
-import AddPerson from "../AddPerson";
+import AddPerson from "../Columns/AddPerson";
 import {
   saveBoard,
   removeBoard,
   setCurrBoard,
   loadBoards,
 } from "../../actions/BoardActions";
-import DateSelector from "../DateSelector";
+import DateSelector from "../Columns/DateSelector";
 class TaskBox extends React.Component {
   state = {
     containerIsShown: false,
