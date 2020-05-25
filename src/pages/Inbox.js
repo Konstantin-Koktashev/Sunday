@@ -16,6 +16,7 @@ import AddPerson from '../cmps/AddPerson';
 import { loadUsers } from '../actions/UserActions'
 import { MaterialPicker } from 'react-color';
 import MaterialUIPickers from '.././cmps/calendar2'
+import { NavLink } from 'react-router-dom';
 
 
 class Inbox extends Component {
@@ -23,6 +24,8 @@ class Inbox extends Component {
     componentDidMount() {
         this.props.loadUsers()
     }
+    uniqueArray = a => [...new Set(a.map(o => JSON.stringify(o)))].map(s => JSON.parse(s))
+
 
 
     // checkUserHistory = () => {
@@ -44,24 +47,39 @@ class Inbox extends Component {
     //     return totalUserHistory
     // }
     checkUserHistory = () => {
-        //   await  this.props.loadBoards()
-        // debugger
-        const  board  = this.props.userBoards.board
+        const { board } = this.props.userBoards
         if (!this.props.currUser.loggedInUser) return
         const currUserId = this.props.currUser.loggedInUser._id
-        let totalUserHistory = []
-        board.forEach(board => {
-            board.groups.forEach(group => {
-                group.tasks.forEach(task => {
-                    task.columns.forEach(column => {
-                        debugger
-                        if (column.type === 'people' &&  column.persons &&column.persons.length>0 && column.persons.some(person => person._id === currUserId) && task.isDone===true)totalUserHistory.push(task)
-                    })
-                })
-            })
-        })
-        return totalUserHistory
+        const historyToRender=[]
+        for(var i=0;i<board.length;i++){
+            let currBoard=board[i]
+            for(var j=0;j<currBoard.history.length;j++){
+                let currHistory=currBoard.history[j]
+                if(!currHistory.user) continue;
+                if(currHistory.user._id===currUserId&&currHistory.updateType==='Label Change') historyToRender.push(currHistory)
+            }
+        }
+        return historyToRender
     }
+    // checkUserHistory = () => {
+    //     //   await  this.props.loadBoards()
+    //     // debugger
+    //     const  board  = this.props.userBoards.board
+    //     if (!this.props.currUser.loggedInUser) return
+    //     const currUserId = this.props.currUser.loggedInUser._id
+    //     let totalUserHistory = []
+    //     board.forEach(board => {
+    //         board.groups.forEach(group => {
+    //             group.tasks.forEach(task => {
+    //                 task.columns.forEach(column => {
+    //                     debugger
+    //                     if (column.type === 'people' &&  column.persons &&column.persons.length>0 && column.persons.some(person => person._id === currUserId) && task.isDone===true)totalUserHistory.push(task)
+    //                 })
+    //             })
+    //         })
+    //     })
+    //     return totalUserHistory
+    // }
     // checkAssociatedTaskIds=()=>{
     //     const { board } = this.props.userBoards
     //     board.forEach(board => {
@@ -77,19 +95,20 @@ class Inbox extends Component {
     }
     componentDidUpdate() { }
     removeFromInbox = () => {
-
     }
     render() {
-        const userHistory = this.checkUserHistory()
+        let userHistory = this.checkUserHistory()
+        userHistory=this.uniqueArray(userHistory)
+        const isHistory=(userHistory.length)?true:false
         //  this.props.loadBoards()
         const isLoading = this.props.currBoard
         if (!this.props.currUser.loggedInUser) return <h1>No Logged User . </h1>
         return (
 
             <div className='inbox-container'>
+                {!isHistory && <h1>Inbox Is Empty</h1>}
                 <h2>Inbox</h2>
-                {isLoading && userHistory.map(task => {
-                    console.log("Inbox -> render -> history", task)
+                {isHistory&&isLoading && userHistory.map(task => {
                     return (<article className='user-history flex col'>
                         <img className='complete-task' src={checkbox} onClick={() => { this.removeFromInbox() }}></img>
                         <section className='history-header flex col a-start'>
@@ -97,16 +116,17 @@ class Inbox extends Component {
 
                             </div>
                             <div className='updating-user'>
-                                {task.name}
+                                {task.title}
 
                             </div>
                             <div className='history-origin'>
-                                {task.path}
+                <NavLink to={`/board/${task.boardId}`}>{task.boardName  }</NavLink>
+                                
                             </div>
                             <div className='inbox-icons'>11 22 33</div>
                         </section>
                         <section className='update-msg flex a-center'>
-                            <span>{task.taskTitle}</span>
+                            <span>{task.title}</span>
                             <div className='user-history-main-btns flex a-center '>
 
                                 <button className='prev-value-inbox'> {task.prevValue}</button>

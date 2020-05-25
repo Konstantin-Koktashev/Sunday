@@ -91,15 +91,23 @@ class LabelContainer extends Component {
 
   setColumn = (color, text) => {
     const task = this.props.task;
-    console.log("setColumn q2weqweqw-> task", task);
-    const { currBoard, column } = this.props;
-    const board = localBoardService.setColumn(
+    const { currBoard, column,currUser } = this.props;
+    let updateInfo = {
+      column,
+      user: currUser,
+      nextValue: text,
+      updateType: 'Label Change',
+      task
+    }
+    let board=localBoardService.addBoardHistory(currBoard,updateInfo)
+     board = localBoardService.setColumn(
       currBoard,
       column,
       color,
       text,
       task
     );
+    // board = localBoardService.addBoardHistory(board, updateInfo)
     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
@@ -128,6 +136,7 @@ class LabelContainer extends Component {
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const board = localBoardService.addLabel(currBoard, column, label);
+ 
     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
@@ -196,6 +205,7 @@ const mapStateToProps = (state) => {
   //State of the store to props of the cmp
   return {
     currBoard: state.userBoards.currBoard,
+    currUser:state.user.loggedInUser
   };
 };
 const mapDispatchToProps = {
