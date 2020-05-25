@@ -16,6 +16,10 @@ class Notifications extends Component {
     let notifications = this.checkUserHistory();
     this.setState({ notifications });
   }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834
   checkUserHistory = () => {
     //   await  this.props.loadBoards()
     const boards = this.props.boards;

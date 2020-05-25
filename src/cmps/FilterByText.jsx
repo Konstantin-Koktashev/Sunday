@@ -4,7 +4,13 @@ import { connect } from "react-redux";
 import { TextField } from "@material-ui/core";
 import LocalBoardService from "../services/LocalBoardService";
 
+<<<<<<< HEAD
 import { setFilter } from "../actions/BoardActions";
+=======
+import { setFilter} from '../actions/BoardActions'
+
+ class FilterByText extends Component {
+>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834
 
 class FilterByText extends Component {
   handleChange = ({ target }) => {

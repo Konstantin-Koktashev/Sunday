@@ -41,10 +41,13 @@ class TaskBox extends React.Component {
     ev.preventDefault();
     let { currBoard, col } = this.props;
     let text = this.state.colText;
+<<<<<<< HEAD:src/cmps/Tasks/TaskBox.jsx
     if (!text) {
       this.toggleColEdit();
       return;
     }
+=======
+>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834:src/cmps/TaskBox.jsx
     let newBoard = LocalBoardService.updateColumnTitle(currBoard, col, text);
     this.props.saveBoard(newBoard);
     this.props.loadBoards();

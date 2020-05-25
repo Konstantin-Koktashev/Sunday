@@ -11,7 +11,15 @@ import {
   loadBoards,
   removeBoard,
   setCurrBoard,
+<<<<<<< HEAD
 } from "../../actions/BoardActions";
+=======
+<<<<<<<< HEAD:src/cmps/Tasks/TaskPreview.jsx
+} from "../../actions/BoardActions";
+========
+} from "../actions/BoardActions";
+>>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834:src/cmps/TaskPreview.jsx
+>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834
 class TaskPreview extends Component {
   state = {
     taskTitle: this.props.task.taskTitle,
@@ -64,13 +72,28 @@ class TaskPreview extends Component {
   updateTaskName = async (ev, task) => {
     ev.preventDefault();
     let { boards, board, group, loadBoards, saveBoard } = this.props;
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:src/cmps/Tasks/TaskPreview.jsx
+    LocalBoardService.updateTaskName(board, task, this.state.taskTitle);
+    console.log('---- before: ', board.history.length, board);
+    this.changeHistoryTaskNames(boards, task)
+========
+>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834
     if (!this.state.taskTitle) {
       this.toggleTaskEdit();
       return;
     }
+<<<<<<< HEAD
     LocalBoardService.updateTaskName(board, task, this.state.taskTitle);
     console.log("---- before: ", board.history.length, board);
     this.changeHistoryTaskNames(boards, task);
+=======
+    localBoardService.updateTaskName(board, task, this.state.taskTitle);
+    console.log("---- before: ", board.history.length, board);
+    this.changeHistoryTaskNames(boards, task);
+>>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834:src/cmps/TaskPreview.jsx
+>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834
     await saveBoard(board);
     loadBoards();
     this.toggleTaskEdit();
@@ -165,3 +188,46 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskPreview);
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:src/cmps/Tasks/TaskPreview.jsx
+
+// export function TaskPreview(props) {
+//   let task = props.task;
+//   function SortCols(board, cols) {
+//     let order = [];
+//     board.columns.forEach((col) => {
+//       order.push(col.order);
+//     });
+//     console.log("SortCols -> order", order);
+//     let sortedCols = LocalBoardService.sortColumnsByBox(cols, order);
+//     return sortedCols;
+//   }
+//   // First Function
+//   let SortedCols = matchTaskBoxToBoardColumns(props);
+//   function matchTaskBoxToBoardColumns(props) {
+//     let board = props.board;
+//     let boardBox = [];
+//     board.columns.forEach((box) => {
+//       boardBox.push(box);
+//     });
+//     if (board.columns.length > task.columns.length) {
+//       boardBox.forEach((box) => {
+//         let isFound = false;
+//         for (var i = 0; i < task.columns.length; i++) {
+//           if (task.columns[i].order === box.order) isFound = true;
+//         }
+//         if (!isFound) {
+//           console.log("adding", box, "with order ", box.order);
+//           task.columns.push(box);
+//         }
+//       });
+//     }
+//     let cols = task.columns;
+//     let sortedCols = SortCols(board, cols);
+//     sortedCols.reverse();
+//     return sortedCols;
+//   }
+========
+>>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834:src/cmps/TaskPreview.jsx
+>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834

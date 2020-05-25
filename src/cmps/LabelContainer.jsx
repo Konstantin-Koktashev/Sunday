@@ -128,7 +128,6 @@ class LabelContainer extends Component {
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const board = LocalBoardService.addLabel(currBoard, column, label);
-
     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
