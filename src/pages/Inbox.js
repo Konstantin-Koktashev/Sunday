@@ -97,12 +97,7 @@ class Inbox extends Component {
     }
     sendUpdateMsg = async (e, update, boardId) => {
         if (e) e.preventDefault();
-        // const currBoard = this.props.currBoard;
 
-        // this.setState({ txt: e.target.value });
-        // let board = this.props.userBoards.board.find(b => {
-        //     return b._id === boardId
-        // })
         const board = this.findBoard(boardId)
         const updateMsg = { msg: this.state.txt, sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
@@ -180,7 +175,7 @@ class Inbox extends Component {
                         </section>
                         <section className='task-reply-btns'>
                             <button className='great-job' onClick={() => this.sendGreatJob(update, update.boardId)}>Great Job!</button>
-                            <button className='take-it-from-here' onClick={() => this.sendTakeItFromHere(update, update.boardID)}> Thanks I'll take it from here</button>
+                            <button className='take-it-from-here' onClick={() => this.sendTakeItFromHere(update, update.boardId)}> Thanks I'll take it from here</button>
                             <button className='next' onClick={() => this.sendNiceWork(update, update.boardId)}> Nice Work! Whats next?</button>
                         </section>
                         <section className='add-update-msg flex'>
@@ -202,12 +197,6 @@ class Inbox extends Component {
                     </article>)
 
                 })}
-                {/* {isLoading&&<Editupdate></Editupdate>} */}
-                {/* <TimeLine></TimeLine>
-                <DatePicker></DatePicker>
-                <MaterialUIPickers></MaterialUIPickers> */}
-                {/* <AddPerson></AddPerson> */}
-                {/* <TimeLineTest></TimeLineTest> */}
 
             </div>
         )
