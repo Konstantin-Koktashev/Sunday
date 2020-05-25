@@ -43,7 +43,7 @@ class App extends React.Component {
     // })
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     SocketService.terminate()
   }
 
@@ -92,7 +92,7 @@ class App extends React.Component {
               {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
             </>
           </div>
-          {this.props.currUser && this.props.board && <Chat chatWith={this.state.chatWith} user={this.props.currUser} ></Chat>}
+          {this.props.currUser && this.props.board && this.props.chatWith && <Chat user={this.props.currUser} ></Chat>}
           <section className="main-board-container ">
             <Switch>
               <Route path="/" component={Boards} exact />
@@ -124,6 +124,7 @@ const mapStateToProps = (state) => ({
   currUser: state.user.loggedInUser,
   board: state.userBoards.currBoard,
   boards: state.userBoards.board,
+  chatWith: state.user.chatWith
 });
 const mapDispatchToProps = {
   loadUsers,
