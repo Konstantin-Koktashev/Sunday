@@ -17,7 +17,7 @@ class Notifications extends Component {
     let notifications = this.checkUserHistory();
     this.setState({ notifications });
   }
-
+    
   checkUserHistory = () => {
     //   await  this.props.loadBoards()
     const boards = this.props.boards;
