@@ -32,10 +32,15 @@ export default {
     filter,
     changeDueDateColumn2,
     addBoardHistory,
-    removeFromHistory
+    removeFromHistory,
+    addUpdateMsg
 }
 
-
+function addUpdateMsg(board,update,msg){
+    debugger
+    update.messeges.push(msg)
+    return board
+}
 
 
 //Sort Cols

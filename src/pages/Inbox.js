@@ -13,6 +13,7 @@ import DatePicker from '../cmps/Calendar';
 import TimeLineTest from '../cmps/TimeLineTest';
 import { loadUsers } from '../actions/UserActions'
 import { NavLink } from 'react-router-dom';
+import LocalBoardService from '../services/LocalBoardService';
 
 
 class Inbox extends Component {
@@ -24,6 +25,12 @@ class Inbox extends Component {
     async componentDidMount() {
         await this.props.loadUsers()
         await this.checkUserHistory()
+    }
+    findBoard=(boardId)=>{
+        const board = this.props.userBoards.board.find(b => {
+            return b._id === boardId
+        })
+        return board
     }
 
     checkUserHistory = () => {
@@ -82,21 +89,36 @@ class Inbox extends Component {
         await this.updateById(update)
 
     }
-    sendUpdateMsg = async (e) => {
-        const currBoard = this.props.currBoard
-        e.preventDefault()
-        this.setState({ txt: event.target.value });
-        debugger
+    sendUpdateMsg = async (e, update, boardId) => {
+        const currBoard = this.props.currBoard;
+        if (e) e.preventDefault();
+
+        this.setState({ txt: e.target.value });
+        let board = this.props.userBoards.board.find(b => {
+            return b._id === boardId
+        })
         const updateMsg = { msg: this.state.txt, sendBy: this.props.currUser }
-        update.messeges.unshift(value)
-        await this.props.saveBoard(currBoard)
+        const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
+        // update.messeges.unshift(updateMsg)
+        await this.props.saveBoard(newBoard)
         await this.props.setCurrBoard(currBoard)
         await this.props.loadBoards()
         await this.checkUserHistory()
     }
+    sendGreatJob = (update,boardId) => {
+        let board = this.props.userBoards.board.find(b => {
+            return b._id === boardId
+        })
+        const updateMsg = { msg: 'Great Job!', sendBy: this.props.currUser }
+
+    }
+
+
+
+
     handleChange = (e) => {
-        this.setState({ txt: event.target.value });
-       
+        this.setState({ txt: e.target.value });
+
     }
     render() {
 
@@ -149,13 +171,13 @@ class Inbox extends Component {
                         <section className='add-update-msg flex'>
                             <NavLink to={`/profile/${this.props.currUser._id}`}>{this.props.currUser.username}</NavLink>
 
-                            <form onSubmit={(e) => { this.handleSubmit(e) }}>
-                                <input onChange={()=>this.handleChange(e)} clasName='inbox-reply'></input>
+                            <form onSubmit={(e) => { this.sendUpdateMsg(e, update, update.boardId) }}>
+                                <input onChange={(e) => this.handleChange(e)} ></input>
                                 <button type='submit'>Send</button>
                             </form>
                         </section>
                         <section className='update-msgs'>
-                            {update.messeges.length && update.messges.map(msg => {
+                            {update.messeges && update.messeges.length && update.messeges.map(msg => {
                                 return <div className='sent-msg-box'>
                                     <NavLink to={`/profile/${msg.sendBy._id}`}>{msg.sendBy.username}</NavLink>
                                     <div className='update-msg-content'>{msg.msg}</div>
