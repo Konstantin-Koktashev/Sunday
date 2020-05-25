@@ -5,9 +5,11 @@ import { loadReviews, addReview } from '../actions/ReviewActions.js';
 import { loadUsers } from '../actions/UserActions.js';
 // import { Link } from 'react-router-dom';
 import { setChatType } from "../actions/UserActions";
+import { setCurrChatRoom } from '../actions/ChatActions'
 
 
 import UserService from '../../src/services/UserService'
+import ChatService from '../services/ChatService';
 class Profile extends Component {
     state = {
         user: null
@@ -40,6 +42,10 @@ class Profile extends Component {
             id: { myId, toUserId },
             type: 'private'
         }
+
+        let allMsgs = await this.props.loadRooms()
+        let room = ChatService.getMsgsById(chatWith, allMsgs)
+        await this.props.setCurrChatRoom(room)
         await this.props.setChatType(chatWith)
 
     }
@@ -70,14 +76,16 @@ const mapStateToProps = state => {
         reviews: state.review.reviews,
         users: state.user.users,
         loggedInUser: state.user.loggedInUser,
-        userState: state.user
+        userState: state.user,
+        chat: state.chat
     };
 };
 const mapDispatchToProps = {
     loadReviews,
     loadUsers,
     addReview,
-    setChatType
+    setChatType,
+    setCurrChatRoom
 
 };
 
