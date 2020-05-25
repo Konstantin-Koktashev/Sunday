@@ -11,16 +11,16 @@ import Signup from './pages/Signup.js';
 import Boards from './pages/Boards';
 import SideNav from './cmps/SideNav';
 import BoardNav from './cmps/Board/BoardNav';
-import ProgressBar from './cmps/ProgressBar'
+import ProgressBar from './cmps/Statistics/ProgressBar'
 import MyWeek from './pages/MyWeek'
 import Inbox from './pages/Inbox';
 import TaskDetails from './cmps/Tasks/TaskDetails';
-import LabelContainer from './cmps/LabelContainer';
-import FilterByText from './cmps/FilterByText';
+import LabelContainer from './cmps/Columns/LabelContainer';
+import FilterByText from './cmps/Filters/FilterByText';
 import Profile from './pages/Profile.js';
 import SocketService from './services/SocketService';
-import Chat from './cmps/Chat';
-import DoughnutChart from './cmps/DoughnutChart'
+import Chat from './cmps/Chat/Chat';
+import DoughnutChart from './cmps/Statistics/DoughnutChart'
 import Notifications from './cmps/Notifications';
 class App extends React.Component {
   state = {

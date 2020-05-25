@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Launcher } from "react-chat-window";
-import "../style/cmps/chat.css";
-import SocketService from "../services/SocketService";
-import { loadUsers } from "../actions/UserActions";
+import "../../style/cmps/chat.css";
+import SocketService from "../../services/SocketService";
+import { loadUsers } from "../../actions/UserActions";
 import {
   saveBoard,
   loadBoards,
   removeBoard,
   setCurrBoard,
-} from "../actions/BoardActions";
+} from "../../actions/BoardActions";
 class Chat extends Component {
   constructor() {
     super();

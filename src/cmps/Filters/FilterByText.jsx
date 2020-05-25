@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { TextField } from "@material-ui/core";
-import LocalBoardService from "../services/LocalBoardService";
+import LocalBoardService from "../../services/LocalBoardService";
 
-import { setFilter } from "../actions/BoardActions";
+import { setFilter } from "../../actions/BoardActions";
 
 class FilterByText extends Component {
   handleChange = ({ target }) => {

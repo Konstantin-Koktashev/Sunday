@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { TextField } from "@material-ui/core";
-import LocalBoardService from "../services/LocalBoardService";
+import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
 
-import { saveBoard, loadBoards, setCurrBoard } from "../actions/BoardActions";
+import { saveBoard, loadBoards, setCurrBoard } from "../../actions/BoardActions";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
