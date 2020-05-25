@@ -49,6 +49,10 @@ class BoardApp extends React.Component {
 
     }
 
+
+
+
+
     loadboards = () => {
         const { boards } = this.props;
         const id = this.props.match.params.id ? this.props.match.params.id : null
@@ -96,13 +100,13 @@ class BoardApp extends React.Component {
         await this.props.history.push('/board/')
         await this.loadboards()
     }
-    removeHistory=()=>{
+    removeHistory = () => {
         const { boards } = this.props;
         const { currBoard } = this.state;
-        boards.forEach(board=>{
-            const historyToRemoveIdx=  board.history.findIndex(history=>history.boardId===currBoard.id)
-            board.history.forEach(history=>{         
-                board.history.splice(historyToRemoveIdx,1)
+        boards.forEach(board => {
+            const historyToRemoveIdx = board.history.findIndex(history => history.boardId === currBoard.id)
+            board.history.forEach(history => {
+                board.history.splice(historyToRemoveIdx, 1)
             })
         })
     }

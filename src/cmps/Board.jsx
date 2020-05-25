@@ -19,13 +19,14 @@ class Board extends Component {
   };
 
   get boardToDisplay() {
-    const {filterByText , currBoard} = this.props
-    return localBoardService.filter(currBoard ,filterByText) 
+    const { filterByText, currBoard } = this.props;
+    return localBoardService.filter(currBoard, filterByText);
 
     // return filteredBoard
   }
+
   render() {
-    const board = this.boardToDisplay
+    const board = this.boardToDisplay;
     return (
       <>
         <GroupList
@@ -44,7 +45,7 @@ const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
     currBoard: state.userBoards.currBoard,
-    filterByText : state.userBoards.filterByText
+    filterByText: state.userBoards.filterByText,
   };
 };
 const mapDispatchToProps = {

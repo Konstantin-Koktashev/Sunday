@@ -4,6 +4,8 @@ import '../style/pages/profile.css'
 import { loadReviews, addReview } from '../actions/ReviewActions.js';
 import { loadUsers } from '../actions/UserActions.js';
 // import { Link } from 'react-router-dom';
+import { setChatType } from "../actions/UserActions";
+
 
 import UserService from '../../src/services/UserService'
 class Profile extends Component {
@@ -12,7 +14,10 @@ class Profile extends Component {
     };
 
 
+
+
     componentDidMount = async () => {
+        console.log('profile props', this.props)
         await this.loadUser()
 
     }
@@ -31,7 +36,16 @@ class Profile extends Component {
         this.setState({ user: user })
     }
 
+    setPrivateChat = async (myId, toUserId) => {
+        console.log("App -> setPrivateChat -> userId, toUserId", myId, toUserId)
+        let chatWith = {
+            id: { myId, toUserId },
+            type: 'private'
+        }
+        await this.props.setChatType(chatWith)
+        console.log('user porps ', this.props.userState)
 
+    }
 
     render() {
         const user = this.state.user
@@ -47,6 +61,7 @@ class Profile extends Component {
                         <h2>Over View</h2>
                         <p>Title: <span>{user.username}</span></p>
                         <p>Email: <span>{user.email}</span></p>
+                        <button onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>
                     </div>
                 </div>}</>
         );
@@ -57,13 +72,16 @@ const mapStateToProps = state => {
     return {
         reviews: state.review.reviews,
         users: state.user.users,
-        loggedInUser: state.user.loggedInUser
+        loggedInUser: state.user.loggedInUser,
+        userState: state.user
     };
 };
 const mapDispatchToProps = {
     loadReviews,
     loadUsers,
-    addReview
+    addReview,
+    setChatType
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
