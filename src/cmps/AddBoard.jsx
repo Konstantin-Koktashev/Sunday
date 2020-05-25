@@ -14,7 +14,7 @@ class AddBoard extends Component {
   state = {
     board: {
       // BOARD OBJECT
-      name: "Board 1",
+      name: "New Board",
       createdAt: 1589990735884,
       //CLOUMNS OBJECT
       columns: [
@@ -118,7 +118,7 @@ class AddBoard extends Component {
               _id: 2222,
               isDone:true,
               assignedGroupId: 124,
-              taskTitle: "Todo",
+              taskTitle: "Task - Wright you task here",
               createdAt: "",
               // Aggregation
               users: [], // Min users
@@ -159,7 +159,7 @@ class AddBoard extends Component {
               _id: 2222,
               isDone:true,
               assignedGroupId: 124,
-              taskTitle: "Todo",
+              taskTitle: "Task - Wright you task here",
               createdAt: "date",
               // Aggregation
               users: [], // Min users
@@ -200,7 +200,7 @@ class AddBoard extends Component {
               _id: 2222,
               isDone:true,
               assignedGroupId: 124,
-              taskTitle: "Todo",
+              taskTitle: "Task - Wright you task here",
               createdAt: "date",
               // Aggregation
               users: [], // Min users
@@ -241,7 +241,7 @@ class AddBoard extends Component {
               _id: 2222,
               isDone:true,
               assignedGroupId: 124,
-              taskTitle: "Todo",
+              taskTitle: "Task - Wright you task here",
               createdAt: "date",
               // Aggregation
               users: [], // Min users
@@ -298,7 +298,7 @@ class AddBoard extends Component {
             {
               _id: 2222,
               isDone:true,
-              taskTitle: "Todo",
+              taskTitle: "Task - Wright you task here",
               createdAt: "date",
               // Aggregation
               users: [{ _id: 1234 }], // Min users

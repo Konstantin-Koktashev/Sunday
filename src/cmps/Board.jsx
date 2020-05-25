@@ -8,6 +8,7 @@ import {
   setCurrBoard,
   loadBoards,
 } from "../actions/boardActions";
+import DoughnutChart from "./DoughnutChart.jsx";
 
 class Board extends Component {
   sortColumnsByBox = async (order) => {
@@ -32,6 +33,7 @@ class Board extends Component {
           groups={board.groups}
           board={board}
         />
+        <DoughnutChart board={board} />
       </>
     );
   }

@@ -23,6 +23,7 @@ import DateSelector from './cmps/DateSelector';
 import Profile from './pages/Profile.js';
 import SocketService from './services/SocketService';
 import Chat from './cmps/Chat';
+import DoughnutChart from './cmps/DoughnutChart'
 class App extends React.Component {
   state = {
   }
@@ -58,8 +59,8 @@ class App extends React.Component {
               <Route path="/details" component={TaskDetails} exact />
               <Route path="/label" component={LabelContainer} exact />
               <Route path="/filter" component={FilterByText} exact />
-              <Route path="/c" component={DateSelector} exact />
               <Route path="/profile/:id?" component={Profile} exact />
+              <Route path="/stat" component={DoughnutChart} exact />
             </Switch>
           </section>
         </Router>
