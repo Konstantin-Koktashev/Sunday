@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router';
 import { connect } from 'react-redux'
 import { loadUsers } from './actions/UserActions'
+
 import history from './history';
 import './App.css';
 import './style/main.css';
@@ -23,11 +24,8 @@ import DateSelector from './cmps/DateSelector';
 import Profile from './pages/Profile.js';
 import SocketService from './services/SocketService';
 import Chat from './cmps/Chat';
-<<<<<<< HEAD
 import DoughnutChart from './cmps/DoughnutChart'
-=======
 import Notifications from './cmps/Notifications';
->>>>>>> 11b9781f4656150d540e3c7f8af71081caa8260c
 class App extends React.Component {
   state = {
     notificationsIsShown: false,
