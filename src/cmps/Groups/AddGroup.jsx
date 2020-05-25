@@ -1,8 +1,7 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import { saveBoard, loadBoards } from "../actions/boardActions";
-import localBoardService from "../services/localBoardService";
-import { Loading } from "./Loading";
+import { saveBoard, loadBoards } from "../../actions/BoardActions";
+import LocalBoardService from "../../services/LocalBoardService";
 
 class AddGroup extends Component {
   state = {
@@ -243,15 +242,14 @@ class AddGroup extends Component {
     let addGroup = this.state.group;
     // let boardId = this.props.board._id;
     let board = this.props.currBoard;
-    console.log("boardfromgroups:", board);
     let updateInfo = {
       group: this.state.group,
       user: this.props.user,
       nextValue: addGroup.name,
       updateType: 'New Group'
     }
-    let newBoard = localBoardService.addGroup(board, addGroup);
-    newBoard = localBoardService.addBoardHistory(board, updateInfo)
+    let newBoard = LocalBoardService.addGroup(board, addGroup);
+    newBoard = LocalBoardService.addBoardHistory(board, updateInfo)
     this.props.saveBoard(newBoard);
     this.props.loadBoards();
     // console.log("AddGroup -> AddGroup -> newBoard", newBoard);

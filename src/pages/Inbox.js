@@ -1,21 +1,15 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import EditTask from '../cmps/EditTask'
 import { connect } from 'react-redux'
-import { Button } from '@material-ui/core';
 import theme from '../style/themes/inboxTheme';
 import '../style/pages/inbox.css'
 import checkbox from '../style/img/checkbox.png'
 import SimpleReactCalendar from 'simple-react-calendar'
-import { loadBoards } from '../actions/boardActions';
+import { loadBoards } from '../actions/BoardActions';
 import TimeLine from '../cmps/Timeline';
 import calendar from 'simple-react-calendar/lib/calendar/calendar';
 import DatePicker from '../cmps/Calendar';
 import TimeLineTest from '../cmps/TimeLineTest';
-import AddPerson from '../cmps/AddPerson';
 import { loadUsers } from '../actions/UserActions'
-import { MaterialPicker } from 'react-color';
-import MaterialUIPickers from '.././cmps/calendar2'
 import { NavLink } from 'react-router-dom';
 
 

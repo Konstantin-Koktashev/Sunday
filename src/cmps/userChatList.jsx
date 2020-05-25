@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import localBoardService from "../services/localBoardService";
+import LocalBoardService from "../services/LocalBoardService";
 import { connect } from "react-redux";
 import "../style/cmps/chatPopup.css";
-import { saveBoard, loadBoards, setCurrBoard } from "../actions/boardActions";
-import userChatPopup from "../cmps/userChatPopup.jsx";
-class userChatList extends Component {
+import { saveBoard, loadBoards, setCurrBoard } from "../actions/BoardActions";
+import UserChatPopup from "./UserChatPopup";
+class UserChatList extends Component {
   /// needs to get a Open Chat Array Obj
   render() {
     const { chatObjects } = this.props;
     return (
       <div className="user-chat-popup-container">
         {chatObjects.map((user, idx) => {
-          return <userChatPopup idx={idx} user={user}></userChatPopup>;
+          return <UserChatPopup idx={idx} user={user}></UserChatPopup>;
         })}
       </div>
     );
@@ -26,4 +26,4 @@ const mapDispatchToProps = {
   setCurrBoard,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(userChatList);
+export default connect(mapStateToProps, mapDispatchToProps)(UserChatList);

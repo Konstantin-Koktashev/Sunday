@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import localBoardService from "../services/localBoardService";
 import { connect } from "react-redux";
 import { Launcher } from "react-chat-window";
 import "../style/cmps/chat.css";
@@ -10,7 +9,7 @@ import {
   loadBoards,
   removeBoard,
   setCurrBoard,
-} from "../actions/boardActions";
+} from "../actions/BoardActions";
 class Chat extends Component {
   constructor() {
     super();
@@ -44,12 +43,12 @@ class Chat extends Component {
     this.setState({
       messageList: [...this.state.messageList, msg],
     });
-  };
+  }; 
   startChat = () => {
     if (!this.props.userState.chatWith) return;
     let { type, id } = this.props.userState.chatWith;
     console.log("Chat -> startChat -> type", type);
-    if (type === "private") {
+    if (type === "private") { 
       SocketService.emit("join_private_room", this.props.userState.chatWith);
       SocketService.on("private_room_new_msg", this.renderMessage);
     } else {

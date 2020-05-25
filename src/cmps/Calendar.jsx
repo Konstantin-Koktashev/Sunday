@@ -4,8 +4,8 @@ import 'react-calendar/dist/Calendar.css';
 import { moment } from 'moment';
 
 import { connect } from 'react-redux'
-import localBoardService from '../services/localBoardService';
-import { saveBoard } from '../actions/boardActions';
+import LocalBoardService from '../services/LocalBoardService';
+import { saveBoard } from '../actions/BoardActions';
 
 
 
@@ -18,7 +18,7 @@ import { saveBoard } from '../actions/boardActions';
         const column=this.props.column
         const dateToSet=date.getMonth()+' ' +date.getDate()
         const momentToSet=moment(date).format('MM-DD')
-        const newBoard= localBoardService.changeTaskDateColumn(currBoard,column,momentToSet,currTask,date)
+        const newBoard= LocalBoardService.changeTaskDateColumn(currBoard,column,momentToSet,currTask,date)
         saveBoard(newBoard)
         
     }

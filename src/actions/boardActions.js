@@ -1,5 +1,4 @@
 import boardServices from '../services/BoardService'
-import localBoardService from '../services/localBoardService'
 import { loading, doneLoading } from './SystemActions';
 import SocketService from '../services/SocketService'
 
@@ -55,7 +54,6 @@ export function saveBoard(board) {
 
 export function removeBoard(boardId) {
   
-  console.log("REMOVING -> boardId", boardId)
   return async dispatch => {
     try {
       await boardServices.remove(boardId);
@@ -67,7 +65,6 @@ export function removeBoard(boardId) {
 }
 
 export function setCurrBoard(board) {
-  console.log("setCurrBoard -> board", board)
   return dispatch => {
     dispatch({ type: 'SET_CURRBOARD', board });
   }
@@ -131,7 +128,6 @@ function setBoards(board) {
 
 
 function _removeBoard(boardId) {
-  console.log("HELLO function_removeBoard -> boardId", boardId)
   return {
     type: 'BOARD_REMOVE',
     boardId

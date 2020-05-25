@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { connect } from 'react-redux'
-import localBoardService from '../services/localBoardService';
-import { saveBoard } from '../actions/boardActions';
+import LocalBoardService from '../services/LocalBoardService';
+import { saveBoard } from '../actions/BoardActions';
 import { moment } from 'moment';
 
  class Timeline extends Component {
@@ -20,7 +20,7 @@ import { moment } from 'moment';
                 newEndDate,
                 newMonth
             }
-            const newBoard=localBoardService.changeDueDateColumn(currBoard,column,newDate)
+            const newBoard=LocalBoardService.changeDueDateColumn(currBoard,column,newDate)
             saveBoard(newBoard)
         }
         onchange2=(dates)=>{
@@ -35,7 +35,7 @@ import { moment } from 'moment';
                to:moments[1]
             }
             
-            const newBoard=localBoardService.changeDueDateColumn2(currBoard,column,newTimeLine,dates)
+            const newBoard=LocalBoardService.changeDueDateColumn2(currBoard,column,newTimeLine,dates)
             saveBoard(newBoard)   
         }
     

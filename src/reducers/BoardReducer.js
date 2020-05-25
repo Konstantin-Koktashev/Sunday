@@ -35,7 +35,7 @@ export default function (state = initialState, action = {}) {
                 ]
             }
         case 'SET_BOARDS':
-            return {
+            return {  
                 ...state,
                 board: action.board
             }

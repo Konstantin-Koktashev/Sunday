@@ -5,7 +5,7 @@ import Select from "react-select";
 import Calendar from "react-calendar";
 // import TaskTimeline from "./Timeline";
 import SimpleReactCalendar from "simple-react-calendar";
-import DatePicker from "./Calendar";
+import DatePicker from "../Calendar";
 // import { moment } from 'moment';
 import "react-calendar/dist/Calendar.css";
 
@@ -98,9 +98,7 @@ export class EditTask extends Component {
       month: date.getMonth(),
     };
     const timeStr = res.month + res.day + "  " + res.date;
-    console.log(this.state);
     this.setState({ DueDate: timeStr });
-    console.log(this.state);
   };
 
   render() {

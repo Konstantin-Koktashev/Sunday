@@ -1,22 +1,21 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import "../style/cmps/boardNav.css";
-import resize from "../style/img/resize.png";
+import "../../style/cmps/boardNav.css";
+import resize from "../../style/img/resize.png";
 import AddBoard from "./AddBoard.jsx";
+import { setChatType } from "../../actions/UserActions";
+
 import {
   loadBoards,
   setCurrBoard,
   removeBoard,
-} from "../../src/actions/boardActions";
+} from "../../actions/BoardActions";
 export class BoardNav extends Component {
   state = {
     boardIsShown: true,
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log("teete", this.props.boards);
-  }
 
   toggleList = () => {
     if (this.state.boardIsShown) {
@@ -27,20 +26,18 @@ export class BoardNav extends Component {
   };
 
   setBoardChat = async (myId, toUserId) => {
-    console.log("App -> setPrivateChat -> userId, toUserId", myId, toUserId);
     let chatWith = {
       id: { myId, toUserId },
       type: "board",
     };
     await this.props.setChatType(chatWith);
-    console.log("user porps ", this.props.userState);
   };
 
   render() {
     const { boards } = this.props;
     return (
       <>
-        {this.props.boards && (
+        {boards && (
           <div
             className={` ${
               this.state.boardIsShown
@@ -93,6 +90,7 @@ const mapDispatchToProps = {
   loadBoards,
   setCurrBoard,
   removeBoard,
+  setChatType
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardNav);

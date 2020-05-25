@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { loadBoards } from '../actions/boardActions'
+import { loadBoards } from '../actions/BoardActions'
 import WeekPreview from '../cmps/WeekPreview'
 
 
@@ -15,7 +15,6 @@ class MyWeek extends Component {
     async componentDidMount() {
         await this.props.loadBoards()
         this.currUser = await this.props.user
-        console.log('thisuser', this.props)
         if (!this.currUser) return
         this.loadTasks(this.currUser)
     }
@@ -24,7 +23,6 @@ class MyWeek extends Component {
         var groupsArr = [];
         var tasksArr = [];
         let { board } = await this.props.boards
-        console.log('board', board)
         const groups = await board.map(b => b.groups)
         await groups.forEach(group => {
             groupsArr.push(...group)
@@ -40,12 +38,10 @@ class MyWeek extends Component {
             else openTasks.push(task)
         })
 
-        console.log('opentask', openTasks)
-        console.log('closedTasks', closeTasks)
+     
         this.setState({ openTasks, closeTasks })
 
 
-        console.log('thissate', this.state)
 
     }
 

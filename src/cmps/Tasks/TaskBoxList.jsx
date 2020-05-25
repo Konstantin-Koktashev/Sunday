@@ -3,9 +3,9 @@ import {
   DragDropContext,
   Droppable,
   Draggable,
-} from "../../node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.cjs";
+} from "react-beautiful-dnd";
 import TaskBox from "./TaskBox";
-import localBoardService from "../../src/services/localBoardService";
+import LocalBoardService from "../../services/LocalBoardService";
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -16,13 +16,10 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: "none",
-  // padding: "1px",
-  // margin: `0 ${grid}px 0 0`,
   fontSize: "13px",
 
   // change background colour if dragging
@@ -35,7 +32,6 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 const getListStyle = (isDraggingOver) => ({
   background: isDraggingOver ? "#74b9ff" : "white",
   display: "flex",
-  // padding: grid, // No n eed
   overflow: "auto",
 });
 
@@ -79,10 +75,9 @@ export class TaskBoxList extends Component {
     //   order.push(item.order);
     // });
 
-    console.log("TaskBoxList -> onDragEnd -> items", items);
 
     let board = this.props.board;
-    let newBoard = localBoardService.updateColumnOrder(board, items);
+    let newBoard = LocalBoardService.updateColumnOrder(board, items);
     this.props.updateBoardColOrder(newBoard);
   }
 

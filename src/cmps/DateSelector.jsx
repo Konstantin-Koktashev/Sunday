@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { TextField } from "@material-ui/core";
-import localBoardService from "../services/localBoardService";
+import LocalBoardService from "../services/LocalBoardService";
 import { connect } from "react-redux";
 
-import { saveBoard, loadBoards, setCurrBoard } from "../actions/boardActions";
+import { saveBoard, loadBoards, setCurrBoard } from "../actions/BoardActions";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -22,7 +22,7 @@ class DateSelector extends Component {
   handleChange = async (date) => {
     let fixedDate = date.getTime();
     const { currBoard, column } = this.props;
-    const board = localBoardService.changeColumn(currBoard, column, fixedDate);
+    const board = LocalBoardService.changeColumn(currBoard, column, fixedDate);
 
     await this.props.saveBoard(board);
     this.setState({startDate : fixedDate})

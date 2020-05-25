@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Updates from "./Updates";
-import InfoBoxes from "./InfoBoxes";
-import ActivityLog from "./ActivityLog";
+import Updates from "../Updates";
+import InfoBoxes from "../InfoBoxes.jsx";
+import ActivityLog from "../ActivityLog";
 
 export default class TaskDetails extends Component {
   state = {

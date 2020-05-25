@@ -1,5 +1,5 @@
 import React from "react";
-import GroupList from "./GroupList.jsx";
+import GroupList from "../Groups/GroupList.jsx";
 export default function BoardList(props) {
   return (
     <div className="board-list-container scrollbar" id="style-5">

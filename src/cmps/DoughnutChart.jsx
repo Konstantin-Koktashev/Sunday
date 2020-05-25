@@ -4,7 +4,7 @@ import React from 'react'
 import { Polar } from 'react-chartjs-2';
 import { connect } from 'react-redux'
 
-import { loadBoards } from '../actions/boardActions'
+import { loadBoards } from '../actions/BoardActions'
 
 
 class DoughnutChart extends React.Component {
@@ -45,11 +45,6 @@ class DoughnutChart extends React.Component {
   }
 
   loadTasks = (board) => {
-    // const { currBoard } = this.props
-    // console.log(currBoard)
-    // if(!currBoard) return
-    // const currBoard = this.props.boards[0]
-    // console.log(currBoard)
     var groupsArr = [];
     var tasksArr = [];
     board.groups.forEach(group => {
@@ -59,7 +54,6 @@ class DoughnutChart extends React.Component {
       tasksArr.push(...group.tasks)
     })
 
-    console.log('taskArr', tasksArr)
 
     return tasksArr
 
@@ -85,8 +79,7 @@ class DoughnutChart extends React.Component {
 
     const otherCount = tasks.length - (doneCount.length + workingCount.length + stuckCount.length)
 
-    const data = [stuckCount.length, doneCount.length, workingCount.length, otherCount];
-    console.log(data)
+    // const data = [stuckCount.length, doneCount.length, workingCount.length, otherCount];
 
 
     const newData = [{
@@ -107,10 +100,7 @@ class DoughnutChart extends React.Component {
 
     this.setState({datasets : newData})
 
-    // console.log(doneCount.length, workingCount.length, stuckCount.length, otherCount)
-    // this.setState(prevState => ({ datasets: [...prevState.datasets, [data].data] }), () => {
-    //   console.log(this.state)
-    // })
+
 
 
   }

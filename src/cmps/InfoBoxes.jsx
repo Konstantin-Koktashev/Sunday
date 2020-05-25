@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 export default class InfoBoxes extends Component {
     render() {
         return (

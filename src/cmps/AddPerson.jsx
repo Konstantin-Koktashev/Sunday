@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import localBoardService from "../services/localBoardService";
-import { saveBoard, loadBoards } from "../actions/boardActions";
+import LocalBoardService from "../services/LocalBoardService";
+import { saveBoard, loadBoards } from "../actions/BoardActions";
 import { loadUsers } from "../actions/UserActions";
 import UsersPreviewBox from "./UsersPreviewBox";
 import deletePng from "../style/img/delete.svg";
@@ -19,7 +19,7 @@ class AddPerson extends Component {
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const task = this.props.task;
-    const newBoard = localBoardService.addPersonToColumn(
+    const newBoard = LocalBoardService.addPersonToColumn(
       currBoard,
       column,
       task,
@@ -37,10 +37,8 @@ class AddPerson extends Component {
     this.setState({ usersToAdd });
   };
   removePerson = (person) => {
-    // const column=this.props.column
-    // const currBoard=this.props.currBoard
     const { column, currBoard } = this.props;
-    const newBoard = localBoardService.removePersonToTask(
+    const newBoard = LocalBoardService.removePersonToTask(
       currBoard,
       person,
       column
@@ -54,9 +52,7 @@ class AddPerson extends Component {
     }));
   };
   render() {
-    const isShows = this.state.isShows;
     const users = this.props.column.persons;
-    const allUsers = this.props.users;
     const isShown = this.state.isShown;
     const usersToAdd = this.state.usersToAdd;
     return (

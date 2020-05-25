@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../style/cmps/notifications.css";
-import SocketService from "../services/SocketService";
 import { loadUsers } from "../actions/UserActions";
 import {
   saveBoard,
   loadBoards,
   removeBoard,
   setCurrBoard,
-} from "../actions/boardActions";
+} from "../actions/BoardActions";
 class Notifications extends Component {
   state = {
     notifications: null,

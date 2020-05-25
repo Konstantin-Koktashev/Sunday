@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import localBoardService from "../services/localBoardService";
-import { loadBoards } from "../actions/boardActions";
+import { loadBoards } from "../actions/BoardActions";
 import { loadUsers } from "../actions/UserActions";
 
 class UsersPreviewBox extends Component {

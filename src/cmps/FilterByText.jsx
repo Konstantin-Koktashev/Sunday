@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { TextField } from "@material-ui/core";
-import localBoardService from "../services/localBoardService";
+import LocalBoardService from "../services/LocalBoardService";
 
-import { setFilter} from '../actions/boardActions'
+import { setFilter} from '../actions/BoardActions'
 
  class FilterByText extends Component {
 

@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import { saveBoard, loadBoards } from "../actions/boardActions";
-import {loadUsers} from '../actions/UserActions'
-import localBoardService from "../services/localBoardService";
-import add from "../../src/style/img/add.png";
+import { saveBoard, loadBoards } from "../../actions/BoardActions";
+import {loadUsers} from '../../actions/UserActions'
+import LocalBoardService from "../../services/LocalBoardService";
+import add from "../../../src/style/img/add.png";
 class AddBoard extends Component {
 
 
@@ -441,7 +441,7 @@ class AddBoard extends Component {
     console.log("Adding a Board!");
     let AddBoard = this.state.board;
 
-    // let newBoard = localBoardService.saveBoard(AddBoard);
+    // let newBoard = LocalBoardService.saveBoard(AddBoard);
     await this.props.saveBoard(AddBoard);
     await this.props.loadBoards();
   };

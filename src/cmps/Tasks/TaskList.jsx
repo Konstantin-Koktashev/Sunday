@@ -1,20 +1,20 @@
 import React, { Component } from "react";
-import "../style/cmps/taskList.css";
+import "../../style/cmps/taskList.css";
 import TaskPreview from "./TaskPreview.jsx";
-import resize from "../style/img/resize.png";
-import pencil from "../style/img/pencil.svg";
+import resize from "../../style/img/resize.png";
+import pencil from "../../style/img/pencil.svg";
 import { TaskBoxList } from "./TaskBoxList.jsx";
-import AddTask from "../../src/cmps/AddTask";
-import localBoardService from "../services/localBoardService";
+import AddTask from "./AddTask";
+import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
-import ProgressBar from "../../src/cmps/ProgressBar.jsx";
+import ProgressBar from "../ProgressBar";
 
 import {
   saveBoard,
   loadBoards,
   removeBoard,
   setCurrBoard,
-} from "../actions/boardActions";
+} from "../../actions/BoardActions";
 class TaskList extends Component {
   state = {
     taskIsShown: true,
@@ -33,7 +33,7 @@ class TaskList extends Component {
     console.log("TaskList -> deleteTask -> task", task);
     let group = this.props.group;
     let board = this.props.board;
-    let newBoard = localBoardService.removeTask(board, group, task);
+    let newBoard = LocalBoardService.removeTask(board, group, task);
     this.props.saveBoard(newBoard);
     this.props.loadBoards();
   };
@@ -45,7 +45,7 @@ class TaskList extends Component {
   updateGroupName = (ev) => {
     ev.preventDefault();
     let { board, group, loadBoards, saveBoard } = this.props;
-    localBoardService.changeGroupName(board, group, this.state.groupName);
+    LocalBoardService.changeGroupName(board, group, this.state.groupName);
     saveBoard(board);
     loadBoards();
     this.toggleEdit();

@@ -3,23 +3,15 @@ import { connect } from "react-redux";
 import "../style/cmps/progressBar.css";
 
 class ProgressBar extends React.Component {
-  componentDidMount() {
-    console.log("e", this.props.boards);
-    console.log("progressbargroups", this.props.group);
-  }
+
 
   showStatus = () => {
-    const { group, boards } = this.props;
-    // console.log(boards[0])
-    // place 0 boards = this.props.boardIndex = the indexnumber of the currBoard.
-    // place 0 groups = this.props.groupIndex = the indexnumber of the currGruop.
+    const { group } = this.props;
     const doneMissions = group.tasks.filter((task) => task.status === "Done");
 
-    console.log("dm", doneMissions);
     if (doneMissions.length > 0) {
       var precent = parseInt((doneMissions.length / group.tasks.length) * 100);
     } else precent = 0;
-    console.log(precent);
     return precent;
   };
   render() {

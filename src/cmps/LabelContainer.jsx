@@ -3,10 +3,9 @@ import LabelPreviewUnEdit from "./LabelPreviewUnEdit";
 import LabelPreviewEdit from "./LabelPreviewEdit";
 
 import { connect } from "react-redux";
-import localBoardService from "../services/localBoardService";
+import LocalBoardService from "../services/LocalBoardService";
 
-import { saveBoard, loadBoards, setCurrBoard } from "../actions/boardActions";
-import SocketService from "../services/SocketService";
+import { saveBoard, loadBoards, setCurrBoard } from "../actions/BoardActions";
 
 class LabelContainer extends Component {
   state = {
@@ -74,7 +73,7 @@ class LabelContainer extends Component {
   // UNEDIT
   setLabel = (label, color, text) => {
     const { currBoard } = this.props;
-    const board = localBoardService.changeLabelColumn(
+    const board = LocalBoardService.changeLabelColumn(
       currBoard,
       label,
       color,
@@ -99,15 +98,15 @@ class LabelContainer extends Component {
       updateType: 'Label Change',
       task
     }
-    let board=localBoardService.addBoardHistory(currBoard,updateInfo)
-     board = localBoardService.setColumn(
+    let board=LocalBoardService.addBoardHistory(currBoard,updateInfo)
+     board = LocalBoardService.setColumn(
       currBoard,
       column,
       color,
       text,
       task
     );
-    // board = localBoardService.addBoardHistory(board, updateInfo)
+    // board = LocalBoardService.addBoardHistory(board, updateInfo)
     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
@@ -135,7 +134,7 @@ class LabelContainer extends Component {
     };
     const column = this.props.column;
     const currBoard = this.props.currBoard;
-    const board = localBoardService.addLabel(currBoard, column, label);
+    const board = LocalBoardService.addLabel(currBoard, column, label);
  
     this.props.saveBoard(board);
     this.props.toggleContainer();
@@ -144,7 +143,7 @@ class LabelContainer extends Component {
   };
 
   render() {
-    const { isEditAble, labels, allLabels } = this.state;
+    const { isEditAble,  allLabels } = this.state;
     let labelsFromProps =
       this.props.labels && this.props.labels.length > 0
         ? this.props.labels

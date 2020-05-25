@@ -13,7 +13,6 @@ export default class extends Component {
     }
 
     componentDidMount() {
-        console.log('propsprops' , this.props)
         const {label }= this.props
         this.setState({
             text: label.value,
@@ -25,7 +24,6 @@ export default class extends Component {
 
     toggleCirclePicker = (ev) => {
         ev.stopPropagation()
-        console.log('yey')
         this.setState(({ colorPickerIsShown }) => ({ colorPickerIsShown: !colorPickerIsShown }))
     }
 
@@ -34,12 +32,7 @@ export default class extends Component {
 
         })
     }
-    // handleChange = (ev) => {
-    //     console.log('anipo')
-    //     var value = ev.target.value;
-    //     console.log(value)
-    //     this.setState({ value })
-    // }
+
 
     handleChange = ({ target }) => {
         const value = target.value;

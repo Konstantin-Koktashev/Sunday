@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import "../style/cmps/taskPreview.css";
-import person from "../style/img/person.svg";
-import chat from "../style/img/chat.png";
-import TaskBox from "../cmps/TaskBox.jsx";
-import deletePng from "../style/img/delete.svg";
-import localBoardService from "../services/localBoardService";
-import pencil from "../style/img/pencil.svg";
+import "../../style/cmps/taskPreview.css";
+import chat from "../../style/img/chat.png";
+import TaskBox from "../../cmps/Tasks/TaskBox";
+import deletePng from "../../style/img/delete.svg";
+import LocalBoardService from "../../services/LocalBoardService";
+import pencil from "../../style/img/pencil.svg";
 import { connect } from "react-redux";
 import {
   saveBoard,
   loadBoards,
   removeBoard,
   setCurrBoard,
-} from "../actions/boardActions";
+} from "../../actions/BoardActions";
 class TaskPreview extends Component {
   state = {
     taskTitle: "",
@@ -28,7 +27,7 @@ class TaskPreview extends Component {
     board.columns.forEach((col) => {
       order.push(col.order);
     });
-    let sortedCols = localBoardService.sortColumnsByBox(cols, order);
+    let sortedCols = LocalBoardService.sortColumnsByBox(cols, order);
     return sortedCols;
   }
 
@@ -64,8 +63,8 @@ class TaskPreview extends Component {
   };
   updateTaskName = (ev, task) => {
     ev.preventDefault();
-    let { boards,board, group, loadBoards, saveBoard } = this.props;
-    localBoardService.updateTaskName(board, task, this.state.taskTitle);
+    let { boards,board, loadBoards, saveBoard } = this.props;
+    LocalBoardService.updateTaskName(board, task, this.state.taskTitle);
     this.changeHistoryTaskNames(boards,task)
     saveBoard(board);
     loadBoards();
@@ -170,7 +169,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(TaskPreview);
 //       order.push(col.order);
 //     });
 //     console.log("SortCols -> order", order);
-//     let sortedCols = localBoardService.sortColumnsByBox(cols, order);
+//     let sortedCols = LocalBoardService.sortColumnsByBox(cols, order);
 //     return sortedCols;
 //   }
 //   // First Function
