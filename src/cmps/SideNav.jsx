@@ -13,7 +13,10 @@ export default function SideNav(props) {
       <NavLink to="/board">
         <img title="Sunday" className="logo" src={logo} alt="Sunday"></img>
       </NavLink>
-      <div className="notifications">
+      <div
+        onClick={() => props.toggleNotifications()}
+        className="notifications"
+      >
         <img
           title="Notifications"
           className="side-nav-img"

@@ -22,29 +22,22 @@ class Chat extends Component {
   }
 
   componentDidMount = async () => {
+    SocketService.emit("boardChat", this.props.board._id);
     await this.props.loadUsers();
-    // SocketService.setup();
-    // let userId = this.props.user._id;
-    // SocketService.emit(`openChat`, userId);
-    this.openBoardChat();
-    SocketService.on(`openBoardChat`, (data) => {
-      let msg = `${data.msgData.author} \n\n ${data.msgData.text}`;
-      console.log(" HERE GOT MSG", msg);
-      this._onMessageWasSent(msg);
+    SocketService.on("sendMsg", (msg) => {
+      console.log("heagati lepo");
+      this.setState({
+        messageList: [...this.state.messageList, msg],
+      });
     });
-  };
-
-  openBoardChat = () => {
-    let data = {
-      boardChatId: this.props.board._id,
-    };
-    SocketService.emit(`openBoardChat`, data);
   };
 
   _onMessageWasSent(message) {
     this.setState({
       messageList: [...this.state.messageList, message],
     });
+    console.log("send msg");
+    SocketService.emit(`sendMsg`, message);
   }
 
   _sendMessage(text) {
@@ -59,17 +52,6 @@ class Chat extends Component {
           },
         ],
       });
-
-      let msgData = {
-        author: `${this.props.user.username}`,
-        type: "text",
-        data: { text },
-      };
-      console.log(" HERE GOT MSG");
-      let data = {
-        msgData,
-      };
-      SocketService.emit(`openBoardChat`, data);
     }
   }
 
@@ -83,11 +65,7 @@ class Chat extends Component {
               "https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png",
           }}
           onMessageWasSent={this._onMessageWasSent.bind(this)}
-          onFilesSelected={this._onFilesSelected.bind(this)}
           messageList={this.state.messageList}
-          newMessagesCount={this.state.newMessagesCount}
-          handleClick={this._handleClick.bind(this)}
-          isOpen={this.state.isOpen}
           showEmoji
         />
       </div>

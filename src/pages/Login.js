@@ -35,7 +35,15 @@ class Login extends Component {
       return this.setState({ msg: 'Please enter user/password' });
     }
     const userCreds = { email, password };
-    this.props.login(userCreds);
+    try {
+      await this.props.login(userCreds)
+      // redirect
+      this.props.history.push('/');
+    } catch (err) {
+      // show invalid credentials msg?
+      console.log('THANK U YONI')
+    }
+
     this.setState({ loginCred: { email: '', password: '' } });
   };
 

@@ -23,8 +23,10 @@ import DateSelector from './cmps/DateSelector';
 import Profile from './pages/Profile.js';
 import SocketService from './services/SocketService';
 import Chat from './cmps/Chat';
+import Notifications from './cmps/Notifications';
 class App extends React.Component {
   state = {
+    notificationsIsShown: false,
   }
   async componentDidMount() {
     SocketService.setup()
@@ -35,18 +37,24 @@ class App extends React.Component {
     //   console.log('data' , data)
     // })
   }
+  toggleNotifications = () => {
+    this.setState(({ notificationsIsShown }) => ({
+      notificationsIsShown: !notificationsIsShown,
+    }));
+  };
   render() {
     return (
       <div className="App">
         <Router history={history}>
           <div className="bgc-black">
             <>
-              {this.props.currUser && <SideNav user={this.props.currUser}></SideNav>}
+              {this.props.currUser && <SideNav toggleNotifications={this.toggleNotifications} user={this.props.currUser}></SideNav>}
               {this.props.currUser && <BoardNav></BoardNav>}
+              {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
             </>
           </div>
           {this.props.currUser && this.props.board && <Chat user={this.props.currUser} ></Chat>}
-          <section className="main-board-container">
+          <section className="main-board-container ">
             <Switch>
               <Route path="/" component={Boards} exact />
               <Route path="/board/:id?" component={Boards} exact />
@@ -61,8 +69,8 @@ class App extends React.Component {
               <Route path="/c" component={DateSelector} exact />
               <Route path="/profile/:id?" component={Profile} exact />
             </Switch>
-          </section>
-        </Router>
+          </section >
+        </Router >
         <div className="loading-container fade-out">
           <div className="col-sm-2">
             <div id="nest6"></div>
