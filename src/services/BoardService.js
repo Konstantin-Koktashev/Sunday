@@ -518,7 +518,6 @@ function updateBoard() {
 
 
 function remove(boardId) {
-  console.log("111111111remove -> boardId", boardId)
   return HttpService.delete(`board/${boardId}`);
 }
 function removeGroup(groupId) {
@@ -541,7 +540,6 @@ function removeColumn(columnId) {
   return HttpService.delete(`board/${columnId}`);
 }
 function addTask(board) {
-  console.log('addTask')
   return HttpService.put(`board/${board._id}`, board);
 }
 // function updateTask(board) {
@@ -557,7 +555,6 @@ function addTask(board) {
 // }
 
 async function saveBoard(board) {
-  console.log('ulday')
   var boardToApply;
   if (!board._id) boardToApply = await HttpService.post('board', board)
   else boardToApply = await HttpService.put(`board/${board._id}`, board)

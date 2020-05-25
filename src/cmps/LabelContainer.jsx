@@ -3,10 +3,9 @@ import LabelPreviewUnEdit from "./LabelPreviewUnEdit";
 import LabelPreviewEdit from "./LabelPreviewEdit";
 
 import { connect } from "react-redux";
-import localBoardService from "../services/localBoardService";
+import LocalBoardService from "../services/LocalBoardService";
 
-import { saveBoard, loadBoards, setCurrBoard } from "../actions/boardActions";
-import SocketService from "../services/SocketService";
+import { saveBoard, loadBoards, setCurrBoard } from "../actions/BoardActions";
 
 class LabelContainer extends Component {
   state = {
@@ -72,42 +71,35 @@ class LabelContainer extends Component {
   };
 
   // UNEDIT
-  setLabel =async (label, color, text) => {
+  setLabel = async (label, color, text) => {
     const { currBoard } = this.props;
-    const board = localBoardService.changeLabelColumn(
+    const board = LocalBoardService.changeLabelColumn(
       currBoard,
       label,
       color,
       text
     );
-   await this.props.saveBoard(board);
-   await this.props.toggleContainer();
-  await  this.props.loadBoards();
-   await this.props.setCurrBoard(board);
-    
+    await this.props.saveBoard(board);
+    await this.props.toggleContainer();
+    await this.props.loadBoards();
+    await this.props.setCurrBoard(board);
 
     //find the label with the order and set the label on the props who props column who submit the label
   };
 
   setColumn = (color, text) => {
     const task = this.props.task;
-    const { currBoard, column,currUser } = this.props;
+    const { currBoard, column, currUser } = this.props;
     let updateInfo = {
       column,
       user: currUser,
       nextValue: text,
-      updateType: 'Label Change',
-      task
-    }
-    let board=localBoardService.addBoardHistory(currBoard,updateInfo)
-     board = localBoardService.setColumn(
-      currBoard,
-      column,
-      color,
-      text,
-      task
-    );
-    // board = localBoardService.addBoardHistory(board, updateInfo)
+      updateType: "Label Change",
+      task,
+    };
+    let board = LocalBoardService.addBoardHistory(currBoard, updateInfo);
+    board = LocalBoardService.setColumn(currBoard, column, color, text, task);
+    // board = LocalBoardService.addBoardHistory(board, updateInfo)
     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
@@ -135,8 +127,8 @@ class LabelContainer extends Component {
     };
     const column = this.props.column;
     const currBoard = this.props.currBoard;
-    const board = localBoardService.addLabel(currBoard, column, label);
- 
+    const board = LocalBoardService.addLabel(currBoard, column, label);
+
     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
@@ -144,7 +136,7 @@ class LabelContainer extends Component {
   };
 
   render() {
-    const { isEditAble, labels, allLabels } = this.state;
+    const { isEditAble, allLabels } = this.state;
     let labelsFromProps =
       this.props.labels && this.props.labels.length > 0
         ? this.props.labels
@@ -205,7 +197,7 @@ const mapStateToProps = (state) => {
   //State of the store to props of the cmp
   return {
     currBoard: state.userBoards.currBoard,
-    currUser:state.user.loggedInUser
+    currUser: state.user.loggedInUser,
   };
 };
 const mapDispatchToProps = {

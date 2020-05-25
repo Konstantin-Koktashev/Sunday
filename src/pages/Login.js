@@ -41,7 +41,6 @@ class Login extends Component {
       this.props.history.push('/');
     } catch (err) {
       // show invalid credentials msg?
-      console.log('THANK U YONI')
     }
 
     this.setState({ loginCred: { email: '', password: '' } });

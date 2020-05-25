@@ -1,24 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../style/cmps/notifications.css";
-import SocketService from "../services/SocketService";
 import { loadUsers } from "../actions/UserActions";
 import {
   saveBoard,
   loadBoards,
   removeBoard,
   setCurrBoard,
-} from "../actions/boardActions";
+} from "../actions/BoardActions";
 class Notifications extends Component {
   state = {
     notifications: null,
   };
-
   componentDidMount() {
     let notifications = this.checkUserHistory();
     this.setState({ notifications });
   }
-
   checkUserHistory = () => {
     //   await  this.props.loadBoards()
     const boards = this.props.boards;
@@ -32,7 +29,6 @@ class Notifications extends Component {
     });
     return totalUserHistory;
   };
-
   render() {
     const { notifications } = this.state;
     return (
@@ -64,7 +60,6 @@ class Notifications extends Component {
     );
   }
 }
-
 const mapStateToProps = (state) => {
   //State of the store to props of the cmp
   return {
@@ -80,5 +75,4 @@ const mapDispatchToProps = {
   setCurrBoard,
   loadUsers,
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Notifications);

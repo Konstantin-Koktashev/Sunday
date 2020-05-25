@@ -2,16 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { TextField } from "@material-ui/core";
-import localBoardService from "../services/localBoardService";
+import LocalBoardService from "../services/LocalBoardService";
 
-import { setFilter} from '../actions/boardActions'
+import { setFilter } from "../actions/BoardActions";
 
- class FilterByText extends Component {
-
+class FilterByText extends Component {
   handleChange = ({ target }) => {
     let value = target.value;
-    this.props.setFilter(value)
-
+    this.props.setFilter(value);
   };
   render() {
     return (
@@ -27,12 +25,9 @@ import { setFilter} from '../actions/boardActions'
   }
 }
 
-const mapStateToProps = (state) => ({
-   
-})
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {
-  setFilter
-
-}
-export default connect(mapStateToProps, mapDispatchToProps)(FilterByText)
+  setFilter,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(FilterByText);

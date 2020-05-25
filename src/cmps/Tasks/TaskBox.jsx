@@ -1,17 +1,17 @@
 import React from "react";
-import "../style/cmps/taskBox.css";
-import LabelContainer from "./LabelContainer";
-import localBoardService from "../../src/services/localBoardService";
+import "../../style/cmps/taskBox.css";
+import LabelContainer from "../LabelContainer";
+import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
 // import DatePicker from "./Calendar";
-import AddPerson from "./AddPerson";
+import AddPerson from "../AddPerson";
 import {
   saveBoard,
   removeBoard,
   setCurrBoard,
   loadBoards,
-} from "../actions/boardActions";
-import DateSelector from "./DateSelector";
+} from "../../actions/BoardActions";
+import DateSelector from "../DateSelector";
 class TaskBox extends React.Component {
   state = {
     containerIsShown: false,
@@ -45,7 +45,7 @@ class TaskBox extends React.Component {
       this.toggleColEdit();
       return;
     }
-    let newBoard = localBoardService.updateColumnTitle(currBoard, col, text);
+    let newBoard = LocalBoardService.updateColumnTitle(currBoard, col, text);
     this.props.saveBoard(newBoard);
     this.props.loadBoards();
     this.toggleColEdit();

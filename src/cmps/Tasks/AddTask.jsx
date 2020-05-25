@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import { saveBoard, loadBoards } from "../actions/boardActions";
-import localBoardService from "../services/localBoardService";
+import { saveBoard, loadBoards } from "../../actions/BoardActions";
+import LocalBoardService from "../../services/LocalBoardService";
 
 class AddTask extends Component {
   state = {
@@ -9,26 +9,10 @@ class AddTask extends Component {
       _id: 1000233,
       assignedGroupId: null,
       taskTitle: "Todo",
-      createdAt: "date",
+      createdAt: "date", 
       groupName: "",
       users: [], // Min users
-      columns: [
-        // {
-        //   type: "label",
-        //   value: "Done",
-        //   order: "1",
-        // },
-        // {
-        //   type: "text",
-        //   value: "im text",
-        //   order: "2",
-        // },
-        // {
-        //   type: "number",
-        //   value: 100,
-        //   order: "3",
-        // },
-      ], //  Columns Objects
+      columns: [], //  Columns Objects
       updates: [
         {
           user: {
@@ -64,7 +48,7 @@ class AddTask extends Component {
     task.taskTitle = this.state.taskTitle;
     let board = await this.props.currBoard;
     let group = this.props.group;
-    let newBoard = localBoardService.addTask(board, group, task);
+    let newBoard = LocalBoardService.addTask(board, group, task);
     this.props.saveBoard(newBoard);
     this.props.loadBoards();
   };

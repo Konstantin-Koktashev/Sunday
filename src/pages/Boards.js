@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import BoardHeader from "../cmps/BoardHeader.jsx";
-import Board from '../cmps/Board.jsx'
+import BoardHeader from "../cmps/Board/BoardHeader.jsx";
+import Board from '../cmps/Board/Board.jsx'
 import '../style/pages/boards.css'
 import SocketService from '../services/SocketService'
 
-import { loadBoards, setCurrBoard, removeBoard } from "../../src/actions/boardActions";
+import { loadBoards, setCurrBoard, removeBoard } from "../actions/BoardActions"
 import { loadUsers } from '../../src/actions/UserActions'
 class BoardApp extends React.Component {
     state = {
@@ -57,10 +57,7 @@ class BoardApp extends React.Component {
         const { boards } = this.props;
         const id = this.props.match.params.id ? this.props.match.params.id : null
         let board = boards[0]
-        console.log("BoardApp -> loadboards -> board", board)
         if (id) {
-            console.log("BoardApp -> loadboards -> id", id)
-
             board = this.getBoardByID(id)
         }
         this.setBoard(board)

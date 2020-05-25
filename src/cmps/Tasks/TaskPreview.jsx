@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import "../style/cmps/taskPreview.css";
-import person from "../style/img/person.svg";
-import chat from "../style/img/chat.png";
-import TaskBox from "../cmps/TaskBox.jsx";
-import deletePng from "../style/img/delete.svg";
-import localBoardService from "../services/localBoardService";
-import pencil from "../style/img/pencil.svg";
+import "../../style/cmps/taskPreview.css";
+import chat from "../../style/img/chat.png";
+import TaskBox from "../../cmps/Tasks/TaskBox";
+import deletePng from "../../style/img/delete.svg";
+import LocalBoardService from "../../services/LocalBoardService";
+import pencil from "../../style/img/pencil.svg";
 import { connect } from "react-redux";
 import {
   saveBoard,
   loadBoards,
   removeBoard,
   setCurrBoard,
-} from "../actions/BoardActions";
+} from "../../actions/BoardActions";
 class TaskPreview extends Component {
   state = {
     taskTitle: this.props.task.taskTitle,
@@ -28,7 +27,7 @@ class TaskPreview extends Component {
     board.columns.forEach((col) => {
       order.push(col.order);
     });
-    let sortedCols = localBoardService.sortColumnsByBox(cols, order);
+    let sortedCols = LocalBoardService.sortColumnsByBox(cols, order);
     return sortedCols;
   }
 
@@ -69,7 +68,7 @@ class TaskPreview extends Component {
       this.toggleTaskEdit();
       return;
     }
-    localBoardService.updateTaskName(board, task, this.state.taskTitle);
+    LocalBoardService.updateTaskName(board, task, this.state.taskTitle);
     console.log("---- before: ", board.history.length, board);
     this.changeHistoryTaskNames(boards, task);
     await saveBoard(board);

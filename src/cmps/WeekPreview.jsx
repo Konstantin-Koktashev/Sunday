@@ -7,10 +7,7 @@ export default class WeekPreview extends React.Component {
   state = {
     modal: false,
   };
-  componentDidMount() {
-    console.log('props from wweeek', this.props);
-  }
-
+ 
   openModal = () => {
     this.setState({ modal: true });
   };
@@ -20,7 +17,6 @@ export default class WeekPreview extends React.Component {
   };
 
   render() {
-    console.log("props", this.props);
     const { modal } = this.state;
     const { text, tasktitle, status, priority, users, taskTitle, groupName } = this.props
     return (

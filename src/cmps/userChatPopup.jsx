@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import localBoardService from "../services/localBoardService";
+import LocalBoardService from "../services/LocalBoardService";
 import { connect } from "react-redux";
 import "../style/cmps/chatPopup.css";
-import { saveBoard, loadBoards, setCurrBoard } from "../actions/boardActions";
+import { saveBoard, loadBoards, setCurrBoard } from "../actions/BoardActions";
 
-class userChatPopup extends Component {
+class UserChatPopup extends Component {
   state = {};
 
   makeRight = (idx) => {
@@ -16,7 +16,7 @@ class userChatPopup extends Component {
     const { user } = this.props;
     return (
       <div
-        style={{ right: `${this.makeRight(this.props.idx)}vw` }}
+        style={{ right: `${this.makeRight(this.props.idx)}vw` }}  
         className="user-chat-popup-card"
       >
         <h2>IM A USER</h2>
@@ -33,4 +33,4 @@ const mapDispatchToProps = {
   setCurrBoard,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(userChatPopup);
+export default connect(mapStateToProps, mapDispatchToProps)(UserChatPopup);

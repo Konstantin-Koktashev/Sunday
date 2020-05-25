@@ -2,7 +2,7 @@ import React from "react";
 
 export default class LabelPreviewUnEdit extends React.Component {
   render() {
-    const { color, value, _id } = this.props.label;
+    const { color, value } = this.props.label;
 
     return (
       <section

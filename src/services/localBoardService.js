@@ -184,7 +184,6 @@ function addPersonToColumn(board, column, task, person) {
 function removePersonToTask(board, person, column) {
     column.persons = (column.persons && column.persons.length) ? column.persons : [];
     const personIdx = column.persons.findIndex(pers => pers._id === person._id)
-    console.log('idx', personIdx)
     column.persons.splice(personIdx, 1)
     return board
 }
@@ -250,6 +249,9 @@ function setColumn(board, column, color, value, task) {
     column.color = color
     return board
 }
+
+
+
 
 
 
@@ -350,7 +352,6 @@ function filter(board, text) {
 
     });
 
-    // console.log('newBoards' , tasksAfterFilter)
     return newBoard
 
 

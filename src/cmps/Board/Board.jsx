@@ -1,18 +1,18 @@
-import GroupList from "./GroupList.jsx";
+import GroupList from "../Tasks/GroupList.jsx";
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import localBoardService from "../services/localBoardService";
+import LocalBoardService from "../../services/LocalBoardService";
 import {
   saveBoard,
   removeBoard,
   setCurrBoard,
   loadBoards,
-} from "../actions/boardActions";
-import DoughnutChart from "./DoughnutChart.jsx";
+} from "../../actions/BoardActions";
+import DoughnutChart from "../DoughnutChart.jsx";
 
 class Board extends Component {
   sortColumnsByBox = async (order) => {
-    let board = localBoardService.sortColumnsByBox(this.props.currBoard, order);
+    let board = LocalBoardService.sortColumnsByBox(this.props.currBoard, order);
     this.props.saveBoard(board);
     this.props.setCurrBoard(board);
     await this.props.loadBoards();
@@ -20,7 +20,7 @@ class Board extends Component {
 
   get boardToDisplay() {
     const { filterByText, currBoard } = this.props;
-    return localBoardService.filter(currBoard, filterByText);
+    return LocalBoardService.filter(currBoard, filterByText);
 
     // return filteredBoard
   }

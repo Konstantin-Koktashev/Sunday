@@ -17,7 +17,6 @@ class Profile extends Component {
 
 
     componentDidMount = async () => {
-        console.log('profile props', this.props)
         await this.loadUser()
 
     }
@@ -37,13 +36,11 @@ class Profile extends Component {
     }
 
     setPrivateChat = async (myId, toUserId) => {
-        console.log("App -> setPrivateChat -> userId, toUserId", myId, toUserId)
         let chatWith = {
             id: { myId, toUserId },
             type: 'private'
         }
         await this.props.setChatType(chatWith)
-        console.log('user porps ', this.props.userState)
 
     }
 

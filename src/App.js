@@ -2,31 +2,26 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router';
 import { connect } from 'react-redux'
 import { loadUsers } from './actions/UserActions'
-import { loadBoards } from './actions/boardActions'
+import { loadBoards } from './actions/BoardActions'
 import history from './history';
 import './App.css';
 import './style/main.css';
-import Home from './pages/Home.js';
 import Login from './pages/Login.js';
 import Signup from './pages/Signup.js';
 import Boards from './pages/Boards';
 import SideNav from './cmps/SideNav';
-import BoardNav from './cmps/BoardNav';
+import BoardNav from './cmps/Board/BoardNav';
 import ProgressBar from './cmps/ProgressBar'
 import MyWeek from './pages/MyWeek'
 import Inbox from './pages/Inbox';
-import TaskDetails from './cmps/TaskDetails';
+import TaskDetails from './cmps/Tasks/TaskDetails';
 import LabelContainer from './cmps/LabelContainer';
 import FilterByText from './cmps/FilterByText';
-import AddPerson from './cmps/AddPerson';
-import page from './cmps/DateSelector';
-import DateSelector from './cmps/DateSelector';
 import Profile from './pages/Profile.js';
 import SocketService from './services/SocketService';
 import Chat from './cmps/Chat';
 import DoughnutChart from './cmps/DoughnutChart'
 import Notifications from './cmps/Notifications';
-import userChatList from './cmps/userChatList';
 class App extends React.Component {
   state = {
     notificationsIsShown: false,
@@ -46,6 +41,10 @@ class App extends React.Component {
     // SocketService.on('hello' , data=>{
     //   console.log('data' , data)
     // })
+  }
+
+  componentWillUnmount(){
+    SocketService.terminate()
   }
 
 
