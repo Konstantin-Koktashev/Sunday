@@ -96,6 +96,16 @@ class BoardApp extends React.Component {
         await this.props.history.push('/board/')
         await this.loadboards()
     }
+    removeHistory=()=>{
+        const { boards } = this.props;
+        const { currBoard } = this.state;
+        boards.forEach(board=>{
+            const historyToRemoveIdx=  board.history.findIndex(history=>history.boardId===currBoard.id)
+            board.history.forEach(history=>{         
+                board.history.splice(historyToRemoveIdx,1)
+            })
+        })
+    }
     render() {
 
         const { currBoard } = this.state;
@@ -109,6 +119,8 @@ class BoardApp extends React.Component {
         );
     }
 }
+
+
 
 const mapStateToProps = (state) => {
     //State of the store to props of the cmp

@@ -1,6 +1,6 @@
 
 
-
+import { v4 as uuidv4 } from 'uuid';
 
 let gBoards = null
 export default {
@@ -333,6 +333,7 @@ function _getIdxById(boardId) {
 }
 
 function addBoardHistory(board,updateInfo) {
+    
     const {user, group, task,column, nextValue,updateType } = updateInfo
     const prevValue = column?column.value:''
     const boardId = board._id
@@ -342,11 +343,13 @@ function addBoardHistory(board,updateInfo) {
         nextValue,
         boardId,
         assignedBy: user._id,
-        taskTitle:(task)?task.taskTitle:'',
         user,
         taskId: (task)?task._id:false,
         group:(group)? group: false,
-        updateType
+        updateType,
+        _id:uuidv4(),
+        title: (task)? task.taskTitle:'',
+        boardName:board.name
         
     }
     board.history.unshift(update)

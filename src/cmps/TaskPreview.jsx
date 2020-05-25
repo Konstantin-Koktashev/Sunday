@@ -64,12 +64,22 @@ class TaskPreview extends Component {
   };
   updateTaskName = (ev, task) => {
     ev.preventDefault();
-    let { board, group, loadBoards, saveBoard } = this.props;
+    let { boards,board, group, loadBoards, saveBoard } = this.props;
     localBoardService.updateTaskName(board, task, this.state.taskTitle);
+    this.changeHistoryTaskNames(boards,task)
     saveBoard(board);
     loadBoards();
     this.toggleTaskEdit();
   };
+  changeHistoryTaskNames=(boards,task)=>{
+    debugger
+    boards.forEach((board)=>{
+      board.history.forEach(history=>{
+        
+        if(history.taskId===task._id)history.title=this.state.taskTitle
+      })
+    })
+  }
   toggleTaskEdit = (ev) => {
     // ev.stopPropagation();
     this.setState(({ taskNameIsEdit }) => ({

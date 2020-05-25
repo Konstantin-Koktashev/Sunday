@@ -5,7 +5,7 @@ import "../style/cmps/progressBar.css";
 class ProgressBar extends React.Component {
   componentDidMount() {
     console.log("e", this.props.boards);
-    console.log('progressbargroups' , this.props.group)
+    console.log("progressbargroups", this.props.group);
   }
 
   showStatus = () => {
@@ -14,11 +14,12 @@ class ProgressBar extends React.Component {
     // place 0 boards = this.props.boardIndex = the indexnumber of the currBoard.
     // place 0 groups = this.props.groupIndex = the indexnumber of the currGruop.
     const doneMissions = group.tasks.filter((task) => task.status === "Done");
+
     console.log("dm", doneMissions);
     if (doneMissions.length > 0) {
       var precent = parseInt((doneMissions.length / group.tasks.length) * 100);
     } else precent = 0;
-    console.log(precent)
+    console.log(precent);
     return precent;
   };
   render() {
