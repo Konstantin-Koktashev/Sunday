@@ -5,12 +5,15 @@ import "../../style/cmps/chat.css";
 import SocketService from "../../services/SocketService";
 import UserService from "../../services/UserService";
 import { loadUsers } from "../../actions/UserActions";
+import { saveRoom } from '../../actions/ChatActions'
+
 import {
   saveBoard,
   loadBoards,
   removeBoard,
   setCurrBoard,
 } from "../../actions/BoardActions";
+import ChatService from "../../services/ChatService";
 class Chat extends Component {
   constructor() {
     super();
@@ -42,6 +45,7 @@ class Chat extends Component {
   };
   renderMessage = (msg) => {
     console.log("this private msg", msg);
+    
     this.setState({
       messageList: [...this.state.messageList, msg],
     });
@@ -82,6 +86,7 @@ class Chat extends Component {
 
   //Sending message
   _onMessageWasSent = (message) => {
+    // ChatService.addMsg(room , message)
     console.log("send msg : ", message);
     this.setState({
       messageList: [...this.state.messageList, message],
@@ -165,6 +170,8 @@ const mapStateToProps = (state) => {
     user: state.user.loggedInUser,
     userState: state.user,
     users: state.user.users,
+    chat:state.chat
+    
   };
 };
 const mapDispatchToProps = {
@@ -173,6 +180,7 @@ const mapDispatchToProps = {
   loadBoards,
   setCurrBoard,
   loadUsers,
+  saveRoom
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);

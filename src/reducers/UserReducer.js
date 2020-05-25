@@ -4,7 +4,8 @@ if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
 const initialState = {
   loggedInUser: localLoggedinUser,
   users: [],
-  chatWith: null
+  chatWith: null,
+  
 };
 
 export default function (state = initialState, action = {}) {
@@ -20,6 +21,7 @@ export default function (state = initialState, action = {}) {
       return { ...state, users: action.users };
     case 'SET_USER_CHAT':
       return { ...state, chatWith: action.chatWith };
+      
     default:
       return state;
   }
