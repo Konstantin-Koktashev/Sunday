@@ -38,11 +38,6 @@ class MyWeek extends Component {
             else openTasks.push(task)
         })
 
-<<<<<<< HEAD
-
-=======
-     
->>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834
         this.setState({ openTasks, closeTasks })
 
 

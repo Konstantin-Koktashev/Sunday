@@ -11,15 +11,8 @@ import {
   loadBoards,
   removeBoard,
   setCurrBoard,
-<<<<<<< HEAD
 } from "../../actions/BoardActions";
-=======
-<<<<<<<< HEAD:src/cmps/Tasks/TaskPreview.jsx
-} from "../../actions/BoardActions";
-========
-} from "../actions/BoardActions";
->>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834:src/cmps/TaskPreview.jsx
->>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834
+
 class TaskPreview extends Component {
   state = {
     taskTitle: this.props.task.taskTitle,
@@ -72,28 +65,18 @@ class TaskPreview extends Component {
   updateTaskName = async (ev, task) => {
     ev.preventDefault();
     let { boards, board, group, loadBoards, saveBoard } = this.props;
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:src/cmps/Tasks/TaskPreview.jsx
+
     LocalBoardService.updateTaskName(board, task, this.state.taskTitle);
-    console.log('---- before: ', board.history.length, board);
-    this.changeHistoryTaskNames(boards, task)
-========
->>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834
+    console.log("---- before: ", board.history.length, board);
+    this.changeHistoryTaskNames(boards, task);
     if (!this.state.taskTitle) {
       this.toggleTaskEdit();
       return;
     }
-<<<<<<< HEAD
     LocalBoardService.updateTaskName(board, task, this.state.taskTitle);
     console.log("---- before: ", board.history.length, board);
     this.changeHistoryTaskNames(boards, task);
-=======
-    localBoardService.updateTaskName(board, task, this.state.taskTitle);
-    console.log("---- before: ", board.history.length, board);
-    this.changeHistoryTaskNames(boards, task);
->>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834:src/cmps/TaskPreview.jsx
->>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834
+
     await saveBoard(board);
     loadBoards();
     this.toggleTaskEdit();
@@ -188,9 +171,6 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskPreview);
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:src/cmps/Tasks/TaskPreview.jsx
 
 // export function TaskPreview(props) {
 //   let task = props.task;
@@ -228,6 +208,3 @@ export default connect(mapStateToProps, mapDispatchToProps)(TaskPreview);
 //     sortedCols.reverse();
 //     return sortedCols;
 //   }
-========
->>>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834:src/cmps/TaskPreview.jsx
->>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834

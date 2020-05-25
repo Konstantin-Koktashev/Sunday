@@ -5,11 +5,7 @@ import Board from '../cmps/Board/Board.jsx'
 import '../style/pages/boards.css'
 import SocketService from '../services/SocketService'
 
-<<<<<<< HEAD
 import { loadBoards, setCurrBoard, removeBoard } from "../actions/BoardActions"
-=======
-import { loadBoards, setCurrBoard, removeBoard } from "../actions/BoardActions";
->>>>>>> bb0351bb85cbe9b7b9b31e2573ae0dad40884834
 import { loadUsers } from '../../src/actions/UserActions'
 class BoardApp extends React.Component {
     state = {
