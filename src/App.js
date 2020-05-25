@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router';
 import { connect } from 'react-redux'
 import { loadUsers } from './actions/UserActions'
-
+import { loadBoards } from './actions/boardActions'
 import history from './history';
 import './App.css';
 import './style/main.css';
@@ -29,25 +29,53 @@ import Notifications from './cmps/Notifications';
 class App extends React.Component {
   state = {
     notificationsIsShown: false,
+    chatWith: null
   }
   async componentDidMount() {
     SocketService.setup()
     await this.props.loadUsers()
+    await this.props.loadBoards()
     const { currUser } = this.props
-    this.setState({ currUser })
+    this.setState({ currUser, chatWith: {
+      id : this.props.boards[0]._id,
+      type : 'board'
+    } })
     // SocketService.on('hello' , data=>{
     //   console.log('data' , data)
     // })
   }
+
+
+
+
+  setPrivateChat = (userId , toUserId) =>{
+    this.setState({ chatWith: {
+      id : {userId , toUserId},
+      type : 'private'
+    } })
+  }
+
+  
+  setBoardChat = (boardId) =>{
+    this.setState({ chatWith: {
+      id : boardId,
+      type : 'board'
+    } })
+  }
+
   toggleNotifications = () => {
     this.setState(({ notificationsIsShown }) => ({
       notificationsIsShown: !notificationsIsShown,
     }));
   };
+
+
+
   render() {
     return (
       <div className="App">
         <Router history={history}>
+
           <div className="bgc-black">
             <>
               {this.props.currUser && <SideNav toggleNotifications={this.toggleNotifications} user={this.props.currUser}></SideNav>}
@@ -55,7 +83,7 @@ class App extends React.Component {
               {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
             </>
           </div>
-          {this.props.currUser && this.props.board && <Chat user={this.props.currUser} ></Chat>}
+          {this.props.currUser && this.props.board && this.state.chatWith && <Chat chatWith={this.state.chatWith} user={this.props.currUser} ></Chat>}
           <section className="main-board-container ">
             <Switch>
               <Route path="/" component={Boards} exact />
@@ -84,9 +112,11 @@ class App extends React.Component {
 }
 const mapStateToProps = (state) => ({
   currUser: state.user.loggedInUser,
-  board: state.userBoards.currBoard
+  board: state.userBoards.currBoard,
+  boards: state.userBoards.board
 });
 const mapDispatchToProps = {
-  loadUsers
+  loadUsers,
+  loadBoards
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

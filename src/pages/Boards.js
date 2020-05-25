@@ -19,7 +19,7 @@ class BoardApp extends React.Component {
 
         this.props.loadUsers();
         var allBoards = await this.props.loadBoards()
-        this.loadboards()
+         this.loadboards()
         const boardId = this.props.currBoard._id
         // SocketService.emit('boardViewed', boardId)
         SocketService.on('doRefresh', async data => {
