@@ -18,7 +18,8 @@ import { NavLink } from 'react-router-dom';
 class Inbox extends Component {
     state = {
         user: this.props.currUser,
-        filtertedUpdates: []
+        filtertedUpdates: [],
+        txt: ''
     }
     async componentDidMount() {
         await this.props.loadUsers()
@@ -81,16 +82,21 @@ class Inbox extends Component {
         await this.updateById(update)
 
     }
-    sendUpdateMsg = async (e, update) => {
+    sendUpdateMsg = async (e) => {
         const currBoard = this.props.currBoard
         e.preventDefault()
-        const value = e.target.value
-        const updateMsg = { msg: value, sendBy: this.props.currUser }
+        this.setState({ txt: event.target.value });
+        debugger
+        const updateMsg = { msg: this.state.txt, sendBy: this.props.currUser }
         update.messeges.unshift(value)
         await this.props.saveBoard(currBoard)
         await this.props.setCurrBoard(currBoard)
         await this.props.loadBoards()
         await this.checkUserHistory()
+    }
+    handleChange = (e) => {
+        this.setState({ txt: event.target.value });
+       
     }
     render() {
 
@@ -143,8 +149,8 @@ class Inbox extends Component {
                         <section className='add-update-msg flex'>
                             <NavLink to={`/profile/${this.props.currUser._id}`}>{this.props.currUser.username}</NavLink>
 
-                            <form onSubmit={(e, update) => { this.sendUpdateMsg(e, update) }}>
-                                <input clasName='inbox-reply'></input>
+                            <form onSubmit={(e) => { this.handleSubmit(e) }}>
+                                <input onChange={()=>this.handleChange(e)} clasName='inbox-reply'></input>
                                 <button type='submit'>Send</button>
                             </form>
                         </section>
