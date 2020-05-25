@@ -256,12 +256,9 @@ function setColumn(board, column, color, value, task) {
 
 
 
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> 6f8af55d4ab4b8a566e0a62abe9abc6a8f0ba1bc
 
 function changeTasklabelColumn(board, column, label) {
     column.value = label

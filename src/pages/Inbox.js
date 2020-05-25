@@ -1,26 +1,18 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-=======
 import PropTypes from 'prop-types'
 // import Editupdate from '../cmps/Editupdate'
->>>>>>> 6f8af55d4ab4b8a566e0a62abe9abc6a8f0ba1bc
 import { connect } from 'react-redux'
 import theme from '../style/themes/inboxTheme';
 import '../style/pages/inbox.css'
 import checkbox from '../style/img/checkbox.png'
 import SimpleReactCalendar from 'simple-react-calendar'
-<<<<<<< HEAD
-import { loadBoards } from '../actions/BoardActions';
-=======
-import { loadBoards, saveBoard, setCurrBoard } from '../actions/boardActions';
->>>>>>> 6f8af55d4ab4b8a566e0a62abe9abc6a8f0ba1bc
+import { loadBoards, saveBoard, setCurrBoard } from '../actions/BoardActions';
 import TimeLine from '../cmps/Timeline';
 import calendar from 'simple-react-calendar/lib/calendar/calendar';
 import DatePicker from '../cmps/Calendar';
 import TimeLineTest from '../cmps/TimeLineTest';
 import { loadUsers } from '../actions/UserActions'
 import { NavLink } from 'react-router-dom';
-import localBoardService from '../services/localBoardService';
 
 
 class Inbox extends Component {

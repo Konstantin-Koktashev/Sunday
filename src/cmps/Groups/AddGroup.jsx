@@ -248,15 +248,9 @@ class AddGroup extends Component {
       nextValue: addGroup.name,
       updateType: 'New Group'
     }
-<<<<<<< HEAD:src/cmps/Groups/AddGroup.jsx
     let newBoard = LocalBoardService.addGroup(board, addGroup);
     newBoard = LocalBoardService.addBoardHistory(board, updateInfo)
-    this.props.saveBoard(newBoard);
-=======
-    let newBoard = localBoardService.addGroup(board, addGroup);
-    newBoard = localBoardService.addBoardHistory(board, updateInfo)
    await this.props.saveBoard(newBoard);
->>>>>>> 6f8af55d4ab4b8a566e0a62abe9abc6a8f0ba1bc:src/cmps/AddGroup.jsx
     this.props.loadBoards();
     // console.log("AddGroup -> AddGroup -> newBoard", newBoard);
   };
