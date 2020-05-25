@@ -62,20 +62,23 @@ class TaskPreview extends Component {
     const value = target.value;
     this.setState({ taskTitle: value });
   };
-  updateTaskName = async(ev, task) => {
+  updateTaskName = async (ev, task) => {
     ev.preventDefault();
-    let { boards,board, group, loadBoards, saveBoard } = this.props;
+    let { boards, board, group, loadBoards, saveBoard } = this.props;
     localBoardService.updateTaskName(board, task, this.state.taskTitle);
-    this.changeHistoryTaskNames(boards,task)
-  await  saveBoard(board);
+    console.log('---- before: ', board.history.length, board);
+    this.changeHistoryTaskNames(boards, task)
+    await saveBoard(board);
     loadBoards();
     this.toggleTaskEdit();
+    console.log('----', board.history.length, board)
   };
-  changeHistoryTaskNames=(boards,task)=>{
-    boards.forEach((board)=>{
-      board.history.forEach(history=>{
-        
-        if(history.taskId===task._id)history.title=this.state.taskTitle
+  changeHistoryTaskNames = (boards, task) => {
+    boards.forEach((board) => {
+      // debugger
+      board.history.forEach(history => {
+
+        if (history.taskId === task._id) history.title = this.state.taskTitle
       })
     })
   }
@@ -113,17 +116,17 @@ class TaskPreview extends Component {
               />
             </>
           ) : (
-            <form>
-              <input
-                type="text"
-                name="taskName"
-                className="input-edit-taskName"
-                value={this.state.taskTitle}
-                onChange={this.handleChange}
-                onBlur={(ev) => this.updateTaskName(ev, task)}
-              />
-            </form>
-          )}
+              <form>
+                <input
+                  type="text"
+                  name="taskName"
+                  className="input-edit-taskName"
+                  value={this.state.taskTitle}
+                  onChange={this.handleChange}
+                  onBlur={(ev) => this.updateTaskName(ev, task)}
+                />
+              </form>
+            )}
         </div>
         <img
           className="task-bar-icon"

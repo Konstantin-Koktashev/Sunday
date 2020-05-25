@@ -25,12 +25,13 @@ class Inbox extends Component {
         user: this.props.currUser,
         filtertedUpdates: []
     }
-    componentDidMount() {
-        this.props.loadUsers()
-        this.checkUserHistory()
+    async componentDidMount() {
+        await this.props.loadUsers()
+        await this.checkUserHistory()
     }
 
     checkUserHistory = () => {
+
         console.log('ggggggggggggggggggggggggggggggg');
         const board = this.props.userBoards.board
         if (!this.props.currUser) return
@@ -45,61 +46,63 @@ class Inbox extends Component {
             }
         }
 
+
+        debugger;
         let filtertedUpdates = []
         historyToRender.forEach(update => {
             let isSeen = false
             update.seenBy.forEach(user => {
-                if (user._id === currUserId){
+                if (user._id === currUserId) {
                     isSeen = true
                     console.log("checking", user._id, 'and curr user id ', currUserId)
-                } 
-               
+                }
+
             })
             if (!isSeen) filtertedUpdates.push(update)
         })
+        debugger;
         this.setState({ filtertedUpdates })
+        return Promise.resolve()
     }
 
-async updateById(newUpdate){
-    const user = this.props.currUser
-let board=  this.props.userBoards.board
-debugger
-board.forEach(board=>{
-    board.history.forEach(async update =>{
-        if (update._id === newUpdate._id){
-            update.seenBy.push(user)
-            await this.props.saveBoard(board)
-        await this.props.setCurrBoard(board)
-            await this.props.loadBoards()
-            this.checkUserHistory()
-        } 
-    })
-})
+    async updateById(newUpdate) {
+        const user = this.props.currUser
+        let board = this.props.userBoards.board
+        board.forEach(board => {
+            board.history.forEach(async update => {
+                if (update._id === newUpdate._id) {
+                    update.seenBy.push(user)
+                    await this.props.saveBoard(board)
+                    await this.props.setCurrBoard(board)
+                    await this.props.loadBoards()
+                    await this.checkUserHistory()
+                }
+            })
+        })
 
 
-}
+    }
 
 
     setUpdateAsSeen = async (update) => {
         await this.updateById(update)
-        
-       
 
-
-        // const newBoards=localBoardService.removeFromHistory(board,updateId,currUserId)
-        // newBoards.forEach(async board=>{
-        //     await this.props.saveBoard(board)
-        // })
-        // this.props.loadBoards()
-        // this.checkUserHistory()
-
+    }
+    sendUpdateMsg = async (e, update) => {
+        const currBoard = this.props.currBoard
+        e.preventDefault()
+        const value = e.target.value
+        const updateMsg = { msg: value, sendBy: this.props.currUser }
+        update.messeges.unshift(value)
+        await this.props.saveBoard(currBoard)
+        await this.props.setCurrBoard(currBoard)
+        await this.props.loadBoards()
+        await this.checkUserHistory()
     }
     render() {
 
         let userHistory = this.state.filtertedUpdates
-
         const isHistory = (userHistory.length) ? true : false
-        //  this.props.loadBoards()
         const isLoading = this.props.currBoard
         if (!this.props.currUser) return <h1>No Logged User . </h1>
         return (
@@ -112,6 +115,7 @@ board.forEach(board=>{
                         <img className='complete-task' src={checkbox} onClick={() => { this.setUpdateAsSeen(update) }}></img>
                         <section className='history-header flex col a-start'>
                             <div className='user-logo'>
+                                <NavLink to={`/profile/${update.user._id}`}>{update.user.username}</NavLink>
 
                             </div>
                             <div className='updating-user'>
@@ -142,6 +146,22 @@ board.forEach(board=>{
                             <button className='great-job'>Great Job!</button>
                             <button className='take-it-from-here'> Thanks I'll take it from here</button>
                             <button className='next'> Nice Work! Whats next?</button>
+                        </section>
+                        <section className='add-update-msg flex'>
+                            <NavLink to={`/profile/${this.props.currUser._id}`}>{this.props.currUser.username}</NavLink>
+
+                            <form onSubmit={(e, update) => { this.sendUpdateMsg(e, update) }}>
+                                <input clasName='inbox-reply'></input>
+                                <button type='submit'>Send</button>
+                            </form>
+                        </section>
+                        <section className='update-msgs'>
+                            {update.messeges.length && update.messges.map(msg => {
+                                return <div className='sent-msg-box'>
+                                    <NavLink to={`/profile/${msg.sendBy._id}`}>{msg.sendBy.username}</NavLink>
+                                    <div className='update-msg-content'>{msg.msg}</div>
+                                </div>
+                            })}
                         </section>
                     </article>)
 

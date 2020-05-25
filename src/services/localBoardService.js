@@ -287,7 +287,7 @@ function _getIdxById(boardId) {
 
 function addBoardHistory(board, updateInfo) {
 
-    const { user, group, task, column, nextValue, updateType, seenBy } = updateInfo
+    const { user, group, task, column, nextValue, updateType, seenBy, } = updateInfo
     const prevValue = column ? column.value : ''
     const boardId = board._id
     const update = {
@@ -303,7 +303,8 @@ function addBoardHistory(board, updateInfo) {
         _id: uuidv4(),
         title: (task) ? task.taskTitle : '',
         boardName: board.name,
-        seenBy: []
+        seenBy: [],
+        messeges:[]
 
     }
     board.history.unshift(update)
