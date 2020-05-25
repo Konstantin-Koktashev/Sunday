@@ -15,7 +15,7 @@ import {
 } from "../actions/boardActions";
 class TaskPreview extends Component {
   state = {
-    taskTitle: "",
+    taskTitle: this.props.task.taskTitle,
     taskNameIsEdit: false,
   };
   componentDidMount() {
@@ -65,23 +65,26 @@ class TaskPreview extends Component {
   updateTaskName = async (ev, task) => {
     ev.preventDefault();
     let { boards, board, group, loadBoards, saveBoard } = this.props;
+    if (!this.state.taskTitle) {
+      this.toggleTaskEdit();
+      return;
+    }
     localBoardService.updateTaskName(board, task, this.state.taskTitle);
-    console.log('---- before: ', board.history.length, board);
-    this.changeHistoryTaskNames(boards, task)
+    console.log("---- before: ", board.history.length, board);
+    this.changeHistoryTaskNames(boards, task);
     await saveBoard(board);
     loadBoards();
     this.toggleTaskEdit();
-    console.log('----', board.history.length, board)
+    console.log("----", board.history.length, board);
   };
   changeHistoryTaskNames = (boards, task) => {
     boards.forEach((board) => {
       // debugger
-      board.history.forEach(history => {
-
-        if (history.taskId === task._id) history.title = this.state.taskTitle
-      })
-    })
-  }
+      board.history.forEach((history) => {
+        if (history.taskId === task._id) history.title = this.state.taskTitle;
+      });
+    });
+  };
   toggleTaskEdit = (ev) => {
     // ev.stopPropagation();
     this.setState(({ taskNameIsEdit }) => ({
@@ -93,29 +96,29 @@ class TaskPreview extends Component {
     const { task } = this.props;
     return (
       <div className="task-bar flex j-start space-between">
-        {/* <div className="task-color-box">0</div> */}
-        <div className="title-box flex j-center a-center">
-          <img
-            className="delete-icon"
-            src={deletePng}
-            alt="Delete"
-            title="Delete Task"
-            onClick={() => this.props.deleteTask(task)}
-          />
-          {!this.state.taskNameIsEdit ? (
-            <>
-              <h2 onClick={(ev, props) => this.toggleTaskEdit(ev)}>
-                {task.taskTitle}
-              </h2>
-              <img
-                className="pencil-svg"
-                onClick={(ev, props) => this.toggleTaskEdit(ev)}
-                src={pencil}
-                alt="Edit"
-                title="Edit"
-              />
-            </>
-          ) : (
+        <div className="task-bar-title-container flex space-between a-center">
+          <div className="title-box flex  a-center">
+            <img
+              className="delete-icon"
+              src={deletePng}
+              alt="Delete"
+              title="Delete Task"
+              onClick={() => this.props.deleteTask(task)}
+            />
+            {!this.state.taskNameIsEdit ? (
+              <>
+                <h2 onClick={(ev, props) => this.toggleTaskEdit(ev)}>
+                  {task.taskTitle}
+                </h2>
+                <img
+                  className="pencil-svg"
+                  onClick={(ev, props) => this.toggleTaskEdit(ev)}
+                  src={pencil}
+                  alt="Edit"
+                  title="Edit"
+                />
+              </>
+            ) : (
               <form>
                 <input
                   type="text"
@@ -124,16 +127,16 @@ class TaskPreview extends Component {
                   value={this.state.taskTitle}
                   onChange={this.handleChange}
                   onBlur={(ev) => this.updateTaskName(ev, task)}
+                  placeholder="Enter a name.."
+                  required
                 />
               </form>
             )}
+          </div>
+          <div className="task-bar-icon">
+            <img src={chat} alt="Chat" title="Click to Chat" />
+          </div>
         </div>
-        <img
-          className="task-bar-icon"
-          src={chat}
-          alt="Chat"
-          title="Click to Chat"
-        />
 
         <div className="task-bar-columns-container flex space-evenly a-center">
           {/* <p>{task.createdAt}</p> */}
@@ -163,40 +166,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskPreview);
-
-// export function TaskPreview(props) {
-//   let task = props.task;
-//   function SortCols(board, cols) {
-//     let order = [];
-//     board.columns.forEach((col) => {
-//       order.push(col.order);
-//     });
-//     console.log("SortCols -> order", order);
-//     let sortedCols = localBoardService.sortColumnsByBox(cols, order);
-//     return sortedCols;
-//   }
-//   // First Function
-//   let SortedCols = matchTaskBoxToBoardColumns(props);
-//   function matchTaskBoxToBoardColumns(props) {
-//     let board = props.board;
-//     let boardBox = [];
-//     board.columns.forEach((box) => {
-//       boardBox.push(box);
-//     });
-//     if (board.columns.length > task.columns.length) {
-//       boardBox.forEach((box) => {
-//         let isFound = false;
-//         for (var i = 0; i < task.columns.length; i++) {
-//           if (task.columns[i].order === box.order) isFound = true;
-//         }
-//         if (!isFound) {
-//           console.log("adding", box, "with order ", box.order);
-//           task.columns.push(box);
-//         }
-//       });
-//     }
-//     let cols = task.columns;
-//     let sortedCols = SortCols(board, cols);
-//     sortedCols.reverse();
-//     return sortedCols;
-//   }

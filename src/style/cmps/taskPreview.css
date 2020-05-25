@@ -16,8 +16,8 @@
   border-radius: 0px 0px 2px 2px;
 }
 .title-box {
-  width: 8vw;
-  margin-left: 2vw;
+  /* width: 100%; */
+  /* margin-left: 2vw; */
   font-size: 12px;
   height: 4vh;
 }
@@ -26,11 +26,13 @@
   outline: 1px dotted #74747486;
   /* width: 5vw; */
   /* margin-left: 20px; */
+  background-color: rgba(255, 255, 255, 0.445);
 }
 .task-bar h2 {
   cursor: pointer;
   /* max-width: 15vw; */
   padding: 0px 20px;
+  margin-left: 2vw;
   font-size: 14px;
   width: 10vw;
   white-space: nowrap;
@@ -79,10 +81,19 @@
 }
 
 .task-bar-icon {
-  width: 20px;
-  align-self: center;
-  margin-left: 40%;
   margin-right: 10px;
+}
+.task-bar-title-container {
+  width: 100%;
+}
+
+.task-bar-icon img {
+  width: 20px;
+
+  /* justify-self: last baseline; */
+  /* margin-left: 30%;
+  margin-right: 10px; */
+
   cursor: pointer;
 }
 
@@ -139,12 +150,29 @@
 }
 
 .input-edit-taskName {
-  width: 10vw;
+  /* width: 10vw; */
   border: none;
-  margin-left: 40px;
-  background-color: rgba(128, 128, 128, 0);
+  /* margin-left: 40px; */
+  background-color: rgba(245, 245, 245, 0.322);
   font-size: 14px;
-  outline: none;
+  outline: 1px dotted #74747486;
+  /* padding: 0px 20px; */
+  margin-left: 2vw;
+  height: 3vh;
+  /* margin */
+  /* text-align: start; */
+  /* position: relative; */
+  padding-left: 20px;
+}
+
+.input-edit-taskName input {
+  padding-left: 20px;
+  margin-left: 2vw;
+  outline: 1px dotted #74747486;
+}
+
+.input-edit-taskName input::placeholder {
+  /* padding-left: 10px; */
 }
 
 .colEdit-input-date input {

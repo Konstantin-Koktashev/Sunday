@@ -109,13 +109,14 @@ class App extends React.Component {
               <Route path="/profile/:id?" component={Profile} exact />
               <Route path="/stat" component={DoughnutChart} exact />
             </Switch>
+            <div className="loading-container fade-out">
+              <div className="col-sm-2">
+                <div id="nest6"></div>
+              </div>
+            </div>
           </section >
         </Router >
-        {/* <div className="loading-container fade-out">
-          <div className="col-sm-2">
-            <div id="nest6"></div>
-          </div>
-        </div> */}
+
       </div >
     );
   }
