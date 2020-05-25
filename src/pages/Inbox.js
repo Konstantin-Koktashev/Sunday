@@ -24,13 +24,20 @@ class Inbox extends Component {
     }
     async componentDidMount() {
         await this.props.loadUsers()
-        await this.checkUserHistory()
+         this.checkUserHistory()
     }
-    findBoard=(boardId)=>{
+    findBoard = (boardId) => {
         const board = this.props.userBoards.board.find(b => {
             return b._id === boardId
         })
         return board
+    }
+    saveAndUpdate = async (newBoard) => {
+        const currBoard = this.props.currBoard;
+        await this.props.saveBoard(newBoard)
+        await this.props.setCurrBoard(currBoard)
+        await this.props.loadBoards()
+        await this.checkUserHistory()
     }
 
     checkUserHistory = () => {
@@ -81,7 +88,6 @@ class Inbox extends Component {
             })
         })
 
-
     }
 
 
@@ -90,27 +96,36 @@ class Inbox extends Component {
 
     }
     sendUpdateMsg = async (e, update, boardId) => {
-        const currBoard = this.props.currBoard;
         if (e) e.preventDefault();
+        // const currBoard = this.props.currBoard;
 
-        this.setState({ txt: e.target.value });
-        let board = this.props.userBoards.board.find(b => {
-            return b._id === boardId
-        })
+        // this.setState({ txt: e.target.value });
+        // let board = this.props.userBoards.board.find(b => {
+        //     return b._id === boardId
+        // })
+        const board = this.findBoard(boardId)
         const updateMsg = { msg: this.state.txt, sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
         // update.messeges.unshift(updateMsg)
-        await this.props.saveBoard(newBoard)
-        await this.props.setCurrBoard(currBoard)
-        await this.props.loadBoards()
-        await this.checkUserHistory()
+        await this.saveAndUpdate(newBoard)
     }
-    sendGreatJob = (update,boardId) => {
-        let board = this.props.userBoards.board.find(b => {
-            return b._id === boardId
-        })
+    sendGreatJob = async (update, boardId) => {
+        const board = this.findBoard(boardId)
         const updateMsg = { msg: 'Great Job!', sendBy: this.props.currUser }
-
+        const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
+        await this.saveAndUpdate(newBoard)
+    }
+    sendTakeItFromHere = async(update, boardId) => {
+        const board = this.findBoard(boardId)
+        const updateMsg = { msg: 'Thanks Ill Take It From Here', sendBy: this.props.currUser }
+        const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
+        await this.saveAndUpdate(newBoard)
+    }
+    sendNiceWork = async(update, boardId) => {
+        const board = this.findBoard(boardId)
+        const updateMsg = { msg: 'Nice Work! Whats Next?', sendBy: this.props.currUser }
+        const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
+        await this.saveAndUpdate(newBoard)
     }
 
 
@@ -164,9 +179,9 @@ class Inbox extends Component {
                             <button className='like'> Like</button>
                         </section>
                         <section className='task-reply-btns'>
-                            <button className='great-job'>Great Job!</button>
-                            <button className='take-it-from-here'> Thanks I'll take it from here</button>
-                            <button className='next'> Nice Work! Whats next?</button>
+                            <button className='great-job' onClick={() => this.sendGreatJob(update, update.boardId)}>Great Job!</button>
+                            <button className='take-it-from-here' onClick={() => this.sendTakeItFromHere(update, update.boardID)}> Thanks I'll take it from here</button>
+                            <button className='next' onClick={() => this.sendNiceWork(update, update.boardId)}> Nice Work! Whats next?</button>
                         </section>
                         <section className='add-update-msg flex'>
                             <NavLink to={`/profile/${this.props.currUser._id}`}>{this.props.currUser.username}</NavLink>
