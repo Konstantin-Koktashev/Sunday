@@ -2,7 +2,7 @@ import React from "react";
 import { Polar } from "react-chartjs-2";
 import { connect } from "react-redux";
 
-import { loadBoards } from "../actions/BoardActions";
+import { loadBoards } from "../../actions/BoardActions";
 
 class DoughnutChart extends React.Component {
   state = {
