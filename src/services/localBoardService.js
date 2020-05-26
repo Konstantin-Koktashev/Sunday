@@ -38,8 +38,7 @@ export default {
     addTaskToGroup
 }
 
-function addUpdateMsg(board,update,msg){
-    debugger
+function addUpdateMsg(board, update, msg) {
     update.messeges.push(msg)
     return board
 }
@@ -180,6 +179,7 @@ function updateColumnText(board, column, text) {
 /// person column ///
 
 function addPersonToColumn(board, column, task, person) {
+    debugger
     column.persons = column.persons && column.persons.length > 0 ? column.persons : []
     task.users = task.users && task.users.length > 0 ? task.users : []
     task.users.push(person)
@@ -313,7 +313,7 @@ function addBoardHistory(board, updateInfo) {
         title: (task) ? task.taskTitle : '',
         boardName: board.name,
         seenBy: [],
-        messeges:[]
+        messeges: []
 
     }
     board.history.unshift(update)
@@ -323,7 +323,7 @@ function addBoardHistory(board, updateInfo) {
 function removeFromHistory(board, taskId, currUserId) {
     board.forEach(board => {
         const historyIdx = board.history.findIndex(history => {
-            return (history.taskId === taskId && history.user._id === currUserId&&history.updateType==='Label Change')
+            return (history.taskId === taskId && history.user._id === currUserId && history.updateType === 'Label Change')
         })
         board.history.splice(historyIdx, 1)
     })
@@ -363,17 +363,21 @@ function filter(board, text) {
 
 }
 
-function addTaskToGroup(board,group,task){
+function addTaskToGroup(board, group, task) {
     group.tasks.push(task)
     return board
 }
 
-function removeTaskFromGroup(board,group,taskToRemove){
-    const IdxToRemove=group.tasks.findIndex(task=>{
-        return task._id===taskToRemove._id
+function removeTaskFromGroup(board, group, taskToRemove) {
+    const groupsToFilter = board.groups.filter(g => g._id !== group.id)
+    const groupToAddTask = groupsToFilter.find(group => {
+      return  group.tasks.some(task => task._id === taskToRemove._id)
+    })
+    const IdxToRemove = groupToAddTask.tasks.findIndex(task => {
+        return task._id === taskToRemove._id
 
     })
-    group.tasks.splice(IdxToRemove,1)
+    groupToAddTask.tasks.splice(IdxToRemove, 1)
     return board
 }
 

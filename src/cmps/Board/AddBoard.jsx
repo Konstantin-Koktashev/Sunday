@@ -4,6 +4,8 @@ import { saveBoard, loadBoards } from "../../actions/BoardActions";
 import {loadUsers} from '../../actions/UserActions'
 import LocalBoardService from "../../services/LocalBoardService";
 import add from "../../../src/style/img/add.png";
+import { v4 as uuidv4 } from 'uuid';
+
 class AddBoard extends Component {
 
 
@@ -108,14 +110,14 @@ class AddBoard extends Component {
       ], // Min users
       groups: [
         {
-          _id: 124,
+          _id: uuidv4(),
           name: "New Project",
           createdAt: "date",
           // ABIR COLS DONT TOUCH
 
           tasks: [
             {
-              _id: 2222,
+              _id: uuidv4(),
               isDone:true,
               assignedGroupId: 124,
               taskTitle: "Task - Wright you task here",
@@ -156,7 +158,7 @@ class AddBoard extends Component {
               link: "",
             },
             {
-              _id: 2222,
+              _id: uuidv4(),
               isDone:true,
               assignedGroupId: 124,
               taskTitle: "Task - Wright you task here",
@@ -197,7 +199,7 @@ class AddBoard extends Component {
               link: "",
             },
             {
-              _id: 2222,
+              _id: uuidv4(),
               isDone:true,
               assignedGroupId: 124,
               taskTitle: "Task - Wright you task here",
@@ -238,7 +240,7 @@ class AddBoard extends Component {
               link: "",
             },
             {
-              _id: 2222,
+              _id: uuidv4(),
               isDone:true,
               assignedGroupId: 124,
               taskTitle: "Task - Wright you task here",

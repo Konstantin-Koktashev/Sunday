@@ -6,6 +6,7 @@ import { saveBoard, loadBoards } from "../actions/BoardActions";
 import LocalBoardService from "../services/LocalBoardService";
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
+import AddPerson from "./Columns/AddPerson";
 const animatedComponents = makeAnimated();
 
 
@@ -32,9 +33,14 @@ class WeekModal extends React.Component {
   }
   onChangeTaskGroup = async (group) => {
     const { task } = this.props;
+    const board = this.props.userBoards.find(b => {
+      return b.groups.some(g => {
+        return g._id === group._id
+      })
+    })
     const currBoard = this.props.currBoard
-    const boardAfterAdding = LocalBoardService.addTaskToGroup(currBoard, group, task)
-    const boardAfterRemoving = LocalBoardService.removeTaskFromGroup(currBoard, group, task)
+    const boardAfterRemoving = LocalBoardService.removeTaskFromGroup(board, group, task)
+    const boardAfterAdding = LocalBoardService.addTaskToGroup(board, group, task)
     await this.saveAndLoad(boardAfterAdding)
   }
   onAddMemebers = () => {
@@ -46,6 +52,7 @@ class WeekModal extends React.Component {
     const taskGroups = []
     boards.forEach(board => {
       board.groups.forEach(group => {
+
         if (group.tasks.some(t => t._id === task._id)) taskGroups.push(...board.groups);
       })
     })
@@ -61,11 +68,12 @@ class WeekModal extends React.Component {
   }
   findCurrTaskGroup = () => {
     const { task } = this.props;
+    let group = null
     const boards = this.props.userBoards
-    const group = boards.find(board => {
-      return board.groups.find(g => {
-        return g.tasks.find(t => {
-          return t._id === task._id
+    boards.forEach(board => {
+      board.groups.forEach(g => {
+        g.tasks.forEach(t => {
+          if (t._id === task._id) group = g
         })
       })
     })
@@ -74,9 +82,17 @@ class WeekModal extends React.Component {
     return group
   }
 
+  getPeopleColumn(){
+    const { task } = this.props;
+    const peopleCol=task.columns.find(col=>col.type==='people')
+    return peopleCol
+  }
+
+
   render() {
     const groupOptions = this.findTaskGroups()
     const x = this.findCurrTaskGroup()
+    const peopleColumn=this.getPeopleColumn()
     const { task } = this.props;
     return (
       <div className="week-modal">
@@ -101,14 +117,15 @@ class WeekModal extends React.Component {
               <div className="opts-bar">
                 <div className="opts-title">Members</div>
                 <div className="opts-info">
-                  {task.users.map((user, idx) => (
+                  {/* {task.users.map((user, idx) => (
                     <SmallImg
                       zindex={idx}
                       url={user.imgUrl}
                       name={user.name}
                       key={idx}
                     />
-                  ))}
+                  ))} */}
+                  {this.props.currBoard&&<AddPerson task={task} column={peopleColumn}></AddPerson>}
                 </div>
               </div>
 
