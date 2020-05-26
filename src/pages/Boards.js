@@ -7,6 +7,7 @@ import SocketService from '../services/SocketService'
 
 import { loadBoards, setCurrBoard, removeBoard } from "../actions/BoardActions"
 import { loadUsers } from '../../src/actions/UserActions'
+import DropZone, {DropFileToAsk} from "../cmps/Tasks/DropZone.jsx";
 class BoardApp extends React.Component {
     state = {
         currBoard: null,
@@ -111,6 +112,7 @@ class BoardApp extends React.Component {
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
                 {currBoard && <BoardHeader chartIsOpen={this.state.chartIsOpen} toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard} user={this.props.user}></BoardHeader>}
                 {currBoard && <Board board={currBoard} chartIsOpen={this.state.chartIsOpen} ></Board>}
+                <DropZone></DropZone>
             </>
         );
     }
