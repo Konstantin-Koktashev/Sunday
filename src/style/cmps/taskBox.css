@@ -34,19 +34,28 @@
   background-color: rgba(233, 230, 230, 0.171);
 }
 
-.task-box-list-container {
+/* .task-box-list-container {
   /* width: 20vw; */
   /* margin-right: 10vw; */
   /* justify-self: end; */
-}
+/* } */ 
 
 .task-box-toplist-container {
+  margin-left: 1px;
   width: 71.5vw;
   padding: 0px 2px;
   height: 4vh;
   /* border-left: 1px solid black; */
   border-right: 1px solid rgba(128, 128, 128, 0.281);
 }
+
+.task-box-toplist-container .box-div {
+  background-color: rgb(255, 255, 255) !important;
+}
+
+
+
+
 
 .back-screen-label-container {
   position: fixed;

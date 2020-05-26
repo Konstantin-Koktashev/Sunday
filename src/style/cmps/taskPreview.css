@@ -1,6 +1,6 @@
 .task-bar {
   width: 71.5vw;
-  border-radius: 1px;
+  border-radius: 6px;
   border: 1px solid rgba(119, 119, 119, 0.199);
   padding: 0px 2px;
   margin-bottom: 2px;
@@ -75,7 +75,7 @@
 
 .box-div:hover {
   /* color: rgb(5, 5, 5); */
-  border: 1px dotted #74747486;
+  border-left: .3px dotted #74747486;
 }
 .task-bar-columns-container img {
   height: 20px;
@@ -113,7 +113,7 @@
 }
 
 .add-task-bar {
-  border-radius: 1px;
+  border-radius: 6px;
   border: 1px solid rgba(119, 119, 119, 0.199);
   padding: 0px 2px;
   margin-bottom: 1px;
