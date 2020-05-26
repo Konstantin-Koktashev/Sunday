@@ -41,9 +41,9 @@ class Inbox extends Component {
     }
 
     checkUserHistory = () => {
-
         console.log('ggggggggggggggggggggggggggggggg');
         const board = this.props.userBoards.board
+        if (!board) return
         if (!this.props.currUser) return
         const currUserId = this.props.currUser._id
         const historyToRender = []
@@ -138,14 +138,14 @@ class Inbox extends Component {
         return (
 
             <div className='inbox-container'>
-                {!isHistory && <h1>Inbox Is Empty</h1>}
                 <h2>Inbox</h2>
+                {!isHistory && <h1 className="inbox-empty">Inbox Is Empty</h1>}
                 {isHistory && isLoading && userHistory.map(update => {
                     return (<article className='user-history flex col'>
                         <img className='complete-task' src={checkbox} onClick={() => { this.setUpdateAsSeen(update) }}></img>
                         <section className='history-header flex col a-start'>
                             <div className='user-logo'>
-                                <NavLink to={`/profile/${update.user._id}`}>{update.user.username}</NavLink>
+                                <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>{update.user.username}</NavLink>
 
                             </div>
                             <div className='updating-user'>
@@ -156,7 +156,7 @@ class Inbox extends Component {
                                 <NavLink to={`/board/${update.boardId}`}>{update.boardName}</NavLink>
 
                             </div>
-                            <div className='inbox-icons'>11 22 33</div>
+                            {/* <div className='inbox-icons'>11 22 33</div> */}
                         </section>
                         <section className='update-msg flex a-center'>
                             <span>{update.title}</span>
@@ -177,21 +177,21 @@ class Inbox extends Component {
                             <button className='take-it-from-here' onClick={() => this.sendTakeItFromHere(update, update.boardId)}> Thanks I'll take it from here</button>
                             <button className='next' onClick={() => this.sendNiceWork(update, update.boardId)}> Nice Work! Whats next?</button>
                         </section>
-                        <section className='add-update-msg flex'>
-                            <NavLink to={`/profile/${this.props.currUser._id}`}>{this.props.currUser.username}</NavLink>
 
-                            <form onSubmit={(e) => { this.sendUpdateMsg(e, update, update.boardId) }}>
-                                <input onChange={(e) => this.handleChange(e)} ></input>
-                                <button type='submit'>Send</button>
-                            </form>
-                        </section>
                         <section className='update-msgs'>
                             {update.messeges && update.messeges.length && update.messeges.map(msg => {
                                 return <div className='sent-msg-box'>
-                                    <NavLink to={`/profile/${msg.sendBy._id}`}>{msg.sendBy.username}</NavLink>
-                                    <div className='update-msg-content'>{msg.msg}</div>
+                                    <NavLink to={`/profile/${msg.sendBy._id}`}>{msg.sendBy.username} :<span className='update-msg-content'>{msg.msg}</span></NavLink>
                                 </div>
                             })}
+                        </section>
+                        <section className='add-update-msg flex'>
+                            {/* <NavLink to={`/profile/${this.props.currUser._id}`}></NavLink> */}
+
+                            <form className="send-btn-inbox flex col a a-center" onSubmit={(e) => { this.sendUpdateMsg(e, update, update.boardId) }}>
+                                <input placeholder="Write a reply..." onChange={(e) => this.handleChange(e)} ></input>
+                                <button type='submit'>Send</button>
+                            </form>
                         </section>
                     </article>)
 

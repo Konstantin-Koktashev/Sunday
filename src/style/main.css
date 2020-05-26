@@ -44,6 +44,18 @@ html {
 .hide {
   visibility: hidden;
 }
+.chartjs-render-monitor {
+  padding-top: 8vh;
+  /* height: 70vh; */
+  background-color: #292f4c;
+}
+.doughnut {
+  width: 70vw;
+  margin: 0 auto;
+  height: 70vh;
+  padding-bottom: 12vh;
+  background-color: #292f4c;
+}
 
 #style-5::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -79,7 +91,7 @@ html {
 }
 
 .pencil-svg {
-  width: 14px;
+  width: 12px;
   filter: grayscale(1.5);
   opacity: 0;
   margin-left: 5px;

@@ -47,3 +47,23 @@
 .header-remove-board:hover {
   background-color: #21b0f8;
 }
+
+.toggle-chart-btn {
+  height: 4vh;
+  background-color: #00a8ff;
+  cursor: pointer;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  text-align: center;
+  padding: 0px 10px;
+  border: none;
+  align-self: flex-end;
+  margin-left: -75%;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+.toggle-chart-btn:hover {
+  background-color: #21b0f8;
+}

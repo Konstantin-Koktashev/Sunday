@@ -79,7 +79,7 @@ class DoughnutChart extends React.Component {
   render() {
     return (
       <div>
-        <div className="doughnut">
+        <div className="doughnut flex col">
           <Polar data={this.state} />
         </div>
       </div>
