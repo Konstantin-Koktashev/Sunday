@@ -47,16 +47,15 @@ export function saveBoard(board) {
 
 
 export function removeBoard(boardId) {
-
-  return async dispatch => {
-    try {
-      await BoardServices.remove(boardId);
-      dispatch(_removeBoard(boardId));
-    } catch (err) {
-      console.log('BoardActions: err in removeBoard', err);
-    }
-  };
-}
+          return async dispatch => {
+            try {
+              await BoardServices.remove(boardId);
+              dispatch(_removeBoard(boardId));
+            } catch (err) {
+              console.log('BoardActions: err in removeBoard', err);
+            }
+          };
+        }
 
 export function setCurrBoard(board) {
   return dispatch => {

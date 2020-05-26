@@ -25,7 +25,6 @@ export default class WeekPreview extends React.Component {
     return correctTask.color
   }
   render() {
-    debugger
     const { modal } = this.state;
     const { text, tasktitle, status, priority, users, taskTitle, groupName , columns} = this.props
     return (
@@ -51,4 +50,3 @@ export default class WeekPreview extends React.Component {
     );
   }
 }
-

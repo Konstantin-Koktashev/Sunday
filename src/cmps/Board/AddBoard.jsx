@@ -5,6 +5,7 @@ import {loadUsers} from '../../actions/UserActions'
 import LocalBoardService from "../../services/LocalBoardService";
 import add from "../../../src/style/img/add.png";
 import { v4 as uuidv4 } from 'uuid';
+import Swal from 'sweetalert2'
 
 class AddBoard extends Component {
 
@@ -295,13 +296,38 @@ class AddBoard extends Component {
     },
   };
 
-  AddBoard = async () => {
+   confirmDelet= async()=> Swal.fire({
+    title: "An input!",
+    text: "Write something interesting:",
+    type: "input",
+    closeOnConfirm: false,
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Creat Project'
+  }).then((inputValue) => {
+    if(inputValue === false) return
+    if (inputValue === "") {
+      Swal.showInputError("You need to write something!");
+      return false
+    }
+    if (inputValue) {
+      Swal.fire(
+        'Created!'
+        )
+         this.AddBoard(inputValue)     
+    }
+  })
+
+  AddBoard = async (name) => {
     console.log("Adding a Board!");
     let AddBoard = this.state.board;
-
+    AddBoard.name=name
+    try {
+      await this.props.saveBoard(AddBoard);
+      await this.props.loadBoards();
+    } catch (error) {
+      console.log('couldnt add board');
+    }
     // let newBoard = LocalBoardService.saveBoard(AddBoard);
-    await this.props.saveBoard(AddBoard);
-    await this.props.loadBoards();
   };
 
   render() {
@@ -309,7 +335,7 @@ class AddBoard extends Component {
       <>
         <img
           className="add-board-btn"
-          onClick={this.AddBoard}
+          onClick={this.confirmDelet}
           src={add}
           alt="Add"
           title="Add Board"
