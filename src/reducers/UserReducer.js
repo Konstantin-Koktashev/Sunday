@@ -21,7 +21,15 @@ export default function (state = initialState, action = {}) {
       return { ...state, users: action.users };
     case 'SET_USER_CHAT':
       return { ...state, chatWith: action.chatWith };
-      
+      case 'UPDATE_USER':
+        console.log('users' , state.users)
+        console.log('actionUser' , action.newUser)
+        return {...state,
+          users: state.users.filter(user => {
+            if(user._id === action.newUser._id) return action.newUser
+            return user
+          })
+        }
     default:
       return state;
   }

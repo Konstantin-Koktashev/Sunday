@@ -1,4 +1,5 @@
 import HttpService from './HttpService'
+import axios from 'axios'
 
 export default {
     login,
@@ -7,7 +8,8 @@ export default {
     getUsers,
     getById,
     remove,
-    update
+    update,
+    uploadImg
 }
 
 function getUsers() {
@@ -21,8 +23,9 @@ function remove(userId) {
     return HttpService.delete(`user/${userId}`)
 }
 
-function update(user) {
-    return HttpService.put(`user/${user._id}`, user)
+async function update(user) {
+   return HttpService.put(`user/${user._id}`, user)
+    
 }
 
 async function login(userCred) {
@@ -41,4 +44,28 @@ async function logout() {
 function _handleLogin(user) {
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
+}
+
+
+
+ function uploadImg(ev , user) {
+    const CLOUD_NAME = 'shaharperetz'; // find it in your cloudinary account (main page)
+    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
+
+    const formData = new FormData();
+    formData.append('file', ev.target.files[0]);
+    formData.append('upload_preset', 'swg3eibm'); // second parameter is the upload preset (you can find it in cloudinary settings)
+
+    return axios.post(UPLOAD_URL, formData)
+        .then(res =>{
+            console.log('res from xios ,' , res)
+            return res.data.url
+        })
+        .then(imgUrl => {
+            console.log('imgUrl' , imgUrl)
+            user.imgUrl = imgUrl
+            return user;
+        })
+        .then(user => update(user))
+        .catch(err => console.error(err))
 }

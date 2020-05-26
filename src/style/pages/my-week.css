@@ -28,6 +28,8 @@
 
 .week-prev-text {
   margin-left: 13px;
+  width: 15vw;
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -56,11 +58,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 5px;
 }
 
-.Done {
-  background-color: rgb(0, 200, 117);
-}
+
 
 .my-week .user-small-img {
   margin-right: 10px;
@@ -78,4 +79,9 @@
   border-bottom: 1px solid rgba(128, 128, 128, 0.308);
   /* width: 90%; */
   background-color: #fff;
+}
+
+.week-users{
+  width: 5vw;
+  display: flex;
 }
