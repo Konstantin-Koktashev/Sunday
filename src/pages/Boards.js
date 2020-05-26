@@ -16,7 +16,6 @@ class BoardApp extends React.Component {
 
 
     componentDidMount = async () => {
-
         this.props.loadUsers();
         var allBoards = await this.props.loadBoards()
         await this.loadboards()

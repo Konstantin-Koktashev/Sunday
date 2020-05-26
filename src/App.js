@@ -93,8 +93,8 @@ class App extends React.Component {
               {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
             </>
           </div>
-          {this.props.currUser && this.props.board && this.props.chatWith && <Chat user={this.props.currUser} ></Chat>}
-          <UserChatList></UserChatList>
+          {/* {this.props.currUser && this.props.board && this.props.chatWith && <Chat user={this.props.currUser} ></Chat>}
+          <UserChatList></UserChatList> */}
 
 
 
