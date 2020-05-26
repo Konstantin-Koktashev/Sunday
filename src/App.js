@@ -78,6 +78,13 @@ class App extends React.Component {
     }));
   };
 
+  logOut = (ev) =>{
+    ev.stopPropagation()
+    sessionStorage.clear();
+    history.push('/login')
+
+  }
+
 
 
   render() {
@@ -88,7 +95,7 @@ class App extends React.Component {
           <div className="bgc-black">
             <>
               {/* <userChatList chatObjects={} ></userChatList> */}
-              {this.props.currUser && <SideNav toggleNotifications={this.toggleNotifications} user={this.props.currUser}></SideNav>}
+              {this.props.currUser && <SideNav logOut={this.logOut} toggleNotifications={this.toggleNotifications} user={this.props.currUser}></SideNav>}
               {this.props.currUser && <BoardNav></BoardNav>}
               {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
             </>
