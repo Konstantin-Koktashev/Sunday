@@ -47,12 +47,32 @@
   height: 3vh;
   font-size: 20px;
 }
+.user-preview-circle-column:hover {
+  background-color: #ef607d;
+}
+.user-preview-circle-column {
+  width: 20px;
+  height: 20px;
+  margin: 1px;
+  background-color: #ef607d91;
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.781);
+  font-size: 14px;
+}
 
 .user-preview-circle {
-  width: 25px;
-  height: 25px;
+  width: 5vw;
+  height: 5vw;
   margin: 1px;
-  background-color: rgba(86, 88, 86, 0.226);
+  /* background-color: rgba(86, 88, 86, 0.226); */
   border-radius: 50%;
   text-align: center;
   position: relative;
@@ -61,6 +81,9 @@
   align-items: center;
   /* font-size: 13px; */
   font-weight: bold;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.781);
+  font-size: 16px;
 }
 
 .person-component span {

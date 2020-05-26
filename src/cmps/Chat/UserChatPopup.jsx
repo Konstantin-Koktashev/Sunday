@@ -69,7 +69,7 @@ class UserChatPopup extends Component {
       chatRoom
     );
     const toUserId = this.getToUserId();
-    if (!toUserId) return;
+    // if (!toUserId) return;
     const user = this.getUserById(toUserId);
 
     return (
@@ -80,6 +80,7 @@ class UserChatPopup extends Component {
         className="user-chat-popup-card slide-in-right"
       >
         <SmallImg
+          type={this.props.chatRoom.type}
           zindex={this.props.idx}
           url={user.imgUrl}
           name={user}
