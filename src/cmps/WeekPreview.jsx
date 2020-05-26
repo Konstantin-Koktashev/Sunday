@@ -2,12 +2,19 @@ import React from "react";
 
 import SmallImg from "../cmps/SmallImg";
 import WeekModal from "../cmps/WeekModal";
+import { connect } from "react-redux";
 
 export default class WeekPreview extends React.Component {
   state = {
     modal: false,
   };
 
+// componentDidMount() {
+//   setTimeout(() => {
+    
+//     console.log('thisprops' , this.props)
+//   }, 2000);
+// }
 
   
   openModal = () => {
@@ -21,9 +28,15 @@ export default class WeekPreview extends React.Component {
 
   }
 
+  getColor =  (columns) =>{
+    console.log(columns)
+    let correctTask = columns.find(col => col.order === "3")
+    return correctTask.color
+  }
+
   render() {
     const { modal } = this.state;
-    const { text, tasktitle, status, priority, users, taskTitle, groupName } = this.props
+    const { text, tasktitle, status, priority, users, taskTitle, groupName , columns} = this.props
     return (
       <div className="week-preview">
         <div className="week-prev-text">
@@ -38,8 +51,9 @@ export default class WeekPreview extends React.Component {
           ))}
         </div>
         <div
+        style={{backgroundColor : `${this.getColor(columns)}`}}
           onClick={() => this.openModal()}
-          className={`${status} week-status`}
+          className={`week-status`}
         >
           {status}
         </div>
