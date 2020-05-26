@@ -5,7 +5,7 @@ import { loadReviews, addReview } from '../actions/ReviewActions.js';
 import { loadUsers } from '../actions/UserActions.js';
 // import { Link } from 'react-router-dom';
 import { setChatType } from "../actions/UserActions";
-import { setCurrChatRoom } from '../actions/ChatActions'
+import { setCurrChatRoom, loadRooms } from '../actions/ChatActions'
 
 
 import UserService from '../../src/services/UserService'
@@ -85,7 +85,7 @@ const mapDispatchToProps = {
     loadUsers,
     addReview,
     setChatType,
-    setCurrChatRoom
+    setCurrChatRoom, loadRooms
 
 };
 
