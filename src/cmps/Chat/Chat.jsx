@@ -32,7 +32,7 @@ class Chat extends Component {
   }
 
   componentDidMount = async () => {
-    this.startChat();
+    await this.startChat();
   };
 
   componentDidUpdate = async (prevProps) => {
@@ -46,7 +46,7 @@ class Chat extends Component {
       // } else {
       SocketService.off("board_room_new_msg", this.renderMessage);
       // }
-      this.startChat();
+      await this.startChat();
     }
   };
   renderMessage = (msg) => {
@@ -75,6 +75,7 @@ class Chat extends Component {
         roomHistory: this.state.messageList,
         userA: id.myId,
         userB: id.toUserId,
+        type,
       };
       // Send to server
       this.props.saveRoom(chatRoom);
@@ -83,11 +84,6 @@ class Chat extends Component {
     } else {
       // Else Take the room History And render on chat
       await this.props.setCurrChatRoom(room);
-      console.log("Chat -> startChat -> room", room);
-      console.log(
-        "@@@@@@@@@@2Chat -> startChat ->  currChatRoom",
-        this.props.currChatRoom
-      );
       this.setState({
         messageList: this.props.currChatRoom.roomHistory,
         chatRoom: this.props.currChatRoom,
@@ -126,7 +122,7 @@ class Chat extends Component {
       return;
     }
     await this.props.saveRoom(chatRoom);
-    await this.props.setCurrChatRoom(chatRoom);
+    // await this.props.setCurrChatRoom(chatRoom);
   };
 
   _sendMessage(text) {
@@ -154,7 +150,9 @@ class Chat extends Component {
     if (!chatWith) return;
     const { board } = this.props;
     if (chatWith.type === "board") {
-      return board.name;
+      let data = {};
+      data.username = "Board Chat: " + board.name;
+      return data;
     } else {
       let users = this.props.users;
       let user = users.find((user) => user._id === chatWith.id.toUserId);
@@ -173,6 +171,7 @@ class Chat extends Component {
     const { chatWith } = this.props.userState;
     const { board } = this.props;
     let user = this.getUser(chatWith);
+    console.log("Chat ->@@@@@@@@@@@@@@@@@@@@2 render -> user", user);
     return (
       <div>
         <Launcher
@@ -190,7 +189,9 @@ class Chat extends Component {
           // newMessagesCount={this.state.newMessagesCount}
           // handleClick={this._handleClick.bind(this)}
         />
-        {this.state.isOpen && <UserChatList></UserChatList>}
+        {this.state.isOpen && (
+          <UserChatList history={this.props.history}></UserChatList>
+        )}
       </div>
     );
   }

@@ -5,8 +5,9 @@ export function loadRooms() {
   return async dispatch => {
     try {
       const rooms = await ChatService.query();
-      console.log("ROOMS FROM SERVER", rooms)
-      dispatch(setRooms(rooms));
+      let roomsAfterCheck = rooms ? rooms : [];
+      console.log("ROOMS FROM SERVER", roomsAfterCheck)
+      dispatch(setRooms(roomsAfterCheck));
 
     } catch (err) {
       console.log('ReviewActions: err in loatchats', err);
@@ -29,6 +30,7 @@ export function saveRoom(room) {
   return async dispatch => {
     try {
       const type = room._id ? 'UPDATE_ROOM' : 'ADD_ROOM'
+      room.lastUpdate = Date.now()
       const savedRoom = await ChatService.saveChat(room)
       SocketService.emit('doRefresh', 'js')
       dispatch({ type, savedRoom })

@@ -21,33 +21,38 @@ class UserChatList extends Component {
       ? this.props.chat.chatRooms
       : [];
   }
-
+  sortByKey = (array, key) => {
+    return array.sort(function (a, b) {
+      var x = a[key];
+      var y = b[key];
+      return x < y ? -1 : x > y ? 1 : 0;
+    });
+  };
   filterChatsByUser = () => {
     const { chatRooms } = this.props.chat;
-    console.log("UserChatList -> filterChatsByUser -> chatRooms", chatRooms);
     const user = this.props.user;
     if (!chatRooms) return;
     chatRooms.filter((room) => {
-      console.log("UserChatList -> filterChatsByUser -> room", room);
       if (room) {
-        if (room.userA === user._id || room.userA === user._id) return true;
+        if (room.userA === user._id || room.userB === user._id) return true;
       }
     });
-    return chatRooms;
+
+    let sortedRooms = this.sortByKey(chatRooms, "lastUpdate");
+    return sortedRooms;
   };
   /// needs to get a Open Chat Array Obj
   render() {
     let chatRooms = this.filterChatsByUser();
-    console.log("UserChatList -> render -> chatRooms", chatRooms);
     return (
       <>
         {chatRooms && chatRooms.length > 0 && (
           <div className="user-chat-popup-container">
             {chatRooms.map((chatRoom, idx) => {
-              console.log("UserChatList -> render -> chatRoom", chatRoom);
               if (idx > 5) return;
               return (
                 <UserChatPopup
+                  history={this.props.history}
                   key={idx}
                   idx={idx}
                   chatRoom={chatRoom}
