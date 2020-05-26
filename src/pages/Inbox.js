@@ -41,7 +41,6 @@ class Inbox extends Component {
     }
 
     checkUserHistory = () => {
-        console.log('ggggggggggggggggggggggggggggggg');
         const board = this.props.userBoards.board
         if (!board) return
         if (!this.props.currUser) return
@@ -63,7 +62,6 @@ class Inbox extends Component {
             update.seenBy.forEach(user => {
                 if (user._id === currUserId) {
                     isSeen = true
-                    console.log("checking", user._id, 'and curr user id ', currUserId)
                 }
 
             })

@@ -81,10 +81,9 @@ function _removeUser(userId) {
 /////////////////upload img /////////////////
 
 export function upload(ev, user) {
-  console.log('userfrom action' ,user)
   return async dispatch => {
     const newUser = await UserService.uploadImg(ev, user)
-    if(!newUser) return
-    dispatch({type:'UPDATE_USER' , newUser})
+    if (!newUser) return
+    dispatch({ type: 'UPDATE_USER', newUser })
   }
 }
