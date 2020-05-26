@@ -6,41 +6,55 @@ export default class WeekPreview extends React.Component {
   state = {
     modal: false,
   };
-// componentDidMount() {
-//   setTimeout(() => {
-//     console.log('thisprops' , this.props)
-//   }, 2000);
-// }
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     console.log('thisprops' , this.props)
+  //   }, 2000);
+  // }
   openModal = () => {
     this.setState({ modal: true });
   };
   closeModal = () => {
     this.setState({ modal: false });
   };
-  findRelatedBoard = () => {
-  }
-  getColor =  (columns) =>{
-    console.log(columns)
-    let correctTask = columns.find(col => col.order === "3")
-    return correctTask.color
-  }
+  findRelatedBoard = () => {};
+  getColor = (columns) => {
+    console.log(columns);
+    let correctTask = columns.find((col) => col.order === "3");
+    return correctTask.color;
+  };
   render() {
-    debugger
     const { modal } = this.state;
-    const { text, tasktitle, status, priority, users, taskTitle, groupName , columns} = this.props
+    const {
+      text,
+      tasktitle,
+      status,
+      priority,
+      users,
+      taskTitle,
+      groupName,
+      columns,
+    } = this.props;
     return (
       <div className="week-preview">
         <div className="week-prev-text">
           <p className="week-prev-title">{taskTitle}</p>
-          {groupName && <p className="week-prev-desc">  from {groupName} group</p>}
+          {groupName && (
+            <p className="week-prev-desc"> from {groupName} group</p>
+          )}
         </div>
         <div className="week-users">
           {users.map((user, idx) => (
-            <SmallImg zindex={idx} url={user.imgUrl} name={user.username} key={idx} />
+            <SmallImg
+              zindex={idx}
+              url={user.imgUrl}
+              name={user.username}
+              key={idx}
+            />
           ))}
         </div>
         <div
-        style={{backgroundColor : `${this.getColor(columns)}`}}
+          style={{ backgroundColor: `${this.getColor(columns)}` }}
           onClick={() => this.openModal()}
           className={`week-status`}
         >
@@ -51,4 +65,3 @@ export default class WeekPreview extends React.Component {
     );
   }
 }
-

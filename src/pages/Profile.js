@@ -26,9 +26,9 @@ class Profile extends Component {
         if (this.props.match.params.id !== prevProps.match.params.id) {
             this.loadUser()
         }
-        // if (JSON.stringify(this.props.currBoard) !== JSON.stringify(prevProps.currBoard)) {
-        //     this.loadboards()
-        // }
+        if (JSON.stringify(this.props.currBoard) !== JSON.stringify(prevProps.currBoard)) {
+            this.loadboards()
+        }
 
     }
 

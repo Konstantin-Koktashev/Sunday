@@ -5,6 +5,8 @@ import "../../style/cmps/chat.css";
 import SocketService from "../../services/SocketService";
 import UserService from "../../services/UserService";
 import { loadUsers } from "../../actions/UserActions";
+import UserChatList from "../../cmps/Chat/UserChatList";
+
 import {
   saveRoom,
   setCurrChatRoom,
@@ -25,8 +27,7 @@ class Chat extends Component {
       messageList: [],
       newMessagesCount: 0,
       chatRoom: null,
-      //   loggedInUser: this.props.user,
-      // chatWith: null,
+      isOpen: false,
     };
   }
 
@@ -119,12 +120,11 @@ class Chat extends Component {
     }
 
     let chatRoom = this.state.chatRoom;
-    // console.log(
-    //   "Chat -> _onMessageWasSent -> this.state.messageList",
-    //   this.state.messageList
-    // );
-
-    chatRoom.roomHistory.push(message);
+    if (chatRoom && chatRoom.roomHistory) {
+      chatRoom.roomHistory.push(message);
+    } else {
+      return;
+    }
     await this.props.saveRoom(chatRoom);
     await this.props.setCurrChatRoom(chatRoom);
   };
@@ -161,6 +161,13 @@ class Chat extends Component {
       return user;
     }
   };
+  _handleClick() {
+    console.log("TOGGLING CHAT");
+    this.setState({
+      isOpen: !this.state.isOpen,
+      newMessagesCount: 0,
+    });
+  }
 
   render() {
     const { chatWith } = this.props.userState;
@@ -171,16 +178,19 @@ class Chat extends Component {
         <Launcher
           agentProfile={{
             teamName: `${user && user.username}`,
-            imageUrl:
-              "https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png",
+            imageUrl: `${user && user.imgUrl && user.imgUrl}`,
           }}
           onMessageWasSent={this._onMessageWasSent.bind(this)}
           messageList={this.state.messageList}
           showEmoji
+          newMessagesCount={this.state.newMessagesCount}
+          handleClick={this._handleClick.bind(this)}
+          isOpen={this.state.isOpen}
           // mute={false}
           // newMessagesCount={this.state.newMessagesCount}
           // handleClick={this._handleClick.bind(this)}
         />
+        {this.state.isOpen && <UserChatList></UserChatList>}
       </div>
     );
   }

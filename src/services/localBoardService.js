@@ -179,7 +179,6 @@ function updateColumnText(board, column, text) {
 /// person column ///
 
 function addPersonToColumn(board, column, task, person) {
-    debugger
     column.persons = column.persons && column.persons.length > 0 ? column.persons : []
     task.users = task.users && task.users.length > 0 ? task.users : []
     task.users.push(person)
@@ -287,8 +286,8 @@ function remove(boardId) {
 }
 
 
-function getById(boardId) {
-    const board = gBoards.find(board => board._id === boardId)
+function getById(boards, boardId) {
+    const board = boards.find(board => board._id === boardId)
     return board;
 }
 function _getIdxById(boardId) {
@@ -296,7 +295,6 @@ function _getIdxById(boardId) {
 }
 
 function addBoardHistory(board, updateInfo) {
-    debugger
     const { user, group, task, column, nextValue, updateType, seenBy, color } = updateInfo
     const prevValue = column ? column.value : ''
     const boardId = board._id
