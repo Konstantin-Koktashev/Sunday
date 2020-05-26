@@ -16,7 +16,7 @@ class SideNav extends React.Component {
           <img title="Sunday" className="logo" src={logo} alt="Sunday"></img>
         </NavLink>
 
-        {this.props.user.loggedInUser && <div onClick={(ev) => this.props.logOut(ev)}> Logout </div>}
+        {this.props.userState.loggedInUser && <div onClick={(ev) => this.props.logOut(ev)}> Logout </div>}
 
         {/* {!this.props.user.loggedInUser && <NavLink to="/login"> Login</NavLink>} */}
 
@@ -83,7 +83,7 @@ class SideNav extends React.Component {
 const mapStateToProps = (state) => {
   //State of the store to this.props of the cmp
   return {
-    user: state.user
+    userState: state.user
   };
 };
 const mapDispatchToProps = {
