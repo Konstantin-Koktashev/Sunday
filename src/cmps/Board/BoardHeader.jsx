@@ -5,7 +5,7 @@ import FilterByText from "../Filters/FilterByText.jsx";
 import Swal from 'sweetalert2'
 
 export default function BoardHeader(props) {
-  const confirmDelet= (boardId)=> Swal.fire({
+  const confirmDelete= (boardId)=> Swal.fire({
     title: 'Are you sure?',
     text: "You won't be able to revert this!",
     icon: 'warning',
@@ -40,7 +40,7 @@ export default function BoardHeader(props) {
           <button
             className="header-remove-board"
             // onClick={() => props.removeBoard(board._id)}
-            onClick={() =>confirmDelet(board._id)}
+            onClick={() =>confirmDelete(board._id)}
           >
             Remove board
           </button>

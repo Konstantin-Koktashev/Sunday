@@ -296,13 +296,13 @@ class AddBoard extends Component {
     },
   };
 
-   confirmDelet= async()=> Swal.fire({
-    title: "An input!",
-    text: "Write something interesting:",
-    type: "input",
-    closeOnConfirm: false,
+   onConfirmDelete= async()=> Swal.fire({
+    title: 'Enter Your Projects Name',
+    input: 'text',
+    closeOnConfirm: true,
     confirmButtonColor: '#3085d6',
-    confirmButtonText: 'Creat Project'
+    confirmButtonText: 'Creat Project',
+    showCancelButton:true
   }).then((inputValue) => {
     if(inputValue === false) return
     if (inputValue === "") {
@@ -313,16 +313,17 @@ class AddBoard extends Component {
       Swal.fire(
         'Created!'
         )
-         this.AddBoard(inputValue)     
+         this.addBoard(inputValue)     
     }
   })
 
-  AddBoard = async (name) => {
+  addBoard = async ({value}) => {
     console.log("Adding a Board!");
-    let AddBoard = this.state.board;
-    AddBoard.name=name
+    let addBoard = this.state.board;
+    addBoard.name=value
+    console.log("AddBoard -> addBoard -> addBoard", addBoard)
     try {
-      await this.props.saveBoard(AddBoard);
+      await this.props.saveBoard(addBoard);
       await this.props.loadBoards();
     } catch (error) {
       console.log('couldnt add board');
@@ -335,7 +336,7 @@ class AddBoard extends Component {
       <>
         <img
           className="add-board-btn"
-          onClick={this.confirmDelet}
+          onClick={this.onConfirmDelete}
           src={add}
           alt="Add"
           title="Add Board"
