@@ -49,6 +49,8 @@ class Chat extends Component {
     this.setState({
       messageList: [...this.state.messageList, msg],
     });
+
+    /// Update data Messegae
   };
   startChat = () => {
     if (!this.props.userState.chatWith) return;
@@ -184,9 +186,28 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);
-
+/// Room ID
 // let chatMsgObject = {
-// chatRoomId: boardId + boardId, //Sort function
-// chatHistory: [],
-// users: [userA , userB]
-// }
+//   chatRoomId: boardId + boardId, //Sort function
+//   roomHistory: [
+//     {
+//       author: "them",
+//       type: "text",
+//       data: { text },
+//     },   {
+//       author: "them",
+//       type: "text",
+//       data: { text },
+//     },   {
+//       author: "them",
+//       type: "text",
+//       data: { text },
+//     },   {
+//       author: "them",
+//       type: "text",
+//       data: { text },
+//     },
+//   ],
+//   userA: userA,
+//   userB: userB,
+// };
