@@ -1,39 +1,29 @@
 import React from "react";
-
 import SmallImg from "../cmps/SmallImg";
 import WeekModal from "../cmps/WeekModal";
 import { connect } from "react-redux";
-
 export default class WeekPreview extends React.Component {
   state = {
     modal: false,
   };
-
 // componentDidMount() {
 //   setTimeout(() => {
-    
 //     console.log('thisprops' , this.props)
 //   }, 2000);
 // }
-
-  
   openModal = () => {
     this.setState({ modal: true });
   };
-
   closeModal = () => {
     this.setState({ modal: false });
   };
   findRelatedBoard = () => {
-
   }
-
   getColor =  (columns) =>{
     console.log(columns)
     let correctTask = columns.find(col => col.order === "3")
     return correctTask.color
   }
-
   render() {
     const { modal } = this.state;
     const { text, tasktitle, status, priority, users, taskTitle, groupName , columns} = this.props
@@ -42,9 +32,7 @@ export default class WeekPreview extends React.Component {
         <div className="week-prev-text">
           <p className="week-prev-title">{taskTitle}</p>
           {groupName && <p className="week-prev-desc">  from {groupName} group</p>}
-
         </div>
-
         <div className="week-users">
           {users.map((user, idx) => (
             <SmallImg zindex={idx} url={user.imgUrl} name={user.username} key={idx} />
@@ -62,3 +50,5 @@ export default class WeekPreview extends React.Component {
     );
   }
 }
+
+
