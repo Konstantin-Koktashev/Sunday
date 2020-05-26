@@ -43,8 +43,6 @@ class BoardApp extends React.Component {
     }
 
     componentWillUnmount() {
-
-
         SocketService.off('doRefresh', this.loadAndSetBoards)
     }
     componentDidUpdate(prevProps) {

@@ -44,6 +44,7 @@ class UserChatList extends Component {
         {chatRooms && chatRooms.length > 0 && (
           <div className="user-chat-popup-container">
             {chatRooms.map((chatRoom, idx) => {
+              console.log("UserChatList -> render -> chatRoom", chatRoom);
               if (idx > 5) return;
               return (
                 <UserChatPopup

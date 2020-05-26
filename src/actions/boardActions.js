@@ -9,6 +9,7 @@ export function loadBoards() {
       // example for loading
       dispatch(loading());
       const boards = await BoardServices.getBoards();
+      console.log("loadBoards -> boards", boards)
       dispatch(setBoards(boards));
     } catch (err) {
       console.log('BoardActions: err in loadBoards', err);
