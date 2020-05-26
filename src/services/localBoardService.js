@@ -249,6 +249,7 @@ function changeLabelColumn(board, label, color, text) {
 
 
 
+
 function setColumn(board, column, color, value, task) {
 
     task.status = value
@@ -295,11 +296,12 @@ function _getIdxById(boardId) {
 }
 
 function addBoardHistory(board, updateInfo) {
-
-    const { user, group, task, column, nextValue, updateType, seenBy, } = updateInfo
+debugger
+    const { user, group, task, column, nextValue, updateType, seenBy,color } = updateInfo
     const prevValue = column ? column.value : ''
     const boardId = board._id
     const update = {
+        _id: uuidv4(),
         timeStamp: Date.now(),
         prevValue,
         nextValue,
@@ -309,12 +311,12 @@ function addBoardHistory(board, updateInfo) {
         taskId: (task) ? task._id : false,
         group: (group) ? group : false,
         updateType,
-        _id: uuidv4(),
         title: (task) ? task.taskTitle : '',
         boardName: board.name,
         seenBy: [],
-        messeges: []
-
+        messeges: [],
+        prevColor:(column)?column.color:'',
+        nextColor:(color)? color:''
     }
     board.history.unshift(update)
     return board

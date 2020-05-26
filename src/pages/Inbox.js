@@ -41,7 +41,6 @@ class Inbox extends Component {
     }
 
     checkUserHistory = () => {
-        console.log('ggggggggggggggggggggggggggggggg');
         const board = this.props.userBoards.board
         if (!board) return
         if (!this.props.currUser) return
@@ -52,7 +51,7 @@ class Inbox extends Component {
             for (var j = 0; j < currBoard.history.length; j++) {
                 let currHistory = currBoard.history[j]
                 if (!currHistory.user) continue;
-                if (currHistory.user._id === currUserId && currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
+                if (currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
             }
         }
 
@@ -63,7 +62,6 @@ class Inbox extends Component {
             update.seenBy.forEach(user => {
                 if (user._id === currUserId) {
                     isSeen = true
-                    console.log("checking", user._id, 'and curr user id ', currUserId)
                 }
 
             })
@@ -133,6 +131,7 @@ class Inbox extends Component {
 
         let userHistory = this.state.filtertedUpdates
         const isHistory = (userHistory.length) ? true : false
+        debugger
         const isLoading = this.props.currBoard
         if (!this.props.currUser) return <h1>No Logged User . </h1>
         return (
@@ -140,8 +139,8 @@ class Inbox extends Component {
             <div className='inbox-container'>
                 <h2>Inbox</h2>
                 {!isHistory && <h1 className="inbox-empty">Inbox Is Empty</h1>}
-                {isHistory && isLoading && userHistory.map(update => {
-                    return (<article className='user-history flex col'>
+                {isHistory && isLoading && userHistory.map((update,idx) => {
+                    return (<article className='user-history flex col' key={idx}>
                         <img className='complete-task' src={checkbox} onClick={() => { this.setUpdateAsSeen(update) }}></img>
                         <section className='history-header flex col a-start'>
                             <div className='user-logo'>
@@ -160,12 +159,12 @@ class Inbox extends Component {
                         </section>
                         <section className='update-msg flex a-center'>
                             <span>{update.title}</span>
-                            <div className='user-history-main-btns flex a-center '>
+                            <div className='user-history-main-btns flex a-center ' >
 
-                                <button className='prev-value-inbox'> {update.prevValue}</button>
+                                <button className='prev-value-inbox'  style={{ backgroundColor: `${update.prevColor}` }}> {update.prevValue}</button>
                                 <span className='arrow-logo'> </span>
 
-                                <button className='next-value-inbox'>{update.nextValue}</button>
+                                <button className='next-value-inbox' style={{ backgroundColor: `${update.nextColor}` }}>{update.nextValue}</button>
                             </div>
                         </section>
                         <section className='like-reply-btns'>
