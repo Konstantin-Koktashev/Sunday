@@ -7,46 +7,51 @@ import {
   loadBoards,
   setCurrBoard,
 } from "../../actions/BoardActions";
+import { loadRooms } from "../../actions/ChatActions";
 import UserChatPopup from "./UserChatPopup";
 class UserChatList extends Component {
+  state = {
+    chats: null,
+  };
+  async componentDidMount() {
+    await this.props.loadRooms();
+    let chatObjects = this.props.chat.chatRooms
+      ? this.props.chat.chatRooms
+      : [];
+  }
   /// needs to get a Open Chat Array Obj
   render() {
     // const { chatObjects } = this.props; /// REAL ONE NEEDED
-    let chatObjects = [
-      {
-        userName: "abir",
-      },
-      {
-        userName: "shahar",
-      },
-      {
-        userName: "kosta",
-      },
-      {
-        userName: "David",
-      },
-      {
-        userName: "PUKI",
-      },
-    ];
+    const { chatRooms } = this.props.chat;
     return (
-      <div className="user-chat-popup-container">
-        {chatObjects.map((chatRoom, idx) => {
-          return <UserChatPopup idx={idx} chatRoom={chatRoom}></UserChatPopup>;
-        })}
-
-        {/* <UserChatPopup></UserChatPopup> */}
-      </div>
+      <>
+        {chatRooms && chatRooms.length > 0 && (
+          <div className="user-chat-popup-container">
+            {chatRooms.map((chatRoom, idx) => {
+              return (
+                <UserChatPopup
+                  key={idx}
+                  idx={idx}
+                  chatRoom={chatRoom}
+                ></UserChatPopup>
+              );
+            })}
+          </div>
+        )}
+      </>
     );
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  chat: state.chat,
+});
 
 const mapDispatchToProps = {
   saveBoard,
   loadBoards,
   setCurrBoard,
+  loadRooms,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserChatList);

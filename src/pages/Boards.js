@@ -42,9 +42,8 @@ class BoardApp extends React.Component {
 
     }
 
-    async componentWillUnmount() {
-        if (!this.props.currBoard._id) return
-        const boardId = this.props.currBoard._id
+    componentWillUnmount() {
+
 
         SocketService.off('doRefresh', this.loadAndSetBoards)
     }

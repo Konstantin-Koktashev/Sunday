@@ -20,9 +20,13 @@ class UserChatPopup extends Component {
   };
 
   getToUserId = () => {
+    if (!this.props.user) return;
     let myUser = this.props.user;
+    console.log("UserChatPopup -> getToUserId -> myUser", myUser);
     const { chatRoom } = this.props;
-    if (chatRoom.userA._id === myUser._id) {
+    console.log("UserChatPopup -> getToUserId -> chatRoom ", chatRoom);
+    if ((chatRoom && !chatRoom.userA) || (myUser && !myUser._id)) return;
+    if (chatRoom.userA === myUser._id) {
       return chatRoom.userB;
     } else {
       return chatRoom.userA;
@@ -47,6 +51,7 @@ class UserChatPopup extends Component {
 
 const mapStateToProps = (state) => ({
   user: state.user.loggedInUser,
+  chat: state.chat,
 });
 
 const mapDispatchToProps = {

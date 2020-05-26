@@ -39,9 +39,7 @@ class App extends React.Component {
         type: 'board'
       }
     })
-    // SocketService.on('hello' , data=>{
-    //   console.log('data' , data)
-    // })
+
   }
 
   componentWillUnmount() {
@@ -63,14 +61,6 @@ class App extends React.Component {
   }
 
 
-  setBoardChat = (boardId) => {
-    this.setState({
-      chatWith: {
-        id: boardId,
-        type: 'board'
-      }
-    })
-  }
 
   toggleNotifications = () => {
     this.setState(({ notificationsIsShown }) => ({
@@ -78,7 +68,7 @@ class App extends React.Component {
     }));
   };
 
-  logOut = (ev) =>{
+  logOut = (ev) => {
     ev.stopPropagation()
     sessionStorage.clear();
     history.push('/login')
@@ -100,8 +90,8 @@ class App extends React.Component {
               {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
             </>
           </div>
-          {/* {this.props.currUser && this.props.board && this.props.chatWith && <Chat user={this.props.currUser} ></Chat>}
-          <UserChatList></UserChatList> */}
+          {this.props.currUser && this.props.board && this.props.chatWith && <Chat user={this.props.currUser} ></Chat>}
+          <UserChatList></UserChatList>
 
 
 

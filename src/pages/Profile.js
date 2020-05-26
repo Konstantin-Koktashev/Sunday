@@ -5,7 +5,7 @@ import { loadReviews, addReview } from '../actions/ReviewActions.js';
 import { loadUsers } from '../actions/UserActions.js';
 // import { Link } from 'react-router-dom';
 import { setChatType, upload } from "../actions/UserActions";
-import { setCurrChatRoom } from '../actions/ChatActions'
+import { setCurrChatRoom, loadRooms } from '../actions/ChatActions'
 
 
 import UserService from '../../src/services/UserService'
@@ -43,8 +43,9 @@ class Profile extends Component {
             type: 'private'
         }
 
-        let allMsgs = await this.props.loadRooms()
-        let room = ChatService.getMsgsById(chatWith, allMsgs)
+        await this.props.loadRooms()
+        let allMsgs = this.props.chat.chatRooms
+        let room = ChatService.getRoomById(chatWith, allMsgs)
         await this.props.setCurrChatRoom(room)
         await this.props.setChatType(chatWith)
 
@@ -60,26 +61,24 @@ class Profile extends Component {
 
     render() {
         const user = this.state.user
-        console.log('userfromprofie page ' ,user)
         return (
             <>
                 {user && <div className="profile-page-container">
                     <div className="profile-header-container">
-                        {/* <img className="user-image-profile" src="google" alt="USER IMAGE"></img> */}
-                        <div className="profile-circle-big flex a-center j-center">{user.username.charAt(0).toUpperCase()}</div>
+                        {user.imgUrl ? <img className="user-image-profile" src={user.imgUrl} alt="USER IMAGE"></img> :
+                            <div className="profile-circle-big flex a-center j-center">{user.username.charAt(0).toUpperCase()}</div>}
                         <h2>{user.username} Profile</h2>
                     </div>
                     <div className="over-view-profile flex col">
                         <h2>Over View</h2>
                         <p>Title: <span>{user.username}</span></p>
                         <p>Email: <span>{user.email}</span></p>
-                        <button onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>
-                        <input onChange={(ev) => this.uploadImg(ev, user)} type="file" className="upload" accept="image/png, image/jpeg"></input>
-                        {user && user.imgUrl && <img className="profile-img" src={`${user.imgUrl}`}></img>}
+                        {this.props.loggedInUser._id !== user._id && <button className="chat-with-btn" onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>}
+                        {this.props.loggedInUser._id === user._id && <input onChange={(ev) => this.uploadImg(ev, user)} type="file" className="upload" accept="image/png, image/jpeg"></input>}
                     </div>
                 </div>}
 
-                
+
 
 
             </>
@@ -102,7 +101,9 @@ const mapDispatchToProps = {
     addReview,
     setChatType,
     setCurrChatRoom,
-    upload
+    upload,
+    loadRooms,
+
 
 };
 

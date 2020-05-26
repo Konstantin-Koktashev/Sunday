@@ -18,11 +18,11 @@ export function loadBoards() {
   };
 }
 
-export function setFilter(text){
-  return async dispatch =>{
-    try{
+export function setFilter(text) {
+  return async dispatch => {
+    try {
       dispatch({ type: 'SET_FILTER', text });
-    } catch(err){
+    } catch (err) {
       console.log('BoardActions: err in setfilter', err);
     }
   }
@@ -43,17 +43,11 @@ export function saveBoard(board) {
   }
 }
 
-// export function saveBoard(board){
-//   return dispatch =>{
-//     console.log('bdika')
-//     console.log(dispatch)
-//     console.log(board)
-//   }
-// }
+
 
 
 export function removeBoard(boardId) {
-  
+
   return async dispatch => {
     try {
       await BoardServices.remove(boardId);
@@ -69,55 +63,6 @@ export function setCurrBoard(board) {
     dispatch({ type: 'SET_CURRBOARD', board });
   }
 }
-
-// export function addGroup(boardId,group) {
-//   return async dispatch => {
-//     try {
-//     const board=await BoardServices.saveBoard(board)
-//       dispatch(_updateBoard(board))
-//     } catch (error) {
-//       console.log('failed to add group');
-//     }
-//   }
-// }
-
-
-// export function removeGroup(board) {
-//   return async dispatch => {
-//     try {
-//       await BoardServices.removeGroup(board)
-//       dispatch(_removeGroup(group))
-//     } catch (error) {
-//       console.log('failed to remove group');
-//     }
-//   }
-
-// }
-
-// function addGroup(boardID , group){
-//   return async dispatch => {  let board = getById(boardID)
-//     board.groups.push(group)
-//     dispatch(_addGroup(group))
-//     try {
-//        await BoardServices.updateBoard(board)
-//     } catch (error) {
-
-//     }}
-// }
-
-// export async function addGroup(group) {
-//   try {
-//     await BoardServices.removeGroup(group)
-//     dispatch(_addGroup)
-//   } catch (error) {
-//     console.log('failed to add group');
-//   }
-// }
-
-
-
-
-
 
 function setBoards(board) {
   return {
