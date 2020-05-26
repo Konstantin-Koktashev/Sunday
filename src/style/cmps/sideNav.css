@@ -34,3 +34,8 @@
 .my-week-img div {
   width: 5vw;
 }
+
+
+.logout{
+  cursor: pointer;
+}

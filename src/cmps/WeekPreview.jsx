@@ -9,13 +9,6 @@ export default class WeekPreview extends React.Component {
     modal: false,
   };
 
-// componentDidMount() {
-//   setTimeout(() => {
-    
-//     console.log('thisprops' , this.props)
-//   }, 2000);
-// }
-
   
   openModal = () => {
     this.setState({ modal: true });

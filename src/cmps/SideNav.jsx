@@ -16,7 +16,7 @@ class SideNav extends React.Component {
           <img title="Sunday" className="logo" src={logo} alt="Sunday"></img>
         </NavLink>
 
-        {this.props.userState.loggedInUser && <div onClick={(ev) => this.props.logOut(ev)}> Logout </div>}
+        {this.props.userState.loggedInUser && <div onClick={(ev) => this.props.logOut(ev)} className="logout"> Logout </div>}
 
         {/* {!this.props.user.loggedInUser && <NavLink to="/login"> Login</NavLink>} */}
 
