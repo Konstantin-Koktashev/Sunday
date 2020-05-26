@@ -1,5 +1,6 @@
 import UserService from '../services/UserService';
 import { loading, doneLoading } from './SystemActions';
+
 // import history from './../history';
 
 // THUNK
@@ -75,4 +76,15 @@ function _removeUser(userId) {
     type: 'USER_REMOVE',
     userId
   };
+}
+
+/////////////////upload img /////////////////
+
+export function upload(ev, user) {
+  console.log('userfrom action' ,user)
+  return async dispatch => {
+    const newUser = await UserService.uploadImg(ev, user)
+    if(!newUser) return
+    dispatch({type:'UPDATE_USER' , newUser})
+  }
 }
