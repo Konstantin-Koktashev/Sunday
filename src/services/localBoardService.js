@@ -296,8 +296,8 @@ function _getIdxById(boardId) {
 }
 
 function addBoardHistory(board, updateInfo) {
-debugger
-    const { user, group, task, column, nextValue, updateType, seenBy,color } = updateInfo
+    debugger
+    const { user, group, task, column, nextValue, updateType, seenBy, color } = updateInfo
     const prevValue = column ? column.value : ''
     const boardId = board._id
     const update = {
@@ -315,8 +315,8 @@ debugger
         boardName: board.name,
         seenBy: [],
         messeges: [],
-        prevColor:(column)?column.color:'',
-        nextColor:(color)? color:''
+        prevColor: (column) ? column.color : '',
+        nextColor: (color) ? color : ''
     }
     board.history.unshift(update)
     return board
@@ -373,7 +373,7 @@ function addTaskToGroup(board, group, task) {
 function removeTaskFromGroup(board, group, taskToRemove) {
     const groupsToFilter = board.groups.filter(g => g._id !== group.id)
     const groupToAddTask = groupsToFilter.find(group => {
-      return  group.tasks.some(task => task._id === taskToRemove._id)
+        return group.tasks.some(task => task._id === taskToRemove._id)
     })
     const IdxToRemove = groupToAddTask.tasks.findIndex(task => {
         return task._id === taskToRemove._id

@@ -50,7 +50,7 @@ class MyWeek extends Component {
     render() {
         const user = this.props.user ? this.props.user.username : 'guest - please login to view your week'
         const { closeTasks, openTasks } = this.state
-        if(!openTasks.length && !closeTasks.length) return <h3>No tasks for this week</h3>
+        if (!openTasks.length && !closeTasks.length) return <h3>No tasks for this week</h3>
         return (
 
             <>
@@ -61,7 +61,7 @@ class MyWeek extends Component {
 
                 <section className="my-week">
                     {openTasks && openTasks.length && <h3>Open Tasks</h3>}
-                    {openTasks && openTasks.map((task, idx) => <WeekPreview task={task} key={idx} />)}
+                    {openTasks && openTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
                 </section>
 
 
@@ -69,7 +69,7 @@ class MyWeek extends Component {
 
                 <section className="my-week">
                     {closeTasks && closeTasks.length && <h3>Closed Tasks</h3>}
-                    {closeTasks && closeTasks.map((task, idx) => <WeekPreview task={task} key={idx} />)}
+                    {closeTasks && closeTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
                 </section>
             </>
 
