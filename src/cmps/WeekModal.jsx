@@ -89,7 +89,6 @@ class WeekModal extends React.Component {
   }
 
   render() {
-    const { labelContainer} = this.state
     const groupOptions = this.findTaskGroups()
     const x = this.findCurrTaskGroup()
     const { task } = this.props;
