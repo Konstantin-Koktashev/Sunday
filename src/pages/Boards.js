@@ -43,11 +43,11 @@ class BoardApp extends React.Component {
     }
 
     componentWillUnmount() {
-
-
         SocketService.off('doRefresh', this.loadAndSetBoards)
     }
     componentDidUpdate(prevProps) {
+
+
         if (this.props.match.params.id !== prevProps.match.params.id) {
             let board = this.getBoardByID(this.props.match.params.id)
             this.setBoard(board)
@@ -109,7 +109,7 @@ class BoardApp extends React.Component {
             <>
 
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
-                {currBoard && <BoardHeader chartIsOpen={this.state.chartIsOpen} toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard}></BoardHeader>}
+                {currBoard && <BoardHeader chartIsOpen={this.state.chartIsOpen} toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard} user={this.props.user}></BoardHeader>}
                 {currBoard && <Board board={currBoard} chartIsOpen={this.state.chartIsOpen} ></Board>}
             </>
         );
@@ -122,7 +122,8 @@ const mapStateToProps = (state) => {
     //State of the store to props of the cmp
     return {
         boards: state.userBoards.board,
-        currBoard: state.userBoards.currBoard
+        currBoard: state.userBoards.currBoard,
+        user:state.user.loggedInUser
 
     };
 };

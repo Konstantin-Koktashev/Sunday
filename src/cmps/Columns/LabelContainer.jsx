@@ -19,6 +19,7 @@ class LabelContainer extends Component {
   };
 
   componentDidMount() {
+    console.log('cdmcdm' , this.props)
     var HardCoded;
     if (this.props.type === "label") {
       HardCoded = [
@@ -51,17 +52,17 @@ class LabelContainer extends Component {
       HardCoded = [
         {
           _id: "111safa",
-          color: "#eb2f06",
+          color: "#eb3006c2",
           value: "High",
         },
         {
           _id: "22afs2v",
-          color: "#5f27cd",
+          color: "#5e27cdbb",
           value: "Medium",
         },
         {
           _id: "3fsa33b",
-          color: "#00a8ff",
+          color: "#00aaffb2",
           value: "low",
         },
       ];

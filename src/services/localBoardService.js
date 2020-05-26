@@ -179,7 +179,6 @@ function updateColumnText(board, column, text) {
 /// person column ///
 
 function addPersonToColumn(board, column, task, person) {
-    debugger
     column.persons = column.persons && column.persons.length > 0 ? column.persons : []
     task.users = task.users && task.users.length > 0 ? task.users : []
     task.users.push(person)
@@ -287,8 +286,8 @@ function remove(boardId) {
 }
 
 
-function getById(boardId) {
-    const board = gBoards.find(board => board._id === boardId)
+function getById(boards, boardId) {
+    const board = boards.find(board => board._id === boardId)
     return board;
 }
 function _getIdxById(boardId) {
@@ -296,8 +295,7 @@ function _getIdxById(boardId) {
 }
 
 function addBoardHistory(board, updateInfo) {
-debugger
-    const { user, group, task, column, nextValue, updateType, seenBy,color } = updateInfo
+    const { user, group, task, column, nextValue, updateType, seenBy, color } = updateInfo
     const prevValue = column ? column.value : ''
     const boardId = board._id
     const update = {
@@ -315,8 +313,8 @@ debugger
         boardName: board.name,
         seenBy: [],
         messeges: [],
-        prevColor:(column)?column.color:'',
-        nextColor:(color)? color:''
+        prevColor: (column) ? column.color : '',
+        nextColor: (color) ? color : ''
     }
     board.history.unshift(update)
     return board
@@ -373,7 +371,7 @@ function addTaskToGroup(board, group, task) {
 function removeTaskFromGroup(board, group, taskToRemove) {
     const groupsToFilter = board.groups.filter(g => g._id !== group.id)
     const groupToAddTask = groupsToFilter.find(group => {
-      return  group.tasks.some(task => task._id === taskToRemove._id)
+        return group.tasks.some(task => task._id === taskToRemove._id)
     })
     const IdxToRemove = groupToAddTask.tasks.findIndex(task => {
         return task._id === taskToRemove._id

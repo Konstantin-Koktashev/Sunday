@@ -6,19 +6,19 @@ import { saveBoard, loadBoards } from "../actions/BoardActions";
 import LocalBoardService from "../services/LocalBoardService";
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
+// import LabelContainer from "./Columns/LabelContainer";
 import AddPerson from "./Columns/AddPerson";
 const animatedComponents = makeAnimated();
 
 
 
 class WeekModal extends React.Component {
+
   componentDidMount() {
     console.log("modal-props", this.props);
   }
 
-  changePriority = () => {
-    console.log("changing priority");
-  };
+  
 
   changeStatus = () => {
     console.log("changing status");
@@ -82,6 +82,19 @@ class WeekModal extends React.Component {
     return group
   }
 
+  getPriorityColumn = () =>{
+    let {task} = this.props
+    console.log('tasktoChecl' , task)
+    const col = task.columns.find(col => col.order === '6')
+    return col
+  }
+
+  getStatusColumn = () =>{
+    let {task} = this.props
+    console.log('tasktoChecl' , task)
+    const col = task.columns.find(col => col.order === '6')
+    return col
+  }
   getPeopleColumn(){
     const { task } = this.props;
     const peopleCol=task.columns.find(col=>col.type==='people')
@@ -94,6 +107,8 @@ class WeekModal extends React.Component {
     const x = this.findCurrTaskGroup()
     const peopleColumn=this.getPeopleColumn()
     const { task } = this.props;
+    // const  priorityColumn = this.getPriorityColumn()
+    const  statusColumn = this.getStatusColumn()
     return (
       <div className="week-modal">
         <div onClick={() => this.props.closeModal()} className="modal-screen">
@@ -133,15 +148,15 @@ class WeekModal extends React.Component {
                 <div className="opts-title">Priority</div>
                 <div
                   className="opts-info"
-                  onClick={() => this.changePriority()}
-                >
+                  onClick={() => this.changePriority()}>
                   {task.priority}
+                  
                 </div>
               </div>
 
               <div className="opts-bar">
                 <div className="opts-title">Status</div>
-                <div className="opts-info" onClick={() => this.changeStatus()}>
+                <div className="opts-info" onClick={() => this.changeStatus() }>
                   {task.status}
                 </div>
               </div>
