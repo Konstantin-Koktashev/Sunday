@@ -2,11 +2,12 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import { saveBoard, loadBoards } from "../../actions/BoardActions";
 import LocalBoardService from "../../services/LocalBoardService";
+import { v4 as uuidv4 } from 'uuid';
 
 class AddTask extends Component {
   state = {
     task: {
-      _id: 1000233,
+      _id: uuidv4(),
       assignedGroupId: null,
       taskTitle: "Todo",
       createdAt: "date", 

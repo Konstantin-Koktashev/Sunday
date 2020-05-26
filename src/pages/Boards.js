@@ -43,11 +43,11 @@ class BoardApp extends React.Component {
     }
 
     componentWillUnmount() {
-
-
         SocketService.off('doRefresh', this.loadAndSetBoards)
     }
     componentDidUpdate(prevProps) {
+
+
         if (this.props.match.params.id !== prevProps.match.params.id) {
             let board = this.getBoardByID(this.props.match.params.id)
             this.setBoard(board)

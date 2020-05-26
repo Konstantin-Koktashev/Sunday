@@ -2,12 +2,14 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import { saveBoard, loadBoards } from "../../actions/BoardActions";
 import LocalBoardService from "../../services/LocalBoardService";
+import { v4 as uuidv4 } from 'uuid';
+
 
 class AddGroup extends Component {
   state = {
     isLoading: true,
     group: {
-      id: "hirbush",
+      id: uuidv4(),
       name: "New Project",
       createdAt: "date",
       // ABIR COLS DONT TOUCH
@@ -41,7 +43,7 @@ class AddGroup extends Component {
 
       tasks: [
         {
-          _id: 1000233,
+          _id: uuidv4(),
           assignedGroupId: null,
           taskTitle: "Task - Wright you task here",
           createdAt: "date",
@@ -89,7 +91,7 @@ class AddGroup extends Component {
           people: [],
         },
         {
-          _id: 1000233,
+          _id: uuidv4(),
           assignedGroupId: null,
           taskTitle: "Task - Wright you task here",
           createdAt: "date",
@@ -137,7 +139,7 @@ class AddGroup extends Component {
           people: [],
         },
         {
-          _id: 1000233,
+          _id: uuidv4(),
           assignedGroupId: null,
           taskTitle: "Task - Wright you task here",
           createdAt: "date",
@@ -185,7 +187,7 @@ class AddGroup extends Component {
           people: [],
         },
         {
-          _id: 1000233,
+          _id: uuidv4(),
           assignedGroupId: null,
           taskTitle: "Task - Wright you task here",
           createdAt: "date",

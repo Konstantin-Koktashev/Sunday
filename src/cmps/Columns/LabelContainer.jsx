@@ -106,6 +106,7 @@ class LabelContainer extends Component {
       nextValue: text,
       updateType: "Label Change",
       task,
+      color
     };
     let board = LocalBoardService.addBoardHistory(currBoard, updateInfo);
     board = LocalBoardService.setColumn(currBoard, column, color, text, task);

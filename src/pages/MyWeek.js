@@ -48,12 +48,11 @@ class MyWeek extends Component {
 
 
     render() {
-        const user = this.props.user ? this.props.user.name : 'guest - please login to view your week'
+        const user = this.props.user ? this.props.user.username : 'guest - please login to view your week'
         const { closeTasks, openTasks } = this.state
         if (!openTasks.length && !closeTasks.length) return (
             <>
                 <div className="inbox-container">
-
                     <h2>{user}  Your week </h2>
                     <h1 className="inbox-empty">No tasks for this week </h1>
 
@@ -62,7 +61,7 @@ class MyWeek extends Component {
 
 
         )
-        return (
+        return ( 
 
             <>
                 <div className="header-container-myweek">

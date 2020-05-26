@@ -248,6 +248,7 @@ function changeLabelColumn(board, label, color, text) {
 
 
 
+
 function setColumn(board, column, color, value, task) {
 
     task.status = value
@@ -285,8 +286,8 @@ function remove(boardId) {
 }
 
 
-function getById(boardId) {
-    const board = gBoards.find(board => board._id === boardId)
+function getById(boards, boardId) {
+    const board = boards.find(board => board._id === boardId)
     return board;
 }
 function _getIdxById(boardId) {
@@ -294,11 +295,11 @@ function _getIdxById(boardId) {
 }
 
 function addBoardHistory(board, updateInfo) {
-
-    const { user, group, task, column, nextValue, updateType, seenBy, } = updateInfo
+    const { user, group, task, column, nextValue, updateType, seenBy, color } = updateInfo
     const prevValue = column ? column.value : ''
     const boardId = board._id
     const update = {
+        _id: uuidv4(),
         timeStamp: Date.now(),
         prevValue,
         nextValue,
@@ -308,12 +309,12 @@ function addBoardHistory(board, updateInfo) {
         taskId: (task) ? task._id : false,
         group: (group) ? group : false,
         updateType,
-        _id: uuidv4(),
         title: (task) ? task.taskTitle : '',
         boardName: board.name,
         seenBy: [],
-        messeges: []
-
+        messeges: [],
+        prevColor: (column) ? column.color : '',
+        nextColor: (color) ? color : ''
     }
     board.history.unshift(update)
     return board
@@ -368,11 +369,15 @@ function addTaskToGroup(board, group, task) {
 }
 
 function removeTaskFromGroup(board, group, taskToRemove) {
-    const IdxToRemove = group.tasks.findIndex(task => {
+    const groupsToFilter = board.groups.filter(g => g._id !== group.id)
+    const groupToAddTask = groupsToFilter.find(group => {
+        return group.tasks.some(task => task._id === taskToRemove._id)
+    })
+    const IdxToRemove = groupToAddTask.tasks.findIndex(task => {
         return task._id === taskToRemove._id
 
     })
-    group.tasks.splice(IdxToRemove, 1)
+    groupToAddTask.tasks.splice(IdxToRemove, 1)
     return board
 }
 
