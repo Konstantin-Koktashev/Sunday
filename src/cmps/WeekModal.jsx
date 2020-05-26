@@ -30,9 +30,12 @@ class WeekModal extends React.Component {
   onChangeDueDate = () => {
 
   }
-  onChangeTaskGroup = (group) => {
-    const currBoard=this.props.currBoard
-   const newBoard=LocalBoardService.addTaskToGroup(currBoard)
+  onChangeTaskGroup = async (group) => {
+    const { task } = this.props;
+    const currBoard = this.props.currBoard
+    const boardAfterAdding = LocalBoardService.addTaskToGroup(currBoard, group, task)
+    const boardAfterRemoving = LocalBoardService.removeTaskFromGroup(currBoard, group, task)
+    await this.saveAndLoad(boardAfterAdding)
   }
   onAddMemebers = () => {
 
@@ -92,7 +95,7 @@ class WeekModal extends React.Component {
                 {/* <div className="opts-title">Group</div>
                 <div className="opts-info">unvalid right now</div> */}
                 Groups:
-                 <Select options={groupOptions} components={animatedComponents} defaultValue={x}  onChange={(e)=>this.onChangeTaskGroup(e)}/>
+                 <Select options={groupOptions} components={animatedComponents} defaultValue={x} onChange={(e) => this.onChangeTaskGroup(e)} />
               </div>
 
               <div className="opts-bar">
