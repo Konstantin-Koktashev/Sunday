@@ -101,7 +101,6 @@ class Inbox extends Component {
         const board = this.findBoard(boardId)
         const updateMsg = { msg: this.state.txt, sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
-        // update.messeges.unshift(updateMsg)
         await this.saveAndUpdate(newBoard)
     }
     sendGreatJob = async (update, boardId) => {

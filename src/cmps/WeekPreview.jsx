@@ -15,6 +15,9 @@ export default class WeekPreview extends React.Component {
   closeModal = () => {
     this.setState({ modal: false });
   };
+  findRelatedBoard=()=>{
+    
+  }
 
   render() {
     const { modal } = this.state;

@@ -33,7 +33,9 @@ export default {
     changeDueDateColumn2,
     addBoardHistory,
     removeFromHistory,
-    addUpdateMsg
+    addUpdateMsg,
+    removeTaskFromGroup,
+    addTaskToGroup
 }
 
 function addUpdateMsg(board,update,msg){
@@ -359,12 +361,20 @@ function filter(board, text) {
 
     return newBoard
 
+}
 
+function addTaskToGroup(board,group,task){
+    group.tasks.push(task)
+    return board
+}
 
+function removeTaskFromGroup(board,group,taskToRemove){
+    const IdxToRemove=group.tasks.findIndex(task=>{
+        return task._id===taskToRemove._id
 
-
-
-
+    })
+    group.tasks.splice(IdxToRemove,1)
+    return board
 }
 
 

@@ -41,7 +41,6 @@ class MyWeek extends Component {
         this.setState({ openTasks, closeTasks })
 
 
-
     }
 
 

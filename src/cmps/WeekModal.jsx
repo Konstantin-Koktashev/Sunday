@@ -1,8 +1,16 @@
 import React from "react";
 
 import SmallImg from "../cmps/SmallImg";
+import { connect } from "react-redux";
+import { saveBoard, loadBoards } from "../actions/BoardActions";
+import LocalBoardService from "../services/LocalBoardService";
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated';
+const animatedComponents = makeAnimated();
 
-export default class WeekModal extends React.Component {
+
+
+class WeekModal extends React.Component {
   componentDidMount() {
     console.log("modal-props", this.props);
   }
@@ -17,9 +25,55 @@ export default class WeekModal extends React.Component {
 
   containerClicked = (ev) => {
     ev.stopPropagation();
+
   };
+  onChangeDueDate = () => {
+
+  }
+  onChangeTaskGroup = (group) => {
+    const currBoard=this.props.currBoard
+   const newBoard=LocalBoardService.addTaskToGroup(currBoard)
+  }
+  onAddMemebers = () => {
+
+  }
+  findTaskGroups = () => {
+    const { task } = this.props;
+    const boards = this.props.userBoards
+    const taskGroups = []
+    boards.forEach(board => {
+      board.groups.forEach(group => {
+        if (group.tasks.some(t => t._id === task._id)) taskGroups.push(...board.groups);
+      })
+    })
+    taskGroups.forEach(group => {
+      group.value = group.name
+      group.label = group.name
+    })
+    return taskGroups
+  }
+  saveAndLoad = async (board) => {
+    await this.props.saveBoard(board)
+    await this.props.loadBoards()
+  }
+  findCurrTaskGroup = () => {
+    const { task } = this.props;
+    const boards = this.props.userBoards
+    const group = boards.find(board => {
+      return board.groups.find(g => {
+        return g.tasks.find(t => {
+          return t._id === task._id
+        })
+      })
+    })
+    group.value = group.name
+    group.label = group.name
+    return group
+  }
 
   render() {
+    const groupOptions = this.findTaskGroups()
+    const x = this.findCurrTaskGroup()
     const { task } = this.props;
     return (
       <div className="week-modal">
@@ -29,13 +83,16 @@ export default class WeekModal extends React.Component {
               onClick={(ev) => this.containerClicked(ev)}
               className="opts-container"
             >
+
               <div className="flex col j-center a-center">
                 <h2>{task.text}</h2>
               </div>
 
-              <div className="opts-bar">
-                <div className="opts-title">Group</div>
-                <div className="opts-info">unvalid right now</div>
+              <div className="opts-bar flex">
+                {/* <div className="opts-title">Group</div>
+                <div className="opts-info">unvalid right now</div> */}
+                Groups:
+                 <Select options={groupOptions} components={animatedComponents} defaultValue={x}  onChange={(e)=>this.onChangeTaskGroup(e)}/>
               </div>
 
               <div className="opts-bar">
@@ -90,3 +147,17 @@ export default class WeekModal extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  userBoards: state.userBoards.board,
+  currUser: state.user,
+  currBoard: state.userBoards.currBoard
+});
+
+
+const mapDispatchToProps = {
+  saveBoard,
+  loadBoards
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeekModal);
