@@ -36,7 +36,7 @@ class App extends React.Component {
       currUser, chatWith: {
         id: this.props.boards[0]._id,
         type: 'board'
-      } 
+      }
     })
 
   }
@@ -89,7 +89,7 @@ class App extends React.Component {
               {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
             </>
           </div>
-          {this.props.currUser && this.props.board && this.props.chatWith && <Chat user={this.props.currUser} ></Chat>}
+          {this.props.currUser && this.props.board && this.props.chatWith && <Chat history={history} user={this.props.currUser} ></Chat>}
 
 
 

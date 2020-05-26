@@ -18,23 +18,23 @@ class Profile extends Component {
 
 
 
-    componentDidMount = async () => {
+    async componentDidMount() {
         await this.loadUser()
 
     }
-    componentDidUpdate(prevProps) {
+    async  componentDidUpdate(prevProps) {
         if (this.props.match.params.id !== prevProps.match.params.id) {
-            this.loadUser()
+            await this.loadUser()
         }
-        if (JSON.stringify(this.props.currBoard) !== JSON.stringify(prevProps.currBoard)) {
-            this.loadboards()
-        }
+        // if (JSON.stringify(this.props.currBoard) !== JSON.stringify(prevProps.currBoard)) {
+        //     this.loadboards()
+        // }
 
     }
 
     loadUser = async () => {
         let user = await UserService.getById(this.props.match.params.id)
-        this.setState({ user: user })
+        this.setState({ user })
     }
 
     setPrivateChat = async (myId, toUserId) => {
@@ -60,7 +60,7 @@ class Profile extends Component {
 
 
     render() {
-        const user = this.state.user
+        const { user } = this.state
         return (
             <>
                 {user && <div className="profile-page-container">
