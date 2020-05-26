@@ -52,4 +52,3 @@ export default class WeekPreview extends React.Component {
   }
 }
 
-

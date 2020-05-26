@@ -5,7 +5,11 @@ import "../../style/cmps/chat.css";
 import SocketService from "../../services/SocketService";
 import UserService from "../../services/UserService";
 import { loadUsers } from "../../actions/UserActions";
-import { saveRoom } from '../../actions/ChatActions'
+import {
+  saveRoom,
+  setCurrChatRoom,
+  loadRooms,
+} from "../../actions/ChatActions";
 
 import {
   saveBoard,
@@ -20,6 +24,7 @@ class Chat extends Component {
     this.state = {
       messageList: [],
       newMessagesCount: 0,
+      chatRoom: null,
       //   loggedInUser: this.props.user,
       // chatWith: null,
     };
@@ -45,17 +50,49 @@ class Chat extends Component {
   };
   renderMessage = (msg) => {
     console.log("this private msg", msg);
-    
     this.setState({
       messageList: [...this.state.messageList, msg],
     });
 
     /// Update data Messegae
   };
-  startChat = () => {
+  startChat = async () => {
     if (!this.props.userState.chatWith) return;
-    let { type, id } = this.props.userState.chatWith;
-    console.log("Chat -> startChat -> type", type);
+    // Get The room By Id// will return null if it didnt found
+    await this.props.loadRooms();
+    let room = ChatService.getRoomById(
+      this.props.userState.chatWith,
+      this.props.chat.chatRooms
+    );
+    // Theres no Room ? Create one
+    // debugger;
+    const { id, type } = this.props.userState.chatWith;
+    if (!room) {
+      console.log("Creating Chat Room");
+      let chatRoom = {
+        chatRoomId: ChatService.getRoomKey(this.props.userState.chatWith), //Sort function
+        roomHistory: this.state.messageList,
+        userA: id.myId,
+        userB: id.toUserId,
+      };
+      // Send to server
+      this.props.saveRoom(chatRoom);
+
+      this.setState({ chatRoom });
+    } else {
+      // Else Take the room History And render on chat
+      await this.props.setCurrChatRoom(room);
+      console.log("Chat -> startChat -> room", room);
+      console.log(
+        "@@@@@@@@@@2Chat -> startChat ->  currChatRoom",
+        this.props.currChatRoom
+      );
+      this.setState({
+        messageList: this.props.currChatRoom.roomHistory,
+        chatRoom: this.props.currChatRoom,
+      });
+    }
+
     if (type === "private") {
       SocketService.emit("join_private_room", this.props.userState.chatWith);
       SocketService.on("private_room_new_msg", this.renderMessage);
@@ -65,48 +102,34 @@ class Chat extends Component {
     }
   };
 
-  componentWillUnmount() {
-    let { type } = this.props.userState.chatWith;
-    if (type === "private") {
-      SocketService.off("private_room_new_msg", this.renderMessage);
-    } else {
-      SocketService.off("board_room_new_msg", this.renderMessage);
-    }
-  }
-
-  // componentDidUpdate(prevProps) {
-  //   if (
-  //     JSON.stringify(prevProps.chatWith) !== JSON.stringify(this.state.chatWith)
-  //   ) {
-  //     this.setState({ chatWith: this.props.chatWith });
-
-  //     if (this.state.chatWith) {
-  //       SocketService.emit("new user", this.state.chatWith);
-  //     }
-  //   }
-  // }
-
   //Sending message
-  _onMessageWasSent = (message) => {
-    // ChatService.addMsg(room , message)
+  _onMessageWasSent = async (message) => {
     console.log("send msg : ", message);
     this.setState({
       messageList: [...this.state.messageList, message],
     });
 
     let { type, id } = this.props.userState.chatWith;
-    let obj = this.props.userState.chatWith;
-    obj.msg = message;
-    console.log("Chat -> _onMessageWasSent -> type", type);
+    let chatWith = this.props.userState.chatWith;
+    chatWith.msg = message;
     if (type === "private") {
-      SocketService.emit("private_room_new_msg", obj);
+      SocketService.emit("private_room_new_msg", chatWith);
     } else {
-      SocketService.emit("board_room_new_msg", obj);
+      SocketService.emit("board_room_new_msg", chatWith);
     }
+
+    let chatRoom = this.state.chatRoom;
+    // console.log(
+    //   "Chat -> _onMessageWasSent -> this.state.messageList",
+    //   this.state.messageList
+    // );
+
+    chatRoom.roomHistory.push(message);
+    await this.props.saveRoom(chatRoom);
+    await this.props.setCurrChatRoom(chatRoom);
   };
 
   _sendMessage(text) {
-    console.log("text send messege", text);
     if (text.length > 0) {
       this.setState({
         messageList: [
@@ -127,7 +150,7 @@ class Chat extends Component {
     });
   }
 
-  getUserName = (chatWith) => {
+  getUser = (chatWith) => {
     if (!chatWith) return;
     const { board } = this.props;
     if (chatWith.type === "board") {
@@ -135,20 +158,19 @@ class Chat extends Component {
     } else {
       let users = this.props.users;
       let user = users.find((user) => user._id === chatWith.id.toUserId);
-      return user.username;
+      return user;
     }
   };
 
   render() {
     const { chatWith } = this.props.userState;
     const { board } = this.props;
-    let userName = this.getUserName(chatWith);
-    console.log("Chat -> render -> userName", userName);
+    let user = this.getUser(chatWith);
     return (
       <div>
         <Launcher
           agentProfile={{
-            teamName: "asd",
+            teamName: `${user && user.username}`,
             imageUrl:
               "https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png",
           }}
@@ -172,8 +194,8 @@ const mapStateToProps = (state) => {
     user: state.user.loggedInUser,
     userState: state.user,
     users: state.user.users,
-    chat:state.chat
-    
+    chat: state.chat,
+    currChatRoom: state.chat.currChatRoom,
   };
 };
 const mapDispatchToProps = {
@@ -182,32 +204,9 @@ const mapDispatchToProps = {
   loadBoards,
   setCurrBoard,
   loadUsers,
-  saveRoom
+  saveRoom,
+  setCurrChatRoom,
+  loadRooms,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat);
-/// Room ID
-// let chatMsgObject = {
-//   chatRoomId: boardId + boardId, //Sort function
-//   roomHistory: [
-//     {
-//       author: "them",
-//       type: "text",
-//       data: { text },
-//     },   {
-//       author: "them",
-//       type: "text",
-//       data: { text },
-//     },   {
-//       author: "them",
-//       type: "text",
-//       data: { text },
-//     },   {
-//       author: "them",
-//       type: "text",
-//       data: { text },
-//     },
-//   ],
-//   userA: userA,
-//   userB: userB,
-// };

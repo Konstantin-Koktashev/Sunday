@@ -19,7 +19,6 @@ class LabelContainer extends Component {
   };
 
   componentDidMount() {
-    console.log("labels", this.props.labels);
     var HardCoded;
     if (this.props.type === "label") {
       HardCoded = [

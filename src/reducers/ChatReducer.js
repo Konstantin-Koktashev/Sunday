@@ -18,9 +18,7 @@ export default function (state = initialState, action = {}) {
         case 'UPDATE_ROOM':
             return {
                 ...state,
-                chatRooms: state.chatRooms.map(room =>
-                    room._id === action.room._id ? action.room : room
-                )
+                chatRooms: state.chatRooms.map(room => room._id === action.room._id ? action.room : room)
             };
         case 'CHAT_REMOVE':
             return {
@@ -32,10 +30,10 @@ export default function (state = initialState, action = {}) {
                 ]
             }
 
-        case 'SET_CURRCHAT_ROOM':
+        case 'SET_CURR_CHAT_ROOM':
             return {
                 ...state,
-                currChatRoom: action.chatObj
+                currChatRoom: action.room
             }
 
 

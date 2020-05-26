@@ -5,6 +5,7 @@ export function loadRooms() {
   return async dispatch => {
     try {
       const rooms = await ChatService.query();
+      console.log("ROOMS FROM SERVER", rooms)
       dispatch(setRooms(rooms));
 
     } catch (err) {
@@ -25,24 +26,25 @@ export function addRoom(room) {
 }
 
 export function saveRoom(room) {
-    return async dispatch => {
-      try {
-        const type = room._id ? 'UPDATE_ROOM' : 'ADD_ROOM'
-        const savedRoom = await ChatService.saveChat(room)
-        SocketService.emit('doRefresh', 'js')
-        dispatch({ type, savedRoom })
-      } catch (err) {
-        console.log('boardActions: err in add or update board', err);
-      }
+  return async dispatch => {
+    try {
+      const type = room._id ? 'UPDATE_ROOM' : 'ADD_ROOM'
+      const savedRoom = await ChatService.saveChat(room)
+      SocketService.emit('doRefresh', 'js')
+      dispatch({ type, savedRoom })
+    } catch (err) {
+      console.log('boardActions: err in add or update board', err);
     }
   }
+}
 
-  export function setCurrChatRoom(chatObj){
-    return async dispatch=>{
-      dispatch({type:'SET_CURRCHAT_ROOM' , chatObj})
-    }
+export function setCurrChatRoom(room) {
+  console.log("setCurrChatRoom -> room", room)
+  return async dispatch => {
+    dispatch({ type: 'SET_CURR_CHAT_ROOM', room })
   }
-  
+}
+
 
 function setRooms(rooms) {
   return {
