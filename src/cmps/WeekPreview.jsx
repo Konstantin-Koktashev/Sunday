@@ -7,7 +7,9 @@ export default class WeekPreview extends React.Component {
   state = {
     modal: false,
   };
- 
+
+
+  
   openModal = () => {
     this.setState({ modal: true });
   };
@@ -15,8 +17,8 @@ export default class WeekPreview extends React.Component {
   closeModal = () => {
     this.setState({ modal: false });
   };
-  findRelatedBoard=()=>{
-    
+  findRelatedBoard = () => {
+
   }
 
   render() {
@@ -26,12 +28,15 @@ export default class WeekPreview extends React.Component {
       <div className="week-preview">
         <div className="week-prev-text">
           <p className="week-prev-title">{taskTitle}</p>
-          {groupName && <p className="week-prev-desc">  from {groupName} group</p> }
-          
+          {groupName && <p className="week-prev-desc">  from {groupName} group</p>}
+
         </div>
-        {users.map((user, idx) => (
-          <SmallImg zindex={idx} url={user.imgUrl} name={user.username} key={idx} />
-        ))}
+
+        <div className="week-users">
+          {users.map((user, idx) => (
+            <SmallImg zindex={idx} url={user.imgUrl} name={user.username} key={idx} />
+          ))}
+        </div>
         <div
           onClick={() => this.openModal()}
           className={`${status} week-status`}

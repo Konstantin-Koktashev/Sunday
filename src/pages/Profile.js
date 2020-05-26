@@ -4,7 +4,7 @@ import '../style/pages/profile.css'
 import { loadReviews, addReview } from '../actions/ReviewActions.js';
 import { loadUsers } from '../actions/UserActions.js';
 // import { Link } from 'react-router-dom';
-import { setChatType } from "../actions/UserActions";
+import { setChatType, upload } from "../actions/UserActions";
 import { setCurrChatRoom } from '../actions/ChatActions'
 
 
@@ -50,8 +50,17 @@ class Profile extends Component {
 
     }
 
+
+    uploadImg = async (ev, user) => {
+        await this.props.upload(ev, user)
+        this.loadUser()
+
+    }
+
+
     render() {
         const user = this.state.user
+        console.log('userfromprofie page ' ,user)
         return (
             <>
                 {user && <div className="profile-page-container">
@@ -65,8 +74,15 @@ class Profile extends Component {
                         <p>Title: <span>{user.username}</span></p>
                         <p>Email: <span>{user.email}</span></p>
                         <button onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>
+                        <input onChange={(ev) => this.uploadImg(ev, user)} type="file" className="upload" accept="image/png, image/jpeg"></input>
+                        {user && user.imgUrl && <img className="profile-img" src={`${user.imgUrl}`}></img>}
                     </div>
-                </div>}</>
+                </div>}
+
+                
+
+
+            </>
         );
     }
 }
@@ -85,7 +101,8 @@ const mapDispatchToProps = {
     loadUsers,
     addReview,
     setChatType,
-    setCurrChatRoom
+    setCurrChatRoom,
+    upload
 
 };
 

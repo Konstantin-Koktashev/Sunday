@@ -14,7 +14,7 @@ class DoughnutChart extends React.Component {
         label: "My dataset", // for legend
       },
     ],
-    labels: ["Stuck", "Done", "Working", "Others"],
+    labels: ["Stuck", "Done", "Working", "Review", "Others"],
   };
 
   async componentDidMount() {
@@ -54,9 +54,14 @@ class DoughnutChart extends React.Component {
       return;
     });
 
+    const reviewCount = tasks.filter((task) => {
+      if (task.status === "Waiting for review") return task;
+      return;
+    });
+
     const otherCount =
       tasks.length -
-      (doneCount.length + workingCount.length + stuckCount.length);
+      (doneCount.length + workingCount.length + stuckCount.length + reviewCount.length);
 
     // const data = [stuckCount.length, doneCount.length, workingCount.length, otherCount];
 
@@ -66,9 +71,10 @@ class DoughnutChart extends React.Component {
           stuckCount.length,
           doneCount.length,
           workingCount.length,
+          reviewCount.length,
           otherCount,
         ],
-        backgroundColor: ["#FF6384", "#4BC0C0", "#FFCE56", "#E7E9ED"],
+        backgroundColor: ["#FF6384", "#44BD32", "rgb(253, 171, 61)", "#00A8FF", "#E7E9ED"],
         label: "My dataset", // for legend
       },
     ];

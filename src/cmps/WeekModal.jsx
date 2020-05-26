@@ -105,7 +105,7 @@ class WeekModal extends React.Component {
                     <SmallImg
                       zindex={idx}
                       url={user.imgUrl}
-                      name={user.name}
+                      name={user.username}
                       key={idx}
                     />
                   ))}

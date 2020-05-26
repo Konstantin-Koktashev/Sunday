@@ -7,8 +7,8 @@ import WeekPreview from '../cmps/WeekPreview'
 class MyWeek extends Component {
 
     state = {
-        openTasks: null,
-        closeTasks: null
+        openTasks: [],
+        closeTasks: []
 
     }
 
@@ -50,6 +50,7 @@ class MyWeek extends Component {
     render() {
         const user = this.props.user ? this.props.user.name : 'guest - please login to view your week'
         const { closeTasks, openTasks } = this.state
+        if(!openTasks.length && !closeTasks.length) return <h3>No tasks for this week</h3>
         return (
 
             <>
@@ -57,7 +58,6 @@ class MyWeek extends Component {
                     <h3>Wellcome {user}</h3>
                 </div>
 
-                {!openTasks && !closeTasks && <h3>No tasks for this week</h3>}
 
                 <section className="my-week">
                     {openTasks && openTasks.length && <h3>Open Tasks</h3>}

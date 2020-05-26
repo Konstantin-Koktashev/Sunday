@@ -8,6 +8,7 @@
 @import "./cmps/labelContainer.css";
 @import "./cmps/inbox.css";
 @import "./cmps/PersonComponent.css";
+@import "./cmps/labelColors.css";
 
 h2 {
   font-size: 16px;

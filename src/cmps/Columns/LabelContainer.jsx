@@ -27,7 +27,7 @@ class LabelContainer extends Component {
         },
         {
           _id: "222v",
-          color: "#00a8ff",
+          color: "rgb(253, 171, 61)",
           value: "Working",
           status: "Working",
         },
@@ -36,6 +36,12 @@ class LabelContainer extends Component {
           color: "#eb2f06",
           value: "Stuck",
           status: "Stuck",
+        },
+        {
+          _id: "333asb",
+          color: "#00A8FF",
+          value: "Waiting for review",
+          status: "Waiting for review",
         },
       ];
     } else if (this.props.type === "priority") {
