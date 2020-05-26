@@ -18,9 +18,13 @@
   animation-delay: 1s;
 }
 
-.active{
+
+
+.board-list-btn .active{
   color: #0057e7 !important;
+  border-bottom: .3px solid rgba(161, 161, 161, 0.609);
 }
+
 
 @keyframes fade-out {
   0% {
