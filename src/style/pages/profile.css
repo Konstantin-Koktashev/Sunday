@@ -52,7 +52,13 @@
   margin: 0 auto;
 }
 
+.user-image-profile {
+  width: 150px;
+  height: 150px;
+  border-radius: 40vw;
+}
 
-.profile-img{
-  width: 200px;
+.chat-with-btn {
+  width: 100px;
+  align-self: end;
 }

@@ -65,17 +65,16 @@ class Profile extends Component {
             <>
                 {user && <div className="profile-page-container">
                     <div className="profile-header-container">
-                        {/* <img className="user-image-profile" src="google" alt="USER IMAGE"></img> */}
-                        <div className="profile-circle-big flex a-center j-center">{user.username.charAt(0).toUpperCase()}</div>
+                        {user.imgUrl ? <img className="user-image-profile" src={user.imgUrl} alt="USER IMAGE"></img> :
+                            <div className="profile-circle-big flex a-center j-center">{user.username.charAt(0).toUpperCase()}</div>}
                         <h2>{user.username} Profile</h2>
                     </div>
                     <div className="over-view-profile flex col">
                         <h2>Over View</h2>
                         <p>Title: <span>{user.username}</span></p>
                         <p>Email: <span>{user.email}</span></p>
-                        <button onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>
-                        <input onChange={(ev) => this.uploadImg(ev, user)} type="file" className="upload" accept="image/png, image/jpeg"></input>
-                        {user && user.imgUrl && <img className="profile-img" src={`${user.imgUrl}`}></img>}
+                        <button className="chat-with-btn" onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>
+                        {this.props.loggedInUser_id === user._id && <input onChange={(ev) => this.uploadImg(ev, user)} type="file" className="upload" accept="image/png, image/jpeg"></input>}
                     </div>
                 </div>}
 
