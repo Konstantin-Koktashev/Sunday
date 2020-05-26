@@ -9,13 +9,15 @@ import { loadBoards, setCurrBoard, removeBoard } from "../actions/BoardActions"
 import { loadUsers } from '../../src/actions/UserActions'
 class BoardApp extends React.Component {
     state = {
-        currBoard: null
+        currBoard: null,
+        chartIsOpen: false,
     }
 
 
 
 
     componentDidMount = async () => {
+        if (this.props.currBoard && !this.props.currBoard._id) return
         this.props.loadUsers();
         var allBoards = await this.props.loadBoards()
         await this.loadboards()
@@ -25,6 +27,12 @@ class BoardApp extends React.Component {
 
 
     }
+    toggleChart = () => {
+        this.setState(({ chartIsOpen }) => ({
+            chartIsOpen: !chartIsOpen,
+        }));
+    };
+
 
     loadAndSetBoards = () => {
         const boardId = this.props.currBoard._id
@@ -77,20 +85,6 @@ class BoardApp extends React.Component {
         this.setState({ currBoard: board })
     }
 
-
-
-
-
-    // onFilter = (filterBy) => {
-    //     console.log("BoardApp -> onFilter -> filterBy", filterBy);
-
-    //     this.props.loadBoards(filterBy);
-    // };
-
-    // onDeleteBoard = (boardId) => {
-    //     this.props.removeBoard(boardId);
-    //     this.props.loadBoards();
-    // };
     removeBoard = async (boardId) => {
         console.log("BoardApp -> removeBoard -> boardId", boardId)
         await this.props.removeBoard(boardId)
@@ -116,8 +110,8 @@ class BoardApp extends React.Component {
             <>
 
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
-                {currBoard && <BoardHeader removeBoard={this.removeBoard} board={currBoard}></BoardHeader>}
-                {currBoard && <Board board={currBoard} ></Board>}
+                {currBoard && <BoardHeader chartIsOpen={this.state.chartIsOpen} toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard}></BoardHeader>}
+                {currBoard && <Board board={currBoard} chartIsOpen={this.state.chartIsOpen} ></Board>}
             </>
         );
     }

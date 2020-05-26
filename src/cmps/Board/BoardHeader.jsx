@@ -8,6 +8,10 @@ export default function BoardHeader(props) {
   return (
     <div className="board-header-container flex a-center space-between">
       <h2>{board.name}</h2>
+
+      <button className="toggle-chart-btn" onClick={props.toggleChart}>
+        {props.chartIsOpen ? "Board View" : "Chart View"}
+      </button>
       <div className="flex col space-between">
         <div className="flex space-between">
           <AddGroup board={props.board}></AddGroup>

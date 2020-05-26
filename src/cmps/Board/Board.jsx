@@ -11,6 +11,8 @@ import {
 import DoughnutChart from "../Statistics/DoughnutChart";
 
 class Board extends Component {
+  state = {};
+
   sortColumnsByBox = async (order) => {
     let board = LocalBoardService.sortColumnsByBox(this.props.currBoard, order);
     this.props.saveBoard(board);
@@ -29,12 +31,15 @@ class Board extends Component {
     const board = this.boardToDisplay;
     return (
       <>
-        <GroupList
-          sortColumnsByBox={this.sortColumnsByBox}
-          groups={board.groups}
-          board={board}
-        />
-        <DoughnutChart board={board} />
+        {!this.props.chartIsOpen ? (
+          <GroupList
+            sortColumnsByBox={this.sortColumnsByBox}
+            groups={board.groups}
+            board={board}
+          />
+        ) : (
+          <DoughnutChart board={board} />
+        )}
       </>
     );
   }
