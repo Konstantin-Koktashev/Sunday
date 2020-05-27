@@ -45,7 +45,7 @@ class AddGroup extends Component {
         {
           _id: uuidv4(),
           assignedGroupId: null,
-          taskTitle: "Task - Wright you task here",
+          taskTitle: "Task - Write you task here",
           createdAt: "date",
           users: [], // Min users
           columns: [
@@ -93,7 +93,7 @@ class AddGroup extends Component {
         {
           _id: uuidv4(),
           assignedGroupId: null,
-          taskTitle: "Task - Wright you task here",
+          taskTitle: "Task - Write you task here",
           createdAt: "date",
           users: [], // Min users
           columns: [
@@ -141,7 +141,7 @@ class AddGroup extends Component {
         {
           _id: uuidv4(),
           assignedGroupId: null,
-          taskTitle: "Task - Wright you task here",
+          taskTitle: "Task - Write you task here",
           createdAt: "date",
           users: [], // Min users
           columns: [
@@ -189,7 +189,7 @@ class AddGroup extends Component {
         {
           _id: uuidv4(),
           assignedGroupId: null,
-          taskTitle: "Task - Wright you task here",
+          taskTitle: "Task - Write you task here",
           createdAt: "date",
           users: [], // Min users
           columns: [
