@@ -70,10 +70,10 @@ export default class FormDialog extends React.Component {
                         />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={(ev) => this.enterBoard(ev)} color="primary">
+                        <Button onClick={(ev) => this.enterBoard(ev)} variant="contained" color="primary">
                             Add
             </Button>
-                        <Button onClick={(ev) => this.handleClose(ev)} color="secondary">
+                        <Button onClick={(ev) => this.handleClose(ev)} variant="contained" color="secondary">
                             Cancel
             </Button>
                     </DialogActions>
