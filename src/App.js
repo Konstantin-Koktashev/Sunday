@@ -112,6 +112,7 @@ class App extends React.Component {
               <Route path="/" component={Boards} exact />
               <Route path="/home" component={Home} exact />
               <Route path="/board/:id?" component={Boards} exact />
+              <Route path="/board/guest/:GuestMode?" component={Boards} exact />
               <Route path="/signup" component={Signup} exact />
               <Route path="/login" component={Login} exact />
               <Route path="/progress" component={ProgressBar} exact />

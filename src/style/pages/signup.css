@@ -55,3 +55,7 @@
 .signup-form button:hover {
   background-color: #54bbee;
 }
+
+.signup-btn {
+  margin-bottom: 20px;
+}

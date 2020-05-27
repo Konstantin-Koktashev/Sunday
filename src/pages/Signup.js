@@ -15,7 +15,7 @@ class Signup extends Component {
             email: '',
             password: '',
             username: '',
-            history:[]
+            history: []
         }
     };
 
@@ -44,11 +44,11 @@ class Signup extends Component {
 
     doSignup = async ev => {
         ev.preventDefault();
-        const { email, password, username,history } = this.state.signupCred;
+        const { email, password, username, history } = this.state.signupCred;
         if (!email || !password || !username) {
             return this.setState({ msg: 'All inputs are required!' });
         }
-        const signupCreds = { email, password, username,history };
+        const signupCreds = { email, password, username, history };
         this.props.signup(signupCreds);
         this.setState({ signupCred: { email: '', password: '', username: '' } });
     };
@@ -100,7 +100,7 @@ class Signup extends Component {
                     />
                     <br />
 
-                    <button>Signup</button>
+                    <button className="signup-btn">Signup</button>
                 </form>
                 <div className="signup-onlogin col a-center">
                     <h2>Allready Have An Account?</h2>

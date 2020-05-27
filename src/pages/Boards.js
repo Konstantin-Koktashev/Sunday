@@ -4,7 +4,7 @@ import BoardHeader from "../cmps/Board/BoardHeader.jsx";
 import Board from '../cmps/Board/Board.jsx'
 import '../style/pages/boards.css'
 import SocketService from '../services/SocketService'
-
+import { login } from '../actions/UserActions';
 import { loadBoards, setCurrBoard, removeBoard } from "../actions/BoardActions"
 import { loadUsers } from '../../src/actions/UserActions'
 import DropZone, { DropFileToAsk } from "../cmps/Tasks/DropZone.jsx";
@@ -16,10 +16,12 @@ class BoardApp extends React.Component {
     }
 
 
-
-
     componentDidMount = async () => {
+        if (this.props.match.params.GuestMode === 'true') {
+            console.log("Logging in as a guest!")
 
+            this.doGuestModeLogin()
+        }
         // if (this.props.currBoard && !this.props.currBoard._id || !this.props.currBoard) return
 
         // var allBoards = await this.props.loadBoards()
@@ -33,6 +35,15 @@ class BoardApp extends React.Component {
 
 
     }
+    async doGuestModeLogin() {
+        const userCreds = { email: 'guest', password: 'guest' };
+        try {
+            await this.props.login(userCreds)
+        } catch (err) {
+            console.log('Cant Log in as a Guest :(')
+        }
+    }
+
     toggleChart = () => {
         this.setState(({ chartIsOpen }) => ({
             chartIsOpen: !chartIsOpen,
@@ -141,7 +152,8 @@ const mapDispatchToProps = {
     loadBoards,
     setCurrBoard,
     removeBoard,
-    loadUsers
+    loadUsers,
+    login
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardApp);
