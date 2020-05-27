@@ -74,7 +74,7 @@ class UserChatPopup extends Component {
 
     return (
       <div
-        title={user.username ? user.username : user.name}
+        title={user && user.username ? user.username : user.name}
         onClick={() => this.setChat(chatRoom)}
         style={{ right: `${this.makeRight(this.props.idx)}vw` }}
         className="user-chat-popup-card slide-in-right"

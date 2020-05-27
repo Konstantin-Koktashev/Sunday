@@ -7,7 +7,6 @@ export default class WeekPreview extends React.Component {
     modal: false,
   };
 
-  
   openModal = () => {
     this.setState({ modal: true });
   };
@@ -47,6 +46,7 @@ export default class WeekPreview extends React.Component {
               url={user.imgUrl}
               name={user.username}
               key={idx}
+              type={"myweek"}
             />
           ))}
         </div>

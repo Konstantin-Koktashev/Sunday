@@ -28,6 +28,10 @@ class App extends React.Component {
     chatWith: null
   }
   async componentDidMount() {
+    if (!this.props.currUser) {
+      console.log('YOU ARE NPOT LOGGED IN I GO LOGGIN')
+      history.push('/login/')
+    }
     SocketService.setup()
     await this.props.loadUsers()
     await this.props.loadBoards()
@@ -78,23 +82,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App flex">
         <Router history={history}>
 
-          <div className="bgc-black">
-            <>
-              {/* <userChatList chatObjects={} ></userChatList> */}
-              {this.props.currUser && <SideNav logOut={this.logOut} toggleNotifications={this.toggleNotifications} user={this.props.currUser}></SideNav>}
-              {this.props.currUser && <BoardNav></BoardNav>}
-              {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
-            </>
-          </div>
+          {/* <div className="bgc-black"> */}
+          {/* <> */}
+          {/* <userChatList chatObjects={} ></userChatList> */}
+          {this.props.currUser && <SideNav logOut={this.logOut} toggleNotifications={this.toggleNotifications} user={this.props.currUser}></SideNav>}
+          {this.props.currUser && <BoardNav></BoardNav>}
+          {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
+          {/* </> */}
+          {/* </div> */}
           {this.props.currUser && this.props.board && this.props.chatWith && <Chat history={history} user={this.props.currUser} ></Chat>}
 
 
 
 
-          <section className="main-board-container ">
+          <section className="main-board-container">
             <Switch>
               <Route path="/" component={Boards} exact />
               <Route path="/board/:id?" component={Boards} exact />
