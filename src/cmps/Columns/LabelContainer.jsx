@@ -75,7 +75,7 @@ class LabelContainer extends Component {
 
   loadAllLabels = () => {
     const labels = this.state.labels;
-    var filterLabels = [...new Set(labels)]
+    var filterLabels = [...new Set(labels)];
     if (this.props.labels) filterLabels.push(...this.props.labels);
     this.setState({ allLabels: filterLabels });
   };
@@ -98,13 +98,13 @@ class LabelContainer extends Component {
   };
 
   removeLabel = async (label) => {
-    const { currBoard, column } = this.props
-    const board = LocalBoardService.removeLabel(currBoard, column, label)
+    const { currBoard, column } = this.props;
+    const board = LocalBoardService.removeLabel(currBoard, column, label);
     await this.props.saveBoard(board);
     // await this.props.toggleContainer();
     this.props.loadBoards();
     this.props.setCurrBoard(board);
-  }
+  };
 
   setColumn = async (color, text) => {
     const task = this.props.task;
@@ -135,8 +135,8 @@ class LabelContainer extends Component {
 
   saveChanges = (ev) => {
     ev.stopPropagation();
-    this.loadAllLabels()
-    this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }))
+    this.loadAllLabels();
+    this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }));
   };
 
   addLabel = async (ev) => {

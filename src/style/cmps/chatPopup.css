@@ -76,3 +76,11 @@
     animation-timing-function: ease-out;
   }
 }
+
+.sc-closed-icon {
+  z-index: 10000;
+}
+
+.react-datepicker-ignore-onclickoutside {
+  z-index: 9;
+}

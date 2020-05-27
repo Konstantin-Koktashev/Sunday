@@ -20,7 +20,7 @@
   text-transform: uppercase;
 }
 .over-view-profile {
-  width: 30vw;
+  width: 50vw;
   margin: 0 auto;
   align-items: flex-start;
 }
@@ -53,9 +53,44 @@
   width: 150px;
   height: 150px;
   border-radius: 40vw;
+  box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.151);
 }
 
 .chat-with-btn {
-  width: 100px;
+  width: 10vw;
+  height: 3vh;
   align-self: end;
+  background-color: #009aff;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  margin-left: 20px;
+  cursor: pointer;
+  outline: none;
+}
+
+.chat-with-btn:hover {
+  color: rgba(75, 75, 75, 0.842);
+}
+
+.custom-file-upload {
+  height: 5vh;
+  /* background-color: #00a8ff; */
+  cursor: pointer;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  text-align: center;
+  padding: 10px 10px;
+  border: none;
+  margin-left: -70%;
+  outline: none;
+  position: fixed;
+  right: 5px;
+  top: 5px;
+}
+
+.custom-file-upload:hover {
+  color: rgb(27, 27, 27);
 }
