@@ -121,7 +121,7 @@ class AddBoard extends Component {
               _id: uuidv4(),
               isDone:true,
               assignedGroupId: 124,
-              taskTitle: "Task - Wright you task here",
+              taskTitle: "Task - Write you task here",
               createdAt: "",
               // Aggregation
               users: [], // Min users
@@ -162,7 +162,7 @@ class AddBoard extends Component {
               _id: uuidv4(),
               isDone:true,
               assignedGroupId: 124,
-              taskTitle: "Task - Wright you task here",
+              taskTitle: "Task - Write you task here",
               createdAt: "date",
               // Aggregation
               users: [], // Min users
@@ -203,7 +203,7 @@ class AddBoard extends Component {
               _id: uuidv4(),
               isDone:true,
               assignedGroupId: 124,
-              taskTitle: "Task - Wright you task here",
+              taskTitle: "Task - Write you task here",
               createdAt: "date",
               // Aggregation
               users: [], // Min users
@@ -244,7 +244,7 @@ class AddBoard extends Component {
               _id: uuidv4(),
               isDone:true,
               assignedGroupId: 124,
-              taskTitle: "Task - Wright you task here",
+              taskTitle: "Task - Write you task here",
               createdAt: "date",
               // Aggregation
               users: [], // Min users

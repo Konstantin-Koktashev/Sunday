@@ -124,7 +124,7 @@ class WeekModal extends React.Component {
 
               <div className="opts-bar flex">
                 {/* <div className="opts-title">Group</div>
-                <div className="opts-info">unvalid right now</div> */}
+                <div className="opts-info">Invalid right now</div> */}
                 Groups:
                  <Select options={groupOptions} components={animatedComponents} defaultValue={x} onChange={(e) => this.onChangeTaskGroup(e)} />
               </div>
@@ -168,12 +168,12 @@ class WeekModal extends React.Component {
 
               <div className="opts-bar">
                 <div className="opts-title">Project</div>
-                <div className="opts-info">unvalid yet</div>
+                <div className="opts-info">Invalid yet</div>
               </div>
 
               <div className="opts-bar">
                 <div className="opts-title">Time Est</div>
-                <div className="opts-info">unvalid yet</div>
+                <div className="opts-info">Invalid yet</div>
               </div>
             </div>
           </section>
