@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 export default class InfoBoxes extends Component {
     state = {
-        boxesToRender: []
+        boxesToRender: [],
+        note:''
     }
     getBoxesToRender = () => {
         const task = this.props.task
@@ -33,9 +34,9 @@ export default class InfoBoxes extends Component {
         this.getBoxesToRender()
 
     }
-    handleNoteChange = (event) => {
-        event.stopPropagation()
-        this.saveNoteToTask(event)
+    handleNoteChange = (e) => {
+        this.setState({ note: e.target.value });
+
     }
     handleFileAdd=(event)=>{
         event.stopPropagation()
@@ -64,16 +65,24 @@ const {boxesToRender}=this.state
                     <button onClick={() => { this.AddNoteBox() }}>Add Note</button>
                     <h2>INFO BOXES PAGE</h2>
                 </div>
-                <div className='info-boxes' >
-                    {boxesToRender.map(box=>{
-                        return(
-                            <article className='info-box'>
-                                
-                            </article>
-                        )
-                    })}
-                </div>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    userBoards: state.userBoards,
+    currUser: state.user.loggedInUser,
+    currBoard: state.userBoards.currBoard
+})
+
+
+const mapDispatchToProps = {
+    loadBoards,
+    loadUsers,
+    saveBoard,
+    setCurrBoard
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Inbox)
+
