@@ -61,7 +61,10 @@ class DoughnutChart extends React.Component {
 
     const otherCount =
       tasks.length -
-      (doneCount.length + workingCount.length + stuckCount.length + reviewCount.length);
+      (doneCount.length +
+        workingCount.length +
+        stuckCount.length +
+        reviewCount.length);
 
     // const data = [stuckCount.length, doneCount.length, workingCount.length, otherCount];
 
@@ -74,7 +77,13 @@ class DoughnutChart extends React.Component {
           reviewCount.length,
           otherCount,
         ],
-        backgroundColor: ["#FF6384", "#44BD32", "rgb(253, 171, 61)", "#00A8FF", "#E7E9ED"],
+        backgroundColor: [
+          "#FF6384",
+          "#44BD32",
+          "rgb(253, 171, 61)",
+          "#00A8FF",
+          "#E7E9ED",
+        ],
         label: "My dataset", // for legend
       },
     ];
@@ -88,6 +97,7 @@ class DoughnutChart extends React.Component {
         <div className="doughnut flex col">
           <Polar data={this.state} />
         </div>
+        <h2>HEY IM GOOD STUF TO TYPE</h2>
       </div>
     );
   }
