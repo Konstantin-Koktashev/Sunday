@@ -90,7 +90,7 @@ class LabelContainer extends Component {
       text
     );
     await this.props.saveBoard(board);
-    await this.props.toggleContainer();
+    // await this.props.toggleContainer();
     await this.props.loadBoards();
     await this.props.setCurrBoard(board);
 
@@ -124,23 +124,28 @@ class LabelContainer extends Component {
     this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }));
   };
 
-  saveChanges = (ev) => {
+  saveChanges =async (ev) => {
     ev.stopPropagation();
-    this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }));
+
+    await this.loadAllLabels()
+    this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }))
+    
   };
 
-  addLabel = (ev) => {
+  addLabel = async (ev) => {
     ev.stopPropagation();
     let label = {
       color: "lightgray",
       value: "New Label",
-      status: "new",
+      status: "New Label",
     };
+
+    this.setState({labels:[...this.state.labels , label]})
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const board = LocalBoardService.addLabel(currBoard, column, label);
     this.props.saveBoard(board);
-    this.props.toggleContainer();
+    // this.props.toggleContainer();
     this.props.loadBoards();
     this.props.setCurrBoard(board);
   };
@@ -175,7 +180,7 @@ class LabelContainer extends Component {
               className="label-submit"
               onClick={(ev) => this.saveChanges(ev)}
             >
-              Go Back
+              Save
             </div>
           </>
         )}

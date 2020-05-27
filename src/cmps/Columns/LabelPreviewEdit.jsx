@@ -30,10 +30,12 @@ export default class extends Component {
 
   onChangeComplete = (color) => {
     this.setState(
-      { color: color.hex },
-      () => console.log(this.state),
-      () => {}
+      { color: color.hex }
     );
+    let { label } = this.props
+    this.handleSubmit(label)
+
+
   };
 
   handleChange = ({ target }) => {
@@ -41,8 +43,8 @@ export default class extends Component {
     this.setState({ text: value });
   };
 
-  handleSubmit = (ev, label) => {
-    ev.stopPropagation();
+  handleSubmit = (label ,ev) => {
+    if(ev)ev.stopPropagation();
     let color = this.state.color;
     let text = this.state.text;
     this.props.setLabel(label, color, text);
@@ -58,6 +60,7 @@ export default class extends Component {
             type="text"
             value={text}
             onChange={this.handleChange}
+            onBlur={(ev) => this.handleSubmit(this.props.label , ev )}
           ></input>
           <div
             style={{ backgroundColor: `${color}` }}
@@ -71,9 +74,9 @@ export default class extends Component {
             onChangeComplete={(color) => this.onChangeComplete(color)}
           />
         )}
-        <div onClick={(ev) => this.handleSubmit(ev, this.props.label)}>
+        {/* <div onClick={(ev) => this.handleSubmit(ev, this.props.label)}>
           Save Changes
-        </div>
+        </div> */}
       </>
     );
   }
