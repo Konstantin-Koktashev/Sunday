@@ -46,21 +46,6 @@ export default class TaskDetails extends Component {
           {chosenRender === "info-boxes" && <InfoBoxes />}
           {chosenRender === "activity-log" && <ActivityLog />}
         </div>
-        <div className="detail-container">
-          {chosenRender === "updates" && <Updates />}
-          {chosenRender === "info-boxes" && <InfoBoxes />}
-          {chosenRender === "activity-log" && <ActivityLog />}
-        </div>
-        <div className="detail-container">
-          {chosenRender === "updates" && <Updates />}
-          {chosenRender === "info-boxes" && <InfoBoxes />}
-          {chosenRender === "activity-log" && <ActivityLog />}
-        </div>
-        <div className="detail-container">
-          {chosenRender === "updates" && <Updates />}
-          {chosenRender === "info-boxes" && <InfoBoxes />}
-          {chosenRender === "activity-log" && <ActivityLog />}
-        </div>
       </section>
     );
   }
