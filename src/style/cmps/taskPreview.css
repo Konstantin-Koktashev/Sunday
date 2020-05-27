@@ -49,6 +49,7 @@
   /* width: 70%; */
   /* width: 40vw; */
   font-size: 11px;
+  position: relative;
 }
 .task-bar-columns-container p {
   border-left: 1px solid rgba(119, 119, 119, 0.356);
@@ -118,11 +119,12 @@
 .add-task-bar {
   border-radius: 6px;
   border: 1px solid rgba(119, 119, 119, 0.199);
-  padding: 0px 2px;
+  /* padding: 0px 2px; */
   margin-bottom: 1px;
   background-color: #dfe6e957;
   height: 4vh;
   width: 71.5vw;
+  width: 100%;
   /* margin: 0px 1vw; */
 }
 

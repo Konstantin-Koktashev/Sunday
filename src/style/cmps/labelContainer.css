@@ -9,15 +9,31 @@
   background-color: #b2bec3;
   border-radius: 10px;
   transform: translateY(100px);
-  width: 20vw;
+  width: 15vw;
   /* height: 40vh; */
   box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.171);
   padding-bottom: 10px;
   padding-top: 10px;
+  position: absolute;
+  top: -65px;
+  left: -65px;
 }
+
+/* .label-container{
+  position: relative;
+} */
 
 .label-container p {
   cursor: pointer;
+  border-left: none !important;
+}
+
+.label-container .box-label{
+  width: 10vw;
+  padding: 3px ;
+  margin-right: 4px;
+  margin-left: 4px;
+  border-radius: 0px;
 }
 
 .box-label {

@@ -65,10 +65,10 @@ export default class AlertDialogSlide extends React.Component {
             </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={()=> this.handleClose()} color="secondary">
+                        <Button onClick={()=> this.handleClose()} variant="contained" color="secondary">
                             Disagree
             </Button>
-                        <Button onClick={()=> this.handleAgree()} color="primary">
+                        <Button onClick={()=> this.handleAgree()} variant="contained" color="primary">
                             Agree
             </Button>
                     </DialogActions>

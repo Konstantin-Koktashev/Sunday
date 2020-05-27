@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Switch, Route } from 'react-router';
 import { connect } from 'react-redux'
 import { loadUsers } from './actions/UserActions'
-import { loadBoards } from './actions/BoardActions'
+import { loadBoards, setCurrBoard } from './actions/BoardActions'
 import history from './history';
 import './App.css';
 import './style/main.css';
@@ -34,9 +34,16 @@ class App extends React.Component {
       console.log('YOU ARE NPOT LOGGED IN I GO LOGGIN')
       history.push('/login/')
     }
+
     SocketService.setup()
     await this.props.loadUsers()
     await this.props.loadBoards()
+    const { boards } = this.props
+    if (boards && boards.length > 0) {
+
+      let board = boards[0]
+      this.props.setCurrBoard(board)
+    }
     const { currUser } = this.props
     this.setState({
       currUser, chatWith: {
@@ -136,6 +143,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = {
   loadUsers,
-  loadBoards
+  loadBoards,
+  setCurrBoard
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -29,7 +29,7 @@ class AddBoard extends Component {
         },
         {
           type: "people",
-          value: "people",
+          value: "Members",
           order: "2",
         },
         {
@@ -44,12 +44,12 @@ class AddBoard extends Component {
         },
         {
           type: "number",
-          value: "number",
+          value: "Number",
           order: "5",
         },
         {
           type: "priority",
-          value: "priority",
+          value: "Priority",
           order: "6",
         },
       ],

@@ -59,26 +59,22 @@ class TaskBox extends React.Component {
       case "label":
         box = (
           <>
-            {isTaskBox ? (
-              <div className="label-box box-div">{col.value}</div>
-            ) : (
-              <div
-                className="label-box box-div"
-                style={{ backgroundColor: col.color }}
-                onClick={this.toggleContainer}
-              >
-                {col.value}
-              </div>
-            )}
-            {containerIsShown && (
-              <LabelContainer
-                task={this.props.task}
-                toggleContainer={this.toggleContainer}
-                labels={col.labels}
-                column={col}
-                type={col.type}
-              />
-            )}
+            <div className="label-containerr">
+
+
+              {isTaskBox ? (
+               <div className="label-box box-div">{col.value}</div>) : (
+               <div className="label-box box-div" style={{ backgroundColor: col.color }}  onClick={this.toggleContainer} > {col.value}
+               
+               
+               
+                </div> 
+               
+               
+               )}
+              {containerIsShown && (<LabelContainer task={this.props.task} toggleContainer={this.toggleContainer} labels={col.labels} column={col} type={col.type} /> )}
+
+            </div>
           </>
         );
         break;
@@ -89,14 +85,14 @@ class TaskBox extends React.Component {
             {isTaskBox ? (
               <div className="label-box box-div">{col.value}</div>
             ) : (
-              <div
-                className="label-box box-div"
-                style={{ backgroundColor: col.color }}
-                onClick={this.toggleContainer}
-              >
-                {col.value}
-              </div>
-            )}
+                <div
+                  className="label-box box-div"
+                  style={{ backgroundColor: col.color }}
+                  onClick={this.toggleContainer}
+                >
+                  {col.value}
+                </div>
+              )}
             {containerIsShown && (
               <LabelContainer
                 toggleContainer={this.toggleContainer}
@@ -112,7 +108,7 @@ class TaskBox extends React.Component {
       case "number":
         box = colIsEdit ? (
           <input
-            type="number"
+            type={`${isTaskBox ? "text" : "number"}`}
             name="colEdit"
             className="colEdit-input"
             value={colText}
@@ -120,10 +116,10 @@ class TaskBox extends React.Component {
             onBlur={(ev) => this.updateColTitle(ev)}
           />
         ) : (
-          <div onClick={this.toggleColEdit} className="number-box box-div">
-            {col.value}
-          </div>
-        );
+            <div onClick={this.toggleColEdit} className="number-box box-div">
+              {col.value}
+            </div>
+          );
         break;
       case "text":
         box = colIsEdit ? (
@@ -136,19 +132,19 @@ class TaskBox extends React.Component {
             onBlur={(ev) => this.updateColTitle(ev)}
           />
         ) : (
-          <div onClick={this.toggleColEdit} className="text-box box-div">
-            {col.value}
-          </div>
-        );
+            <div onClick={this.toggleColEdit} className="text-box box-div">
+              {col.value}
+            </div>
+          );
         break;
       case "people":
         box = isTaskBox ? (
           <div className="poeple-box box-div">{col.value}</div>
         ) : (
-          <div className="poeple-box box-div">
-            <AddPerson task={this.props.task} column={col} />
-          </div>
-        );
+            <div className="poeple-box box-div">
+              <AddPerson task={this.props.task} column={col} />
+            </div>
+          );
         break;
       case "date":
         box = !isTaskBox ? (
@@ -162,15 +158,15 @@ class TaskBox extends React.Component {
               onBlur={(ev) => this.updateColTitle(ev)}
             />
           ) : (
-            <div className="date-box box-div colEdit-input-date">
-              <DateSelector column={col} />
-            </div>
-          )
+              <div className="date-box box-div colEdit-input-date">
+                <DateSelector column={col} />
+              </div>
+            )
         ) : (
-          <div className="date-box box-div " onClick={this.toggleColEdit}>
-            {col.value}
-          </div>
-        );
+            <div className="date-box box-div " onClick={this.toggleColEdit}>
+              {col.value}
+            </div>
+          );
         break;
       default:
         box = <div className="text-box box-div">{col.value}</div>;
