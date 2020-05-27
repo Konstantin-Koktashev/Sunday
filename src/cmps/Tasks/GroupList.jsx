@@ -1,6 +1,7 @@
 import React from "react";
 import "../../style/cmps/groupList.css";
 import TaskList from "./TaskList";
+import GenereicProgBar from "../Statistics/GenereicProgBar";
 export default function GroupList(props) {
   return (
     <div className="group-list-container " id="style-5">
@@ -20,7 +21,9 @@ export default function GroupList(props) {
                   cols={group.columns}
                   sortColumnsByBox={props.sortColumnsByBox}
                 />
+
               }
+              <GenereicProgBar group={group}/>
             </div>
           );
         })
