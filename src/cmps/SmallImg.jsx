@@ -6,7 +6,7 @@ export default function SmallImg(props) {
     return (
       <img
         style={{ zIndex: `${props.zindex}` }}
-        className="user-preview-circle"
+        className="user-preview-circle-chat heartbeat "
         src={props.url}
         alt={props.name}
       />
@@ -20,7 +20,7 @@ export default function SmallImg(props) {
       <div
         style={{ zIndex: `${props.zindex}` }}
         title={renderedName}
-        className="user-preview-circle"
+        className={`user-preview-circle heartbeat ${props.type}`}
       >
         {renderedName.charAt(0)}
       </div>

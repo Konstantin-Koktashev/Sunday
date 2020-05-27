@@ -227,9 +227,12 @@
 }
 .update-msg-content {
   font-size: 15px;
-  border-bottom: 1px solid rgba(172, 172, 172, 0.116);
   margin-bottom: 10px;
   margin-top: 10px;
   text-align: start;
   margin-left: 10px;
+}
+
+.update-msg-content:hover {
+  color: rgb(95, 145, 238);
 }

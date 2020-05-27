@@ -21,7 +21,7 @@ class UsersPreviewBox extends Component {
           console.log("person", person.username);
           return (
             <div
-              className="user-preview-circle"
+              className="user-preview-circle-column"
               title={`${person.username} Last seen at ${person.lastSeenAt}`} //// NEED TO FIX LAST SEEN
               key={idx}
             >
