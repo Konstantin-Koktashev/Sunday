@@ -58,7 +58,9 @@ class TaskPreview extends Component {
     return sortedCols;
   };
 
-  handleChange = ({ target }) => {
+  handleChange = (ev) => {
+    ev.preventDefault();
+    const { target } = ev;
     const value = target.value;
     this.setState({ taskTitle: value });
   };
@@ -132,7 +134,7 @@ class TaskPreview extends Component {
                   name="taskName"
                   className="input-edit-taskName"
                   value={this.state.taskTitle}
-                  onChange={this.handleChange}
+                  onChange={(ev) => this.handleChange(ev)}
                   onBlur={(ev) => this.updateTaskName(ev, task)}
                   placeholder="Enter a name.."
                   required

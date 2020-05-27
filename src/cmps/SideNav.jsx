@@ -6,7 +6,7 @@ import inbox from "../style/img/mail.svg";
 import week from "../style/img/calendar.svg";
 import invite from "../style/img/invitation.svg";
 import person from "../style/img/person.svg";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 import notification from "../style/img/notification.svg";
 class SideNav extends React.Component {
   render() {
@@ -44,7 +44,7 @@ class SideNav extends React.Component {
         </NavLink>
 
         <NavLink to="/myweek/" className="my-week-img">
-          <div className="flex j-center a-center">
+          <div>
             <img
               title="My Week"
               className="side-nav-img"
@@ -79,15 +79,12 @@ class SideNav extends React.Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   //State of the store to this.props of the cmp
   return {
-    userState: state.user
+    userState: state.user,
   };
 };
-const mapDispatchToProps = {
-
-};
+const mapDispatchToProps = {};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideNav);

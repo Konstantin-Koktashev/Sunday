@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loadBoards } from "../actions/BoardActions";
 import { loadUsers } from "../actions/UserActions";
+import moment from 'moment'
+
+
+// moment().startOf(person.lastSeenAt).fromNow();
 
 class UsersPreviewBox extends Component {
   componentDidMount() {
@@ -21,7 +25,7 @@ class UsersPreviewBox extends Component {
           return (
             <div
               className="user-preview-circle-column"
-              title={`${person.username} Last seen at ${person.lastSeenAt}`} //// NEED TO FIX LAST SEEN
+              title={`${person.username} Last seen at ${moment(person.lastSeenAt).fromNow()}`} //// NEED TO FIX LAST SEEN -DONE!
               key={idx}
             >
               {person.username.charAt(0).toUpperCase()}

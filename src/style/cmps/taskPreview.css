@@ -1,5 +1,5 @@
 .task-bar {
-  width: 71.5vw;
+  /* width: 71.5vw; */
   border-radius: 6px;
   border: 1px solid rgba(119, 119, 119, 0.199);
   padding: 0px 2px;
@@ -20,6 +20,7 @@
   /* margin-left: 2vw; */
   font-size: 12px;
   height: 5vh;
+  margin: 0px;
 }
 
 .title-box h2:hover {
@@ -32,7 +33,10 @@
 .task-bar h2 {
   cursor: pointer;
   /* max-width: 15vw; */
-  padding: 0px 20px;
+  padding: 10px 20px;
+  margin: 0px;
+  /* height: 5vh; */
+
   margin-left: 2vw;
   font-size: 14px;
   width: 10vw;

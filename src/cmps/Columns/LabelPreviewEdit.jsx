@@ -43,32 +43,54 @@ export default class extends Component {
     this.setState({ text: value });
   };
 
-  handleSubmit = (label ,ev) => {
-    if(ev)ev.stopPropagation();
+  handleSubmit = (label, ev) => {
+    if (ev) ev.stopPropagation();
     let color = this.state.color;
     let text = this.state.text;
     this.props.setLabel(label, color, text);
   };
+
+  handleRemove = (label, ev) => {
+    if (ev) ev.stopPropagation();
+    this.props.removeLabel(label)
+
+  }
 
   render() {
     const { colorPickerIsShown, color, text } = this.state;
     return (
       <>
         <section className="box-label">
+          <div
+            style={{ backgroundColor: `${color}` }}
+            onClick={(ev) => this.toggleCirclePicker(ev)}
+          >
+            c
+          </div>
+    
           <input
             name="text"
             type="text"
             value={text}
             onChange={this.handleChange}
-            onBlur={(ev) => this.handleSubmit(this.props.label , ev )}
+            onBlur={(ev) => this.handleSubmit(this.props.label, ev)}
           ></input>
-          <div
-            style={{ backgroundColor: `${color}` }}
-            onClick={(ev) => this.toggleCirclePicker(ev)}
-          >
-            C
-          </div>
+
+
+                  <img class="delete-icon"
+            src="/static/media/delete.bff23160.svg"
+            alt="Delete"
+            title="Delete label"
+            className="label-remove"
+            onClick={(ev) => this.handleRemove(this.props.label, ev)}
+              ></img>
+
         </section>
+
+
+     
+
+
         {colorPickerIsShown && (
           <CirclePicker
             onChangeComplete={(color) => this.onChangeComplete(color)}

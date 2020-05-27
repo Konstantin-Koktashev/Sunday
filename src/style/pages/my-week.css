@@ -9,6 +9,7 @@
   flex-direction: column;
   margin: 0 auto;
   padding-top: 50px;
+  /* height: 80vh; */
 }
 
 .week-preview {
@@ -61,8 +62,6 @@
   border-radius: 5px;
 }
 
-
-
 .my-week .user-small-img {
   margin-right: 10px;
 }
@@ -76,12 +75,21 @@
 .header-container-myweek {
   text-align: start;
   padding-left: 8vw;
+  padding-top: 50px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.308);
   /* width: 90%; */
   background-color: #fff;
 }
 
-.week-users{
+.myweek-container {
+  height: 100vh;
+  background-color: #fff;
+}
+
+.header-container-myweek h3 {
+  /* margin-top: 50px; */
+}
+.week-users {
   width: 5vw;
   display: flex;
 }
