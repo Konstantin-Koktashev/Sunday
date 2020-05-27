@@ -5,7 +5,7 @@ export default function BoardList(props) {
     <div className="board-list-container scrollbar" id="style-5">
       <div className="board-list flex wrap j-center color-change-2x">
         {props.boards && !props.boards.length > 0 ? (
-          <div className="group-list-container">
+          <div className="group-list-container scrollbar" id="style-5">
             <h3>No Groups Found!</h3>
           </div>
         ) : (

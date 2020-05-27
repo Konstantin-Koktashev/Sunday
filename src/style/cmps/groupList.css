@@ -1,13 +1,14 @@
 .group-list-container {
-  padding: 20px 10px;
-  height: 100vh;
+  /* padding: 20px 10px; */
+  height: 80vh;
   margin-top: 0px;
   /* width: 100%; */
   background-color: rgb(255, 255, 255);
-  overflow: visible;
+  overflow-y: scroll;
 }
 
 .group-list {
   margin-bottom: 10vh;
   padding: 0px 10px;
+  margin-top: 30px;
 }

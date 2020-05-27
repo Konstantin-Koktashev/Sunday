@@ -50,9 +50,10 @@ class Chat extends Component {
     }
   };
   renderMessage = (msg) => {
+    console.log("Chat -> renderMessage -> msg", msg);
     console.log("this private msg", msg);
     this.setState({
-      messageList: [...this.state.messageList, msg],
+      messageList: [...this.state.messageList, msg.msg],
     });
 
     /// Update data Messegae

@@ -36,13 +36,13 @@
 
 /* .task-box-list-container {
   /* width: 20vw; */
-  /* margin-right: 10vw; */
-  /* justify-self: end; */
-/* } */ 
+/* margin-right: 10vw; */
+/* justify-self: end; */
+/* } */
 
 .task-box-toplist-container {
   margin-left: 1px;
-  width: 71.5vw;
+  /* width: 71.5vw; */
   padding: 0px 2px;
   height: 4vh;
   /* border-left: 1px solid black; */
@@ -52,10 +52,6 @@
 .task-box-toplist-container .box-div {
   background-color: rgb(255, 255, 255) !important;
 }
-
-
-
-
 
 .back-screen-label-container {
   position: fixed;
@@ -67,7 +63,6 @@
   left: 0px;
   top: 0px;
 }
-
 
 .colEdit-input {
   width: 5vw;
