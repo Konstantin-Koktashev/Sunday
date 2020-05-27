@@ -112,7 +112,7 @@ class TaskBox extends React.Component {
       case "number":
         box = colIsEdit ? (
           <input
-            type="number"
+            type={`${isTaskBox ? "text" : "number"}`}
             name="colEdit"
             className="colEdit-input"
             value={colText}
