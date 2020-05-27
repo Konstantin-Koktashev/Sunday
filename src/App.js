@@ -14,6 +14,7 @@ import BoardNav from './cmps/Board/BoardNav';
 import ProgressBar from './cmps/Statistics/ProgressBar'
 import MyWeek from './pages/MyWeek'
 import Inbox from './pages/Inbox';
+import Home from './pages/Home';
 import TaskDetails from './cmps/Tasks/TaskDetails';
 import LabelContainer from './cmps/Columns/LabelContainer';
 import FilterByText from './cmps/Filters/FilterByText';
@@ -101,6 +102,7 @@ class App extends React.Component {
           <section className="main-board-container">
             <Switch>
               <Route path="/" component={Boards} exact />
+              <Route path="/home" component={Home} exact />
               <Route path="/board/:id?" component={Boards} exact />
               <Route path="/signup" component={Signup} exact />
               <Route path="/login" component={Login} exact />

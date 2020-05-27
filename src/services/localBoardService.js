@@ -281,12 +281,12 @@ function addLabel(board, column, label) {
     return board
 }
 
-function removeLabel(board, column, label){
-const idx = column.labels.findIndex(l => l._id === label._id)
-column.labels.splice(idx , 1)
-return board
+function removeLabel(board, column, label) {
+    const idx = column.labels.findIndex(l => l._id === label._id)
+    column.labels.splice(idx, 1)
+    return board
 
-    
+
 
 }
 
