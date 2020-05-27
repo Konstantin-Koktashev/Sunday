@@ -8,11 +8,21 @@ class MyWeek extends Component {
         closeTasks: []
     }
     async componentDidMount() {
-        await this.props.loadBoards()
+        if (!this.props.boards || this.props.boards && !this.props.boards.length > 0) await this.props.loadBoards()
         this.currUser = await this.props.user
         if (!this.currUser) return
         this.loadTasks(this.currUser)
     }
+
+    componentDidUpdate(prevProps) {
+        if (JSON.stringify(this.props.boards) !== JSON.stringify(prevProps.boards)) {
+            if (!this.currUser) return
+            this.loadTasks(this.currUser)
+        }
+    }
+
+
+
     loadTasks = async (loggedUser) => {
         var groupsArr = [];
         var tasksArr = [];
@@ -47,20 +57,22 @@ class MyWeek extends Component {
 
 
         )
-        return ( 
+        return (
 
             <>
-                <div className="header-container-myweek">
-                    <h3>Wellcome {user}</h3>
+                <div className="myweek-container">
+                    <div className="header-container-myweek">
+                        <h3>Wellcome {user}</h3>
+                    </div>
+                    <section className="my-week">
+                        {openTasks && openTasks.length > 0 && <h3>Open Tasks</h3>}
+                        {openTasks && openTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
+                    </section>
+                    <section className="my-week">
+                        {closeTasks && closeTasks.length > 0 && <h3>Closed Tasks</h3>}
+                        {closeTasks && closeTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
+                    </section>
                 </div>
-                <section className="my-week">
-                    {openTasks && openTasks.length > 0 && <h3>Open Tasks</h3>}
-                    {openTasks && openTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
-                </section>
-                <section className="my-week">
-                    {closeTasks && closeTasks.length > 0 && <h3>Closed Tasks</h3>}
-                    {closeTasks && closeTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
-                </section>
             </>
         )
     }

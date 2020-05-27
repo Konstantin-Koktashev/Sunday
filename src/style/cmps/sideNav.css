@@ -24,16 +24,11 @@
 .side-nav-img a {
   width: 30px;
 }
-
+/* 
 .my-week-img {
   width: 30px;
   height: 40px;
-  /* margin: 0 auto; */
-}
-
-.my-week-img div {
-  width: 5vw;
-}
+} */
 
 .logout {
   cursor: pointer;

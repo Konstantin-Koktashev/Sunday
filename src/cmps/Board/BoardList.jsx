@@ -2,7 +2,7 @@ import React from "react";
 import GroupList from "../Groups/GroupList.jsx";
 export default function BoardList(props) {
   return (
-    <div className="board-list-container scrollbar" id="style-5">
+    <div className="board-list-container">
       <div className="board-list flex wrap j-center color-change-2x">
         {props.boards && !props.boards.length > 0 ? (
           <div className="group-list-container scrollbar" id="style-5">

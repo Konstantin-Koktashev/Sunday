@@ -20,8 +20,9 @@ class BoardApp extends React.Component {
     componentDidMount = async () => {
 
         // if (this.props.currBoard && !this.props.currBoard._id || !this.props.currBoard) return
-        this.props.loadUsers();
-        var allBoards = await this.props.loadBoards()
+
+        // var allBoards = await this.props.loadBoards()
+        let allBoards = this.props.boards
         await this.loadboards()
         if (this.props.currBoard) {
             const boardId = this.props.currBoard._id

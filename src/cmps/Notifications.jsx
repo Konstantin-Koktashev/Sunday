@@ -41,7 +41,7 @@ class Notifications extends Component {
             Exit
           </div>
           <h2>Notifications</h2>
-          <div className="scrollbar scroll-container" id="style-5">
+          <div className="scrollbar scroll-container">
             {notifications &&
               notifications.map((update, idx) => {
                 return (
