@@ -7,7 +7,7 @@ import SocketService from '../services/SocketService'
 
 import { loadBoards, setCurrBoard, removeBoard } from "../actions/BoardActions"
 import { loadUsers } from '../../src/actions/UserActions'
-import DropZone, {DropFileToAsk} from "../cmps/Tasks/DropZone.jsx";
+import DropZone, { DropFileToAsk } from "../cmps/Tasks/DropZone.jsx";
 class BoardApp extends React.Component {
     state = {
         currBoard: null,
@@ -18,7 +18,8 @@ class BoardApp extends React.Component {
 
 
     componentDidMount = async () => {
-        if (this.props.currBoard && !this.props.currBoard._id) return
+
+        // if (this.props.currBoard && !this.props.currBoard._id || !this.props.currBoard) return
         this.props.loadUsers();
         var allBoards = await this.props.loadBoards()
         await this.loadboards()
@@ -66,11 +67,14 @@ class BoardApp extends React.Component {
     loadboards = async () => {
         const { boards } = this.props;
         const id = this.props.match.params.id ? this.props.match.params.id : null
-        let board = boards[0]
-        if (id) {
-            board = this.getBoardByID(id)
+        if (boards && boards.length > 0) {
+
+            let board = boards[0]
+            if (id) {
+                board = this.getBoardByID(id)
+            }
+            this.setBoard(board)
         }
-        this.setBoard(board)
     }
 
     getBoardByID = (id) => {
@@ -112,7 +116,7 @@ class BoardApp extends React.Component {
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
                 {currBoard && <BoardHeader chartIsOpen={this.state.chartIsOpen} toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard} user={this.props.user}></BoardHeader>}
                 {currBoard && <Board board={currBoard} chartIsOpen={this.state.chartIsOpen} ></Board>}
-                <DropZone></DropZone>
+                {/* <DropZone></DropZone> */}
             </>
         );
     }
@@ -125,7 +129,7 @@ const mapStateToProps = (state) => {
     return {
         boards: state.userBoards.board,
         currBoard: state.userBoards.currBoard,
-        user:state.user.loggedInUser
+        user: state.user.loggedInUser
 
     };
 };

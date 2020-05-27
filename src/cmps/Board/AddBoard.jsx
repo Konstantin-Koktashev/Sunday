@@ -1,19 +1,17 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import { saveBoard, loadBoards } from "../../actions/BoardActions";
-import {loadUsers} from '../../actions/UserActions'
+import { loadUsers } from "../../actions/UserActions";
 import LocalBoardService from "../../services/LocalBoardService";
 import add from "../../../src/style/img/add.png";
-import { v4 as uuidv4 } from 'uuid';
-import Swal from 'sweetalert2'
+import { v4 as uuidv4 } from "uuid";
+import Swal from "sweetalert2";
 
 class AddBoard extends Component {
-
-
   componentDidMount() {
-    this.props.loadUsers()
+    this.props.loadUsers();
   }
-  
+
   state = {
     board: {
       // BOARD OBJECT
@@ -119,9 +117,9 @@ class AddBoard extends Component {
           tasks: [
             {
               _id: uuidv4(),
-              isDone:true,
+              isDone: true,
               assignedGroupId: 124,
-              taskTitle: "Task - Wright you task here",
+              taskTitle: "Task - Write you task here",
               createdAt: "",
               // Aggregation
               users: [], // Min users
@@ -160,9 +158,9 @@ class AddBoard extends Component {
             },
             {
               _id: uuidv4(),
-              isDone:true,
+              isDone: true,
               assignedGroupId: 124,
-              taskTitle: "Task - Wright you task here",
+              taskTitle: "Task - Write you task here",
               createdAt: "date",
               // Aggregation
               users: [], // Min users
@@ -201,9 +199,9 @@ class AddBoard extends Component {
             },
             {
               _id: uuidv4(),
-              isDone:true,
+              isDone: true,
               assignedGroupId: 124,
-              taskTitle: "Task - Wright you task here",
+              taskTitle: "Task - Write you task here",
               createdAt: "date",
               // Aggregation
               users: [], // Min users
@@ -242,9 +240,9 @@ class AddBoard extends Component {
             },
             {
               _id: uuidv4(),
-              isDone:true,
+              isDone: true,
               assignedGroupId: 124,
-              taskTitle: "Task - Wright you task here",
+              taskTitle: "Task - Write you task here",
               createdAt: "date",
               // Aggregation
               users: [], // Min users
@@ -291,42 +289,42 @@ class AddBoard extends Component {
       // _Group Objects
       // Hard coded
       color: "red",
-   //history objects,
-   history:[]
+      //history objects,
+      history: [],
     },
   };
 
-   onConfirmDelete= async()=> Swal.fire({
-    title: 'Enter Your Projects Name',
-    input: 'text',
-    closeOnConfirm: true,
-    confirmButtonColor: '#3085d6',
-    confirmButtonText: 'Creat Project',
-    showCancelButton:true
-  }).then((inputValue) => {
-    if(inputValue === false) return
-    if (inputValue === "") {
-      Swal.showInputError("You need to write something!");
-      return false
-    }
-    if (inputValue) {
-      Swal.fire(
-        'Created!'
-        )
-         this.addBoard(inputValue)     
-    }
-  })
+  onConfirmDelete = async () =>
+    Swal.fire({
+      title: "Enter Your Projects Name",
+      input: "text",
+      closeOnConfirm: true,
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "Create Project",
 
-  addBoard = async ({value}) => {
+      showCancelButton: true,
+    }).then((inputValue) => {
+      console.log("AddBoard -> inputValue", inputValue);
+      if (inputValue.isConfirmed && !inputValue.value) {
+        Swal.fire("You must enter a name to add a project");
+        return false;
+      }
+      if (inputValue.isConfirmed && inputValue.value) {
+        Swal.fire("Created!");
+        this.addBoard(inputValue);
+      }
+    });
+
+  addBoard = async ({ value }) => {
     console.log("Adding a Board!");
     let addBoard = this.state.board;
-    addBoard.name=value
-    console.log("AddBoard -> addBoard -> addBoard", addBoard)
+    addBoard.name = value;
+    console.log("AddBoard -> addBoard -> addBoard", addBoard);
     try {
       await this.props.saveBoard(addBoard);
       await this.props.loadBoards();
     } catch (error) {
-      console.log('couldnt add board');
+      console.log("couldnt add board");
     }
     // let newBoard = LocalBoardService.saveBoard(AddBoard);
   };
@@ -349,13 +347,13 @@ class AddBoard extends Component {
 const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
-    users:state.users
+    users: state.users,
   };
 };
 const mapDispatchToProps = {
   saveBoard,
   loadBoards,
-  loadUsers
+  loadUsers,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddBoard);

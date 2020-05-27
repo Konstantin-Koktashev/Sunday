@@ -1,11 +1,11 @@
 .side-nav-container {
-  position: fixed;
-  left: 0px;
+  /* position: fixed; */
+  /* left: 0px; */
   background-color: rgb(41, 47, 76);
   height: 100vh;
   color: white;
   width: 5vw;
-  top: 0px;
+  /* top: 0px; */
 }
 
 .side-nav-img {
@@ -35,7 +35,6 @@
   width: 5vw;
 }
 
-
-.logout{
+.logout {
   cursor: pointer;
 }

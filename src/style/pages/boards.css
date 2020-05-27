@@ -1,5 +1,5 @@
 .main-board-container {
-  /* width: 100; */
-  margin-left: 20vw;
-  margin-top: 0px;
+  overflow: visible;
+  height: 100vh;
+  width: 100%;
 }

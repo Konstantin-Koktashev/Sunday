@@ -92,3 +92,21 @@
   font-size: 14px;
   color: rgba(58, 57, 57, 0.767);
 }
+
+.user-preview-circle-myweek {
+  width: 3vw;
+  height: 3vw;
+  margin: 1px;
+  /* background-color: rgba(86, 88, 86, 0.226); */
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  /* font-size: 13px; */
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.781);
+  font-size: 16px;
+}

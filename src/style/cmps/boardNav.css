@@ -1,24 +1,33 @@
 .board-nav-container {
-  position: fixed;
+  /* position: fixed; */
   height: 100vh;
-  left: 5vw;
+  /* left: 5vw; */
   background-color: rgb(255, 255, 255);
   border: 1px solid rgba(160, 160, 160, 0.466);
   width: 15vw;
-  top: 0px;
+  /* top: 0px; */
   border-radius: 25px 0px 0px 0px;
-  z-index: -1;
+  /* z-index: -1; */
 }
 .board-nav-container-hidden {
-  position: fixed;
+  /* position: fixed; */
   height: 100vh;
-  left: 5vw;
+  /* left: 5vw; */
   background-color: rgb(255, 255, 255);
   border: 1px solid rgba(160, 160, 160, 0.466);
   width: 5vw;
-  top: 0px;
-  border-radius: 33px 0px 0px 0px;
+  /* top: 0px; */
+  border-radius: 25px 0px 0px 0px;
 }
+
+.board-nav-container-hidden h3 {
+  display: none;
+}
+
+.board-nav-container-hidden a {
+  display: none;
+}
+
 .board-nav-container h3 {
   /* border-bottom: 1px solid rgba(160, 160, 160, 0.466); */
   /* padding-bottom: 30px; */

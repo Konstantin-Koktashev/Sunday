@@ -1,6 +1,8 @@
 .App {
   text-align: center;
   background-color: rgb(41, 47, 76);
+  position: fixed;
+  width: 100vw;
 }
 
 .loading-container {
@@ -18,13 +20,10 @@
   animation-delay: 1s;
 }
 
-
-
-.board-list-btn .active{
+.board-list-btn .active {
   color: #0057e7 !important;
-  border-bottom: .3px solid rgba(161, 161, 161, 0.609);
+  border-bottom: 0.3px solid rgba(161, 161, 161, 0.609);
 }
-
 
 @keyframes fade-out {
   0% {
@@ -108,7 +107,6 @@
   }
 }
 
-
-.css-2b097c-container{
+.css-2b097c-container {
   width: 100%;
 }
