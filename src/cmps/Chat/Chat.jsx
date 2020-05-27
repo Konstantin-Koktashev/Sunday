@@ -50,9 +50,10 @@ class Chat extends Component {
     }
   };
   renderMessage = (msg) => {
+    console.log("Chat -> renderMessage -> msg", msg);
     console.log("this private msg", msg);
     this.setState({
-      messageList: [...this.state.messageList, msg],
+      messageList: [...this.state.messageList, msg.msg],
     });
 
     /// Update data Messegae
@@ -171,7 +172,6 @@ class Chat extends Component {
     const { chatWith } = this.props.userState;
     const { board } = this.props;
     let user = this.getUser(chatWith);
-    console.log("Chat ->@@@@@@@@@@@@@@@@@@@@2 render -> user", user);
     return (
       <div>
         <Launcher
