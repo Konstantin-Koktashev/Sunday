@@ -19,7 +19,7 @@ class LabelContainer extends Component {
   };
 
   componentDidMount() {
-    console.log('cdmcdm', this.props)
+    console.log("cdmcdm", this.props);
     var HardCoded;
     if (this.props.type === "label") {
       HardCoded = [
@@ -106,18 +106,18 @@ class LabelContainer extends Component {
       nextValue: text,
       updateType: "Label Change",
       task,
-      color
+      color,
     };
     let board = LocalBoardService.addBoardHistory(currBoard, updateInfo);
     board = LocalBoardService.setColumn(currBoard, column, color, text, task);
     // board = LocalBoardService.addBoardHistory(board, updateInfo)
-     this.props.saveBoard(board);
+    this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
     this.props.setCurrBoard(board);
   };
 
-  onRemove = (onRemove, orderId) => { };
+  onRemove = (onRemove, orderId) => {};
 
   toggleEdit = (ev) => {
     ev.stopPropagation();
@@ -127,9 +127,8 @@ class LabelContainer extends Component {
   saveChanges = (ev) => {
     ev.stopPropagation();
 
-    this.loadAllLabels()
-    this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }))
-
+    this.loadAllLabels();
+    this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }));
   };
 
   addLabel = async (ev) => {
@@ -140,7 +139,7 @@ class LabelContainer extends Component {
       status: "New Label",
     };
 
-    this.setState({ labels: [...this.state.labels, label] })
+    this.setState({ labels: [...this.state.labels, label] });
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const board = LocalBoardService.addLabel(currBoard, column, label);
