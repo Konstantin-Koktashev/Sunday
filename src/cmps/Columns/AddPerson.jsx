@@ -105,14 +105,11 @@ class AddPerson extends Component {
                       className="min-user-card"
                       onClick={() => this.addPerson(user)}
                     >
-                      <img></img>
                       <span>{user.username}</span>
                     </article>
                   );
                 })}
-              <div className="invite-with-email">
-                <img></img>
-              </div>
+              <div className="invite-with-email"></div>
             </section>
           </div>
         )}

@@ -6,7 +6,6 @@ import { loadUsers } from "../actions/UserActions";
 class UsersPreviewBox extends Component {
   componentDidMount() {
     this.props.loadUsers();
-    console.log(" IMG HEREE @@@@@@@@@@@");
   }
   render() {
     const people = this.props.people ?? [];

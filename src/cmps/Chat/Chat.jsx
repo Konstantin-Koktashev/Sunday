@@ -171,7 +171,6 @@ class Chat extends Component {
     const { chatWith } = this.props.userState;
     const { board } = this.props;
     let user = this.getUser(chatWith);
-    console.log("Chat ->@@@@@@@@@@@@@@@@@@@@2 render -> user", user);
     return (
       <div>
         <Launcher

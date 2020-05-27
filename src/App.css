@@ -19,10 +19,11 @@
   animation: fade-out 1s ease-out both;
   animation-delay: 1s;
 }
-
 .board-list-btn .active {
   color: #0057e7 !important;
-  border-bottom: 0.3px solid rgba(161, 161, 161, 0.609);
+}
+.board-list-btn.active + .board-list-btn {
+  background-color: grey;
 }
 
 @keyframes fade-out {

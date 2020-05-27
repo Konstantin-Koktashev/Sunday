@@ -24,8 +24,6 @@ class UserChatPopup extends Component {
       await this.props.setCurrBoard(newBoard);
       this.props.history.push(`/board/${chatRoom.userA}`);
     }
-
-    console.log("UserChatPopup -> setChat -> chatRoom", chatRoom);
     const myId = chatRoom.userA;
     const toUserId = chatRoom.userB;
     let chatWith = {
@@ -64,17 +62,15 @@ class UserChatPopup extends Component {
   /// needs to get a user Obj
   render() {
     const { chatRoom } = this.props;
-    console.log(
-      "UserChatPopup -> render -> chatRoom!@#!@#!@#!@#!@# ",
-      chatRoom
-    );
     const toUserId = this.getToUserId();
-    // if (!toUserId) return;
+    //
     const user = this.getUserById(toUserId);
-
+    if (!toUserId || !user) return <></>;
     return (
       <div
-        title={user && user.username ? user.username : user.name}
+        title={
+          user && user.username ? user.username : user.name ? user.name : ""
+        }
         onClick={() => this.setChat(chatRoom)}
         style={{ right: `${this.makeRight(this.props.idx)}vw` }}
         className="user-chat-popup-card slide-in-right"

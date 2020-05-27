@@ -9,7 +9,6 @@ export function loadBoards() {
       // example for loading
       dispatch(loading());
       const boards = await BoardServices.getBoards();
-      console.log("loadBoards -> boards", boards)
       dispatch(setBoards(boards));
     } catch (err) {
       console.log('BoardActions: err in loadBoards', err);
@@ -17,7 +16,7 @@ export function loadBoards() {
       dispatch(doneLoading());
     }
   };
-}    
+}
 
 export function setFilter(text) {
   return async dispatch => {
@@ -48,15 +47,15 @@ export function saveBoard(board) {
 
 
 export function removeBoard(boardId) {
-          return async dispatch => {
-            try {
-              await BoardServices.remove(boardId);
-              dispatch(_removeBoard(boardId));
-            } catch (err) {
-              console.log('BoardActions: err in removeBoard', err);
-            }
-          };
-        }
+  return async dispatch => {
+    try {
+      await BoardServices.remove(boardId);
+      dispatch(_removeBoard(boardId));
+    } catch (err) {
+      console.log('BoardActions: err in removeBoard', err);
+    }
+  };
+}
 
 export function setCurrBoard(board) {
   return dispatch => {
