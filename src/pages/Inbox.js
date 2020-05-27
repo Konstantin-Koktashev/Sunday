@@ -177,7 +177,7 @@ class Inbox extends Component {
                         </section>
 
                         <section className='update-msgs'>
-                            {update.messeges && update.messeges.length && update.messeges.map(msg => {
+                            {update.messeges && update.messeges.length > 0 && update.messeges.map(msg => {
                                 return <div className='sent-msg-box'>
                                     <NavLink to={`/profile/${msg.sendBy._id}`}>{msg.sendBy.username} :<span className='update-msg-content'>{msg.msg}</span></NavLink>
                                 </div>
