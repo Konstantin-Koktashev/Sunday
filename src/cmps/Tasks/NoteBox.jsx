@@ -21,6 +21,10 @@ import { connect } from 'react-redux';
                     <input placeholder="Write a reply..." onChange={(e) => this.handleChange(e)} ></input>
                     <button type='submit'>Send</button>
                 </form>
+                <form className="send-btn-inbox flex col a a-center" onSubmit={(e) => { this.props.addNoteToTask(e,this.state.txt) }}>
+                    <input placeholder="Write a reply..." onChange={(e) => this.handleChange(e)} ></input>
+                    <button type='submit'>Send</button>
+                </form>
             </div>
         )
     }
