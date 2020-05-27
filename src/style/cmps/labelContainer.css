@@ -22,14 +22,37 @@
 
 .box-label {
   /* width: 300px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 90%;
   margin-bottom: 3px;
   border-radius: 5px;
+  height: 3vh;
   font-size: 20px;
+  margin-bottom: 6px;
 }
 
 .box-label:hover {
   color: white;
+}
+
+.box-label input{
+  height: 3vh;
+}
+
+.box-label label-remove{
+  cursor: pointer;
+  position: absolute;
+  z-index: 5;
+}
+
+.box-label div{
+  height: 3vh;
+  margin-right: 3px;
+  padding: 5px;
+  border-radius: 999px;
+  cursor: pointer;
 }
 .label-boxs-container {
   margin-bottom: 50px;

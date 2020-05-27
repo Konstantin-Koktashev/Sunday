@@ -75,9 +75,9 @@ class LabelContainer extends Component {
 
   loadAllLabels = () => {
     const labels = this.state.labels;
-    if (this.props.labels) labels.push(...this.props.labels);
-
-    this.setState({ allLabels: labels }, () => console.log("2", this.state));
+    var filterLabels = [...new Set(labels)]
+    if (this.props.labels) filterLabels.push(...this.props.labels);
+    this.setState({ allLabels: filterLabels });
   };
 
   // UNEDIT
@@ -91,11 +91,20 @@ class LabelContainer extends Component {
     );
     await this.props.saveBoard(board);
     // await this.props.toggleContainer();
-    await this.props.loadBoards();
-    await this.props.setCurrBoard(board);
+    this.props.loadBoards();
+    this.props.setCurrBoard(board);
 
     //find the label with the order and set the label on the props who props column who submit the label
   };
+
+  removeLabel = async (label) => {
+    const { currBoard, column } = this.props
+    const board = LocalBoardService.removeLabel(currBoard, column, label)
+    await this.props.saveBoard(board);
+    // await this.props.toggleContainer();
+    this.props.loadBoards();
+    this.props.setCurrBoard(board);
+  }
 
   setColumn = async (color, text) => {
     const task = this.props.task;
@@ -111,7 +120,7 @@ class LabelContainer extends Component {
     let board = LocalBoardService.addBoardHistory(currBoard, updateInfo);
     board = LocalBoardService.setColumn(currBoard, column, color, text, task);
     // board = LocalBoardService.addBoardHistory(board, updateInfo)
-     this.props.saveBoard(board);
+    this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
     this.props.setCurrBoard(board);
@@ -126,10 +135,8 @@ class LabelContainer extends Component {
 
   saveChanges = (ev) => {
     ev.stopPropagation();
-
     this.loadAllLabels()
     this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }))
-
   };
 
   addLabel = async (ev) => {
@@ -167,6 +174,7 @@ class LabelContainer extends Component {
                 label={label}
                 onRemove={this.onRemove}
                 setLabel={this.setLabel}
+                removeLabel={this.removeLabel}
               />
             );
           })}

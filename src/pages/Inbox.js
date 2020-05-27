@@ -22,7 +22,7 @@ class Inbox extends Component {
         filtertedUpdates: [],
         txt: ''
     }
-     componentDidMount() {
+    componentDidMount() {
         // await this.props.loadUsers()
         this.checkUserHistory()
     }

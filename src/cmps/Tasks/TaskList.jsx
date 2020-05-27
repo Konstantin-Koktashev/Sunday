@@ -37,8 +37,9 @@ class TaskList extends Component {
     this.props.saveBoard(newBoard);
     this.props.loadBoards();
   };
-  handleChange = ({ target }) => {
-    const value = target.value;
+  handleChange = (ev) => {
+    ev.preventDefault()
+    const value = ev.target.value;
     this.setState({ groupName: value });
   };
 
@@ -97,7 +98,7 @@ class TaskList extends Component {
                       type="text"
                       name="groupName"
                       value={this.state.groupName}
-                      onChange={this.handleChange}
+                      onChange={(ev)=>this.handleChange(ev)}
                       onBlur={(ev) => this.updateGroupName(ev)}
                     />
                   </form>

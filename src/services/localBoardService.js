@@ -35,7 +35,8 @@ export default {
     removeFromHistory,
     addUpdateMsg,
     removeTaskFromGroup,
-    addTaskToGroup
+    addTaskToGroup,
+    removeLabel
 }
 
 function addUpdateMsg(board, update, msg) {
@@ -278,6 +279,15 @@ function addLabel(board, column, label) {
     if (!label._id) label._id = makeId()
     column.labels.push(label)
     return board
+}
+
+function removeLabel(board, column, label){
+const idx = column.labels.findIndex(l => l._id === label._id)
+column.labels.splice(idx , 1)
+return board
+
+    
+
 }
 
 function remove(boardId) {
