@@ -22,6 +22,7 @@ import SocketService from './services/SocketService';
 import Chat from './cmps/Chat/Chat';
 import DoughnutChart from './cmps/Statistics/DoughnutChart'
 import Notifications from './cmps/Notifications';
+import ConfirmDialog from './cmps/Board/ConfirmDialog';
 class App extends React.Component {
   state = {
     notificationsIsShown: false,
@@ -111,7 +112,7 @@ class App extends React.Component {
               <Route path="/label" component={LabelContainer} exact />
               <Route path="/filter" component={FilterByText} exact />
               <Route path="/profile/:id?" component={Profile} exact />
-              <Route path="/stat" component={DoughnutChart} exact />
+              <Route path="/stat" component={ConfirmDialog} exact />
             </Switch>
             <div className="loading-container fade-out">
               <div className="col-sm-2">

@@ -7,6 +7,9 @@ import add from "../../../src/style/img/add.png";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 
+import FormDialog from '../Board/FormDialog';
+
+
 class AddBoard extends Component {
   componentDidMount() {
     this.props.loadUsers();
@@ -294,28 +297,9 @@ class AddBoard extends Component {
     },
   };
 
-  onConfirmDelete = async () =>
-    Swal.fire({
-      title: "Enter Your Projects Name",
-      input: "text",
-      closeOnConfirm: true,
-      confirmButtonColor: "#3085d6",
-      confirmButtonText: "Create Project",
 
-      showCancelButton: true,
-    }).then((inputValue) => {
-      console.log("AddBoard -> inputValue", inputValue);
-      if (inputValue.isConfirmed && !inputValue.value) {
-        Swal.fire("You must enter a name to add a project");
-        return false;
-      }
-      if (inputValue.isConfirmed && inputValue.value) {
-        Swal.fire("Created!");
-        this.addBoard(inputValue);
-      }
-    });
 
-  addBoard = async ({ value }) => {
+  addBoard = async (value) => {
     console.log("Adding a Board!");
     let addBoard = this.state.board;
     addBoard.name = value;
@@ -332,13 +316,7 @@ class AddBoard extends Component {
   render() {
     return (
       <>
-        <img
-          className="add-board-btn"
-          onClick={this.onConfirmDelete}
-          src={add}
-          alt="Add"
-          title="Add Board"
-        />
+        <FormDialog addBoard={this.addBoard} />
       </>
     );
   }

@@ -12,6 +12,7 @@ class BoardApp extends React.Component {
     state = {
         currBoard: null,
         chartIsOpen: false,
+
     }
 
 
@@ -118,7 +119,7 @@ class BoardApp extends React.Component {
 
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
                 {currBoard && <BoardHeader chartIsOpen={this.state.chartIsOpen} toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard} user={this.props.user}></BoardHeader>}
-                {currBoard && <Board board={currBoard} chartIsOpen={this.state.chartIsOpen} ></Board>}
+                {currBoard && <Board board={currBoard} raderIsOpen={this.state.raderIsOpen} chartIsOpen={this.state.chartIsOpen} ></Board>}
                 {/* <DropZone></DropZone> */}
             </>
         );

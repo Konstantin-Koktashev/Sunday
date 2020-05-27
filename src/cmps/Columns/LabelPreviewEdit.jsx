@@ -67,7 +67,7 @@ export default class extends Component {
           >
             c
           </div>
-    
+
           <input
             name="text"
             type="text"
@@ -77,18 +77,17 @@ export default class extends Component {
           ></input>
 
 
-                  <img class="delete-icon"
+          <img className="delete-icon"
             src="/static/media/delete.bff23160.svg"
             alt="Delete"
             title="Delete label"
-            className="label-remove"
             onClick={(ev) => this.handleRemove(this.props.label, ev)}
-              ></img>
+          ></img>
 
         </section>
 
 
-     
+
 
 
         {colorPickerIsShown && (
