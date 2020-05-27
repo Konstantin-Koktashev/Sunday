@@ -273,7 +273,8 @@ function changeTasklabelColumn(board, column, label) {
 }
 
 function addLabel(board, column, label) {
-    if (!column.labels && !column.length) column.labels = [];
+    console.log('col' , column)
+    if (!column.labels) column.labels = [];
     if (!label._id) label._id = makeId()
     column.labels.push(label)
     return board

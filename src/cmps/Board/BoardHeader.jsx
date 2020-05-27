@@ -30,7 +30,7 @@ export default function BoardHeader(props) {
   return (
     <div className="board-header-container flex a-center space-between">
         <h2>{board.name}</h2>
-        <h2> {props.user.username}</h2>
+        {/* <h2> {props.user.username}</h2> */}
 
 
       <button className="toggle-chart-btn" onClick={props.toggleChart}>

@@ -22,8 +22,8 @@ class Inbox extends Component {
         filtertedUpdates: [],
         txt: ''
     }
-    async componentDidMount() {
-        await this.props.loadUsers()
+     componentDidMount() {
+        // await this.props.loadUsers()
         this.checkUserHistory()
     }
     findBoard = (boardId) => {

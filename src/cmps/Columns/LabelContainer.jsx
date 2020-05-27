@@ -19,7 +19,7 @@ class LabelContainer extends Component {
   };
 
   componentDidMount() {
-    console.log('cdmcdm' , this.props)
+    console.log('cdmcdm', this.props)
     var HardCoded;
     if (this.props.type === "label") {
       HardCoded = [
@@ -90,14 +90,14 @@ class LabelContainer extends Component {
       text
     );
     await this.props.saveBoard(board);
-    await this.props.toggleContainer();
+    // await this.props.toggleContainer();
     await this.props.loadBoards();
     await this.props.setCurrBoard(board);
 
     //find the label with the order and set the label on the props who props column who submit the label
   };
 
-  setColumn = (color, text) => {
+  setColumn = async (color, text) => {
     const task = this.props.task;
     const { currBoard, column, currUser } = this.props;
     let updateInfo = {
@@ -111,13 +111,13 @@ class LabelContainer extends Component {
     let board = LocalBoardService.addBoardHistory(currBoard, updateInfo);
     board = LocalBoardService.setColumn(currBoard, column, color, text, task);
     // board = LocalBoardService.addBoardHistory(board, updateInfo)
-    this.props.saveBoard(board);
+     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
     this.props.setCurrBoard(board);
   };
 
-  onRemove = (onRemove, orderId) => {};
+  onRemove = (onRemove, orderId) => { };
 
   toggleEdit = (ev) => {
     ev.stopPropagation();
@@ -126,21 +126,26 @@ class LabelContainer extends Component {
 
   saveChanges = (ev) => {
     ev.stopPropagation();
-    this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }));
+
+    this.loadAllLabels()
+    this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }))
+
   };
 
-  addLabel = (ev) => {
+  addLabel = async (ev) => {
     ev.stopPropagation();
     let label = {
       color: "lightgray",
       value: "New Label",
-      status: "new",
+      status: "New Label",
     };
+
+    this.setState({ labels: [...this.state.labels, label] })
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const board = LocalBoardService.addLabel(currBoard, column, label);
     this.props.saveBoard(board);
-    this.props.toggleContainer();
+    // this.props.toggleContainer();
     this.props.loadBoards();
     this.props.setCurrBoard(board);
   };
@@ -175,7 +180,7 @@ class LabelContainer extends Component {
               className="label-submit"
               onClick={(ev) => this.saveChanges(ev)}
             >
-              Go Back
+              Save
             </div>
           </>
         )}
