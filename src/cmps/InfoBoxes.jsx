@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
-export default class InfoBoxes extends Component {
+import { saveBoard, loadBoards } from '../actions/BoardActions'
+import { connect } from 'react-redux'
+import NoteBox from './Tasks/NoteBox'
+ class InfoBoxes extends Component {
     state = {
-        boxesToRender: []
+        boxesToRender: [],
+        note:'',
+        isNoteBoxShown:false,
+        isFileBoxShown:false,
+    }
+    componentDidMount(){
+        this.getBoxesToRender()
     }
     getBoxesToRender = () => {
         const task = this.props.task
@@ -23,20 +32,23 @@ export default class InfoBoxes extends Component {
         this.getBoxesToRender()
 
     }
-    saveNoteToTask = async (event) => {
+ 
+    addNoteToTask = async (e,txt) => {
+        e.preventDefault()
         const task = this.props.task
         const currBoard = this.props.CurrBoard
-        const fileWithTimeStamp = { type: 'note', 'noteText': event.target.value, timeStamp: Date.now() }
-        task.notes.unshift(fileWithTimeStamp)
+        const noteWithTimeStamp = { type: 'note', txt, timeStamp: Date.now() }
+        task.notes.unshift(noteWithTimeStamp)
+        this.getBoxesToRender()
         await this.props.saveBoard(currBoard)
         this.props.loadBoards()
         this.getBoxesToRender()
+    }
+    handleNoteChange = (e) => {
+        this.setState({ note: e.target.value });
 
     }
-    handleNoteChange = (event) => {
-        event.stopPropagation()
-        this.saveNoteToTask(event)
-    }
+
     handleFileAdd=(event)=>{
         event.stopPropagation()
     }
@@ -48,32 +60,41 @@ export default class InfoBoxes extends Component {
 
         }
     }
+
+    openNotBox=()=>{
+        this.setState({isNoteBoxShown:true})
+    }
     render() {
 const {boxesToRender}=this.state
+const isAddNoteShows=this.state.isNoteBoxShown
         return (
             <div className='info-boxes-btns'>
                 <div className='info-Boxes-btns'>
-                    <form onSubmit={this.handleSubmit()}>
-                        <input type='file' onChange={this.savefileToTask}></input>
-                        <button type='submit'>Add File</button>
-                    </form>
-                    <form onSubmit={(e)=>this.handleNoteChange(e)}>
-                        <input type ='text'></input>
-                        <button type='submit'>Add Note</button>
-                    </form>
-                    <button onClick={() => { this.AddNoteBox() }}>Add Note</button>
+                    <button onClick={() => { this.openNotBox() }}>Add Note</button>
                     <h2>INFO BOXES PAGE</h2>
+                    {isAddNoteShows&& <NoteBox></NoteBox>}
                 </div>
-                <div className='info-boxes' >
-                    {boxesToRender.map(box=>{
-                        return(
-                            <article className='info-box'>
-                                
-                            </article>
-                        )
-                    })}
-                </div>
+             {boxesToRender&&boxesToRender.map(box=>{
+                 return(<article className='info-box note'>
+                     <h3>{box.type}</h3>
+                    {box.txt}
+                 </article>)
+             })}
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    userBoards: state.userBoards,
+    currUser: state.user.loggedInUser,
+    currBoard: state.userBoards.currBoard
+})
+
+const mapDispatchToProps = {
+    loadBoards,
+    saveBoard,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InfoBoxes)
+
