@@ -19,7 +19,7 @@ class LabelContainer extends Component {
   };
 
   componentDidMount() {
-    console.log('cdmcdm' , this.props)
+    console.log('cdmcdm', this.props)
     var HardCoded;
     if (this.props.type === "label") {
       HardCoded = [
@@ -97,7 +97,7 @@ class LabelContainer extends Component {
     //find the label with the order and set the label on the props who props column who submit the label
   };
 
-  setColumn = (color, text) => {
+  setColumn = async (color, text) => {
     const task = this.props.task;
     const { currBoard, column, currUser } = this.props;
     let updateInfo = {
@@ -111,25 +111,25 @@ class LabelContainer extends Component {
     let board = LocalBoardService.addBoardHistory(currBoard, updateInfo);
     board = LocalBoardService.setColumn(currBoard, column, color, text, task);
     // board = LocalBoardService.addBoardHistory(board, updateInfo)
-    this.props.saveBoard(board);
+     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();
     this.props.setCurrBoard(board);
   };
 
-  onRemove = (onRemove, orderId) => {};
+  onRemove = (onRemove, orderId) => { };
 
   toggleEdit = (ev) => {
     ev.stopPropagation();
     this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }));
   };
 
-  saveChanges =async (ev) => {
+  saveChanges = (ev) => {
     ev.stopPropagation();
 
-    await this.loadAllLabels()
+    this.loadAllLabels()
     this.setState(({ isEditAble }) => ({ isEditAble: !isEditAble }))
-    
+
   };
 
   addLabel = async (ev) => {
@@ -140,7 +140,7 @@ class LabelContainer extends Component {
       status: "New Label",
     };
 
-    this.setState({labels:[...this.state.labels , label]})
+    this.setState({ labels: [...this.state.labels, label] })
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const board = LocalBoardService.addLabel(currBoard, column, label);

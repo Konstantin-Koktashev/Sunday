@@ -1,7 +1,28 @@
 import React from "react";
 
 export default function SmallImg(props) {
-  console.log("SmallImg -> props", props);
+  // CHANGE TO SWITCH CASE!!
+  if (props.type === "myweek" && props.url) {
+    return (
+      <img
+        style={{ zIndex: `${props.zindex}` }}
+        className="user-preview-circle-myweek"
+        src={props.url}
+        alt={props.name}
+      />
+    );
+  }
+  if (props.type === "myweek" && !props.url) {
+    return (
+      <div
+        style={{ zIndex: `${props.zindex}` }}
+        title={props.name}
+        className="user-preview-circle-myweek"
+      >
+        {props.name && props.name.charAt(0)}
+      </div>
+    );
+  }
   if (props.url) {
     return (
       <img
@@ -22,7 +43,7 @@ export default function SmallImg(props) {
         title={renderedName}
         className={`user-preview-circle heartbeat ${props.type}`}
       >
-        {renderedName.charAt(0)}
+        {renderedName && renderedName.charAt(0)}
       </div>
     );
   }
@@ -32,7 +53,7 @@ export default function SmallImg(props) {
       title={props.name}
       className="user-preview-circle"
     >
-      {props.name.charAt(0)}
+      {props.name && props.name.charAt(0)}
     </div>
   );
 }

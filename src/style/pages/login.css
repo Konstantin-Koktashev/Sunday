@@ -58,6 +58,7 @@
   color: white;
   transition: 0.3s;
   outline: none;
+  cursor: pointer;
 }
 
 .login-form button:hover {
