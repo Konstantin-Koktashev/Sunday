@@ -69,7 +69,8 @@
 .my-week h3 {
   text-align: start;
   align-self: start;
-  margin: 0px;
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.39);
 }
 
 .header-container-myweek {
@@ -86,8 +87,13 @@
   background-color: #fff;
 }
 
+.header-container-myweek img {
+  width: 100px;
+}
+
 .header-container-myweek h3 {
-  /* margin-top: 50px; */
+  margin-left: 15px;
+  color: rgba(0, 0, 0, 0.753);
 }
 .week-users {
   width: 5vw;
