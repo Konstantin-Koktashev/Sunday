@@ -2,8 +2,8 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import { saveBoard, loadBoards } from "../../actions/BoardActions";
 import LocalBoardService from "../../services/LocalBoardService";
-import { v4 as uuidv4 } from 'uuid';
-
+import { v4 as uuidv4 } from "uuid";
+import randomColor from "randomcolor";
 
 class AddGroup extends Component {
   state = {
@@ -28,6 +28,7 @@ class AddGroup extends Component {
           type: "label",
           value: "Labels",
           order: "3",
+          color: "#C4C4C4",
         },
         {
           type: "text",
@@ -235,12 +236,28 @@ class AddGroup extends Component {
           people: [],
         },
       ], // Task object
-      color: "blue",
+      color: randomColor({
+        luminosity: "light",
+        format: "rgba", // e.g. 'rgba(9, 1, 107, 0.6482447960879654)'
+      }),
       lastUpdatedAt: "",
     },
   };
-  AddGroup = async() => {
-    console.log("Adding a AddGroup!");
+
+  componentDidMount() {
+    console.log("thisstate", this.state);
+  }
+
+  AddGroup = async () => {
+    this.setState({
+      group: {
+        ...this.state.group,
+        color: randomColor({
+          luminosity: "light",
+          format: "rgba", // e.g. 'rgba(9, 1, 107, 0.6482447960879654)'
+        }),
+      },
+    });
     let addGroup = this.state.group;
     // let boardId = this.props.board._id;
     let board = this.props.currBoard;
@@ -248,11 +265,11 @@ class AddGroup extends Component {
       group: this.state.group,
       user: this.props.user,
       nextValue: addGroup.name,
-      updateType: 'New Group'
-    }
+      updateType: "New Group",
+    };
     let newBoard = LocalBoardService.addGroup(board, addGroup);
-    newBoard = LocalBoardService.addBoardHistory(board, updateInfo)
-   await this.props.saveBoard(newBoard);
+    newBoard = LocalBoardService.addBoardHistory(board, updateInfo);
+    await this.props.saveBoard(newBoard);
     this.props.loadBoards();
     // console.log("AddGroup -> AddGroup -> newBoard", newBoard);
   };
@@ -276,7 +293,7 @@ const mapStateToProps = (state) => {
   return {
     boards: state.userBoards.board,
     currBoard: state.userBoards.currBoard,
-    user: state.user.loggedInUser
+    user: state.user.loggedInUser,
   };
 };
 const mapDispatchToProps = {

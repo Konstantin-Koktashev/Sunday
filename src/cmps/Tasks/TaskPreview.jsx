@@ -18,11 +18,18 @@ class TaskPreview extends Component {
   state = {
     taskTitle: this.props.task.taskTitle,
     taskNameIsEdit: false,
-    isInfoBoxShown:false
+    isInfoBoxShown: false,
   };
   componentDidMount() {
     // let SortedCols = matchTaskBoxToBoardColumns(props);
     // let sortedCols = this.matchTaskBoxToBoardColumns(this.props);
+    // window.addEventListener('click', () => {
+    //   this.setState({ isInfoBoxShown: false})
+    // });
+  }
+
+  hideInfoBox=()=>{
+    this.setState({ isInfoBoxShown: false})
   }
 
   SortCols(board, cols) {
@@ -102,17 +109,23 @@ class TaskPreview extends Component {
       taskNameIsEdit: !taskNameIsEdit,
     }));
   };
-  toggleInfoBox=()=>{
-    this.setState({isInfoBoxShown:true})
-  }
+
+  toggleInfoBox = () => {
+    this.setState(({ isInfoBoxShown }) => ({
+      isInfoBoxShown: !isInfoBoxShown,
+    }));
+  };
 
   render() {
-  const  isInfoBoxShown=this.state.isInfoBoxShown
+    const isInfoBoxShown = this.state.isInfoBoxShown;
     const { task } = this.props;
     return (
-      <div className="task-bar flex j-start space-between" onClick={this.toggleInfoBox}>
-       {isInfoBoxShown&& <InfoBoxes task={task}></InfoBoxes>}
-        <div className="task-bar-title-container flex space-between a-center">
+      <div className="task-bar flex j-start space-between">
+        {isInfoBoxShown && <InfoBoxes task={task} hideInfoBox={this.hideInfoBox}></InfoBoxes>}
+        <div
+          onClick={this.toggleInfoBox}
+          className="task-bar-title-container flex space-between a-center"
+        >
           <div className="title-box flex  a-center">
             <img
               className="delete-icon"
@@ -121,6 +134,10 @@ class TaskPreview extends Component {
               title="Delete Task"
               onClick={() => this.props.deleteTask(task)}
             />
+            <div
+              className="little-box"
+              style={{ backgroundColor: `${this.props.group.color}` }}
+            ></div>
             {!this.state.taskNameIsEdit ? (
               <>
                 <h2 onClick={(ev, props) => this.toggleTaskEdit(ev)}>

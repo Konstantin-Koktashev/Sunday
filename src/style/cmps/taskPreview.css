@@ -1,9 +1,10 @@
 .task-bar {
   /* width: 71.5vw; */
-  border-radius: 6px;
-  border: 1px solid rgba(119, 119, 119, 0.199);
+  border-radius: 2px;
+  /* border: 1px solid rgb(255, 255, 255); */
+  border-bottom: 1px solid #e6e9ef;
   padding: 0px 2px;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
   background-color: #dfe6e957;
   height: 4vh;
 }
@@ -26,6 +27,7 @@
 
 .title-box h2:hover {
   outline: 1px dotted #74747486;
+  padding-right: 20vw;
   /* width: 5vw; */
   /* margin-left: 20px; */
   background-color: rgba(255, 255, 255, 0.445);
@@ -38,11 +40,11 @@
   padding: 10px 20px;
   margin: 0px;
   /* height: 5vh; */
-  margin-left: 2vw;
-  font-size: 14px;
+  margin-left: 1vw;
+  font-size: 12px;
   width: 10vw;
   white-space: nowrap;
-  overflow: hidden;
+  /* overflow: hidden; */
   /* text-overflow: ellipsis; */
 }
 
@@ -54,7 +56,7 @@
 }
 
 .task-bar-columns-container p {
-  border-left: 1px solid rgba(119, 119, 119, 0.356);
+  border-left: 1.5px solid rgb(255, 255, 255);
   padding: 0px 5px;
   margin: 0px;
   text-align: center;
@@ -67,7 +69,7 @@
 }
 
 .box-div {
-  border-left: 1px solid rgba(119, 119, 119, 0.356);
+  border-left: 1.5px solid rgb(255, 255, 255);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -121,10 +123,11 @@
 }
 
 .add-task-bar {
-  border-radius: 6px;
+  border-radius: 2px;
   border: 1px solid rgba(119, 119, 119, 0.199);
   /* padding: 0px 2px; */
   margin-bottom: 1px;
+  margin-top: 2px;
   background-color: #dfe6e957;
   height: 4vh;
   width: 71.5vw;
@@ -164,7 +167,7 @@
   border: none;
   /* margin-left: 40px; */
   background-color: rgba(245, 245, 245, 0.322);
-  font-size: 14px;
+  font-size: 12px;
   outline: 1px dotted #74747486;
   /* padding: 0px 20px; */
   margin-left: 2vw;

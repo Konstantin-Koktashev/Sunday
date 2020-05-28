@@ -64,7 +64,7 @@ class MyWeek extends Component {
                 <div className="myweek-container">
                     <div className="header-container-myweek flex a-center">
                         <img src={coffe}></img>
-                        <h3>Hey {user} Welcome to My Week</h3>
+                        <h3><span>Hey {user}</span> Welcome to My Week</h3>
                     </div>
                     <p>   {openTasks && openTasks.length > 0 ? 'You have open items' : 'No open items..\n Guess you can take a Day off'}</p>
                     <section className="my-week">

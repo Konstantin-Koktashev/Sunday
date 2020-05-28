@@ -28,10 +28,13 @@ html {
 }
 
 .online {
-  background-color: green;
-  width: 5px;
-  height: 5px;
+  background-color: #4cd137;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
+  margin-top: -20px;
+  position: relative;
+  z-index: 4000;
 }
 
 .offline {

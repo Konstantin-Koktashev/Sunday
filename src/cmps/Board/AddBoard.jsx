@@ -6,9 +6,9 @@ import LocalBoardService from "../../services/LocalBoardService";
 import add from "../../../src/style/img/add.png";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
+import randomColor from "randomcolor";
 
-import FormDialog from '../Board/FormDialog';
-
+import FormDialog from "../Board/FormDialog";
 
 class AddBoard extends Component {
   componentDidMount() {
@@ -34,8 +34,9 @@ class AddBoard extends Component {
         },
         {
           type: "label",
-          value: "Labels",
+          value: "",
           order: "3",
+          color: "#C4C4C4",
         },
         {
           type: "text",
@@ -49,8 +50,9 @@ class AddBoard extends Component {
         },
         {
           type: "priority",
-          value: "Priority",
+          value: "",
           order: "6",
+          color: "#C4C4C4",
         },
       ],
       //Label Object
@@ -140,8 +142,7 @@ class AddBoard extends Component {
                   aboutUser: 9000,
                 },
               ], // updates objects
-              notes: [
-              ], // Notes objects
+              notes: [], // Notes objects
               people: [],
               status: "new",
               priority: "urgent",
@@ -149,7 +150,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
-              files:[]
+              files: [],
             },
             {
               _id: uuidv4(),
@@ -173,7 +174,7 @@ class AddBoard extends Component {
                   aboutUser: 1234,
                 },
               ], // updates objects
-              notes: [   ], // Notes objects
+              notes: [], // Notes objects
               people: [],
               status: "new",
               priority: "urgent",
@@ -181,7 +182,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
-              files:[]
+              files: [],
             },
             {
               _id: uuidv4(),
@@ -205,9 +206,7 @@ class AddBoard extends Component {
                   aboutUser: 1234,
                 },
               ], // updates objects
-              notes: [
-               
-              ], // Notes objects
+              notes: [], // Notes objects
               people: [],
               status: "new",
               priority: "urgent",
@@ -215,7 +214,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
-              files:[]
+              files: [],
             },
             {
               _id: uuidv4(),
@@ -239,9 +238,7 @@ class AddBoard extends Component {
                   aboutUser: 1234,
                 },
               ], // updates objects
-              notes: [
-             
-              ], // Notes objects
+              notes: [], // Notes objects
               people: [],
               status: "new",
               priority: "urgent",
@@ -249,10 +246,13 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
-              files:[]
+              files: [],
             },
           ], // Task object
-          color: "blue",
+          color: randomColor({
+            luminosity: "light",
+            format: "rgba", // e.g. 'rgba(9, 1, 107, 0.6482447960879654)'
+          }),
           lastUpdatedAt: "",
         },
       ],
@@ -266,9 +266,8 @@ class AddBoard extends Component {
     },
   };
 
-
-
   addBoard = async (value) => {
+    console.log("thisstaetaddboard", this.state);
     console.log("Adding a Board!");
     let addBoard = this.state.board;
     addBoard.name = value;

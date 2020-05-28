@@ -5,23 +5,38 @@ import FilterByText from "../Filters/FilterByText.jsx";
 import Swal from "sweetalert2";
 import ConfirmDialog from "../Board/ConfirmDialog";
 import SelectCmp from "../SelectCmp";
+import moment from "moment";
+import UserList from "../UserList";
 
 export default function BoardHeader(props) {
   const confirmDelete = () => {
     let boardId = props.board._id;
     props.removeBoard(boardId);
   };
+
   const board = props.board;
   return (
     <div className="board-header-container flex a-center space-between">
-      <h2>{board.name}</h2>
+      <div className="header-box flex col ">
+        <div className="flex a-center">
+          <h2>{board.name} -</h2>
+
+          <span>
+            {moment(
+              board.history[board.history.length - 1].timeStamp
+            ).fromNow()}
+          </span>
+        </div>
+
+        <SelectCmp
+          handleChange={props.toggleChart}
+          name={"viewType"}
+          label={"Select Table"}
+          options={["board", "pie", "radar"]}
+        />
+      </div>
+
       {/* <h2> {props.user.username}</h2> */}
-      <SelectCmp
-        handleChange={props.toggleChart}
-        name={"viewType"}
-        label={"Select Table"}
-        options={["board", "pie", "radar"]}
-      />
 
       {/* 
       <button className="toggle-chart-btn" onClick={props.toggleChart}>
@@ -33,7 +48,10 @@ export default function BoardHeader(props) {
 
           <ConfirmDialog remove={confirmDelete} />
         </div>
-
+        <div className="add-user-toboard">
+          {props.addUserToBoard && <UserList></UserList>}
+          <button onClick={props.toggleAddUserToBoard}>ADD USR TO BOARD</button>
+        </div>
         <FilterByText currBoard={props.board} />
       </div>
     </div>

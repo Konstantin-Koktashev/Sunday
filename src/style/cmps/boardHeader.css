@@ -8,12 +8,35 @@
 
 .board-header-container h2 {
   margin: 0px;
-  color: #0984e3;
-  font-size: 20px;
-  letter-spacing: 1px;
+  color: rgb(51, 51, 51);
+  font-size: 30px;
+  /* letter-spacing: 1px; */
   align-self: flex-start;
   margin-top: 25px;
-  margin-left: 20px;
+  margin-left: 70px;
+}
+
+.board-header-container h2:first-letter {
+  text-transform: uppercase;
+}
+.header-box {
+  margin-top: -30px;
+}
+.board-header-container span {
+  font-size: 15px;
+  margin-left: 40px;
+  margin-top: 30px;
+
+  color: rgba(80, 79, 79, 0.473);
+}
+#root
+  > div
+  > section
+  > div.board-header-container.flex.a-center.space-between
+  > div.header-box.flex.col
+  > div:nth-child(2) {
+  margin-bottom: -30px;
+  margin-left: -20px;
 }
 
 .add-group-btn {
@@ -67,4 +90,10 @@
 
 .toggle-chart-btn:hover {
   background-color: #21b0f8;
+}
+
+.add-user-toboard {
+  width: 10vw;
+  padding: 20px;
+  background-color: grey;
 }

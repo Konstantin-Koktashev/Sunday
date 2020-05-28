@@ -56,3 +56,8 @@
 .task-list-top {
   padding: 0px;
 }
+
+.little-box {
+  width: 1vw;
+  height: 80%;
+}

@@ -93,9 +93,48 @@
 
 .header-container-myweek h3 {
   margin-left: 15px;
-  color: rgba(0, 0, 0, 0.753);
+  color: rgba(0, 0, 0, 0.411);
 }
 .week-users {
-  width: 5vw;
+  width: 9vw;
+  height: 5vh;
   display: flex;
+  margin-right: 15px;
+  background-color: rgba(163, 163, 163, 0.137);
+  border-radius: 15px;
+}
+
+.week-users > * {
+  width: 2vw;
+  margin-left: -5px;
+}
+
+#root
+  > div
+  > section
+  > div.myweek-container
+  > section:nth-child(3)
+  > div:nth-child(2)
+  > div.week-users
+  > div {
+  color: rgba(0, 0, 0, 0.534);
+}
+
+#root
+  > div
+  > section
+  > div.myweek-container
+  > section
+  > div
+  > div.week-users
+  > img {
+  width: 25px;
+  height: 25px;
+  padding: 3px;
+}
+
+.header-container-myweek span {
+  color: #00ca72;
+  margin-right: 10px;
+  font-size: 25px;
 }
