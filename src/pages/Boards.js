@@ -12,7 +12,8 @@ class BoardApp extends React.Component {
     state = {
         currBoard: null,
         chartIsOpen: false,
-        addUserToBoard: false
+        addUserToBoard: false,
+        moreOptionsIsOpen: false
 
     }
 
@@ -131,6 +132,13 @@ class BoardApp extends React.Component {
         }));
     };
 
+    toggleMoreOptions = (ev) => {
+        // ev.stopPropagation();
+        this.setState(({ moreOptionsIsOpen }) => ({
+            moreOptionsIsOpen: !moreOptionsIsOpen,
+        }));
+    };
+
     render() {
 
         const { currBoard } = this.state;
@@ -138,7 +146,7 @@ class BoardApp extends React.Component {
             <>
 
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
-                {currBoard && <BoardHeader addUserToBoard={this.state.addUserToBoard} toggleAddUserToBoard={this.toggleAddUserToBoard} toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard} user={this.props.user}></BoardHeader>}
+                {currBoard && <BoardHeader toggleMoreOptions={this.toggleMoreOptions} moreOptionsIsOpen={this.state.moreOptionsIsOpen} addUserToBoard={this.state.addUserToBoard} toggleAddUserToBoard={this.toggleAddUserToBoard} toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard} user={this.props.user}></BoardHeader>}
                 {currBoard && <Board board={currBoard} raderIsOpen={this.state.raderIsOpen} viewType={this.state.viewType} ></Board>}
                 {/* <DropZone></DropZone> */}
             </>
