@@ -16,6 +16,7 @@ import {
   removeBoard,
   setCurrBoard,
 } from "../../actions/BoardActions";
+import SumBar from "../Statistics/SumBar";
 class TaskList extends Component {
   state = {
     taskIsShown: true,
@@ -137,6 +138,7 @@ class TaskList extends Component {
               <div className="task-bar-for-progress">
                 <div className="div40">
                   <GenereicProgBar group={this.props.group} />
+                  <SumBar group={this.props.group} />
                 </div>
               </div>
             </div>

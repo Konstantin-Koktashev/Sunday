@@ -25,25 +25,25 @@ class LabelContainer extends Component {
       HardCoded = [
         {
           _id: "111a",
-          color: "#44bd32",
+          color: "#00C875",
           value: "Done",
           status: "Done",
         },
         {
           _id: "222v",
-          color: "rgb(253, 171, 61)",
+          color: "#FDAB3D",
           value: "Working",
           status: "Working",
         },
         {
           _id: "333b",
-          color: "#eb2f06",
+          color: "#E2445C",
           value: "Stuck",
           status: "Stuck",
         },
         {
           _id: "333asb",
-          color: "#00A8FF",
+          color: "#66CCFF",
           value: "Review",
           status: "Waiting for review",
         },

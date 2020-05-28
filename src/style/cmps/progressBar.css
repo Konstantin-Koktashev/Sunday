@@ -65,9 +65,22 @@
 
 .s-prog-child {
   border-radius: 2px;
+}
+
+.s-prog-child:not:first-child {
   margin-left: -1px;
 }
 
 .s-prog-child:hover {
   transform: scaleY(1.1);
+}
+
+.sum-text {
+  margin: 0;
+  font-size: 0.6rem;
+  color: #0000008a;
+}
+
+.num-sum {
+  font-size: 0.9rem;
 }
