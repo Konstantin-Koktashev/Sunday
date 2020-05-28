@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
 import "../../style/cmps/chatPopup.css";
 import {
@@ -10,6 +9,7 @@ import {
 import { loadRooms } from "../../actions/ChatActions";
 import { loadUsers } from "../../actions/UserActions";
 import UserChatPopup from "./UserChatPopup";
+import ChatService from "../../services/ChatService";
 class UserChatList extends Component {
   state = {
     chats: null,
@@ -21,24 +21,11 @@ class UserChatList extends Component {
       ? this.props.chat.chatRooms
       : [];
   }
-  sortByKey = (array, key) => {
-    return array.sort(function (a, b) {
-      var x = a[key];
-      var y = b[key];
-      return x < y ? -1 : x > y ? 1 : 0;
-    });
-  };
+
   filterChatsByUser = () => {
     const { chatRooms } = this.props.chat;
-    const user = this.props.user;
     if (!chatRooms) return;
-    chatRooms.filter((room) => {
-      if (room) {
-        if (room.userA === user._id || room.userB === user._id) return true;
-      }
-    });
-
-    let sortedRooms = this.sortByKey(chatRooms, "lastUpdate");
+    let sortedRooms = ChatService.filterChatsByUser(chatRooms, this.props.user);
     return sortedRooms;
   };
   /// needs to get a Open Chat Array Obj

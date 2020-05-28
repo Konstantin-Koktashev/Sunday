@@ -49,20 +49,19 @@ class Chat extends Component {
       await this.startChat();
     }
   };
-
+  // Add A Msg popup
   newMessagePopup = () => {
     const { isOpen, newMessagesCount } = this.state;
     if (!isOpen) {
       this.setState({ newMessagesCount: newMessagesCount + 1 });
     }
   };
-
+  // Render A msg
   renderMessage = (msg) => {
     this.newMessagePopup();
     let author = "them";
     if (msg.msg.senderId === this.props.user._id) author = "me";
     msg.msg.author = author;
-    console.log("this private msg", msg.msg);
     this.setState({
       messageList: [...this.state.messageList, msg.msg],
     });
@@ -84,13 +83,14 @@ class Chat extends Component {
     const { id, type } = this.props.userState.chatWith;
     if (!room) {
       console.log("Creating Chat Room");
-      let chatRoom = {
-        chatRoomId: ChatService.getRoomKey(this.props.userState.chatWith), //Sort function
-        roomHistory: this.state.messageList,
-        userA: id.myId,
-        userB: id.toUserId,
-        type,
-      };
+      // create new room
+      let chatRoom = ChatService.createNewRoom(
+        this.props.userState.chatWith,
+        this.state.messageList,
+        id,
+        type
+      );
+
       // Send to server
       this.props.saveRoom(chatRoom);
 
@@ -98,37 +98,17 @@ class Chat extends Component {
     } else {
       // Else Take the room History And render on chat
       await this.props.setCurrChatRoom(room);
-
-      let chatMsgsByUser = this.props.currChatRoom.roomHistory.map((msg) => {
-        console.log("Chat @@@@@@@@@@@@@@ -> startChat -> msg", msg);
-        let author = "them";
-        if (msg && msg.senderId === this.props.user._id) {
-          author = "me";
-        } else {
-          let isSeen = false;
-          msg.data.isSeen.forEach((seenUser) => {
-            if (this.props.user._id === seenUser._id) isSeen = true;
-          });
-          if (!isSeen) {
-            this.newMessagePopup();
-            msg.data.isSeen.push(this.props.user);
-          }
-        }
-
-        author = "me";
-        msg.author = author;
-        return msg;
-      });
       let chatRoom = this.props.currChatRoom;
+      let chatMsgsByUser = ChatService.chatMsgByUser(chatRoom, this.props.user);
+      // Add Sorted Msgs by User to the room history
       chatRoom.roomHistory = chatMsgsByUser;
       await this.props.saveRoom(chatRoom);
-      console.log("Chat -> startChat -> chatMsgsByUser", chatMsgsByUser);
       this.setState({
         messageList: chatMsgsByUser,
         chatRoom: this.props.currChatRoom,
       });
     }
-
+    // Add Socket Listeners And Join rooms by type
     if (type === "private") {
       SocketService.emit("join_private_room", this.props.userState.chatWith);
       SocketService.on("private_room_new_msg", this.renderMessage);
@@ -137,6 +117,8 @@ class Chat extends Component {
       SocketService.on("board_room_new_msg", this.renderMessage);
     }
   };
+
+  // Capitilize First letter
   capitalize = (s) => {
     if (typeof s !== "string") return "";
     return s.charAt(0).toUpperCase() + s.slice(1);
@@ -154,7 +136,7 @@ class Chat extends Component {
       messageList: [...this.state.messageList, message],
     });
 
-    let { type, id } = this.props.userState.chatWith;
+    let { type } = this.props.userState.chatWith;
     let chatWith = this.props.userState.chatWith;
     chatWith.msg = message;
     if (type === "private") {
@@ -193,19 +175,12 @@ class Chat extends Component {
       newMessagesCount: 0,
     });
   }
-
+  // Get Correct User to show
   getUser = (chatWith) => {
     if (!chatWith) return;
-    const { board } = this.props;
-    if (chatWith.type === "board") {
-      let data = {};
-      data.username = "Board Chat: " + board.name;
-      return data;
-    } else {
-      let users = this.props.users;
-      let user = users.find((user) => user._id === chatWith.id.toUserId);
-      return user;
-    }
+    const { board, users } = this.props;
+    let user = ChatService.getUser(chatWith, board, users);
+    return user;
   };
   _handleClick() {
     console.log("TOGGLING CHAT");
