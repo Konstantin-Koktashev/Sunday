@@ -79,7 +79,7 @@
   width: 5vw;
   cursor: pointer;
   height: 4vh;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .box-div:hover {

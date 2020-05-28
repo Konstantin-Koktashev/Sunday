@@ -12,7 +12,7 @@
   font-size: 30px;
   /* letter-spacing: 1px; */
   align-self: flex-start;
-  margin-top: 25px;
+  margin-top: 15px;
   margin-left: 70px;
 }
 
@@ -49,6 +49,8 @@
   font-size: 12px;
   text-align: center;
   padding: 0px 10px;
+  margin-bottom: -3vh;
+  margin-right: 20px;
 }
 .add-group-btn:hover {
   background-color: #21b0f8;
@@ -56,20 +58,20 @@
 
 .header-remove-board {
   /* width: 7vw; */
-  text-align: center;
-  height: 4vh;
-  background-color: #00a8ff;
-  cursor: pointer;
-  color: white;
-  border-radius: 20px;
-  font-size: 12px;
-  border: none;
-  margin-left: 3px;
-  padding: 0px 15px;
+  /* text-align: center;
+  height: 4vh; */
+  /* background-color: #00a8ff; */
+  /* cursor: pointer;
+  color: white; */
+  /* border-radius: 20px; */
+  /* font-size: 12px;
+  border: none; */
+  /* margin-left: 3px;
+  padding: 0px 15px; */
 }
 
 .header-remove-board:hover {
-  background-color: #21b0f8;
+  /* background-color: #21b0f8; */
 }
 
 .toggle-chart-btn {
@@ -95,5 +97,49 @@
 .add-user-toboard {
   width: 10vw;
   padding: 20px;
-  background-color: grey;
+  /* background-color: grey; */
+}
+
+.more-options-container {
+  /* height: 40vh; */
+  width: 10vw;
+  position: fixed;
+  background-color: white;
+  right: 4vw;
+  top: 8vh;
+  z-index: 9000000;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.75);
+}
+
+.more-options-container > * {
+  border-bottom: 1px solid grey;
+  padding: 10px 0px;
+  /* margin-top: 20px;00 */
+  padding-top: 10px;
+  cursor: pointer;
+}
+.more-options-container > *:hover {
+  background-color: rgba(128, 128, 128, 0.562);
+}
+
+.dots-board-header {
+  position: fixed;
+  top: 1vh;
+  right: 2vw;
+}
+
+.dots-board-header img {
+  width: 50px;
+  height: 50px;
+}
+
+.filter-add-container {
+  width: 25vw;
+  margin-bottom: -50px;
+  align-self: end;
+}
+
+.view-select-box {
+  margin-right: -110px;
 }

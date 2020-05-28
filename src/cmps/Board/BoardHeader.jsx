@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import ConfirmDialog from "../Board/ConfirmDialog";
 import SelectCmp from "../SelectCmp";
 import moment from "moment";
+import dots from "../../style/img/dots.png";
 import UserList from "../UserList";
 
 export default function BoardHeader(props) {
@@ -28,13 +29,14 @@ export default function BoardHeader(props) {
               ).fromNow()} */}
           </span>
         </div>
-
-        <SelectCmp
-          handleChange={props.toggleChart}
-          name={"viewType"}
-          label={"Select Table"}
-          options={["board", "pie", "radar"]}
-        />
+        <div className="view-select-box">
+          <SelectCmp
+            handleChange={props.toggleChart}
+            name={"viewType"}
+            label={"Select Table"}
+            options={["board", "pie", "radar"]}
+          />
+        </div>
       </div>
 
       {/* <h2> {props.user.username}</h2> */}
@@ -45,19 +47,45 @@ export default function BoardHeader(props) {
       </button> */}
       <div className="flex col space-between">
         <div className="flex space-between">
+          <div className="dots-board-header">
+            <img
+              onClick={props.toggleMoreOptions}
+              title="More options"
+              className="side-nav-img"
+              src={dots}
+              alt="More options"
+            ></img>
+          </div>
+          {props.moreOptionsIsOpen && (
+            <>
+              <div
+                onClick={props.toggleAddUserToBoard}
+                className="back-screen-container"
+              >
+                {" "}
+              </div>
+              <div className="more-options-container flex col fade-in-editor">
+                <ConfirmDialog remove={confirmDelete} />
+
+                <div className="add-user-toboard">
+                  {props.addUserToBoard && (
+                    <UserList
+                      toggleAddUserToBoard={props.toggleAddUserToBoard}
+                    ></UserList>
+                  )}
+                  <div onClick={props.toggleAddUserToBoard}>
+                    Invite your team
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+        <div className="filter-add-container flex a-center">
           <AddGroup board={props.board}></AddGroup>
 
-          <ConfirmDialog remove={confirmDelete} />
+          <FilterByText currBoard={props.board} />
         </div>
-        <div className="add-user-toboard">
-          {props.addUserToBoard && (
-            <UserList
-              toggleAddUserToBoard={props.toggleAddUserToBoard}
-            ></UserList>
-          )}
-          <button onClick={props.toggleAddUserToBoard}>ADD USR TO BOARD</button>
-        </div>
-        <FilterByText currBoard={props.board} />
       </div>
     </div>
   );

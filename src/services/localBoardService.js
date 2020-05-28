@@ -37,7 +37,8 @@ export default {
     removeTaskFromGroup,
     addTaskToGroup,
     removeLabel,
-    addLikeMsg
+    addLikeMsg,
+    changeGroupColor
 }
 
 function addUpdateMsg(board, update, msg) {
@@ -382,6 +383,11 @@ function filter(board, text) {
 
 function addTaskToGroup(board, group, task) {
     group.tasks.push(task)
+    return board
+}
+
+function changeGroupColor(board, group, color) {
+    group.color = color
     return board
 }
 
