@@ -10,12 +10,8 @@
 @import "./cmps/PersonComponent.css";
 @import "./cmps/labelColors.css";
 @import "./cmps/dialog.css";
-
-<<<<<<< HEAD
 @import "./cmps/gridTry.css";
 
-=======
->>>>>>> dfa47d6595245323c852e9bbe171d05f6c023bca
 h2 {
   font-size: 16px;
 }
