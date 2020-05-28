@@ -10,7 +10,8 @@ export default {
     remove,
     update,
     uploadImg,
-    getOnline
+    getOnline,
+    isOnline
 }
 
 function getOnline() {
@@ -73,4 +74,12 @@ function uploadImg(ev, user) {
         })
         .then(user => update(user))
         .catch(err => console.error(err))
+}
+
+function isOnline(user, onlineUsers) {
+
+    onlineUsers.find(onlineUser => {
+        if (onlineUser._id === user._id) return onlineUser
+    })
+
 }

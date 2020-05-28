@@ -25,6 +25,23 @@ html {
   padding: 0px;
   /* margin-top: -20px; */
 }
+
+.online {
+  background-color: green;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.offline {
+  background-color: #718093;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-top: -20px;
+  position: relative;
+  z-index: 4000;
+}
 .bgc-black {
   background-color: rgb(41, 47, 76);
   position: fixed;

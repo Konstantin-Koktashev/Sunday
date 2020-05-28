@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { loadBoards } from '../actions/BoardActions'
 import WeekPreview from '../cmps/WeekPreview'
+import coffe from '../../src/style/img/coffe.png'
 class MyWeek extends Component {
     state = {
         openTasks: [],
@@ -44,7 +45,7 @@ class MyWeek extends Component {
         this.setState({ openTasks, closeTasks })
     }
     render() {
-        const user = this.props.user ? this.props.user.name : 'guest - please login to view your week'
+        const user = this.props.user ? this.props.user.username : 'guest - please login to view your week'
         const { closeTasks, openTasks } = this.state
         if (!openTasks.length && !closeTasks.length) return (
             <>
@@ -61,10 +62,13 @@ class MyWeek extends Component {
 
             <>
                 <div className="myweek-container">
-                    <div className="header-container-myweek">
-                        <h3>Wellcome {user}</h3>
+                    <div className="header-container-myweek flex a-center">
+                        <img src={coffe}></img>
+                        <h3>Hey {user} Welcome to My Week</h3>
                     </div>
+                    <p>   {openTasks && openTasks.length > 0 ? 'You have open items' : 'No open items..\n Guess you can take a Day off'}</p>
                     <section className="my-week">
+
                         {openTasks && openTasks.length > 0 && <h3>Open Tasks</h3>}
                         {openTasks && openTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
                     </section>
