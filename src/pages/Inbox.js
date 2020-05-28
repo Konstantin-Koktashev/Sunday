@@ -14,6 +14,8 @@ import TimeLineTest from '../cmps/TimeLineTest';
 import { loadUsers } from '../actions/UserActions'
 import { NavLink } from 'react-router-dom';
 import LocalBoardService from '../services/LocalBoardService.js';
+import SmallImg from "../cmps/SmallImg";
+
 
 
 class Inbox extends Component {
@@ -67,6 +69,12 @@ class Inbox extends Component {
             })
             if (!isSeen) filtertedUpdates.push(update)
         })
+        
+        filtertedUpdates.sort(function compare(a, b) {
+            var dateA = new Date(a.timeStamp);
+            var dateB = new Date(b.timeStamp);
+            return dateB - dateA;
+        });
         this.setState({ filtertedUpdates })
         return Promise.resolve()
     }
@@ -119,6 +127,14 @@ class Inbox extends Component {
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
         await this.saveAndUpdate(newBoard)
     }
+    likeUpdate = async (update, boardId) => {
+        const user = this.props.currUser
+        const board = this.findBoard(boardId)
+        debugger
+        const updateMsg = { msg: user, sendBy: this.props.currUser }
+        const newBoard = LocalBoardService.addLikeMsg(board, update, user)
+        await this.saveAndUpdate(newBoard)
+    }
 
 
 
@@ -128,13 +144,11 @@ class Inbox extends Component {
 
     }
     render() {
-
         let userHistory = this.state.filtertedUpdates
         const isHistory = (userHistory.length) ? true : false
         const isLoading = this.props.currBoard
         if (!this.props.currUser) return <h1>No Logged User . </h1>
         return (
-
             <div className='inbox-container'>
                 <h2>Inbox</h2>
                 {!isHistory && <h1 className="inbox-empty">Inbox Is Empty</h1>}
@@ -143,13 +157,14 @@ class Inbox extends Component {
                         <img className='complete-task' src={checkbox} onClick={() => { this.setUpdateAsSeen(update) }}></img>
                         <section className='history-header flex col a-start'>
                             <div className='user-logo'>
-                                <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>{update.user.username}</NavLink>
-
+                                <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
+                                    <SmallImg url={update.user.imgUrl}
+                                        name={update.user.username} ></SmallImg>{update.user.username}</NavLink>
                             </div>
-                            <div className='updating-user'>
+                            {/* <div className='updating-user'>
                                 {update.title}
 
-                            </div>
+                            </div> */}
                             <div className='history-origin'>
                                 <NavLink to={`/board/${update.boardId}`}>{update.boardName}</NavLink>
 
@@ -165,10 +180,19 @@ class Inbox extends Component {
 
                                 <button className='next-value-inbox' style={{ backgroundColor: `${update.nextColor}` }}>{update.nextValue}</button>
                             </div>
+                            <section className='likes'>
+                                { update.likes &&update.likes.length>0&& update.likes.map(like => {
+                                    
+                                    debugger
+                                  return( <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
+                                        <SmallImg type={'myweek'} 
+                                            name={like.username} ></SmallImg></NavLink>) 
+                                })}
+                            </section>
                         </section>
                         <section className='like-reply-btns'>
                             <button className='reply'>Reply</button>
-                            <button className='like'> Like</button>
+                            <button className='like' onClick={() => { this.likeUpdate(update, update.boardId) }}> Like</button>
                         </section>
                         <section className='task-reply-btns'>
                             <button className='great-job' onClick={() => this.sendGreatJob(update, update.boardId)}>Great Job!</button>

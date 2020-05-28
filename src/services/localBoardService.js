@@ -36,7 +36,8 @@ export default {
     addUpdateMsg,
     removeTaskFromGroup,
     addTaskToGroup,
-    removeLabel
+    removeLabel,
+    addLikeMsg
 }
 
 function addUpdateMsg(board, update, msg) {
@@ -306,7 +307,7 @@ function _getIdxById(boardId) {
 }
 
 function addBoardHistory(board, updateInfo) {
-    const { user, group, task, column, nextValue, updateType, seenBy, color } = updateInfo
+    const { user, group, task, column, nextValue, updateType, seenBy, color,likes } = updateInfo
     const prevValue = column ? column.value : ''
     const boardId = board._id
     const update = {
@@ -325,7 +326,8 @@ function addBoardHistory(board, updateInfo) {
         seenBy: [],
         messeges: [],
         prevColor: (column) ? column.color : '',
-        nextColor: (color) ? color : ''
+        nextColor: (color) ? color : '',
+        likes: []
     }
     board.history.unshift(update)
     return board
@@ -339,6 +341,10 @@ function removeFromHistory(board, taskId, currUserId) {
         board.history.splice(historyIdx, 1)
     })
     return board
+}
+function addLikeMsg(board,update,user){
+update.likes.push(user)
+return board
 }
 
 

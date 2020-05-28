@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadBoards } from "../actions/BoardActions";
+import { loadBoards, saveBoard } from "../actions/BoardActions";
 import { setChatType, loadUsers } from "../actions/UserActions";
 import moment from "moment";
 import "../style/cmps/userList.css";
@@ -40,6 +40,12 @@ class UserList extends Component {
     await this.props.setCurrChatRoom(room);
     await this.props.setChatType(chatWith);
   };
+  addUserToBoard=async(user)=>{
+    const board=this.state.currBoard
+    board.users.push(user)
+    await this.props.saveBoard(board)
+    this.props.loadBoards()
+  }
 
   render() {
     return (
@@ -60,6 +66,7 @@ class UserList extends Component {
         {this.UserFilter().map((user, idx) => {
           return (
             <div className="user-search-bar flex a-center">
+              <button onClick={(user)=>this.addUserToBoard(user)}></button>
               <NavLink className=" flex" to={`/profile/${user._id}`}>
                 <div
                   className="user-preview-circle-column"
@@ -96,6 +103,7 @@ const mapStateToProps = (state) => ({
   users: state.user.users,
   loggedInUser: state.user.loggedInUser,
   chat: state.chat,
+  currBard:state.userBoards.currBoard
 });
 
 const mapDispatchToProps = {
@@ -104,6 +112,7 @@ const mapDispatchToProps = {
   setChatType,
   setCurrChatRoom,
   loadRooms,
+  saveBoard
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
