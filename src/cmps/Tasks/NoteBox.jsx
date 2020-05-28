@@ -28,5 +28,5 @@ const mapDispatchToProps = {
     saveBoard,
 }
 
-export default connect( mapDispatchToProps)(NoteBox)
+export default connect(null, mapDispatchToProps)(NoteBox)
 

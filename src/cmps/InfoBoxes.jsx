@@ -14,9 +14,15 @@ class InfoBoxes extends React.Component {
         this.getBoxesToRender()
     }
     getBoxesToRender = () => {
-        debugger
         const task = this.props.task
-        const boxesToRender = [...task.notes, ...task.files]
+        let boxesToRender
+        if (!task.files || !task.files.length) {
+            boxesToRender = [...task.notes]
+        }
+        else {
+            boxesToRender = [...task.notes, ...task.files]
+        }
+        // const boxesToRender = [...task.notes, ...task.files]
         boxesToRender.sort(function compare(a, b) {
             var dateA = new Date(a.timeStamp);
             var dateB = new Date(b.timeStamp);
@@ -35,18 +41,17 @@ class InfoBoxes extends React.Component {
 
     }
     openNoteBox = () => {
-        debugger;
-        this.setState({isNoteBoxShown: true})
+        this.setState({ isNoteBoxShown: true })
     }
     addNoteToTask = async (e, txt) => {
         e.preventDefault()
+        debugger
         const task = this.props.task
-        const currBoard = this.props.CurrBoard
+        const currBoard = this.props.currBoard
         const noteWithTimeStamp = { type: 'note', txt, timeStamp: Date.now() }
         task.notes.unshift(noteWithTimeStamp)
         this.getBoxesToRender()
         await this.props.saveBoard(currBoard)
-        this.props.loadBoards()
         this.getBoxesToRender()
     }
     handleNoteChange = (e) => {
@@ -66,7 +71,7 @@ class InfoBoxes extends React.Component {
         }
     }
 
-  
+
     render() {
         const { boxesToRender } = this.state
         const isAddNoteShows = this.state.isNoteBoxShown
@@ -75,9 +80,9 @@ class InfoBoxes extends React.Component {
                 <div className='info-Boxes-btns'>
                     <button onClick={this.openNoteBox}>Add Note</button>
                     <h2>INFO BOXES PAGE</h2>
-                    {isAddNoteShows && <NoteBox></NoteBox>}
+                    {isAddNoteShows && <NoteBox task={this.props.task} addNoteToTask={this.addNoteToTask}></NoteBox>}
                 </div>
-                {boxesToRender && boxesToRender.map(box => {
+                {boxesToRender && boxesToRender.length && boxesToRender.map(box => {
                     return (<article className='info-box note'>
                         <h3>{box.type}</h3>
                         {box.txt}

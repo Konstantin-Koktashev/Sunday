@@ -52,9 +52,9 @@ class BoardApp extends React.Component {
     };
 
 
-    loadAndSetBoards = () => {
+    loadAndSetBoards =async () => {
         const boardId = this.props.currBoard._id
-        this.props.loadBoards()
+        await this.props.loadBoards()
         let board = this.getBoardByID(boardId)
         this.setBoard(board)
 
@@ -63,7 +63,7 @@ class BoardApp extends React.Component {
     componentWillUnmount() {
         SocketService.off('doRefresh', this.loadAndSetBoards)
     }
-    componentDidUpdate(prevProps) {
+    async componentDidUpdate(prevProps) {
 
 
         if (this.props.match.params.id !== prevProps.match.params.id) {
@@ -71,7 +71,7 @@ class BoardApp extends React.Component {
             this.setBoard(board)
         }
         if (JSON.stringify(this.props.currBoard) !== JSON.stringify(prevProps.currBoard)) {
-            this.loadboards()
+         await   this.loadboards()
         }
 
     }
