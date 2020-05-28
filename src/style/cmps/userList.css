@@ -1,6 +1,6 @@
 .user-list-container {
   width: 70vw;
-  height: 70vh;
+  /* height: 70vh; */
   position: fixed;
   left: 20vw;
   top: 15vh;
@@ -8,11 +8,23 @@
   z-index: 90000;
   background-color: rgb(209, 209, 209);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.41);
+  min-height: 70vh;
+  max-height: 80vh;
 }
 
 .user-list-topbar {
   justify-self: start;
   margin-bottom: 20px;
+}
+
+.user-list-container h2 {
+  color: rgba(0, 0, 0, 0.534);
+}
+.user-search-bar span {
+  margin-left: 15px;
+  margin-top: -0px;
+  width: 15vw;
+  text-align: start;
 }
 
 #root
@@ -35,10 +47,12 @@
 }
 .user-search-bar a {
   text-decoration: none;
-  color: blue;
+  color: rgba(129, 129, 129, 0.699);
 }
 
 .user-search-bar p {
-  margin-left: 10px;
+  margin-left: 20px;
   margin-top: 0px;
+  width: 20vw;
+  text-align: left;
 }

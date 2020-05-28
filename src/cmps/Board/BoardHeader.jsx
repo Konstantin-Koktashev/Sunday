@@ -22,9 +22,10 @@ export default function BoardHeader(props) {
           <h2>{board.name} -</h2>
 
           <span>
-            {moment(
-              board.history[board.history.length - 1].timeStamp
-            ).fromNow()}
+            {/* {board.history[board.history.length - 1].timeStamp &&
+              moment(
+                board.history[board.history.length - 1].timeStamp
+              ).fromNow()} */}
           </span>
         </div>
 

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loadBoards } from "../actions/BoardActions";
-import { loadUsers } from "../actions/UserActions";
+import { setChatType, loadUsers } from "../actions/UserActions";
 import moment from "moment";
 import "../style/cmps/userList.css";
 import { NavLink } from "react-router-dom";
-
+import { setCurrChatRoom, loadRooms } from "../actions/ChatActions";
 import FilterByText from "../cmps/Filters/FilterByText";
+import ChatService from "../services/ChatService";
+import chat from "../style/img/chat.png";
 
 class UserList extends Component {
   state = {
@@ -26,7 +28,19 @@ class UserList extends Component {
     });
     return filteredUsers;
   };
-  componentDidMount() {}
+  setPrivateChat = async (myId, toUserId) => {
+    let chatWith = {
+      id: { myId, toUserId },
+      type: "private",
+    };
+
+    await this.props.loadRooms();
+    let allMsgs = this.props.chat.chatRooms;
+    let room = ChatService.getRoomById(chatWith, allMsgs);
+    await this.props.setCurrChatRoom(room);
+    await this.props.setChatType(chatWith);
+  };
+
   render() {
     return (
       <div className="user-list-container flex col  j-center">
@@ -53,6 +67,18 @@ class UserList extends Component {
                   {user.username.charAt(0).toUpperCase()}
                 </div>
                 <p>{user.username}</p>
+                <span>Seen {moment(user.lastSeen).fromNow()}</span>
+
+                <div className="task-bar-icon">
+                  <img
+                    onClick={() =>
+                      this.setPrivateChat(this.props.loggedInUser._id, user._id)
+                    }
+                    src={chat}
+                    alt="Chat"
+                    title="Click to Chat"
+                  />
+                </div>
               </NavLink>
             </div>
           );
@@ -64,11 +90,16 @@ class UserList extends Component {
 
 const mapStateToProps = (state) => ({
   users: state.user.users,
+  loggedInUser: state.user.loggedInUser,
+  chat: state.chat,
 });
 
 const mapDispatchToProps = {
   loadBoards,
   loadUsers,
+  setChatType,
+  setCurrChatRoom,
+  loadRooms,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
