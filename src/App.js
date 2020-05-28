@@ -30,12 +30,17 @@ class App extends React.Component {
     chatWith: null
   }
   async componentDidMount() {
+    SocketService.setup()
     if (!this.props.currUser) {
       console.log('YOU ARE NPOT LOGGED IN I GO LOGGIN')
       history.push('/login/')
+    } else {
+
+      SocketService.emit('login', this.props.currUser)
+      console.log('SOCKET SERVICE: LOGIN')
     }
 
-    SocketService.setup()
+
     await this.props.loadUsers()
     await this.props.loadBoards()
     const { boards } = this.props

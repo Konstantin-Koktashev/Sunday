@@ -84,7 +84,7 @@ class RadarChart extends React.Component {
           "#00A8FF",
           "#E7E9ED",
         ],
-        label: "My dataset", // for legend
+        label: "Board Statistics", // for legend
       },
     ];
 
@@ -97,7 +97,6 @@ class RadarChart extends React.Component {
         <div className="doughnut flex col">
           <Radar data={this.state} />
         </div>
-        <h2>HEY IM GOOD STUF TO TYPE</h2>
       </div>
     );
   }
