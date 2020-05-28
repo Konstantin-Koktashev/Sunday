@@ -136,7 +136,7 @@ class TaskList extends Component {
             </div>
           </div>
         )}
-        <ProgressBar group={this.props.group}></ProgressBar>
+        {/* <ProgressBar group={this.props.group}></ProgressBar> */}
       </div>
     );
   }
