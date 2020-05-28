@@ -70,6 +70,8 @@ class Chat extends Component {
     /// Update data Messegae
   };
   startChat = async () => {
+    this.setState({ newMessagesCount: 0 });
+
     if (!this.props.userState.chatWith) return;
     // Get The room By Id// will return null if it didnt found
     await this.props.loadRooms();
@@ -100,10 +102,26 @@ class Chat extends Component {
       let chatMsgsByUser = this.props.currChatRoom.roomHistory.map((msg) => {
         console.log("Chat @@@@@@@@@@@@@@ -> startChat -> msg", msg);
         let author = "them";
-        if (msg && msg.senderId === this.props.user._id) author = "me";
+        if (msg && msg.senderId === this.props.user._id) {
+          author = "me";
+        } else {
+          let isSeen = false;
+          msg.data.isSeen.forEach((seenUser) => {
+            if (this.props.user._id === seenUser._id) isSeen = true;
+          });
+          if (!isSeen) {
+            this.newMessagePopup();
+            msg.data.isSeen.push(this.props.user);
+          }
+        }
+
+        author = "me";
         msg.author = author;
         return msg;
       });
+      let chatRoom = this.props.currChatRoom;
+      chatRoom.roomHistory = chatMsgsByUser;
+      await this.props.saveRoom(chatRoom);
       console.log("Chat -> startChat -> chatMsgsByUser", chatMsgsByUser);
       this.setState({
         messageList: chatMsgsByUser,
@@ -126,8 +144,11 @@ class Chat extends Component {
   //Sending message
   _onMessageWasSent = async (message) => {
     message.senderId = this.props.user._id;
+    let user = this.props.user;
     let capName = this.capitalize(this.props.user.username);
     message.data.name = "" + capName + ":";
+    message.data.isSeen = [];
+    message.data.isSeen.push(user);
     console.log("send msg : ", message);
     this.setState({
       messageList: [...this.state.messageList, message],

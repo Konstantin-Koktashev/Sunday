@@ -83,7 +83,7 @@
 }
 
 .box-div:hover {
-  border-left: 1px dotted #74747486;
+  /* border-left: 1px dotted #74747486; */
 }
 
 .task-bar-columns-container img {
