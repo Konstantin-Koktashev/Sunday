@@ -84,7 +84,10 @@ class TaskList extends Component {
                   title="Toggle Group"
                 />
                 {!this.state.groupNameIsEdit ? (
-                  <h2 onClick={(ev) => this.toggleEdit(ev)}>
+                  <h2
+                    onClick={(ev) => this.toggleEdit(ev)}
+                    style={{ color: `${this.props.group.color}` }}
+                  >
                     {this.props.name}
                     <img
                       className="pencil-svg"
@@ -95,15 +98,17 @@ class TaskList extends Component {
                     />
                   </h2>
                 ) : (
-                  <form>
-                    <input
-                      type="text"
-                      name="groupName"
-                      value={this.state.groupName}
-                      onChange={(ev) => this.handleChange(ev)}
-                      onBlur={(ev) => this.updateGroupName(ev)}
-                    />
-                  </form>
+                  <>
+                    <form>
+                      <input
+                        type="text"
+                        name="groupName"
+                        value={this.state.groupName}
+                        onChange={(ev) => this.handleChange(ev)}
+                        onBlur={(ev) => this.updateGroupName(ev)}
+                      />
+                    </form>
+                  </>
                 )}
               </div>
               <div className="task-box-list-container">
@@ -130,6 +135,7 @@ class TaskList extends Component {
                   updateTaskName={this.updateTaskName}
                   handleChangeTask={this.handleChangeTask}
                   taskNameIsEdit={this.state.taskNameIsEdit}
+                  group={this.props.group}
                 />
               ))}
 

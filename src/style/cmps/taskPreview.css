@@ -27,6 +27,7 @@
 
 .title-box h2:hover {
   outline: 1px dotted #74747486;
+  padding-right: 20vw;
   /* width: 5vw; */
   /* margin-left: 20px; */
   background-color: rgba(255, 255, 255, 0.445);
@@ -39,11 +40,11 @@
   padding: 10px 20px;
   margin: 0px;
   /* height: 5vh; */
-  margin-left: 2vw;
-  font-size: 14px;
+  margin-left: 1vw;
+  font-size: 12px;
   width: 10vw;
   white-space: nowrap;
-  overflow: hidden;
+  /* overflow: hidden; */
   /* text-overflow: ellipsis; */
 }
 
@@ -166,7 +167,7 @@
   border: none;
   /* margin-left: 40px; */
   background-color: rgba(245, 245, 245, 0.322);
-  font-size: 14px;
+  font-size: 12px;
   outline: 1px dotted #74747486;
   /* padding: 0px 20px; */
   margin-left: 2vw;

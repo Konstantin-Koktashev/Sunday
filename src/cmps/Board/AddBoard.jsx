@@ -6,6 +6,7 @@ import LocalBoardService from "../../services/LocalBoardService";
 import add from "../../../src/style/img/add.png";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
+import randomColor from "randomcolor";
 
 import FormDialog from "../Board/FormDialog";
 
@@ -248,7 +249,10 @@ class AddBoard extends Component {
               files: [],
             },
           ], // Task object
-          color: "blue",
+          color: randomColor({
+            luminosity: "light",
+            format: "rgba", // e.g. 'rgba(9, 1, 107, 0.6482447960879654)'
+          }),
           lastUpdatedAt: "",
         },
       ],
@@ -263,6 +267,7 @@ class AddBoard extends Component {
   };
 
   addBoard = async (value) => {
+    console.log("thisstaetaddboard", this.state);
     console.log("Adding a Board!");
     let addBoard = this.state.board;
     addBoard.name = value;

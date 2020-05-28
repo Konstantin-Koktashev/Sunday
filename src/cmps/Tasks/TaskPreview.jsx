@@ -127,6 +127,10 @@ class TaskPreview extends Component {
               title="Delete Task"
               onClick={() => this.props.deleteTask(task)}
             />
+            <div
+              className="little-box"
+              style={{ backgroundColor: `${this.props.group.color}` }}
+            ></div>
             {!this.state.taskNameIsEdit ? (
               <>
                 <h2 onClick={(ev, props) => this.toggleTaskEdit(ev)}>
