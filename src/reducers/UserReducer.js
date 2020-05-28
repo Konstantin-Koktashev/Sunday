@@ -5,6 +5,7 @@ const initialState = {
   loggedInUser: localLoggedinUser,
   users: [],
   chatWith: null,
+  onlineUsers: []
 
 };
 
@@ -28,6 +29,11 @@ export default function (state = initialState, action = {}) {
           if (user._id === action.newUser._id) return action.newUser
           return user
         })
+      }
+    case 'SET_ONLINE':
+      return {
+        ...state,
+        onlineUsers: action.users
       }
     default:
       return state;
