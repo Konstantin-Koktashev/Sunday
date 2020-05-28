@@ -54,9 +54,6 @@ export default function SelectCmp(props) {
           value={age}
           onChange={handleChange}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
           {props.options.map((opt, idx) => (
             <MenuItem key={idx} value={opt}>{`${
               opt.charAt(0).toUpperCase() + opt.substring(1)
