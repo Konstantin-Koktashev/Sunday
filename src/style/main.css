@@ -11,8 +11,11 @@
 @import "./cmps/labelColors.css";
 @import "./cmps/dialog.css";
 
+<<<<<<< HEAD
 @import "./cmps/gridTry.css";
 
+=======
+>>>>>>> dfa47d6595245323c852e9bbe171d05f6c023bca
 h2 {
   font-size: 16px;
 }
@@ -27,6 +30,23 @@ html {
   padding: 0px;
   /* margin-top: -20px; */
 }
+
+.online {
+  background-color: green;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.offline {
+  background-color: #718093;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-top: -20px;
+  position: relative;
+  z-index: 4000;
+}
 .bgc-black {
   background-color: rgb(41, 47, 76);
   position: fixed;
@@ -37,7 +57,11 @@ html {
   /* animation: 1s bgc-black linear both; */
   z-index: 0;
 }
-
+.chart-container {
+  height: 40vh;
+  width: 60vw;
+  margin-left: 30vw;
+}
 @keyframes bgc-black {
   0% {
   }
@@ -54,7 +78,7 @@ html {
   /* background-color: #292f4c; */
 }
 .doughnut {
-  width: 70vw;
+  /* width: 70vw; */
   margin: 0 auto;
   height: 70vh;
   padding-bottom: 12vh;

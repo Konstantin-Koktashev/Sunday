@@ -65,7 +65,7 @@ class SideNav extends React.Component {
             ></img>
           </div>
         </NavLink>
-        {this.props.userState.loggedInUser && (
+        {/* {this.props.userState.loggedInUser && (
           <img
             src={logout}
             alt="Logout"
@@ -73,7 +73,7 @@ class SideNav extends React.Component {
             className="logout side-nav-img"
             title={"Logout"}
           />
-        )}
+        )} */}
 
         <NavLink to={`/profile/${this.props.user._id}`}>
           <div className="search">

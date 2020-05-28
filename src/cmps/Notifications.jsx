@@ -70,14 +70,12 @@ class Notifications extends Component {
     const { notifications } = this.state;
     return (
       <>
+        <div
+          className="close-notifications"
+          onClick={this.props.toggleNotifications}
+        ></div>
         <div className="notifications-container">
           <div>
-            <div
-              className="close-notifications"
-              onClick={this.props.toggleNotifications}
-            >
-              Exit
-            </div>
             <h2>Notifications</h2>
             <div className="">
               {notifications &&
@@ -90,7 +88,10 @@ class Notifications extends Component {
                           url={update.user.imgUrl}
                           name={update.user.username}
                         />
-                        <NavLink to={`/profile/${update.user._id}`}>
+                        <NavLink
+                          onClick={this.props.toggleNotifications}
+                          to={`/profile/${update.user._id}`}
+                        >
                           {update.user.username}
                         </NavLink>
                         <p className="update-card-action">

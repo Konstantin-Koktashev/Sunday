@@ -20,6 +20,18 @@ export function loadUsers() {
     }
   };
 }
+
+export function loadOnlineUsers() {
+  return async dispatch => {
+    try {
+      const users = await UserService.getOnline()
+      console.log("loadOnlineUsers -> users", users)
+      dispatch({ type: 'SET_ONLINE', users })
+    } catch (err) {
+      console.log('failed to get online users', err)
+    }
+  }
+}
 // THUNK
 export function removeUser(userId) {
   return async dispatch => {

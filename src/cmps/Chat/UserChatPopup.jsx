@@ -13,7 +13,7 @@ class UserChatPopup extends Component {
   state = {};
 
   makeRight = (idx) => {
-    let right = idx * 6 + 12;
+    let right = idx * 5 + 7;
     return right;
   };
 

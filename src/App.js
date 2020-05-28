@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Switch, Route } from 'react-router';
 import { connect } from 'react-redux'
-import { loadUsers } from './actions/UserActions'
+import { loadUsers, loadOnlineUsers } from './actions/UserActions'
 import { loadBoards, setCurrBoard } from './actions/BoardActions'
 import history from './history';
 import './App.css';
@@ -30,14 +30,23 @@ class App extends React.Component {
     chatWith: null
   }
   async componentDidMount() {
+    SocketService.setup()
+
+
     if (!this.props.currUser) {
       console.log('YOU ARE NPOT LOGGED IN I GO LOGGIN')
       history.push('/login/')
+    } else {
+
+      SocketService.emit('login', this.props.currUser)
+      console.log('SOCKET SERVICE: LOGIN')
+
     }
 
-    SocketService.setup()
+
     await this.props.loadUsers()
     await this.props.loadBoards()
+    await this.props.loadOnlineUsers()
     const { boards } = this.props
     if (boards && boards.length > 0) {
 
@@ -140,11 +149,13 @@ const mapStateToProps = (state) => ({
   currUser: state.user.loggedInUser,
   board: state.userBoards.currBoard,
   boards: state.userBoards.board,
-  chatWith: state.user.chatWith
+  chatWith: state.user.chatWith,
+  onlineUsers: state.user.onlineUsers
 });
 const mapDispatchToProps = {
   loadUsers,
   loadBoards,
-  setCurrBoard
+  setCurrBoard,
+  loadOnlineUsers
 };
 export default connect(mapStateToProps, mapDispatchToProps)(App);
