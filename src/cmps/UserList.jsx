@@ -44,6 +44,10 @@ class UserList extends Component {
   render() {
     return (
       <div className="user-list-container flex col  j-center">
+        <div
+          onClick={this.props.toggleAddUserToBoard}
+          className="back-screen-container"
+        ></div>
         <div className="user-list-topbar flex col a-center j-center">
           <h2>Search Users</h2>
 

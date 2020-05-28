@@ -50,7 +50,11 @@ export default function BoardHeader(props) {
           <ConfirmDialog remove={confirmDelete} />
         </div>
         <div className="add-user-toboard">
-          {props.addUserToBoard && <UserList></UserList>}
+          {props.addUserToBoard && (
+            <UserList
+              toggleAddUserToBoard={props.toggleAddUserToBoard}
+            ></UserList>
+          )}
           <button onClick={props.toggleAddUserToBoard}>ADD USR TO BOARD</button>
         </div>
         <FilterByText currBoard={props.board} />
