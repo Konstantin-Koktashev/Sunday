@@ -57,7 +57,6 @@ export class BoardNav extends Component {
             <div className="board-list flex col">
               {this.props.boards && !this.props.boards.length ? (
                 <div className="board-nav-container">
-                  <AddBoard></AddBoard>
                   <h3>No Boards :('</h3>
                 </div>
               ) : (

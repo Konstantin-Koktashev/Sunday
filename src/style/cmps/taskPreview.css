@@ -1,9 +1,10 @@
 .task-bar {
   /* width: 71.5vw; */
-  border-radius: 6px;
-  border: 1px solid rgba(119, 119, 119, 0.199);
+  border-radius: 2px;
+  /* border: 1px solid rgb(255, 255, 255); */
+  border-bottom: 1px solid #e6e9ef;
   padding: 0px 2px;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
   background-color: #dfe6e957;
   height: 4vh;
 }
@@ -54,7 +55,7 @@
 }
 
 .task-bar-columns-container p {
-  border-left: 1px solid rgba(119, 119, 119, 0.356);
+  border-left: 1.5px solid rgb(255, 255, 255);
   padding: 0px 5px;
   margin: 0px;
   text-align: center;
@@ -67,7 +68,7 @@
 }
 
 .box-div {
-  border-left: 1px solid rgba(119, 119, 119, 0.356);
+  border-left: 1.5px solid rgb(255, 255, 255);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -121,10 +122,11 @@
 }
 
 .add-task-bar {
-  border-radius: 6px;
+  border-radius: 2px;
   border: 1px solid rgba(119, 119, 119, 0.199);
   /* padding: 0px 2px; */
   margin-bottom: 1px;
+  margin-top: 2px;
   background-color: #dfe6e957;
   height: 4vh;
   width: 71.5vw;

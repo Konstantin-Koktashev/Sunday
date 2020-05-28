@@ -113,12 +113,12 @@ class TaskPreview extends Component {
     const isInfoBoxShown = this.state.isInfoBoxShown;
     const { task } = this.props;
     return (
-      <div
-        className="task-bar flex j-start space-between"
-        onClick={this.toggleInfoBox}
-      >
+      <div className="task-bar flex j-start space-between">
         {isInfoBoxShown && <InfoBoxes task={task}></InfoBoxes>}
-        <div className="task-bar-title-container flex space-between a-center">
+        <div
+          onClick={this.toggleInfoBox}
+          className="task-bar-title-container flex space-between a-center"
+        >
           <div className="title-box flex  a-center">
             <img
               className="delete-icon"

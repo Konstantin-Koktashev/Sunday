@@ -33,7 +33,7 @@ class AddBoard extends Component {
         },
         {
           type: "label",
-          value: "Labels",
+          value: "",
           order: "3",
           color: "#C4C4C4",
         },
@@ -49,7 +49,7 @@ class AddBoard extends Component {
         },
         {
           type: "priority",
-          value: "Priority",
+          value: "",
           order: "6",
           color: "#C4C4C4",
         },
