@@ -24,4 +24,21 @@
   > div
   > div {
   margin-left: 20px;
+  /* margin-bottom: -20px; */
+}
+
+.user-search-bar {
+  width: 100%;
+  height: 3vh;
+  /* background-color: #fff; */
+  margin-bottom: 10px;
+}
+.user-search-bar a {
+  text-decoration: none;
+  color: blue;
+}
+
+.user-search-bar p {
+  margin-left: 10px;
+  margin-top: 0px;
 }

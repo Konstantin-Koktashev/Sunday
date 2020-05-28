@@ -4,7 +4,8 @@ import { loadBoards } from "../actions/BoardActions";
 import { loadUsers } from "../actions/UserActions";
 import moment from "moment";
 import "../style/cmps/userList.css";
-// moment().startOf(person.lastSeenAt).fromNow();
+import { NavLink } from "react-router-dom";
+
 import FilterByText from "../cmps/Filters/FilterByText";
 
 class UserList extends Component {
@@ -40,14 +41,19 @@ class UserList extends Component {
 
         {this.UserFilter().map((user, idx) => {
           return (
-            <div
-              className="user-preview-circle-column"
-              title={`${user.username} Last seen at ${moment(
-                user.lastSeen
-              ).fromNow()}`}
-              key={idx}
-            >
-              {user.username.charAt(0).toUpperCase()}
+            <div className="user-search-bar flex a-center">
+              <NavLink className=" flex" to={`/profile/${user._id}`}>
+                <div
+                  className="user-preview-circle-column"
+                  title={`${user.username} Last seen at ${moment(
+                    user.lastSeen
+                  ).fromNow()}`}
+                  key={idx}
+                >
+                  {user.username.charAt(0).toUpperCase()}
+                </div>
+                <p>{user.username}</p>
+              </NavLink>
             </div>
           );
         })}
