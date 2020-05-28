@@ -12,11 +12,13 @@ import {
   removeBoard,
   setCurrBoard,
 } from "../../actions/BoardActions";
+import InfoBoxes from "../InfoBoxes";
 
 class TaskPreview extends Component {
   state = {
     taskTitle: this.props.task.taskTitle,
     taskNameIsEdit: false,
+    isInfoBoxShown:false
   };
   componentDidMount() {
     // let SortedCols = matchTaskBoxToBoardColumns(props);
@@ -100,11 +102,16 @@ class TaskPreview extends Component {
       taskNameIsEdit: !taskNameIsEdit,
     }));
   };
+  toggleInfoBox=()=>{
+    this.setState({isInfoBoxShown:true})
+  }
 
   render() {
+  const  isInfoBoxShown=this.state.isInfoBoxShown
     const { task } = this.props;
     return (
-      <div className="task-bar flex j-start space-between">
+      <div className="task-bar flex j-start space-between" onClick={this.toggleInfoBox}>
+       {isInfoBoxShown&& <InfoBoxes task={task}></InfoBoxes>}
         <div className="task-bar-title-container flex space-between a-center">
           <div className="title-box flex  a-center">
             <img

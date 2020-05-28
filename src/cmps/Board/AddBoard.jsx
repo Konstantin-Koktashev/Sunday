@@ -141,15 +141,6 @@ class AddBoard extends Component {
                 },
               ], // updates objects
               notes: [
-                {
-                  name: "name",
-                  description: "value",
-                  user: {
-                    userName: "user1412",
-                    _id: "1",
-                  },
-                  lastUpdate: Date.now(),
-                },
               ], // Notes objects
               people: [],
               status: "new",
@@ -158,6 +149,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
+              files:[]
             },
             {
               _id: uuidv4(),
@@ -181,17 +173,7 @@ class AddBoard extends Component {
                   aboutUser: 1234,
                 },
               ], // updates objects
-              notes: [
-                {
-                  name: "name",
-                  description: "value",
-                  user: {
-                    userName: "user1412",
-                    _id: "1",
-                  },
-                  lastUpdate: Date.now(),
-                },
-              ], // Notes objects
+              notes: [   ], // Notes objects
               people: [],
               status: "new",
               priority: "urgent",
@@ -199,6 +181,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
+              files:[]
             },
             {
               _id: uuidv4(),
@@ -223,15 +206,7 @@ class AddBoard extends Component {
                 },
               ], // updates objects
               notes: [
-                {
-                  name: "name",
-                  description: "value",
-                  user: {
-                    userName: "user1412",
-                    _id: "1",
-                  },
-                  lastUpdate: Date.now(),
-                },
+               
               ], // Notes objects
               people: [],
               status: "new",
@@ -240,6 +215,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
+              files:[]
             },
             {
               _id: uuidv4(),
@@ -264,15 +240,7 @@ class AddBoard extends Component {
                 },
               ], // updates objects
               notes: [
-                {
-                  name: "name",
-                  description: "value",
-                  user: {
-                    userName: "user1412",
-                    _id: "1",
-                  },
-                  lastUpdate: Date.now(),
-                },
+             
               ], // Notes objects
               people: [],
               status: "new",
@@ -281,6 +249,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
+              files:[]
             },
           ], // Task object
           color: "blue",

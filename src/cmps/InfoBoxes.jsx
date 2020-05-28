@@ -1,18 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { saveBoard, loadBoards } from '../actions/BoardActions'
 import { connect } from 'react-redux'
 import NoteBox from './Tasks/NoteBox'
- class InfoBoxes extends Component {
+class InfoBoxes extends React.Component {
+
     state = {
         boxesToRender: [],
-        note:'',
-        isNoteBoxShown:false,
-        isFileBoxShown:false,
+        note: '',
+        isNoteBoxShown: false,
+        isFileBoxShown: false,
     }
-    componentDidMount(){
+    componentDidMount() {
         this.getBoxesToRender()
     }
     getBoxesToRender = () => {
+        debugger
         const task = this.props.task
         const boxesToRender = [...task.notes, ...task.files]
         boxesToRender.sort(function compare(a, b) {
@@ -20,7 +22,7 @@ import NoteBox from './Tasks/NoteBox'
             var dateB = new Date(b.timeStamp);
             return dateA - dateB;
         });
-        this.setState = { boxesToRender }
+        this.setState({ boxesToRender })
     }
     savefileToTask = async (event) => {
         const task = this.props.task
@@ -32,8 +34,11 @@ import NoteBox from './Tasks/NoteBox'
         this.getBoxesToRender()
 
     }
- 
-    addNoteToTask = async (e,txt) => {
+    openNoteBox = () => {
+        debugger;
+        this.setState({isNoteBoxShown: true})
+    }
+    addNoteToTask = async (e, txt) => {
         e.preventDefault()
         const task = this.props.task
         const currBoard = this.props.CurrBoard
@@ -49,7 +54,7 @@ import NoteBox from './Tasks/NoteBox'
 
     }
 
-    handleFileAdd=(event)=>{
+    handleFileAdd = (event) => {
         event.stopPropagation()
     }
     AddNoteBox = () => {
@@ -61,25 +66,23 @@ import NoteBox from './Tasks/NoteBox'
         }
     }
 
-    openNotBox=()=>{
-        this.setState({isNoteBoxShown:true})
-    }
+  
     render() {
-const {boxesToRender}=this.state
-const isAddNoteShows=this.state.isNoteBoxShown
+        const { boxesToRender } = this.state
+        const isAddNoteShows = this.state.isNoteBoxShown
         return (
             <div className='info-boxes-btns'>
                 <div className='info-Boxes-btns'>
-                    <button onClick={() => { this.openNotBox() }}>Add Note</button>
+                    <button onClick={this.openNoteBox}>Add Note</button>
                     <h2>INFO BOXES PAGE</h2>
-                    {isAddNoteShows&& <NoteBox></NoteBox>}
+                    {isAddNoteShows && <NoteBox></NoteBox>}
                 </div>
-             {boxesToRender&&boxesToRender.map(box=>{
-                 return(<article className='info-box note'>
-                     <h3>{box.type}</h3>
-                    {box.txt}
-                 </article>)
-             })}
+                {boxesToRender && boxesToRender.map(box => {
+                    return (<article className='info-box note'>
+                        <h3>{box.type}</h3>
+                        {box.txt}
+                    </article>)
+                })}
             </div>
         )
     }
