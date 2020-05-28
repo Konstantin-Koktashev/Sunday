@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { CirclePicker } from "react-color";
+import cPicker from "../../style/img/cpicker.png";
 
 export default class extends Component {
   state = {
@@ -29,13 +30,9 @@ export default class extends Component {
   };
 
   onChangeComplete = (color) => {
-    this.setState(
-      { color: color.hex }
-    );
-    let { label } = this.props
-    this.handleSubmit(label)
-
-
+    this.setState({ color: color.hex });
+    let { label } = this.props;
+    this.handleSubmit(label);
   };
 
   handleChange = ({ target }) => {
@@ -52,9 +49,8 @@ export default class extends Component {
 
   handleRemove = (label, ev) => {
     if (ev) ev.stopPropagation();
-    this.props.removeLabel(label)
-
-  }
+    this.props.removeLabel(label);
+  };
 
   render() {
     const { colorPickerIsShown, color, text } = this.state;
@@ -64,9 +60,15 @@ export default class extends Component {
           <div
             style={{ backgroundColor: `${color}` }}
             onClick={(ev) => this.toggleCirclePicker(ev)}
-          >
-            c
-          </div>
+            className="drop-color"
+          ></div>
+          {/* <img
+            src={cPicker}
+            style={{ backgroundColor: `${color}` }}
+            className="color-picker"
+            onClick={(ev) => this.toggleCirclePicker(ev)}
+            alt=""
+          /> */}
 
           <input
             name="text"
@@ -76,19 +78,14 @@ export default class extends Component {
             onBlur={(ev) => this.handleSubmit(this.props.label, ev)}
           ></input>
 
-
-          <img className="delete-icon"
+          <img
+            className="delete-icon"
             src="/static/media/delete.bff23160.svg"
             alt="Delete"
             title="Delete label"
             onClick={(ev) => this.handleRemove(this.props.label, ev)}
           ></img>
-
         </section>
-
-
-
-
 
         {colorPickerIsShown && (
           <CirclePicker
