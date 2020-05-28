@@ -7,8 +7,7 @@ import add from "../../../src/style/img/add.png";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 
-import FormDialog from '../Board/FormDialog';
-
+import FormDialog from "../Board/FormDialog";
 
 class AddBoard extends Component {
   componentDidMount() {
@@ -36,6 +35,7 @@ class AddBoard extends Component {
           type: "label",
           value: "Labels",
           order: "3",
+          color: "#C4C4C4",
         },
         {
           type: "text",
@@ -51,6 +51,7 @@ class AddBoard extends Component {
           type: "priority",
           value: "Priority",
           order: "6",
+          color: "#C4C4C4",
         },
       ],
       //Label Object
@@ -140,8 +141,7 @@ class AddBoard extends Component {
                   aboutUser: 9000,
                 },
               ], // updates objects
-              notes: [
-              ], // Notes objects
+              notes: [], // Notes objects
               people: [],
               status: "new",
               priority: "urgent",
@@ -149,7 +149,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
-              files:[]
+              files: [],
             },
             {
               _id: uuidv4(),
@@ -173,7 +173,7 @@ class AddBoard extends Component {
                   aboutUser: 1234,
                 },
               ], // updates objects
-              notes: [   ], // Notes objects
+              notes: [], // Notes objects
               people: [],
               status: "new",
               priority: "urgent",
@@ -181,7 +181,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
-              files:[]
+              files: [],
             },
             {
               _id: uuidv4(),
@@ -205,9 +205,7 @@ class AddBoard extends Component {
                   aboutUser: 1234,
                 },
               ], // updates objects
-              notes: [
-               
-              ], // Notes objects
+              notes: [], // Notes objects
               people: [],
               status: "new",
               priority: "urgent",
@@ -215,7 +213,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
-              files:[]
+              files: [],
             },
             {
               _id: uuidv4(),
@@ -239,9 +237,7 @@ class AddBoard extends Component {
                   aboutUser: 1234,
                 },
               ], // updates objects
-              notes: [
-             
-              ], // Notes objects
+              notes: [], // Notes objects
               people: [],
               status: "new",
               priority: "urgent",
@@ -249,7 +245,7 @@ class AddBoard extends Component {
               budget: "150",
               text: "text about task",
               link: "",
-              files:[]
+              files: [],
             },
           ], // Task object
           color: "blue",
@@ -265,8 +261,6 @@ class AddBoard extends Component {
       history: [],
     },
   };
-
-
 
   addBoard = async (value) => {
     console.log("Adding a Board!");

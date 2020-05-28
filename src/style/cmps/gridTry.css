@@ -23,7 +23,7 @@
 
 .div40 {
   /* height: 4vh; */
-  width: 30vw;
+  width: 30.5vw;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
