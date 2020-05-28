@@ -9,6 +9,14 @@ import {
   signup
 } from '../actions/UserActions';
 
+
+
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Link from '@material-ui/core/Link';
+
+
 class Login extends Component {
   state = {
     loginCred: {
@@ -60,32 +68,63 @@ class Login extends Component {
           <h2 className="fade-in3"> Let us Organize Your Chaos</h2>
         </div>
 
-        <form className="login-form flex a-center col" onSubmit={this.doLogin}>
-          <h3>Simply Login</h3>
-          <input
+        <form className="log flex a-center col" onSubmit={this.doLogin}>
+          <Avatar>
+          </Avatar>
+          <TextField
             type="text"
             name="email"
             value={this.state.loginCred.email}
             onChange={this.loginHandleChange}
-            placeholder="Enter Your Email"
+            // placeholder="Enter Your Email"
             required
+
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
           />
-          <br />
-          <input
+          <TextField
             type="password"
             name="password"
             value={this.state.loginCred.password}
             onChange={this.loginHandleChange}
-            placeholder="Enter Password"
+            // placeholder="Enter Password"
+
+
+            variant="outlined"
+            margin="normal"
             required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
           />
           <br />
-          <button>Login</button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+          >
+            Sign In
+          </Button>
         </form>
+        <Link href='/signup' variant="body2">
+          {"Don't have an account? Sign Up"}
+        </Link>
         <div className="signup-onlogin col a-center">
-
+          {/* 
           <h2>Still Dont Have An Account?</h2>
-          <button onClick={() => this.props.history.push('/signup')}>Click Here To Signup</button>
+          <button onClick={() => this.props.history.push('/signup')}>Click Here To Signup</button> */}
+
         </div>
       </div>
     )

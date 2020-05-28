@@ -9,6 +9,12 @@ import {
     signup
 } from '../actions/UserActions';
 
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Link from '@material-ui/core/Link';
+import Avatar from '@material-ui/core/Avatar';
+
+
 class Signup extends Component {
     state = {
         signupCred: {
@@ -70,28 +76,43 @@ class Signup extends Component {
                     <h2 className="fade-in3"> Let us Organize Your Chaos</h2>
                 </div>
                 <form className="signup-form flex col a-center" onSubmit={this.doSignup}>
-
+                    <Avatar>
+                    </Avatar>
                     <h3>Start Your Revolution</h3>
-                    <input
+                    <TextField
                         type="text"
                         name="email"
                         value={this.state.signupCred.email}
                         onChange={this.signupHandleChange}
                         placeholder="Email"
                         required
+
+
+                        variant="outlined"
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        autoComplete="email"
                     />
                     <br />
-                    <input
+                    <TextField
                         name="password"
                         type="password"
                         value={this.state.signupCred.password}
                         onChange={this.signupHandleChange}
                         placeholder="Password"
                         required
+                        variant="outlined"
+                        fullWidth
+                        label="Password"
+                        id="password"
+                        autoComplete="current-password"
                     />
                     <br />
-                    <input
+                    <TextField
                         type="text"
+                        variant="outlined"
+                        fullWidth
                         name="username"
                         value={this.state.signupCred.username}
                         onChange={this.signupHandleChange}
@@ -100,11 +121,21 @@ class Signup extends Component {
                     />
                     <br />
 
-                    <button className="signup-btn">Signup</button>
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                    >
+                        Sign Up
+          </Button>
+                    <Link href="/login" variant="body2">
+                        Already have an account? Sign in
+              </Link>
                 </form>
                 <div className="signup-onlogin col a-center">
-                    <h2>Allready Have An Account?</h2>
-                    <button onClick={() => this.props.history.push('/login')}>Click Here To Login</button>
+                    {/* <h2>Allready Have An Account?</h2>
+                    <button onClick={() => this.props.history.push('/login')}>Click Here To Login</button> */}
                 </div>
             </div>
         )

@@ -5,7 +5,11 @@
   left: 0px;
   top: 0px;
   z-index: 10;
-  background-color: rgb(41, 47, 76);
+  background-color: rgb(224, 224, 224);
+}
+
+.log {
+  width: 27vw;
 }
 
 .login-form {
@@ -69,7 +73,7 @@
   position: fixed;
   top: 5vh;
   left: 10vw;
-  color: rgba(47, 161, 127, 0.349);
+  color: rgba(49, 49, 49, 0.883);
 
   line-height: 50px;
   letter-spacing: 1px;
@@ -140,7 +144,7 @@
   position: fixed;
   top: 50vh;
   right: 10vw;
-  color: rgba(34, 221, 212, 0.349);
+  color: rgba(49, 49, 49, 0.883);
   font-size: 35px;
   line-height: 50px;
   letter-spacing: 1px;
@@ -156,7 +160,7 @@
   position: fixed;
   top: 60vh;
   left: 10vw;
-  color: rgba(34, 221, 212, 0.349);
+  color: rgba(49, 49, 49, 0.883);
   font-size: 35px;
   line-height: 50px;
   letter-spacing: 1px;

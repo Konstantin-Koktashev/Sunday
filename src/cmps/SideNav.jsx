@@ -8,6 +8,7 @@ import invite from "../style/img/invitation.svg";
 import person from "../style/img/person.svg";
 import { connect } from "react-redux";
 import notification from "../style/img/notification.svg";
+import logout from "../style/img/logout.png";
 class SideNav extends React.Component {
   render() {
     return (
@@ -64,6 +65,16 @@ class SideNav extends React.Component {
             ></img>
           </div>
         </NavLink>
+        {this.props.userState.loggedInUser && (
+          <img
+            src={logout}
+            alt="Logout"
+            onClick={(ev) => this.props.logOut(ev)}
+            className="logout side-nav-img"
+            title={"Logout"}
+          />
+        )}
+
         <NavLink to={`/profile/${this.props.user._id}`}>
           <div className="search">
             <img

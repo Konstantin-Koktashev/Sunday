@@ -5,7 +5,7 @@
   left: 0px;
   top: 0px;
   z-index: 10;
-  background-color: rgb(41, 47, 76);
+  background-color: rgb(224, 224, 224);
 }
 
 .signup-form {
@@ -16,13 +16,13 @@
   height: 50vh;
 }
 
-.signup-form h3 {
+/* .signup-form h3 {
   margin-top: -50px;
   margin-bottom: 80px;
   font-size: 30px;
   color: white;
-}
-.signup-form input {
+} */
+/* .signup-form input {
   background-color: rgba(209, 201, 201, 0.274);
   font-size: 20px;
   margin-bottom: 10px;
@@ -31,16 +31,16 @@
   border: none;
   outline: none;
   padding-left: 20px;
-}
+} */
 
 .signup-form input:focus {
   box-shadow: 0px 0px 19px 5px rgba(224, 222, 224, 0.11);
 }
 
-.signup-form input::placeholder {
+/* .signup-form input::placeholder {
   color: #b8c1d49c;
-}
-.signup-form button {
+} */
+/* .signup-form button {
   background-color: #3ab9f8c4;
   font-size: 20px;
   margin-bottom: 50px;
@@ -50,12 +50,12 @@
   color: white;
   transition: 0.3s;
   outline: none;
-}
-
+} */
+/* 
 .signup-form button:hover {
   background-color: #54bbee;
-}
+} */
 
-.signup-btn {
+/* .signup-btn {
   margin-bottom: 20px;
-}
+} */
