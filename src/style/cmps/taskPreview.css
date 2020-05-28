@@ -181,10 +181,6 @@
   outline: 1px dotted #74747486;
 }
 
-.input-edit-taskName input::placeholder {
-  /* padding-left: 10px; */
-}
-
 .colEdit-input-date input {
   width: 5vw;
   font-size: 12px;

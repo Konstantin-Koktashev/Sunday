@@ -154,7 +154,7 @@ class TaskPreview extends Component {
           </div>
         </div>
 
-        <div className="task-bar-columns-container flex space-evenly a-center">
+        <div className="task-bar-columns-container-new  space-evenly a-center">
           {/* <p>{task.createdAt}</p> */}
           {/* <div className="box-div">
           <img src={person} alt="Person" />

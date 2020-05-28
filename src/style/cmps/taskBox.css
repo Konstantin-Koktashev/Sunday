@@ -35,12 +35,11 @@
   background-color: rgba(233, 230, 230, 0.171);
 }
 
-/* .task-box-list-container {
-  /* width: 20vw; */
-/* margin-right: 10vw; */
-/* justify-self: end; */
-/* } */
-
+/* .task-box-list-container { */
+/* width: 20vw;
+  margin-right: 10vw;
+  justify-self: end;
+} */
 .task-box-toplist-container {
   margin-left: 1px;
   /* width: 71.5vw; */

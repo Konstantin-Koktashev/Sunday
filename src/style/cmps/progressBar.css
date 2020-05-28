@@ -49,27 +49,16 @@
     width: 0%;
   }
 
-  100% {}
+  100% {
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* /////////////////////////////////SMALL PROGRESS BAR /////////////////////////// */
 
 .s-progress-container {
   color: gray;
-  width: 100px;
-  height: 4vh;
+  width: 5vw;
+  height: 3vh;
   display: flex;
   /* transition-duration:  12s; */
 }
@@ -78,7 +67,6 @@
   border-radius: 2px;
   margin-left: -1px;
 }
-
 
 .s-prog-child:hover {
   transform: scaleY(1.1);
