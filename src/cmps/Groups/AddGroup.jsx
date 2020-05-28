@@ -236,10 +236,7 @@ class AddGroup extends Component {
           people: [],
         },
       ], // Task object
-      color: randomColor({
-        luminosity: "light",
-        format: "rgba", // e.g. 'rgba(9, 1, 107, 0.6482447960879654)'
-      }),
+      color: randomColor({ luminosity: "dark", count: 27 }),
       lastUpdatedAt: "",
     },
   };
@@ -252,10 +249,7 @@ class AddGroup extends Component {
     this.setState({
       group: {
         ...this.state.group,
-        color: randomColor({
-          luminosity: "light",
-          format: "rgba", // e.g. 'rgba(9, 1, 107, 0.6482447960879654)'
-        }),
+        color: randomColor({ luminosity: "dark", count: 27 }),
       },
     });
     let addGroup = this.state.group;
