@@ -26,7 +26,7 @@ class InfoBoxes extends React.Component {
         boxesToRender.sort(function compare(a, b) {
             var dateA = new Date(a.timeStamp);
             var dateB = new Date(b.timeStamp);
-            return dateA - dateB;
+            return dateB - dateA;
         });
         this.setState({ boxesToRender })
     }
