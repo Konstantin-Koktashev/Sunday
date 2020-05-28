@@ -44,7 +44,7 @@ class LabelContainer extends Component {
         {
           _id: "333asb",
           color: "#00A8FF",
-          value: "Waiting for review",
+          value: "Review",
           status: "Waiting for review",
         },
       ];

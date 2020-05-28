@@ -8,6 +8,7 @@ import AddTask from "./AddTask";
 import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
 import ProgressBar from "../Statistics/ProgressBar";
+import GenereicProgBar from "../Statistics/GenereicProgBar";
 
 import {
   saveBoard,
@@ -38,7 +39,7 @@ class TaskList extends Component {
     this.props.loadBoards();
   };
   handleChange = (ev) => {
-    ev.preventDefault()
+    ev.preventDefault();
     const value = ev.target.value;
     this.setState({ groupName: value });
   };
@@ -98,7 +99,7 @@ class TaskList extends Component {
                       type="text"
                       name="groupName"
                       value={this.state.groupName}
-                      onChange={(ev)=>this.handleChange(ev)}
+                      onChange={(ev) => this.handleChange(ev)}
                       onBlur={(ev) => this.updateGroupName(ev)}
                     />
                   </form>
@@ -113,7 +114,7 @@ class TaskList extends Component {
               </div>
             </div>
             <div
-              className={`task-list flex col ${
+              className={`task-list  flex col ${
                 this.state.taskIsShown ? "" : "hide"
               }`}
             >
@@ -133,6 +134,11 @@ class TaskList extends Component {
 
               {/* /// Until Here           */}
               <AddTask group={this.props.group}></AddTask>
+              <div className="task-bar-for-progress">
+                <div className="div40">
+                  <GenereicProgBar group={this.props.group} />
+                </div>
+              </div>
             </div>
           </div>
         )}

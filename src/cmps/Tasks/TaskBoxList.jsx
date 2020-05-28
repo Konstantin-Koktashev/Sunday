@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-  DragDropContext,
-  Droppable,
-  Draggable,
-} from "react-beautiful-dnd";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import TaskBox from "./TaskBox";
 import LocalBoardService from "../../services/LocalBoardService";
 
@@ -15,7 +11,6 @@ const reorder = (list, startIndex, endIndex) => {
 
   return result;
 };
-
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
@@ -75,7 +70,6 @@ export class TaskBoxList extends Component {
     //   order.push(item.order);
     // });
 
-
     let board = this.props.board;
     let newBoard = LocalBoardService.updateColumnOrder(board, items);
     this.props.updateBoardColOrder(newBoard);
@@ -89,7 +83,7 @@ export class TaskBoxList extends Component {
         <Droppable droppableId="droppable" direction="horizontal">
           {(provided, snapshot) => (
             <div
-              className="task-box-list-cont flex a-center j-center"
+              className="task-box-list-cont-new a-center j-center"
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver)}
               {...provided.droppableProps}
