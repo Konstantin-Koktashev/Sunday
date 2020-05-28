@@ -164,7 +164,7 @@ class LabelContainer extends Component {
         ? this.props.labels
         : [];
     return (
-      <section className="label-container fade-in-editor flex col">
+      <section className="label-container col fade-in-editor flex a-center j-center">
         {isEditAble &&
           labelsFromProps &&
           labelsFromProps.map((label, idx) => {
