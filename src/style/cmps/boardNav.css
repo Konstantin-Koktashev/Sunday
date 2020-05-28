@@ -6,7 +6,7 @@
   border: 1px solid rgba(160, 160, 160, 0.466);
   width: 15vw;
   /* top: 0px; */
-  border-radius: 25px 0px 0px 0px;
+  border-radius: 20px 0px 0px 0px;
   /* z-index: -1; */
 }
 .board-nav-container-hidden {

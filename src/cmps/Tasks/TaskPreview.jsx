@@ -23,6 +23,13 @@ class TaskPreview extends Component {
   componentDidMount() {
     // let SortedCols = matchTaskBoxToBoardColumns(props);
     // let sortedCols = this.matchTaskBoxToBoardColumns(this.props);
+    // window.addEventListener('click', () => {
+    //   this.setState({ isInfoBoxShown: false})
+    // });
+  }
+
+  hideInfoBox=()=>{
+    this.setState({ isInfoBoxShown: false})
   }
 
   SortCols(board, cols) {
@@ -114,7 +121,7 @@ class TaskPreview extends Component {
     const { task } = this.props;
     return (
       <div className="task-bar flex j-start space-between">
-        {isInfoBoxShown && <InfoBoxes task={task}></InfoBoxes>}
+        {isInfoBoxShown && <InfoBoxes task={task} hideInfoBox={this.hideInfoBox}></InfoBoxes>}
         <div
           onClick={this.toggleInfoBox}
           className="task-bar-title-container flex space-between a-center"

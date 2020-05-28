@@ -66,6 +66,16 @@
   left: 0px;
   top: 0px;
 }
+.back-screen-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0);
+
+  z-index: -1;
+  left: 0px;
+  top: 0px;
+}
 
 .colEdit-input {
   width: 5vw;

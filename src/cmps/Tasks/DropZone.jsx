@@ -4,35 +4,24 @@ import { connect } from 'react-redux'
 import { saveBoard, loadBoards } from '../../actions/BoardActions';
 
 class DropZone extends Component {
-  // state = {
-  //   filesToRender: []
-  // }
-  // onChangeHandler=event=>{
-  //   this.setState({
-  //     selectedFile: event.target.files[0],
-  //     loaded: 0,
-  //   })
-  // }
-  savefileToTask = (event) => {
-    const task = this.props.task
-    const currBoard = this.props.CurrBoard
-    const fileWithTimeStamp={file:event.target.files[0],timeStamp:Date.now()}
-    task.files.unshift(fileWithTimeStamp)
-    this.props.saveBoard(currBoard)
-    this.props.loadBoards()
+  state = {
+    selectedFile: null
+  }
+  onChangeHandler=event=>{
+    this.props.savefileToTask(event,this.state.selectedFile)
+  }
 
+  onFormSubmit(e){
+    e.preventDefault() // Stop form submit
+  
   }
 
 
   render() {
     return (
-      <div className='download-wrapper'>
+      <form className='download-wrapper' onSubmit={this.onFormSubmit}>
         <input type="file" name="file" onChange={this.onChangeHandler} />
-      </div>
-      // {filesToRender&&filesToRender.map(=>{
-
-      // })}
-
+      </form>
     )
   }
 }
