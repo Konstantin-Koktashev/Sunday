@@ -1,10 +1,10 @@
 import React from "react";
-import { Radar} from "react-chartjs-2";
+import { Radar } from "react-chartjs-2";
 import { connect } from "react-redux";
 
 import { loadBoards } from "../../actions/BoardActions";
 
-class DoughnutChart extends React.Component {
+class RadarChart extends React.Component {
   state = {
     tasks: null,
     datasets: [
@@ -96,7 +96,6 @@ class DoughnutChart extends React.Component {
       <div>
         <div className="doughnut flex col">
           <Radar data={this.state} />
-
         </div>
         <h2>HEY IM GOOD STUF TO TYPE</h2>
       </div>
@@ -113,4 +112,4 @@ const mapDispatchToProps = {
   loadBoards,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DoughnutChart);
+export default connect(mapStateToProps, mapDispatchToProps)(RadarChart);

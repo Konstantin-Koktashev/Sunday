@@ -9,6 +9,7 @@ import {
   loadBoards,
 } from "../../actions/BoardActions";
 import DoughnutChart from "../Statistics/DoughnutChart";
+import RadarChart from "../Statistics/RadarChart";
 
 class Board extends Component {
   state = {};
@@ -26,12 +27,34 @@ class Board extends Component {
 
     // return filteredBoard
   }
+  RadarChart;
+  getViewByType = (viewType) => {
+    let view;
+    switch (viewType) {
+      case "board":
+        view = <RadarChart board={this.props.currBoard} />;
+        break;
+      case "pie":
+        view = <DoughnutChart board={this.props.currBoard} />;
+        break;
+      default:
+        view = (
+          <GroupList
+            sortColumnsByBox={this.sortColumnsByBox}
+            groups={this.props.currBoard.groups}
+            board={this.props.currBoard}
+          />
+        );
+    }
+    return view;
+  };
 
   render() {
     const board = this.boardToDisplay;
     return (
       <>
-        {!this.props.chartIsOpen ? (
+        {this.getViewByType()}
+        {/* {!this.props.chartIsOpen ? (
           <GroupList
             sortColumnsByBox={this.sortColumnsByBox}
             groups={board.groups}
@@ -39,7 +62,7 @@ class Board extends Component {
           />
         ) : (
           <DoughnutChart board={board} />
-        )}
+        )} */}
       </>
     );
   }

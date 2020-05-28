@@ -49,9 +49,20 @@ class Chat extends Component {
       await this.startChat();
     }
   };
+
+  newMessagePopup = () => {
+    const { isOpen, newMessagesCount } = this.state;
+    if (!isOpen) {
+      this.setState({ newMessagesCount: newMessagesCount + 1 });
+    }
+  };
+
   renderMessage = (msg) => {
-    console.log("Chat -> renderMessage -> msg", msg);
-    console.log("this private msg", msg);
+    this.newMessagePopup();
+    let author = "them";
+    if (msg.msg.senderId === this.props.user._id) author = "me";
+    msg.msg.author = author;
+    console.log("this private msg", msg.msg);
     this.setState({
       messageList: [...this.state.messageList, msg.msg],
     });
@@ -85,8 +96,17 @@ class Chat extends Component {
     } else {
       // Else Take the room History And render on chat
       await this.props.setCurrChatRoom(room);
+
+      let chatMsgsByUser = this.props.currChatRoom.roomHistory.map((msg) => {
+        console.log("Chat @@@@@@@@@@@@@@ -> startChat -> msg", msg);
+        let author = "them";
+        if (msg && msg.senderId === this.props.user._id) author = "me";
+        msg.author = author;
+        return msg;
+      });
+      console.log("Chat -> startChat -> chatMsgsByUser", chatMsgsByUser);
       this.setState({
-        messageList: this.props.currChatRoom.roomHistory,
+        messageList: chatMsgsByUser,
         chatRoom: this.props.currChatRoom,
       });
     }
@@ -99,9 +119,15 @@ class Chat extends Component {
       SocketService.on("board_room_new_msg", this.renderMessage);
     }
   };
-
+  capitalize = (s) => {
+    if (typeof s !== "string") return "";
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  };
   //Sending message
   _onMessageWasSent = async (message) => {
+    message.senderId = this.props.user._id;
+    let capName = this.capitalize(this.props.user.username);
+    message.data.name = "" + capName + ":";
     console.log("send msg : ", message);
     this.setState({
       messageList: [...this.state.messageList, message],
@@ -185,9 +211,7 @@ class Chat extends Component {
           newMessagesCount={this.state.newMessagesCount}
           handleClick={this._handleClick.bind(this)}
           isOpen={this.state.isOpen}
-          // mute={false}
-          // newMessagesCount={this.state.newMessagesCount}
-          // handleClick={this._handleClick.bind(this)}
+          mute={false}
         />
         {this.state.isOpen && (
           <UserChatList history={this.props.history}></UserChatList>
