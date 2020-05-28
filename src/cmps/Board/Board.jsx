@@ -28,10 +28,11 @@ class Board extends Component {
     // return filteredBoard
   }
   RadarChart;
-  getViewByType = (viewType) => {
+  getViewByType = () => {
+    let viewType = this.props.viewType;
     let view;
     switch (viewType) {
-      case "board":
+      case "radar":
         view = <RadarChart board={this.props.currBoard} />;
         break;
       case "pie":
