@@ -58,6 +58,7 @@
   padding: 10px 20px;
   transition-duration: 0.4s;
   cursor: pointer;
+  outline: none;
 }
 .get-started-btn:hover {
   background-color: #fd3b92;

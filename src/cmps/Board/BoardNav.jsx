@@ -16,7 +16,6 @@ export class BoardNav extends Component {
     boardIsShown: true,
   };
 
-
   toggleList = () => {
     if (this.state.boardIsShown) {
       this.setState({ boardIsShown: false });
@@ -90,7 +89,7 @@ const mapDispatchToProps = {
   loadBoards,
   setCurrBoard,
   removeBoard,
-  setChatType
+  setChatType,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardNav);

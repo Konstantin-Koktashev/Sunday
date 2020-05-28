@@ -68,3 +68,9 @@
 .toggle-chart-btn:hover {
   background-color: #21b0f8;
 }
+
+.add-user-toboard {
+  width: 10vw;
+  padding: 20px;
+  background-color: grey;
+}

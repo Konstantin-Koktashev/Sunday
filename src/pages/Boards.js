@@ -12,6 +12,7 @@ class BoardApp extends React.Component {
     state = {
         currBoard: null,
         chartIsOpen: false,
+        addUserToBoard: false
 
     }
 
@@ -52,7 +53,7 @@ class BoardApp extends React.Component {
     };
 
 
-    loadAndSetBoards =async () => {
+    loadAndSetBoards = async () => {
         const boardId = this.props.currBoard._id
         await this.props.loadBoards()
         let board = this.getBoardByID(boardId)
@@ -71,7 +72,7 @@ class BoardApp extends React.Component {
             this.setBoard(board)
         }
         if (JSON.stringify(this.props.currBoard) !== JSON.stringify(prevProps.currBoard)) {
-         await   this.loadboards()
+            await this.loadboards()
         }
 
     }
@@ -123,6 +124,13 @@ class BoardApp extends React.Component {
             })
         })
     }
+    toggleAddUserToBoard = (ev) => {
+        // ev.stopPropagation();
+        this.setState(({ addUserToBoard }) => ({
+            addUserToBoard: !addUserToBoard,
+        }));
+    };
+
     render() {
 
         const { currBoard } = this.state;
@@ -130,7 +138,7 @@ class BoardApp extends React.Component {
             <>
 
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
-                {currBoard && <BoardHeader toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard} user={this.props.user}></BoardHeader>}
+                {currBoard && <BoardHeader addUserToBoard={this.state.addUserToBoard} toggleAddUserToBoard={this.toggleAddUserToBoard} toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard} user={this.props.user}></BoardHeader>}
                 {currBoard && <Board board={currBoard} raderIsOpen={this.state.raderIsOpen} viewType={this.state.viewType} ></Board>}
                 {/* <DropZone></DropZone> */}
             </>

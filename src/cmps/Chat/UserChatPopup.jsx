@@ -76,6 +76,7 @@ class UserChatPopup extends Component {
         className="user-chat-popup-card slide-in-right"
       >
         <SmallImg
+          isPopup={true}
           type={this.props.chatRoom.type}
           zindex={this.props.idx}
           url={user.imgUrl}

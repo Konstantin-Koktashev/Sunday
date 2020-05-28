@@ -78,8 +78,8 @@ function uploadImg(ev, user) {
 
 function isOnline(user, onlineUsers) {
 
-    onlineUsers.find(onlineUser => {
+    let isOnline = onlineUsers.find(onlineUser => {
         if (onlineUser._id === user._id) return onlineUser
     })
-
+    return isOnline
 }

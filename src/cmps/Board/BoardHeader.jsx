@@ -5,12 +5,14 @@ import FilterByText from "../Filters/FilterByText.jsx";
 import Swal from "sweetalert2";
 import ConfirmDialog from "../Board/ConfirmDialog";
 import SelectCmp from "../SelectCmp";
+import UserList from "../UserList";
 
 export default function BoardHeader(props) {
   const confirmDelete = () => {
     let boardId = props.board._id;
     props.removeBoard(boardId);
   };
+
   const board = props.board;
   return (
     <div className="board-header-container flex a-center space-between">
@@ -33,7 +35,10 @@ export default function BoardHeader(props) {
 
           <ConfirmDialog remove={confirmDelete} />
         </div>
-
+        <div className="add-user-toboard">
+          {props.addUserToBoard && <UserList></UserList>}
+          <button onClick={props.toggleAddUserToBoard}>ADD USR TO BOARD</button>
+        </div>
         <FilterByText currBoard={props.board} />
       </div>
     </div>

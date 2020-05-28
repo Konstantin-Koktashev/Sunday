@@ -9,6 +9,8 @@ import { setFilter } from "../../actions/BoardActions";
 class FilterByText extends Component {
   handleChange = ({ target }) => {
     let value = target.value;
+
+    if (this.props.users) return this.props.setUserFilter(value);
     this.props.setFilter(value);
   };
   render() {
