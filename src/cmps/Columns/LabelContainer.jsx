@@ -16,12 +16,14 @@ class LabelContainer extends Component {
     isEditAble: false,
     labels: null,
     allLabels: null,
+    className: "",
   };
 
   componentDidMount() {
     console.log("cdmcdm", this.props);
     var HardCoded;
     if (this.props.type === "label") {
+      this.setState({ className: "label-status" });
       HardCoded = [
         {
           _id: "111a",
@@ -49,6 +51,7 @@ class LabelContainer extends Component {
         },
       ];
     } else if (this.props.type === "priority") {
+      this.setState({ className: "label-priority" });
       HardCoded = [
         {
           _id: "111safa",
@@ -164,7 +167,9 @@ class LabelContainer extends Component {
         ? this.props.labels
         : [];
     return (
-      <section className="label-container col fade-in-editor flex a-center j-center">
+      <section
+        className={`label-container col fade-in-editor flex a-center j-center ${this.state.className}`}
+      >
         {isEditAble &&
           labelsFromProps &&
           labelsFromProps.map((label, idx) => {
