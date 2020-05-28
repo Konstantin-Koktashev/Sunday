@@ -9,7 +9,12 @@ export default {
     getById,
     remove,
     update,
-    uploadImg
+    uploadImg,
+    getOnline
+}
+
+function getOnline() {
+    return HttpService.get('user/online')
 }
 
 function getUsers() {
@@ -24,8 +29,8 @@ function remove(userId) {
 }
 
 async function update(user) {
-   return HttpService.put(`user/${user._id}`, user)
-    
+    return HttpService.put(`user/${user._id}`, user)
+
 }
 
 async function login(userCred) {
@@ -48,7 +53,7 @@ function _handleLogin(user) {
 
 
 
- function uploadImg(ev , user) {
+function uploadImg(ev, user) {
     const CLOUD_NAME = 'shaharperetz'; // find it in your cloudinary account (main page)
     const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
 
@@ -57,12 +62,12 @@ function _handleLogin(user) {
     formData.append('upload_preset', 'swg3eibm'); // second parameter is the upload preset (you can find it in cloudinary settings)
 
     return axios.post(UPLOAD_URL, formData)
-        .then(res =>{
-            console.log('res from xios ,' , res)
+        .then(res => {
+            console.log('res from xios ,', res)
             return res.data.url
         })
         .then(imgUrl => {
-            console.log('imgUrl' , imgUrl)
+            console.log('imgUrl', imgUrl)
             user.imgUrl = imgUrl
             return user;
         })

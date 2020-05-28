@@ -33,10 +33,18 @@ class Board extends Component {
     let view;
     switch (viewType) {
       case "radar":
-        view = <RadarChart board={this.props.currBoard} />;
+        view = (
+          <div className="chart-container">
+            <RadarChart board={this.props.currBoard} />
+          </div>
+        );
         break;
       case "pie":
-        view = <DoughnutChart board={this.props.currBoard} />;
+        view = (
+          <div className="chart-container">
+            <DoughnutChart board={this.props.currBoard} />
+          </div>
+        );
         break;
       default:
         view = (

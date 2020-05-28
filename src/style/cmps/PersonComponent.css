@@ -72,6 +72,8 @@
   width: 5vw;
   height: 5vw;
   margin: 1px;
+  max-width: 50px;
+  max-height: 50px;
   /* background-color: rgba(86, 88, 86, 0.226); */
   border-radius: 50%;
   text-align: center;
