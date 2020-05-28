@@ -101,6 +101,7 @@
 .prev-value-inbox {
   /* padding: 1em; */
   outline: none;
+  width: 7vw;
   background-color: #74b9ff;
   border: none;
 }
@@ -108,6 +109,8 @@
   background-color: #00c853;
   /* padding: 1em; */
   border: none;
+  width: 7vw;
+
   outline: none;
 }
 .like-reply-btns button {
