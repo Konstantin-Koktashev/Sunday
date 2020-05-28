@@ -7,7 +7,7 @@ import week from "../style/img/calendar.svg";
 import invite from "../style/img/invitation.svg";
 import person from "../style/img/person.svg";
 import { connect } from "react-redux";
-import notification from "../style/img/notification.svg";
+import notification from "../style/img/notification.png";
 import logout from "../style/img/logout.png";
 class SideNav extends React.Component {
   render() {

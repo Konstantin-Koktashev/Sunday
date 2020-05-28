@@ -8,7 +8,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="calendar.svg"
+   sodipodi:docname="calendarBlack.svg"
    version="1.1"
    width="512"
    viewBox="0 0 511.977 511.977"
@@ -23,7 +23,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>

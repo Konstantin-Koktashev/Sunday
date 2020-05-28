@@ -9,10 +9,11 @@
 }
 
 .side-nav-img {
-  width: 30px;
+  width: 24px;
   cursor: pointer;
   transition: 0.3s;
-  padding: 8px;
+  padding: 12px;
+  filter: brightness(1.8);
 }
 
 .side-nav-img:hover {
