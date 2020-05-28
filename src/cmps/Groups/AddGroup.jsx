@@ -236,7 +236,7 @@ class AddGroup extends Component {
           people: [],
         },
       ], // Task object
-      color: randomColor({ luminosity: "dark", count: 27 }),
+      color: randomColor(),
       lastUpdatedAt: "",
     },
   };
@@ -249,7 +249,7 @@ class AddGroup extends Component {
     this.setState({
       group: {
         ...this.state.group,
-        color: randomColor({ luminosity: "dark", count: 27 }),
+        color: randomColor(),
       },
     });
     let addGroup = this.state.group;

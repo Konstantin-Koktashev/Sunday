@@ -17,11 +17,13 @@ import {
   setCurrBoard,
 } from "../../actions/BoardActions";
 import SumBar from "../Statistics/SumBar";
+import { CirclePicker } from "react-color";
 class TaskList extends Component {
   state = {
     taskIsShown: true,
     groupName: this.props.name,
     groupNameIsEdit: false,
+    groupColor: false,
   };
   toggleList = () => {
     if (this.state.taskIsShown) {
@@ -67,7 +69,31 @@ class TaskList extends Component {
     await this.props.loadBoards();
   };
 
+  groupToggleColor = (ev) => {
+    ev.preventDefault();
+
+    ev.stopPropagation();
+    this.setState(({ groupColor }) => ({
+      groupColor: !groupColor,
+    }));
+  };
+
+  setGroupColor = async (color, ev) => {
+    ev.stopPropagation();
+    ev.preventDefault();
+    this.setState(({ groupColor }) => ({
+      groupColor: !groupColor,
+    }));
+    console.log("colorfrimpicker", color);
+    let group = this.props.group;
+    let board = this.props.board;
+    let newBoard = LocalBoardService.changeGroupColor(board, group, color.hex);
+    await this.props.setCurrBoard(newBoard);
+    this.props.loadBoards();
+  };
+
   render() {
+    const { groupColor } = this.state;
     return (
       <div className="task-list-container flex col space-evenly">
         {this.props.tasks && !this.props.tasks.length > 0 ? (
@@ -84,19 +110,44 @@ class TaskList extends Component {
                   title="Toggle Group"
                 />
                 {!this.state.groupNameIsEdit ? (
-                  <h2
-                    onClick={(ev) => this.toggleEdit(ev)}
-                    style={{ color: `${this.props.group.color}` }}
-                  >
-                    {this.props.name}
-                    <img
-                      className="pencil-svg"
+                  <>
+                    <div
+                      className="toggle-group-color"
+                      title="Change group color"
+                      style={{ backgroundColor: `${this.props.group.color}` }}
+                      onClick={(ev) => this.groupToggleColor(ev)}
+                    >
+                      {groupColor && (
+                        <div className="circle-group-container">
+                          <CirclePicker
+                            onChangeComplete={(color, ev) =>
+                              this.setGroupColor(color, ev)
+                            }
+                          />
+                        </div>
+                      )}
+                    </div>
+                    <h2
                       onClick={(ev) => this.toggleEdit(ev)}
-                      src={pencil}
-                      alt="Edit"
-                      title="Edit"
-                    />
-                  </h2>
+                      style={{ color: `${this.props.group.color}` }}
+                    >
+                      {this.props.name}
+                      <img
+                        className="pencil-svg"
+                        onClick={(ev) => this.toggleEdit(ev)}
+                        src={pencil}
+                        alt="Edit"
+                        title="Edit"
+                      />
+                    </h2>
+
+                    {groupColor && (
+                      <div
+                        className="group-color-screen"
+                        onClick={(ev) => this.groupToggleColor(ev)}
+                      ></div>
+                    )}
+                  </>
                 ) : (
                   <>
                     <form>

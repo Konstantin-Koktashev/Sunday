@@ -249,7 +249,7 @@ class AddBoard extends Component {
               files: [],
             },
           ], // Task object
-          color: randomColor({ luminosity: "dark", count: 27 }),
+          color: randomColor(),
           lastUpdatedAt: "",
         },
       ],
