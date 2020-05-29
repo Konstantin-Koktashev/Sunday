@@ -10,7 +10,7 @@ class AddTask extends Component {
       _id: uuidv4(),
       assignedGroupId: null,
       taskTitle: "Todo",
-      createdAt: "date",
+      createdAt: Date.now(),
       groupName: "",
       users: [], // Min users
       columns: [], //  Columns Objects

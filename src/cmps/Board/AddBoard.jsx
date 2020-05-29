@@ -19,7 +19,7 @@ class AddBoard extends Component {
     board: {
       // BOARD OBJECT
       name: "New Board",
-      createdAt: 1589990735884,
+      createdAt: Date.now(),
       //CLOUMNS OBJECT
       columns: [
         {
@@ -116,7 +116,7 @@ class AddBoard extends Component {
         {
           _id: uuidv4(),
           name: "New Project",
-          createdAt: "date",
+          createdAt: Date.now(),
           // ABIR COLS DONT TOUCH
 
           tasks: [
@@ -125,7 +125,7 @@ class AddBoard extends Component {
               isDone: true,
               assignedGroupId: 124,
               taskTitle: "Task - Write you task here",
-              createdAt: "",
+              createdAt: Date.now(),
               // Aggregation
               users: [], // Min users
               // ABIR COLS DONT TOUCH
@@ -157,7 +157,7 @@ class AddBoard extends Component {
               isDone: true,
               assignedGroupId: 124,
               taskTitle: "Task - Write you task here",
-              createdAt: "date",
+              createdAt: Date.now(),
               // Aggregation
               users: [], // Min users
               // ABIR COLS DONT TOUCH
@@ -189,7 +189,7 @@ class AddBoard extends Component {
               isDone: true,
               assignedGroupId: 124,
               taskTitle: "Task - Write you task here",
-              createdAt: "date",
+              createdAt: Date.now(),
               // Aggregation
               users: [], // Min users
               // ABIR COLS DONT TOUCH
@@ -221,7 +221,7 @@ class AddBoard extends Component {
               isDone: true,
               assignedGroupId: 124,
               taskTitle: "Task - Write you task here",
-              createdAt: "date",
+              createdAt: Date.now(),
               // Aggregation
               users: [], // Min users
               // ABIR COLS DONT TOUCH

@@ -76,7 +76,19 @@
   left: 0px;
   top: 0px;
 }
-..back-screen-label-container-members {
+
+.back-screen-userlist {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 255, 0);
+
+  z-index: -2;
+  left: 0px;
+  top: 0px;
+}
+
+.back-screen-label-container-members {
   position: fixed;
   width: 100vw;
   height: 100vh;

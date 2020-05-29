@@ -114,6 +114,7 @@
 
 .more-options-container > *:hover {
   background-color: rgba(128, 128, 128, 0.562);
+  border-radius: 10px;
 }
 
 .dots-board-header {
