@@ -315,7 +315,6 @@ function changeTasklabelColumn(board, column, label) {
 }
 
 function addLabel(board, column, label) {
-    console.log('col', column)
     if (!column.labels) column.labels = [];
     if (!label._id) label._id = makeId()
     column.labels.push(label)

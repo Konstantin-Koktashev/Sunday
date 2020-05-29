@@ -13,11 +13,9 @@ const animatedComponents = makeAnimated();
 
 class WeekModal extends React.Component {
   componentDidMount() {
-    console.log("modal-props", this.props);
   }
 
   changeStatus = () => {
-    console.log("changing status");
   };
 
   containerClicked = (ev) => {
@@ -83,14 +81,12 @@ class WeekModal extends React.Component {
 
   getPriorityColumn = () => {
     let { task } = this.props;
-    console.log("tasktoChecl", task);
     const col = task.columns.find((col) => col.order === "6");
     return col;
   };
 
   getStatusColumn = () => {
     let { task } = this.props;
-    console.log("tasktoChecl", task);
     const col = task.columns.find((col) => col.order === "6");
     return col;
   };

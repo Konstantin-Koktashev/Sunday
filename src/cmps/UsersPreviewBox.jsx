@@ -21,7 +21,6 @@ class UsersPreviewBox extends Component {
       >
         {people.reverse() &&
           people.map((person, idx) => {
-            console.log("person", person.username);
             if (idx > 2) return;
             return (
               <div

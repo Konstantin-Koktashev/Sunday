@@ -15,7 +15,6 @@ export default class WeekPreview extends React.Component {
   };
   findRelatedBoard = () => {};
   getColor = (columns) => {
-    console.log(columns);
     let correctTask = columns.find((col) => col.order === "3");
     return correctTask.color;
   };

@@ -18,7 +18,7 @@ export default class extends Component {
         color: label.color,
         id: label.id,
       },
-      () => console.log("edit", this.state)
+      // () => console.log("edit", this.state)
     );
   }
 

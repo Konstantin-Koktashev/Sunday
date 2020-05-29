@@ -65,7 +65,6 @@ class Notifications extends Component {
 
   getUpdateText(update) {
     let { updateType, prevValue, nextValue } = update;
-    console.log("Notifications -> getUpdateText -> updateType", updateType);
     let text;
     switch (updateType) {
       case "New Group":
@@ -76,7 +75,6 @@ class Notifications extends Component {
         break;
       default:
     }
-    console.log("Notifications -> getUpdateText ->  text", text);
     return text;
   }
 
@@ -97,7 +95,6 @@ class Notifications extends Component {
             <div className="">
               {notifications &&
                 notifications.map((update, idx) => {
-                  console.log("Notifications -> render -> update", update);
                   return (
                     <div key={idx} className="update-card flex a-center col">
                       <div className="notification-user-box flex a-center">

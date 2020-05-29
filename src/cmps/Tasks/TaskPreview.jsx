@@ -82,20 +82,17 @@ class TaskPreview extends Component {
       return;
     }
     LocalBoardService.updateTaskName(board, task, this.state.taskTitle);
-    console.log("---- before: ", board.history.length, board);
     this.changeHistoryTaskNames(boards, task);
     if (!this.state.taskTitle) {
       this.toggleTaskEdit();
       return;
     }
     LocalBoardService.updateTaskName(board, task, this.state.taskTitle);
-    console.log("---- before: ", board.history.length, board);
     this.changeHistoryTaskNames(boards, task);
 
     await saveBoard(board);
     loadBoards();
     this.toggleTaskEdit();
-    console.log("----", board.history.length, board);
   };
   changeHistoryTaskNames = (boards, task) => {
     boards.forEach((board) => {

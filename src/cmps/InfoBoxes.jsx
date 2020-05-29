@@ -44,7 +44,6 @@ class InfoBoxes extends React.Component {
     const imgUrl = await axios
       .post(UPLOAD_URL, formData)
       .then((res) => {
-        console.log("res from xios ,", res);
         return res.data.url;
       })
       .then((imgUrl) => {

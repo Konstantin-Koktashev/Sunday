@@ -242,7 +242,6 @@ class AddGroup extends Component {
   };
 
   componentDidMount() {
-    console.log("thisstate", this.state);
   }
 
   AddGroup = async () => {
@@ -265,7 +264,6 @@ class AddGroup extends Component {
     newBoard = LocalBoardService.addBoardHistory(board, updateInfo);
     await this.props.saveBoard(newBoard);
     this.props.loadBoards();
-    // console.log("AddGroup -> AddGroup -> newBoard", newBoard);
   };
 
   render() {

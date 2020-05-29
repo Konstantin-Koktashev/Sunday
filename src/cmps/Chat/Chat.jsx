@@ -81,7 +81,6 @@ class Chat extends Component {
     // Theres no Room ? Create one
     const { id, type } = this.props.userState.chatWith;
     if (!room) {
-      console.log("Creating Chat Room");
       // create new room
       let chatRoom = ChatService.createNewRoom(
         this.props.userState.chatWith,
@@ -131,7 +130,6 @@ class Chat extends Component {
     message.data.name = "" + capName + ":";
     message.data.isSeen = [];
     message.data.isSeen.push(user);
-    console.log("send msg : ", message);
     this.setState({
       messageList: [...this.state.messageList, message],
     });
@@ -205,7 +203,6 @@ class Chat extends Component {
     return user;
   };
   _handleClick() {
-    console.log("TOGGLING CHAT");
     this.setState({
       isOpen: !this.state.isOpen,
       newMessagesCount: 0,

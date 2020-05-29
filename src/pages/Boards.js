@@ -21,7 +21,6 @@ class BoardApp extends React.Component {
 
     componentDidMount = async () => {
         if (this.props.match.params.GuestMode === 'true') {
-            console.log("Logging in as a guest!")
 
             this.doGuestModeLogin()
         }
@@ -97,11 +96,8 @@ class BoardApp extends React.Component {
     }
 
     removeBoard = async (boardId) => {
-        console.log("BoardApp -> removeBoard -> boardId", boardId)
         await this.props.loadRooms()
         const { chatRooms } = this.props.chat
-        console.log("BoardApp -> removeBoard -> chatRooms", chatRooms)
-        console.log('chatRooms', this.props.chat)
         ChatService.remove(boardId, chatRooms)
         await this.props.removeBoard(boardId)
         await this.props.loadBoards()

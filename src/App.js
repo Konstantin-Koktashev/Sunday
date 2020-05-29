@@ -34,12 +34,10 @@ class App extends React.Component {
 
 
     if (!this.props.currUser) {
-      console.log('YOU ARE NPOT LOGGED IN I GO LOGGIN')
       history.push('/home/')
     } else {
 
       SocketService.emit('login', this.props.currUser)
-      console.log('SOCKET SERVICE: LOGIN')
 
     }
 
@@ -72,7 +70,6 @@ class App extends React.Component {
 
 
   setPrivateChat = (userId, toUserId) => {
-    console.log("App -> setPrivateChat -> userId, toUserId", userId, toUserId)
 
     this.setState({
       chatWith: {

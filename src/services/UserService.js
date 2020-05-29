@@ -64,11 +64,9 @@ function uploadImg(ev, user) {
 
     return axios.post(UPLOAD_URL, formData)
         .then(res => {
-            console.log('res from xios ,', res)
             return res.data.url
         })
         .then(imgUrl => {
-            console.log('imgUrl', imgUrl)
             user.imgUrl = imgUrl
             return user;
         })

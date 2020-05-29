@@ -2,7 +2,6 @@ import React from "react";
 import moment from "moment";
 
 export default function ChartDetails({ board }) {
-  console.log("boardprops", board);
 
   const getTasksNums = () => {
     let counter = 0;

@@ -34,7 +34,6 @@ class TaskList extends Component {
   };
 
   deleteTask = (task) => {
-    console.log("TaskList -> deleteTask -> task", task);
     let group = this.props.group;
     let board = this.props.board;
     let newBoard = LocalBoardService.removeTask(board, group, task);
@@ -82,7 +81,6 @@ class TaskList extends Component {
     ev.stopPropagation();
     ev.preventDefault();
     this.setState({ groupColor: false });
-    console.log("colorfrimpicker", color);
     let group = this.props.group;
     let board = this.props.board;
     let newBoard = LocalBoardService.changeGroupColor(board, group, color.hex);

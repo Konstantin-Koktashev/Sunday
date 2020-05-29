@@ -20,7 +20,6 @@ class LabelContainer extends Component {
   };
 
   componentDidMount() {
-    console.log("cdmcdm", this.props);
     var HardCoded;
     if (this.props.type === "label") {
       this.setState({ className: "label-status" });

@@ -268,11 +268,8 @@ class AddBoard extends Component {
   };
 
   addBoard = async (value) => {
-    console.log("thisstaetaddboard", this.state);
-    console.log("Adding a Board!");
     let addBoard = this.state.board;
     addBoard.name = value;
-    console.log("AddBoard -> addBoard -> addBoard", addBoard);
     try {
       await this.props.saveBoard(addBoard);
       await this.props.loadBoards();
