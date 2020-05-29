@@ -11,14 +11,32 @@ import {
 } from "../actions/BoardActions";
 import SmallImg from "../cmps/SmallImg";
 import { NavLink } from "react-router-dom";
+import LocalBoardService from "../services/LocalBoardService";
 class Notifications extends Component {
   state = {
     notifications: null,
+    newNotifications: 0,
   };
   componentDidMount() {
-    let notifications = this.checkUserHistory();
-    this.setState({ notifications });
+    this.loadNotifications();
+    // SocketService.on("doRefresh", this.loadNotifications); // NEEDS WORKS
   }
+
+  componentWillUnmount() {
+    // SocketService.off("doRefresh", this.loadNotifications);
+  }
+
+  loadNotifications = () => {
+    setTimeout(() => {
+      let notifications = this.checkUserHistory();
+      this.setState({ notifications });
+    }, 2000);
+  };
+
+  newNotificationPopup = (num) => {
+    let newNotifNum = num + this.state.newNotifications;
+    this.setState({ newNotifications: newNotifNum });
+  };
   checkUserHistory = () => {
     //   await  this.props.loadBoards()
     const boards = this.props.boards;
@@ -30,24 +48,21 @@ class Notifications extends Component {
         totalUserHistory.push(update);
       });
     });
+    // Check Notification Number
+    let newNotifNum = 0;
+    totalUserHistory.forEach((update) => {
+      if (update && update.isSeen && update.isSeen.length > 0) {
+        let isSeen = LocalBoardService.checkIfUpdateSeen(update, currUserId);
+        if (!isSeen) {
+          newNotifNum++;
+        }
+      }
+    });
+    this.newNotificationPopup(newNotifNum);
+
     return totalUserHistory;
   };
 
-  //   assignedBy: "5ec6d5685532a82028c9d025"
-  // boardId: "5ecebaa1531dc23e549dfc96"
-  // boardName: "HEY"
-  // group: false
-  // messeges: []
-  // nextColor: "#44bd32"
-  // nextValue: "Done"
-  // prevValue: "Labels"
-  // seenBy: []
-  // taskId: "7021042f-8a15-42eb-b101-fbb48d08477c"
-  // timeStamp: 1590607220320
-  // title: "Task - Write you task here"
-  // updateType: "Label Change"
-  // user: {_id: "5ec6d5685532a82028c9d025", isAdmin: true, email: "pakakaw41@gmail.com", username: "abir", givenReviews: Array(0), …}
-  // _id: "ed4392f7-c490-47ad-80a9-81618
   getUpdateText(update) {
     let { updateType, prevValue, nextValue } = update;
     console.log("Notifications -> getUpdateText -> updateType", updateType);
@@ -62,18 +77,20 @@ class Notifications extends Component {
       default:
     }
     console.log("Notifications -> getUpdateText ->  text", text);
-
     return text;
   }
 
   render() {
-    const { notifications } = this.state;
+    const { notifications, newNotifications } = this.state;
     return (
       <>
         <div
           className="close-notifications"
           onClick={this.props.toggleNotifications}
         ></div>
+        <div className="notifications-popup-number flex j-center a-center">
+          {newNotifications}
+        </div>
         <div className="notifications-container">
           <div>
             <h2>Notifications</h2>

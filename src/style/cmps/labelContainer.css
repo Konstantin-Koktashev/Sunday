@@ -1,34 +1,31 @@
+.label-container-relative {
+  position: relative;
+}
+
 .label-container {
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* flex-direction: column; */
   flex-wrap: wrap;
   z-index: 10;
   background-color: #ffffff;
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.479);
-  transform: translateY(100px);
   width: 15vw;
   box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.384);
   padding-bottom: 10px;
   padding-top: 10px;
   position: absolute;
-  /* max-height: 60vh; */
-  /* left: -5px; */
+  left: -5vw;
 }
 
-.label-status {
+/* .label-status {
   left: -5vw;
   bottom: -9vw;
-  /* top: -8vh; */
-  /* left: -2.5vw; */
 }
 
 .label-priority {
   bottom: -6.5vw;
   left: 21vw;
-}
+} */
 
 /* .label-container{
   position: relative;
@@ -178,8 +175,4 @@
   flex-direction: column;
   width: 20px;
   margin-bottom: 55px;
-}
-
-.label-containerr {
-  position: relative;
 }

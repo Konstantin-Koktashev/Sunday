@@ -8,9 +8,10 @@
   /* padding: 30px; */
   border-radius: 15px;
   box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.75);
-  bottom: -35vh;
+  /* bottom: -35vh; */
   box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.171);
   padding: 2px 0px;
+  top: 4vh;
 }
 
 .person-component > * {
@@ -33,6 +34,7 @@
   display: grid;
   grid-template-columns: 15px 15px 15px;
   margin-right: 2px;
+  position: relative;
 }
 
 .person-preview-btn {
@@ -78,6 +80,7 @@
   display: flex;
   align-items: center;
   font-weight: bold;
+  border: 1px solid rgba(179, 179, 179, 0.363);
 
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.781);

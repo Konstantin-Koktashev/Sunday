@@ -21,14 +21,11 @@ class Home extends Component {
           <h3 className="tracking-in-expand"><div className="sun">Sun</div>day<span className="swing-in-top-fwd-text">.com</span></h3>
           <p className="puff-in-center">For every minute spent organizing, an hour is earned</p>
         </div>
-
-
-
-
-
         <NavLink to="/board/guest/true">
           <button className="get-started-btn get-started-btn-anim">Get Started</button>
         </NavLink>
+
+
       </div>
     );
   }

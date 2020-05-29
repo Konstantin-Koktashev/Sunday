@@ -73,7 +73,6 @@ class TaskInbox extends Component {
 
     async updateById(boardId, update) {
         const board = this.props.currBoard
-        debugger
         const task = this.props.task
         const user = this.props.currUser
         board.groups.forEach(group => {
@@ -89,19 +88,6 @@ class TaskInbox extends Component {
                 })
             })
         })
-        // let board = this.props.userBoards.board
-        // board.forEach(board => {
-        //     board.history.forEach(async update => {
-        //         if (update._id === newUpdate._id) {
-        //             update.seenBy.push(user)
-        //             await this.props.saveBoard(board)
-        //             await this.props.setCurrBoard(board)
-        //             await this.props.loadBoards()
-        //             await this.checkTaskHistory()
-        //         }
-        //     })
-        // })
-
 
     }
 
