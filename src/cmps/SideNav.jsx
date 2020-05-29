@@ -55,7 +55,7 @@ class SideNav extends React.Component {
           </div>
         </NavLink>
 
-        <NavLink to="/user/invite" className="invite">
+        {/* <NavLink to="/user/invite" className="invite">
           <div>
             <img
               title="Invite Your Team"
@@ -64,7 +64,7 @@ class SideNav extends React.Component {
               alt="invite"
             ></img>
           </div>
-        </NavLink>
+        </NavLink> */}
         {/* {this.props.userState.loggedInUser && (
           <img
             src={logout}

@@ -129,10 +129,7 @@ class App extends React.Component {
               <Route path="/myweek" component={MyWeek} exact />
               <Route path="/user/inbox" component={Inbox} exact />
               <Route path="/details" component={TaskDetails} exact />
-              <Route path="/label" component={LabelContainer} exact />
-              <Route path="/filter" component={FilterByText} exact />
               <Route path="/profile/:id?" component={Profile} exact />
-              <Route path="/stat" component={ConfirmDialog} exact />
             </Switch>
             <div className="loading-container fade-out">
               <div className="col-sm-2">

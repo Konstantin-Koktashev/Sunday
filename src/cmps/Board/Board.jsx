@@ -10,6 +10,7 @@ import {
 } from "../../actions/BoardActions";
 import DoughnutChart from "../Statistics/DoughnutChart";
 import RadarChart from "../Statistics/RadarChart";
+import ChartDetails from "../Statistics/ChartDetails";
 
 class Board extends Component {
   state = {};
@@ -35,6 +36,7 @@ class Board extends Component {
       case "radar":
         view = (
           <div className="chart-container">
+            <ChartDetails board={this.props.currBoard} />
             <RadarChart board={this.props.currBoard} />
           </div>
         );
@@ -42,6 +44,7 @@ class Board extends Component {
       case "pie":
         view = (
           <div className="chart-container">
+            <ChartDetails board={this.props.currBoard} />
             <DoughnutChart board={this.props.currBoard} />
           </div>
         );

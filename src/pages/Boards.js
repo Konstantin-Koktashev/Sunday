@@ -127,6 +127,7 @@ class BoardApp extends React.Component {
     };
 
     toggleMoreOptions = (ev) => {
+        if (ev) ev.stopPropagation();
         // ev.stopPropagation();
         this.setState(({ moreOptionsIsOpen }) => ({
             moreOptionsIsOpen: !moreOptionsIsOpen,

@@ -28,9 +28,9 @@ class TaskPreview extends Component {
     // });
   }
 
-  hideInfoBox=()=>{
-    this.setState({ isInfoBoxShown: false})
-  }
+  hideInfoBox = () => {
+    this.setState({ isInfoBoxShown: false });
+  };
 
   SortCols(board, cols) {
     let order = [];
@@ -105,12 +105,13 @@ class TaskPreview extends Component {
   };
   toggleTaskEdit = (ev) => {
     // ev.stopPropagation();
+    // ev.preventDefault();
     this.setState(({ taskNameIsEdit }) => ({
       taskNameIsEdit: !taskNameIsEdit,
     }));
   };
 
-  toggleInfoBox = () => {
+  toggleInfoBox = (ev) => {
     this.setState(({ isInfoBoxShown }) => ({
       isInfoBoxShown: !isInfoBoxShown,
     }));
@@ -121,9 +122,11 @@ class TaskPreview extends Component {
     const { task } = this.props;
     return (
       <div className="task-bar flex j-start space-between">
-        {isInfoBoxShown && <InfoBoxes task={task} hideInfoBox={this.hideInfoBox}></InfoBoxes>}
+        {isInfoBoxShown && (
+          <InfoBoxes task={task} hideInfoBox={this.hideInfoBox}></InfoBoxes>
+        )}
         <div
-          onClick={this.toggleInfoBox}
+          onClick={(ev) => this.toggleInfoBox(ev)}
           className="task-bar-title-container flex space-between a-center"
         >
           <div className="title-box flex  a-center">

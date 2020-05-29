@@ -112,7 +112,7 @@ class BoardHeader extends React.Component {
             {this.props.moreOptionsIsOpen && (
               <>
                 <div
-                  onClick={this.props.toggleAddUserToBoard}
+                  onClick={(ev) => this.props.toggleMoreOptions(ev)}
                   className="back-screen-container"
                 >
                   {" "}

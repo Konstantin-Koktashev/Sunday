@@ -1,7 +1,5 @@
 .board-header-container {
   height: 20vh;
-  /* padding: 0px 10px; */
-  /* width: 100%; */
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid rgba(160, 160, 160, 0.466);
 }
@@ -10,7 +8,6 @@
   margin: 0px;
   color: rgb(51, 51, 51);
   font-size: 30px;
-  /* letter-spacing: 1px; */
   align-self: flex-start;
   margin-top: 15px;
   margin-left: 70px;
@@ -133,7 +130,7 @@
 
 .filter-add-container {
   width: 25vw;
-  margin-bottom: -50px;
+  margin-bottom: -70px;
   align-self: end;
 }
 

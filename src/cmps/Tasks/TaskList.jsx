@@ -81,9 +81,7 @@ class TaskList extends Component {
   setGroupColor = async (color, ev) => {
     ev.stopPropagation();
     ev.preventDefault();
-    this.setState(({ groupColor }) => ({
-      groupColor: !groupColor,
-    }));
+    this.setState({ groupColor: false });
     console.log("colorfrimpicker", color);
     let group = this.props.group;
     let board = this.props.board;

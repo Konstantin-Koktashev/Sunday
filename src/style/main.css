@@ -60,6 +60,7 @@ html {
   height: 40vh;
   width: 60vw;
   margin-left: 30vw;
+  display: inline;
 }
 @keyframes bgc-black {
   0% {
