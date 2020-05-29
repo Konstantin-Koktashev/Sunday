@@ -35,7 +35,7 @@ class App extends React.Component {
 
     if (!this.props.currUser) {
       console.log('YOU ARE NPOT LOGGED IN I GO LOGGIN')
-      history.push('/login/')
+      history.push('/home/')
     } else {
 
       SocketService.emit('login', this.props.currUser)

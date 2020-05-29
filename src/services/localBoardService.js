@@ -40,7 +40,32 @@ export default {
     addLikeMsg,
     changeGroupColor,
     changeBoardName,
-    changeBoardDesc
+    changeBoardDesc,
+    addUserToUpdateIsSeen,
+    checkIfUpdateSeen
+}
+function checkIfUpdateSeen(update, currUserId) {
+    if (update && update.seenBy && update.isSeen.length > 0) {
+        let isUserSeen = update.seenBy.find(user => {
+            if (user._id === currUserId) return true
+
+
+
+
+        })
+        if (isUserSeen) {
+            return true
+        }
+    }
+
+}
+function addUserToUpdateIsSeen(update, myUser) {
+    let seenBy = (update && update.seenBy && update.isSeen.length > 0) ? update.seenBy : []
+
+    seenBy.push(myUser)
+    update.seenBy = seenBy
+    return update
+
 }
 
 
