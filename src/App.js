@@ -33,7 +33,8 @@ class App extends React.Component {
     SocketService.setup()
 
 
-    if (!this.props.currUser) {
+    if (!this.props.currUser && window.location.href !== 'http://localhost:3000/login/') {
+
       history.push('/home/')
     } else {
 

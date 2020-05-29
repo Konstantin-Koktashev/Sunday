@@ -9,6 +9,7 @@ import LocalBoardService from "../../services/LocalBoardService";
 import { connect } from "react-redux";
 import ProgressBar from "../Statistics/ProgressBar";
 import GenereicProgBar from "../Statistics/GenereicProgBar";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import {
   saveBoard,
@@ -18,13 +19,56 @@ import {
 } from "../../actions/BoardActions";
 import SumBar from "../Statistics/SumBar";
 import { CirclePicker } from "react-color";
+// a little function to help us with reordering the result
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list);
+  const [removed] = result.splice(startIndex, 1);
+  result.splice(endIndex, 0, removed);
+
+  return result;
+};
+
+const grid = 8;
+
+const getItemStyle = (isDragging, draggableStyle) => ({
+  // some basic styles to make the items look a bit nicer
+  userSelect: "none",
+  // padding: grid * 2,
+  // margin: `0 0 ${grid}px 0`,
+
+  // change background colour if dragging
+  // background: isDragging ? "" : "",
+
+  // styles we need to apply on draggables
+  ...draggableStyle,
+});
+
+const getListStyle = (isDraggingOver) => ({
+  // background: isDraggingOver ? "" : "",
+  padding: grid,
+  // width: 250,
+});
+
 class TaskList extends Component {
-  state = {
-    taskIsShown: true,
-    groupName: this.props.name,
-    groupNameIsEdit: false,
-    groupColor: false,
-  };
+  // state = {
+  //   taskIsShown: true,
+  //   groupName: this.props.name,
+  //   groupNameIsEdit: false,
+  //   groupColor: false,
+  // };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: this.props.group.tasks,
+      taskIsShown: true,
+      groupName: this.props.name,
+      groupNameIsEdit: false,
+      groupColor: false,
+    };
+    this.onDragEnd = this.onDragEnd.bind(this);
+  }
+
   toggleList = () => {
     if (this.state.taskIsShown) {
       this.setState({ taskIsShown: false });
@@ -88,12 +132,41 @@ class TaskList extends Component {
     this.props.loadBoards();
   };
 
+  //// DND FUNCTIONS
+
+  onDragEnd = async (result) => {
+    // dropped outside the list
+    if (!result.destination) {
+      return;
+    }
+
+    const items = reorder(
+      this.state.items,
+      result.source.index,
+      result.destination.index
+    );
+
+    this.setState({
+      items,
+    });
+    // debugger;
+    console.log("onDragEnd -> items", items);
+
+    // this.props.group.tasks = items;
+    // const { items } = this.state;
+    const { group, board } = this.props;
+    const newBoard = LocalBoardService.changeTaskOrder(board, group, items);
+    await this.props.saveBoard(newBoard);
+    await this.props.setCurrBoard(newBoard);
+    this.props.loadBoards();
+  };
+
   render() {
     const { groupColor } = this.state;
     return (
       <div
         className={`   flex col ${
-          this.state.taskIsShown ? "group-list" : "group-list-small"
+          this.state.taskIsShown ? "group-list" : "group-list-small flex"
         }`}
       >
         <div
@@ -182,6 +255,13 @@ class TaskList extends Component {
                     board={this.props.board}
                   ></TaskBoxList>
                 </div>
+                {this.state.taskIsShown ? (
+                  ""
+                ) : (
+                  <div className="closed-group-items-txt">
+                    {this.props.group.tasks.length} Items
+                  </div>
+                )}
               </div>
               <div
                 className={`task-list  flex col ${
@@ -189,6 +269,59 @@ class TaskList extends Component {
                 }`}
               >
                 {/* // HERE Is the Task List */}
+                {/* 
+                ///// START OF DND */}
+                <DragDropContext onDragEnd={this.onDragEnd}>
+                  <Droppable droppableId="droppable">
+                    {(provided, snapshot) => (
+                      <div
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                        style={getListStyle(snapshot.isDraggingOver)}
+                      >
+                        {this.state.items.map((task, index) => (
+                          <Draggable
+                            key={task._id}
+                            draggableId={task._id}
+                            index={index}
+                          >
+                            {(provided, snapshot) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                style={getItemStyle(
+                                  snapshot.isDragging,
+                                  provided.draggableProps.style
+                                )}
+                              >
+                                <TaskPreview
+                                  deleteTask={this.deleteTask}
+                                  task={task}
+                                  key={index}
+                                  board={this.props.board}
+                                  toggleTaskEdit={this.toggleTaskEdit}
+                                  updateTaskName={this.updateTaskName}
+                                  handleChangeTask={this.handleChangeTask}
+                                  taskNameIsEdit={this.state.taskNameIsEdit}
+                                  group={this.props.group}
+                                />
+                                {/* {item.content} */}
+                              </div>
+                            )}
+                          </Draggable>
+                        ))}
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                </DragDropContext>
+
+                {/* 
+///////////// END OF DND
+
+/// OLD TASK LIST */}
+                {/* 
                 {this.props.tasks.map((task, idx) => (
                   <TaskPreview
                     deleteTask={this.deleteTask}
@@ -201,7 +334,7 @@ class TaskList extends Component {
                     taskNameIsEdit={this.state.taskNameIsEdit}
                     group={this.props.group}
                   />
-                ))}
+                ))} */}
 
                 {/* /// Until Here           */}
                 <AddTask group={this.props.group}></AddTask>
