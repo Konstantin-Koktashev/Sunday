@@ -14,7 +14,7 @@ class UsersPreviewBox extends Component {
     const people = this.props.people ?? [];
     return (
       <div
-        className="person-preview flex a-center j-center"
+        className="person-preview  a-center j-center"
         onClick={() => {
           this.props.togglePersonBox();
         }}

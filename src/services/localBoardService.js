@@ -39,12 +39,18 @@ export default {
     removeLabel,
     addLikeMsg,
     changeGroupColor,
-    changeBoardName
+    changeBoardName,
+    changeBoardDesc
 }
 
 
 function changeBoardName(board, name) {
     board.name = name
+    return board
+}
+
+function changeBoardDesc(board, desc) {
+    board.desc = desc
     return board
 }
 

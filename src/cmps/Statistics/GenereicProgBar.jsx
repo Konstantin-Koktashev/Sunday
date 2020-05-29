@@ -91,8 +91,6 @@ class GenericProgBar extends React.Component {
   render() {
     const { stuck, review, working, other, done } = this.state;
     if (!stuck) return <h2>Loading...</h2>;
-    console.log(this.state);
-    console.log("GenericProgBar -> render -> review", review);
 
     const doneStyle = {
       backgroundColor: done.color,

@@ -21,6 +21,7 @@ import {
 class BoardHeader extends React.Component {
   state = {
     boardNameEdit: false,
+    boardDescEdit: false,
   };
 
   confirmDelete = () => {
@@ -30,6 +31,10 @@ class BoardHeader extends React.Component {
 
   handleEditBoard = (ev) => {
     this.setState(({ boardNameEdit }) => ({ boardNameEdit: !boardNameEdit }));
+  };
+
+  handleEditDesc = (ev) => {
+    this.setState(({ boardDescEdit }) => ({ boardDescEdit: !boardDescEdit }));
   };
 
   editBoardName = async (ev) => {
@@ -46,34 +51,67 @@ class BoardHeader extends React.Component {
     this.props.loadBoards();
   };
 
+  editBoardDesc = async (ev) => {
+    const { currBoard } = this.props;
+    const { value } = ev.target;
+    if (!value) {
+      this.handleEditDesc();
+      return;
+    }
+    this.setState({ boardDescEdit: false });
+    const newBoard = LocalBoardService.changeBoardDesc(currBoard, value);
+    await this.props.saveBoard(newBoard);
+    this.props.setCurrBoard(newBoard);
+    this.props.loadBoards();
+  };
+
   handleKeyPressed = (ev) => {
     if (ev.key !== "Enter") return;
     this.editBoardName(ev);
   };
+  handleKeyPressedDesc = (ev) => {
+    if (ev.key !== "Enter") return;
+    this.editBoardDesc(ev);
+  };
 
   render() {
     const { board } = this.props;
-    const { boardNameEdit } = this.state;
+    const { boardNameEdit, boardDescEdit } = this.state;
     return (
       <div className="board-header-container flex a-center space-between">
         <div className="header-box flex col ">
-          <div className="flex a-center">
+          <div className="flex a-start col board-name-dec-container">
             {!boardNameEdit && (
               <h2 onClick={(ev) => this.handleEditBoard(ev)}>{board.name}</h2>
             )}
 
             {boardNameEdit && (
-              <div className="board-name-container">
+              <div className="board-name-container ">
                 <TextField
                   autoFocus
                   onBlur={(ev) => this.editBoardName(ev)}
                   className="edit-board-input"
                   placeholder={`${board.name}`}
                   label="Enter new board name"
-                  variant="outlined"
                   onKeyPress={(ev) => this.handleKeyPressed(ev)}
                 ></TextField>
               </div>
+            )}
+
+            {!boardDescEdit && (
+              <p onClick={(ev) => this.handleEditDesc(ev)}>
+                {board.desc ? board.desc : "board description"}
+              </p>
+            )}
+            {boardDescEdit && (
+              <TextField
+                autoFocus
+                className="edit-board-desc-input"
+                onBlur={(ev) => this.editBoardDesc(ev)}
+                placeholder={board.desc ? board.desc : "board description"}
+                label={"board description"}
+                onKeyPress={(ev) => this.handleKeyPressedDesc(ev)}
+              ></TextField>
             )}
             <span>
               {/* {board.history[board.history.length - 1].timeStamp &&

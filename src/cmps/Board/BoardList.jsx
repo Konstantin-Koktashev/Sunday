@@ -9,7 +9,7 @@ export default function BoardList(props) {
             <h3>No Groups Found!</h3>
           </div>
         ) : (
-          props.boards.map((board) => (
+          props.boards.map((board, idx) => (
             <GroupList
               onDeleteToy={props.onDeleteToy}
               onSelectToy={props.onSelectToy}

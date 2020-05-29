@@ -30,6 +30,9 @@
   /* background-color: rgb(0, 81, 255); */
   width: 5vw;
   height: 4vh;
+  display: grid;
+  grid-template-columns: 15px 15px 15px;
+  margin-right: 2px;
 }
 
 .person-preview-btn {

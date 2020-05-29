@@ -10,13 +10,13 @@
   font-size: 30px;
   align-self: flex-start;
   margin-top: 15px;
-  margin-left: 70px;
   width: 10vw;
   height: 5vh;
 }
 
-.board-name-container {
-  margin-left: 5vw;
+.board-name-dec-container {
+  margin-left: 4vw;
+  margin-top: 1vh;
 }
 
 .board-header-container h2:first-letter {
