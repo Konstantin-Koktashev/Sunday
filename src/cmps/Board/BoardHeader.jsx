@@ -94,10 +94,6 @@ class BoardHeader extends React.Component {
 
         <div className="flex col space-between">
           <div className="flex space-between">
-            <div
-              onClick={this.props.toggleMoreOptions}
-              className="back-screen-container"
-            ></div>
             <div className="dots-board-header">
               <img
                 onClick={this.props.toggleMoreOptions}
