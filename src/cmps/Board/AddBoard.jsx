@@ -40,12 +40,12 @@ class AddBoard extends Component {
         },
         {
           type: "text",
-          value: "Text",
+          value: "",
           order: "4",
         },
         {
           type: "number",
-          value: "Number",
+          value: "",
           order: "5",
         },
         {

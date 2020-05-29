@@ -48,6 +48,12 @@ class LabelContainer extends Component {
           value: "Review",
           status: "Waiting for review",
         },
+        {
+          _id: "333aasassb",
+          color: "#C4C4C4",
+          value: "",
+          status: "new",
+        },
       ];
     } else if (this.props.type === "priority") {
       this.setState({ className: "label-priority" });
@@ -66,6 +72,12 @@ class LabelContainer extends Component {
           _id: "3fsa33b",
           color: "#00aaffb2",
           value: "low",
+        },
+        {
+          _id: "333aasassb",
+          color: "#C4C4C4",
+          value: "",
+          status: "new",
         },
       ];
     }
@@ -111,6 +123,7 @@ class LabelContainer extends Component {
   setColumn = async (color, text) => {
     const task = this.props.task;
     const { currBoard, column, currUser } = this.props;
+    const { className } = this.state;
     let updateInfo = {
       column,
       user: currUser,
@@ -120,7 +133,16 @@ class LabelContainer extends Component {
       color,
     };
     let board = LocalBoardService.addBoardHistory(currBoard, updateInfo);
-    board=LocalBoardService.addTaskHistory(currBoard, updateInfo)
+    board = LocalBoardService.setColumn(
+      currBoard,
+      column,
+      color,
+      text,
+      task,
+      className
+    );
+
+    board = LocalBoardService.addTaskHistory(currBoard, updateInfo);
     board = LocalBoardService.setColumn(currBoard, column, color, text, task);
     // board = LocalBoardService.addBoardHistory(board, updateInfo)
     this.props.saveBoard(board);
@@ -149,8 +171,6 @@ class LabelContainer extends Component {
       value: "New Label",
       status: "New Label",
     };
-
-    this.setState({ labels: [...this.state.labels, label] });
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const board = LocalBoardService.addLabel(currBoard, column, label);
