@@ -40,12 +40,12 @@ class UserList extends Component {
     await this.props.setCurrChatRoom(room);
     await this.props.setChatType(chatWith);
   };
-  addUserToBoard=async(user)=>{
-    const board=this.state.currBoard
-    board.users.push(user)
-    await this.props.saveBoard(board)
-    this.props.loadBoards()
-  }
+  addUserToBoard = async (user) => {
+    const board = this.props.currBoard;
+    board.users.push(user);
+    await this.props.saveBoard(board);
+    this.props.loadBoards();
+  };
 
   render() {
     return (
@@ -66,7 +66,7 @@ class UserList extends Component {
         {this.UserFilter().map((user, idx) => {
           return (
             <div className="user-search-bar flex a-center">
-              <button onClick={(user)=>this.addUserToBoard(user)}></button>
+              <button onClick={(user) => this.addUserToBoard(user)}></button>
               <NavLink className=" flex" to={`/profile/${user._id}`}>
                 <div
                   className="user-preview-circle-column"
@@ -103,7 +103,7 @@ const mapStateToProps = (state) => ({
   users: state.user.users,
   loggedInUser: state.user.loggedInUser,
   chat: state.chat,
-  currBard:state.userBoards.currBoard
+  currBoard: state.userBoards.currBoard,
 });
 
 const mapDispatchToProps = {
@@ -112,7 +112,7 @@ const mapDispatchToProps = {
   setChatType,
   setCurrChatRoom,
   loadRooms,
-  saveBoard
+  saveBoard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
