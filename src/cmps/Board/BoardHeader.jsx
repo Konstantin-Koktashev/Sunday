@@ -16,6 +16,8 @@ export default function BoardHeader(props) {
     props.removeBoard(boardId);
   };
 
+  function toggleUserList() {}
+
   const board = props.board;
   return (
     <div className="board-header-container flex a-center space-between">
@@ -48,6 +50,10 @@ export default function BoardHeader(props) {
       </button> */}
       <div className="flex col space-between">
         <div className="flex space-between">
+          <div
+            onClick={props.toggleMoreOptions}
+            className="back-screen-container"
+          ></div>
           <div className="dots-board-header">
             <img
               onClick={props.toggleMoreOptions}
@@ -71,10 +77,11 @@ export default function BoardHeader(props) {
                 <div className="add-user-toboard">
                   {props.addUserToBoard && (
                     <UserList
+                      toggleMoreOptions={props.toggleMoreOptions}
                       toggleAddUserToBoard={props.toggleAddUserToBoard}
                     ></UserList>
                   )}
-                  <div onClick={props.toggleAddUserToBoard}>
+                  <div onClick={(ev) => props.toggleAddUserToBoard(ev)}>
                     Invite your team
                   </div>
                 </div>

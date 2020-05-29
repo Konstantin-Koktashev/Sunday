@@ -210,7 +210,8 @@ html {
 }
 
 .react-datepicker__input-container input {
-  font-weight: bold;
+  /* font-weight: ; */
+  font-size: 10px;
 }
 
 @keyframes preloader_2_1 {

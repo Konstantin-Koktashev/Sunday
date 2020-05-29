@@ -47,13 +47,15 @@ class UserList extends Component {
     this.props.loadBoards();
   };
 
+  toggle = () => {
+    this.props.toggleAddUserToBoard();
+    this.props.toggleMoreOptions();
+  };
+
   render() {
     return (
       <div className="user-list-container flex col  j-center">
-        <div
-          onClick={this.props.toggleAddUserToBoard}
-          className="back-screen-container"
-        ></div>
+        <div onClick={this.toggle} className="back-screen-container"></div>
         <div className="user-list-topbar flex col a-center j-center">
           <h2>Search Users</h2>
 
@@ -65,8 +67,7 @@ class UserList extends Component {
 
         {this.UserFilter().map((user, idx) => {
           return (
-            <div className="user-search-bar flex a-center">
-              <button onClick={(user) => this.addUserToBoard(user)}></button>
+            <div className="user-search-bar flex a-center space-between">
               <NavLink className=" flex" to={`/profile/${user._id}`}>
                 <div
                   className="user-preview-circle-column"
@@ -79,7 +80,8 @@ class UserList extends Component {
                 </div>
                 <p>{user.username}</p>
                 <span>Seen {moment(user.lastSeen).fromNow()}</span>
-
+              </NavLink>
+              <div className="flex a-center">
                 <div className="task-bar-icon">
                   <img
                     onClick={() =>
@@ -90,7 +92,14 @@ class UserList extends Component {
                     title="Click to Chat"
                   />
                 </div>
-              </NavLink>
+                <button
+                  title={`Add to ${this.props.currBoard.name}`}
+                  className="add-to-board-btn"
+                  onClick={(user) => this.addUserToBoard(user)}
+                >
+                  Add to Board
+                </button>
+              </div>
             </div>
           );
         })}

@@ -35,8 +35,6 @@ class BoardApp extends React.Component {
             SocketService.emit('boardViewed', boardId)
         }
         SocketService.on('doRefresh', this.loadAndSetBoards)
-
-
     }
     async doGuestModeLogin() {
         const userCreds = { email: 'guest', password: 'guest' };
@@ -48,9 +46,6 @@ class BoardApp extends React.Component {
     }
 
     toggleChart = (viewType) => {
-
-
-
         this.setState({ viewType })
     };
 
@@ -67,8 +62,6 @@ class BoardApp extends React.Component {
         SocketService.off('doRefresh', this.loadAndSetBoards)
     }
     async componentDidUpdate(prevProps) {
-
-
         if (this.props.match.params.id !== prevProps.match.params.id) {
             let board = this.getBoardByID(this.props.match.params.id)
             this.setBoard(board)
@@ -79,15 +72,10 @@ class BoardApp extends React.Component {
 
     }
 
-
-
-
-
     loadboards = async () => {
         const { boards } = this.props;
         const id = this.props.match.params.id ? this.props.match.params.id : null
         if (boards && boards.length > 0) {
-
             let board = boards[0]
             if (id) {
                 board = this.getBoardByID(id)
@@ -132,9 +120,10 @@ class BoardApp extends React.Component {
     }
     toggleAddUserToBoard = (ev) => {
         // ev.stopPropagation();
-        this.setState(({ addUserToBoard }) => ({
-            addUserToBoard: !addUserToBoard,
+        this.setState(({ addUserToBoard, }) => ({
+            addUserToBoard: !addUserToBoard, moreOptionsIsOpen: false
         }));
+        this.toggleMoreOptions()
     };
 
     toggleMoreOptions = (ev) => {
@@ -149,7 +138,6 @@ class BoardApp extends React.Component {
         const { currBoard } = this.state;
         return (
             <>
-
                 {/* <Filter onSetFilter={this.onFilter} filterBy={filterBy}></Filter> */}
                 {currBoard && <BoardHeader toggleMoreOptions={this.toggleMoreOptions} moreOptionsIsOpen={this.state.moreOptionsIsOpen} addUserToBoard={this.state.addUserToBoard} toggleAddUserToBoard={this.toggleAddUserToBoard} toggleChart={this.toggleChart} removeBoard={this.removeBoard} board={currBoard} user={this.props.user}></BoardHeader>}
                 {currBoard && <Board board={currBoard} raderIsOpen={this.state.raderIsOpen} viewType={this.state.viewType} ></Board>}
@@ -159,8 +147,6 @@ class BoardApp extends React.Component {
     }
 }
 
-
-
 const mapStateToProps = (state) => {
     //State of the store to props of the cmp
     return {
@@ -168,7 +154,6 @@ const mapStateToProps = (state) => {
         currBoard: state.userBoards.currBoard,
         user: state.user.loggedInUser,
         chat: state.chat
-
     };
 };
 const mapDispatchToProps = {
