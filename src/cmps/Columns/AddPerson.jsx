@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import LocalBoardService from "../../services/LocalBoardService";
-import { saveBoard, loadBoards } from "../../actions/BoardActions";
+import {
+  saveBoard,
+  loadBoards,
+  setCurrBoard,
+} from "../../actions/BoardActions";
 import { loadUsers } from "../../actions/UserActions";
 import UsersPreviewBox from "../UsersPreviewBox";
 import deletePng from "../../style/img/delete.svg";
@@ -17,7 +21,8 @@ class AddPerson extends Component {
     await this.props.loadUsers();
     this.getAllPersons();
   }
-  addPerson = (person) => {
+
+  addPerson = async (person) => {
     this.setState({ isShown: false });
     const column = this.props.column;
     const currBoard = this.props.currBoard;
@@ -28,7 +33,8 @@ class AddPerson extends Component {
       task,
       person
     );
-    this.props.saveBoard(newBoard);
+    await this.props.saveBoard(newBoard);
+    this.props.setCurrBoard(newBoard);
     this.props.loadBoards();
   };
   searchPeople = (e) => {
@@ -153,5 +159,6 @@ const mapDispatchToProps = {
   saveBoard,
   loadBoards,
   loadUsers,
+  setCurrBoard,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AddPerson);
