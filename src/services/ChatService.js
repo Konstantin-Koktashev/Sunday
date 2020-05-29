@@ -9,7 +9,6 @@ export default {
   getRoomKey,
   createNewRoom,
   getUser,
-  chatMsgByUser,
   filterChatsByUser
 };
 
@@ -75,29 +74,7 @@ function sortByKey(array, key) {
   });
 };
 
-function chatMsgByUser(chatRoom, myUser) {
-  let chatMsgsByUser = chatRoom.roomHistory.map((msg) => {
-    let author = "them";
-    if (msg && msg.senderId === myUser._id) {
-      author = "me";
-    } else {
-      let isSeen = false;
-      msg.data.isSeen.forEach((seenUser) => {
-        if (myUser._id === seenUser._id) isSeen = true;
-      });
-      if (!isSeen) {
-        this.newMessagePopup();
-        msg.data.isSeen.push(myUser);
-      }
-    }
-    author = "me";
-    msg.author = author;
-    return msg;
-  });
 
-  return chatMsgsByUser
-
-}
 
 
 function getUser(chatWith, board, users) {
