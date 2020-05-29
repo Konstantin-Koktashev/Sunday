@@ -63,7 +63,7 @@ class TaskBox extends React.Component {
       case "label":
         box = (
           <>
-            <div className="label-containerr">
+            <div className="label-container-relative">
               {isTaskBox ? (
                 <div className="label-box box-div">
                   {col.value ? col.value : "Status"}
@@ -94,29 +94,30 @@ class TaskBox extends React.Component {
       case "priority":
         box = (
           <>
-            {" "}
-            {isTaskBox ? (
-              <div className="label-box box-div">
-                {col.value ? col.value : "Priority"}
-              </div>
-            ) : (
-              <div
-                className="label-box box-div"
-                style={{ backgroundColor: col.color }}
-                onClick={(ev) => this.toggleContainer(ev)}
-              >
-                {col.value}
-              </div>
-            )}
-            {containerIsShown && (
-              <LabelContainer
-                toggleContainer={this.toggleContainer}
-                labels={col.labels}
-                column={col}
-                type={col.type}
-                task={this.props.task}
-              />
-            )}
+            <div className="label-container-relative">
+              {isTaskBox ? (
+                <div className="label-box box-div">
+                  {col.value ? col.value : "Priority"}
+                </div>
+              ) : (
+                <div
+                  className="label-box box-div"
+                  style={{ backgroundColor: col.color }}
+                  onClick={(ev) => this.toggleContainer(ev)}
+                >
+                  {col.value}
+                </div>
+              )}
+              {containerIsShown && (
+                <LabelContainer
+                  toggleContainer={this.toggleContainer}
+                  labels={col.labels}
+                  column={col}
+                  type={col.type}
+                  task={this.props.task}
+                />
+              )}
+            </div>
           </>
         );
         break;

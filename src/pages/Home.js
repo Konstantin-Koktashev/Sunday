@@ -29,6 +29,8 @@ class Home extends Component {
         <NavLink to="/board/guest/true">
           <button className="get-started-btn get-started-btn-anim">Get Started</button>
         </NavLink>
+
+
       </div>
     );
   }

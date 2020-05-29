@@ -113,20 +113,14 @@ class BoardHeader extends React.Component {
                 onKeyPress={(ev) => this.handleKeyPressedDesc(ev)}
               ></TextField>
             )}
-            <span>
-              {/* {board.history[board.history.length - 1].timeStamp &&
-              moment(
-                board.history[board.history.length - 1].timeStamp
-              ).fromNow()} */}
-            </span>
-          </div>
-          <div className="view-select-box">
-            <SelectCmp
-              handleChange={this.props.toggleChart}
-              name={"viewType"}
-              label={"Select Table"}
-              options={["board", "pie", "radar"]}
-            />
+            <div className="view-select-box">
+              <SelectCmp
+                handleChange={this.props.toggleChart}
+                name={"viewType"}
+                label={"Select Table"}
+                options={["board", "pie", "radar"]}
+              />
+            </div>
           </div>
         </div>
 
@@ -167,7 +161,7 @@ class BoardHeader extends React.Component {
               </>
             )}
           </div>
-          <div className="filter-add-container flex a-center">
+          <div className="filter-add-container flex a-end ">
             <AddGroup board={this.props.board}></AddGroup>
 
             <FilterByText currBoard={this.props.board} />

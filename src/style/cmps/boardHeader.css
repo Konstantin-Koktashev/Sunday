@@ -15,14 +15,21 @@
 
 .board-name-dec-container {
   margin-left: 4vw;
-  margin-top: 1vh;
+  margin-top: -1vh;
+}
+.board-name-dec-container p {
+  margin-top: 0px;
+}
+
+.board-name-dec-container .makeStyles-formControl-2 {
+  margin: 0px;
 }
 
 .board-header-container h2:first-letter {
   text-transform: uppercase;
 }
 .header-box {
-  margin-top: -30px;
+  margin-top: -3px;
 }
 .board-header-container span {
   font-size: 15px;
@@ -51,8 +58,8 @@
   font-size: 12px;
   text-align: center;
   padding: 0px 10px;
-  margin-bottom: -3vh;
   margin-right: 20px;
+  align-self: flex-end;
 }
 .add-group-btn:hover {
   background-color: #21b0f8;
@@ -130,12 +137,14 @@
 
 .filter-add-container {
   width: 25vw;
-  margin-bottom: -70px;
+  margin-top: 9vh;
+  margin-bottom: -5px;
   align-self: end;
+  margin-right: 2vw;
 }
 
-.view-select-box {
+/* .view-select-box {
   position: fixed;
   top: 12vh;
   left: 24vw;
-}
+} */
