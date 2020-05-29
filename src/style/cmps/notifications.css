@@ -45,16 +45,25 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
+  left: 0px;
+  top: 0px;
   background-color: rgba(255, 255, 255, 0);
   /* cursor: pointer; */
-  z-index: 1;
+  z-index: -1;
+}
+.complete-task-notification {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
 }
 .notification-update-info {
   font-size: 12px;
 }
 
 .notification-user-box {
-  align-self: start;
+  align-content: space-between;
+  /* align-self: start; */
+  justify-content: space-between;
 }
 .notification-user-box a {
   margin-left: 20px;
@@ -67,6 +76,9 @@
   width: 35px;
   height: 35px;
 }
+.update-card-time {
+  justify-self: start;
+}
 .update-card-time p {
   margin-left: -30%;
   color: rgba(0, 0, 0, 0.034);
@@ -77,10 +89,14 @@
 
 .notifications-popup-number {
   position: absolute;
-  width: 1vw;
-  height: 1vw;
+  width: 1.5vw;
+  height: 1.5vw;
   top: 28vh;
   border-radius: 50%;
   background-color: red;
   color: white;
+  left: 2vw;
+  z-index: 0;
+  font-size: 14px;
+  text-align: center;
 }

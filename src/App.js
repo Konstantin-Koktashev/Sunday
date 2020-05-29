@@ -109,7 +109,7 @@ class App extends React.Component {
           {/* <userChatList chatObjects={} ></userChatList> */}
           {this.props.currUser && <SideNav logOut={this.logOut} toggleNotifications={this.toggleNotifications} user={this.props.currUser}></SideNav>}
           {this.props.currUser && <BoardNav></BoardNav>}
-          {this.props.currUser && this.props.board && this.state.notificationsIsShown && <Notifications toggleNotifications={this.toggleNotifications}></Notifications>}
+          {this.props.currUser && this.props.board && <Notifications notificationsIsShown={this.state.notificationsIsShown} toggleNotifications={this.toggleNotifications}></Notifications>}
           {/* </> */}
           {/* </div> */}
           {this.props.currUser && this.props.board && this.props.chatWith && <Chat history={history} user={this.props.currUser} ></Chat>}
