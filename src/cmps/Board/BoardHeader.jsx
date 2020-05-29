@@ -92,14 +92,12 @@ class BoardHeader extends React.Component {
           </div>
         </div>
 
-        {/* <h2> {this.props.user.username}</h2> */}
-
-        {/* 
-      <button className="toggle-chart-btn" onClick={this.props.toggleChart}>
-        {this.props.chartIsOpen ? "Board View" : "Chart View"}
-      </button> */}
         <div className="flex col space-between">
           <div className="flex space-between">
+            <div
+              onClick={this.props.toggleMoreOptions}
+              className="back-screen-container"
+            ></div>
             <div className="dots-board-header">
               <img
                 onClick={this.props.toggleMoreOptions}
