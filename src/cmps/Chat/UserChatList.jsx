@@ -17,15 +17,24 @@ class UserChatList extends Component {
   async componentDidMount() {
     await this.props.loadUsers();
     await this.props.loadRooms();
-    let chatObjects = this.props.chat.chatRooms
-      ? this.props.chat.chatRooms
-      : [];
+    const { chatRooms } = this.props.chat;
+    this.setState({ chats: chatRooms });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { chatRooms } = this.props.chat;
+    if (
+      JSON.stringify(chatRooms) !== JSON.stringify(prevProps.chat.chatRooms)
+    ) {
+      this.setState({ chats: chatRooms });
+    }
   }
 
   filterChatsByUser = () => {
-    const { chatRooms } = this.props.chat;
-    if (!chatRooms) return;
-    let sortedRooms = ChatService.filterChatsByUser(chatRooms, this.props.user);
+    if (!this.state.chats) return [];
+    const { chats } = this.state;
+    // if (!chatRooms) return;
+    let sortedRooms = ChatService.filterChatsByUser(chats, this.props.user);
     return sortedRooms;
   };
   /// needs to get a Open Chat Array Obj
@@ -33,7 +42,7 @@ class UserChatList extends Component {
     let chatRooms = this.filterChatsByUser();
     return (
       <>
-        {chatRooms && chatRooms.length > 0 && (
+        {chatRooms.length > 0 && (
           <div className="user-chat-popup-container">
             {chatRooms.map((chatRoom, idx) => {
               if (idx > 5) return;

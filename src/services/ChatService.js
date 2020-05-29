@@ -19,13 +19,14 @@ export async function query() {
 }
 
 async function saveChat(room, allRooms) {
+  debugger
   console.log('room', room)
 
   let roomToApply;
   let ifTrue = true
   if (!room._id) roomToApply = await HttpService.post('chat', room)
 
-  if (room.type === 'board') {
+  if (room.type === 'board' && allRooms && allRooms.length > 0) {
     allRooms.forEach(r => {
       if (r.chatRoomId === room.chatRoomId) ifTrue = false
     })
@@ -56,13 +57,12 @@ function remove(boardId, rooms) {
 }
 
 function filterChatsByUser(chatRooms, myUser) {
-  chatRooms.filter((room) => {
-    if (room) {
-      if (room.userA === myUser._id || room.userB === myUser._id) return true;
-    }
+  if (!chatRooms.length) return
+  let filteredRooms = chatRooms.filter((room) => {
+    if (room.userA === myUser._id || room.userB === myUser._id) return true;
   });
 
-  let sortedRooms = sortByKey(chatRooms, "lastUpdate");
+  let sortedRooms = sortByKey(filteredRooms, "lastUpdate");
   return sortedRooms;
 
 

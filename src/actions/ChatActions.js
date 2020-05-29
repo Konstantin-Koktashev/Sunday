@@ -26,12 +26,12 @@ export function addRoom(room) {
   };
 }
 
-export function saveRoom(room) {
+export function saveRoom(room, allRooms) {
   return async dispatch => {
     try {
       const type = room._id ? 'UPDATE_ROOM' : 'ADD_ROOM'
       room.lastUpdate = Date.now()
-      const savedRoom = await ChatService.saveChat(room)
+      const savedRoom = await ChatService.saveChat(room, allRooms)
       SocketService.emit('doRefresh', 'js')
       dispatch({ type, savedRoom })
     } catch (err) {

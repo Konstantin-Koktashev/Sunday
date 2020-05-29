@@ -92,6 +92,7 @@ class Chat extends Component {
       );
 
       // Send to server
+      // let allChatRooms = this.props.chat.chatRooms
       this.props.saveRoom(chatRoom);
 
       this.setState({ chatRoom });
@@ -99,7 +100,7 @@ class Chat extends Component {
       // Else Take the room History And render on chat
       await this.props.setCurrChatRoom(room);
       let chatRoom = this.props.currChatRoom;
-      let chatMsgsByUser = ChatService.chatMsgByUser(chatRoom, this.props.user);
+      let chatMsgsByUser = this.chatMsgByUser(chatRoom, this.props.user);
       // Add Sorted Msgs by User to the room history
       chatRoom.roomHistory = chatMsgsByUser;
       await this.props.saveRoom(chatRoom);
@@ -144,7 +145,6 @@ class Chat extends Component {
     } else {
       SocketService.emit("board_room_new_msg", chatWith);
     }
-
     let chatRoom = this.state.chatRoom;
     if (chatRoom && chatRoom.roomHistory) {
       chatRoom.roomHistory.push(message);
@@ -169,6 +169,29 @@ class Chat extends Component {
       });
     }
   }
+
+  chatMsgByUser = (chatRoom, myUser) => {
+    let chatMsgsByUser = chatRoom.roomHistory.map((msg) => {
+      let author = "them";
+      if (msg && msg.senderId === myUser._id) {
+        author = "me";
+      } else {
+        let isSeen = false;
+        msg.data.isSeen.forEach((seenUser) => {
+          if (myUser._id === seenUser._id) isSeen = true;
+        });
+        if (!isSeen) {
+          this.newMessagePopup();
+          msg.data.isSeen.push(myUser);
+        }
+      }
+      author = "me";
+      msg.author = author;
+      return msg;
+    });
+
+    return chatMsgsByUser;
+  };
 
   _handleClick() {
     this.setState({
