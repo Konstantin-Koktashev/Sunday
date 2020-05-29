@@ -136,7 +136,7 @@ class TaskBox extends React.Component {
             onClick={(ev) => this.toggleColEdit(ev)}
             className="number-box box-div"
           >
-            {col.value}
+            {`${isTaskBox ? "Number" : col.value}`}
           </div>
         );
         break;
@@ -155,7 +155,7 @@ class TaskBox extends React.Component {
             onClick={(ev) => this.toggleColEdit(ev)}
             className="text-box box-div"
           >
-            {col.value}
+            {`${isTaskBox ? "Text" : col.value}`}
           </div>
         );
         break;

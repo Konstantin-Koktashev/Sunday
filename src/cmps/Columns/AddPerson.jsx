@@ -15,6 +15,7 @@ class AddPerson extends Component {
   };
   async componentDidMount() {
     await this.props.loadUsers();
+    this.getAllPersons();
   }
   addPerson = (person) => {
     this.setState({ isShown: false });
@@ -35,6 +36,14 @@ class AddPerson extends Component {
     const users = this.props.users;
     const usersToAdd = users.filter((user) => {
       return user.username.includes(e.target.value);
+    });
+    this.setState({ usersToAdd });
+  };
+
+  getAllPersons = () => {
+    const users = this.props.users;
+    const usersToAdd = users.filter((user) => {
+      return user.username.includes("");
     });
     this.setState({ usersToAdd });
   };
@@ -73,6 +82,7 @@ class AddPerson extends Component {
         {isShown && (
           <div className="person-component flex col">
             <input
+              autoFocus
               placeholder="Search People"
               onChange={(e) => this.searchPeople(e)}
             />

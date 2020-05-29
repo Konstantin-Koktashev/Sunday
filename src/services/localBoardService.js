@@ -290,12 +290,19 @@ function changeLabelColumn(board, label, color, text) {
 
 
 
-function setColumn(board, column, color, value, task) {
-
-    task.status = value
-    column.value = value
-    column.color = color
-    return board
+function setColumn(board, column, color, value, task, statusOrPriority) {
+    console.log("setColumn -> value", statusOrPriority)
+    if (statusOrPriority === 'label-status') {
+        task.status = value
+        column.value = value
+        column.color = color
+        return board
+    } else {
+        task.priority = value
+        column.value = value
+        column.color = color
+        return board
+    }
 }
 
 

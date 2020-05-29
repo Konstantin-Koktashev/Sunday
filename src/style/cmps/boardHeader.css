@@ -11,14 +11,27 @@
   align-self: flex-start;
   margin-top: 15px;
   height: 5vh;
+  position: relative;
 }
 
 .board-name-dec-container {
   margin-left: 4vw;
   margin-top: -1vh;
 }
+
 .board-name-dec-container p {
   margin-top: 0px;
+  position: relative;
+}
+
+.board-name-dec-container p:hover {
+  padding: 0px 2vw 0px 2vw;
+
+  border: 1px dotted rgba(121, 119, 119, 0.609);
+}
+.board-name-dec-container h2:hover {
+  padding: 0px 2vw 0px 2vw;
+  border: 1px dotted rgba(121, 119, 119, 0.609);
 }
 
 .board-name-dec-container .makeStyles-formControl-2 {
