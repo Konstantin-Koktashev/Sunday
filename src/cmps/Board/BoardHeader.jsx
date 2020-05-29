@@ -12,7 +12,11 @@ import { connect } from "react-redux";
 import { TextField } from "@material-ui/core";
 import LocalBoardService from "../../services/LocalBoardService";
 
-import { setCurrBoard, loadBoards } from "../../actions/BoardActions";
+import {
+  setCurrBoard,
+  loadBoards,
+  saveBoard,
+} from "../../actions/BoardActions";
 
 class BoardHeader extends React.Component {
   state = {
@@ -29,13 +33,17 @@ class BoardHeader extends React.Component {
   };
 
   editBoardName = async (ev) => {
-    debugger;
     const { currBoard } = this.props;
     const { value } = ev.target;
+    if (!value) {
+      this.handleEditBoard();
+      return;
+    }
     this.setState({ boardNameEdit: false });
     const newBoard = LocalBoardService.changeBoardName(currBoard, value);
+    await this.props.saveBoard(newBoard);
     this.props.setCurrBoard(newBoard);
-    await this.props.loadBoards();
+    this.props.loadBoards();
   };
 
   handleKeyPressed = (ev) => {
@@ -55,14 +63,17 @@ class BoardHeader extends React.Component {
             )}
 
             {boardNameEdit && (
-              <TextField
-                onBlur={(ev) => this.editBoardName(ev)}
-                className="edit-board-input"
-                placeholder={`${board.name}`}
-                label="Enter new board name"
-                variant="outlined"
-                onKeyPress={(ev) => this.handleKeyPressed(ev)}
-              ></TextField>
+              <div className="board-name-container">
+                <TextField
+                  autoFocus
+                  onBlur={(ev) => this.editBoardName(ev)}
+                  className="edit-board-input"
+                  placeholder={`${board.name}`}
+                  label="Enter new board name"
+                  variant="outlined"
+                  onKeyPress={(ev) => this.handleKeyPressed(ev)}
+                ></TextField>
+              </div>
             )}
             <span>
               {/* {board.history[board.history.length - 1].timeStamp &&
@@ -112,6 +123,7 @@ class BoardHeader extends React.Component {
                   <div className="add-user-toboard">
                     {this.props.addUserToBoard && (
                       <UserList
+                        toggleMoreOptions={this.props.toggleMoreOptions}
                         toggleAddUserToBoard={this.props.toggleAddUserToBoard}
                       ></UserList>
                     )}
@@ -144,6 +156,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   setCurrBoard,
   loadBoards,
+  saveBoard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardHeader);

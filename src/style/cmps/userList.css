@@ -10,6 +10,7 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.41);
   min-height: 70vh;
   max-height: 80vh;
+  padding: 0px 10px;
 }
 
 .user-list-topbar {
@@ -55,4 +56,21 @@
   margin-top: 0px;
   width: 20vw;
   text-align: left;
+}
+
+.add-to-board-btn {
+  height: 4vh;
+  background-color: #00a8ff;
+  cursor: pointer;
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  text-align: center;
+  padding: 0px 10px;
+  outline: none;
+  height: 3vh;
+  margin-top: -10px;
+  margin-right: 10px;
+  border: none;
+  /* margin-right: -40vw; */
 }

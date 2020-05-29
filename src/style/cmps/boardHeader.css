@@ -14,6 +14,12 @@
   align-self: flex-start;
   margin-top: 15px;
   margin-left: 70px;
+  width: 10vw;
+  height: 5vh;
+}
+
+.board-name-container {
+  margin-left: 5vw;
 }
 
 .board-header-container h2:first-letter {
@@ -57,17 +63,7 @@
 }
 
 .header-remove-board {
-  /* width: 7vw; */
-  /* text-align: center;
-  height: 4vh; */
-  /* background-color: #00a8ff; */
-  /* cursor: pointer;
-  color: white; */
-  /* border-radius: 20px; */
-  /* font-size: 12px;
-  border: none; */
-  /* margin-left: 3px;
-  padding: 0px 15px; */
+  /* border-bottom: 1px solid grey; */
 }
 
 .header-remove-board:hover {
@@ -109,16 +105,16 @@
   top: 8vh;
   z-index: 9000000;
   border-radius: 10px;
-  box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 3px rgba(187, 187, 187, 0.75);
 }
 
 .more-options-container > * {
-  border-bottom: 1px solid grey;
   padding: 10px 0px;
   /* margin-top: 20px;00 */
   padding-top: 10px;
   cursor: pointer;
 }
+
 .more-options-container > *:hover {
   background-color: rgba(128, 128, 128, 0.562);
 }
@@ -132,6 +128,7 @@
 .dots-board-header img {
   width: 50px;
   height: 50px;
+  opacity: 0.7;
 }
 
 .filter-add-container {
@@ -141,5 +138,7 @@
 }
 
 .view-select-box {
-  margin-right: -110px;
+  position: fixed;
+  top: 12vh;
+  left: 24vw;
 }

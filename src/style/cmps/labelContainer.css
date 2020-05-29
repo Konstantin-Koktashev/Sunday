@@ -18,6 +18,18 @@
   /* left: -5px; */
 }
 
+.label-status {
+  left: -5vw;
+  bottom: -9vw;
+  /* top: -8vh; */
+  /* left: -2.5vw; */
+}
+
+.label-priority {
+  bottom: -6.5vw;
+  left: 21vw;
+}
+
 /* .label-container{
   position: relative;
 } */
@@ -36,16 +48,6 @@
   border-radius: 4px;
   font-size: 15px;
   color: rgba(255, 251, 251, 0.945);
-}
-
-.label-status {
-  top: -8vh;
-  left: -2.5vw;
-}
-
-.label-priority {
-  top: -8vh;
-  left: 13vw;
 }
 
 .box-label {
