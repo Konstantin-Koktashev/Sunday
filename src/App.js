@@ -54,6 +54,7 @@ class App extends React.Component {
       this.props.setCurrBoard(board)
     }
     const { currUser } = this.props
+    if (this.props.boards && !this.props.boards.length > 0) return
     this.setState({
       currUser, chatWith: {
         id: this.props.boards[0]._id,

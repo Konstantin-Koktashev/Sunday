@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import { saveBoard, loadBoards } from "../../actions/BoardActions";
 import LocalBoardService from "../../services/LocalBoardService";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 class AddTask extends Component {
   state = {
@@ -10,7 +10,7 @@ class AddTask extends Component {
       _id: uuidv4(),
       assignedGroupId: null,
       taskTitle: "Todo",
-      createdAt: "date", 
+      createdAt: "date",
       groupName: "",
       users: [], // Min users
       columns: [], //  Columns Objects
@@ -52,6 +52,7 @@ class AddTask extends Component {
     let newBoard = LocalBoardService.addTask(board, group, task);
     this.props.saveBoard(newBoard);
     this.props.loadBoards();
+    this.setState({ taskTitle: "" });
   };
   handleChange = ({ target }) => {
     const value = target.value;
