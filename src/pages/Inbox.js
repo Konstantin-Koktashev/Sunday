@@ -69,7 +69,7 @@ class Inbox extends Component {
             })
             if (!isSeen) filtertedUpdates.push(update)
         })
-        
+
         filtertedUpdates.sort(function compare(a, b) {
             var dateA = new Date(a.timeStamp);
             var dateB = new Date(b.timeStamp);
@@ -130,7 +130,6 @@ class Inbox extends Component {
     likeUpdate = async (update, boardId) => {
         const user = this.props.currUser
         const board = this.findBoard(boardId)
-        debugger
         const updateMsg = { msg: user, sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addLikeMsg(board, update, user)
         await this.saveAndUpdate(newBoard)
@@ -181,12 +180,11 @@ class Inbox extends Component {
                                 <button className='next-value-inbox' style={{ backgroundColor: `${update.nextColor}` }}>{update.nextValue}</button>
                             </div>
                             <section className='likes'>
-                                { update.likes &&update.likes.length>0&& update.likes.map(like => {
-                                    
-                                    debugger
-                                  return( <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
-                                        <SmallImg type={'myweek'} 
-                                            name={like.username} ></SmallImg></NavLink>) 
+                                {update.likes && update.likes.length > 0 && update.likes.map(like => {
+
+                                    return (<NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
+                                        <SmallImg type={'myweek'}
+                                            name={like.username} ></SmallImg></NavLink>)
                                 })}
                             </section>
                         </section>

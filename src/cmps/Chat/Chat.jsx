@@ -79,7 +79,6 @@ class Chat extends Component {
       this.props.chat.chatRooms
     );
     // Theres no Room ? Create one
-    // debugger;
     const { id, type } = this.props.userState.chatWith;
     if (!room) {
       console.log("Creating Chat Room");
