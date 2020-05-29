@@ -40,12 +40,12 @@
 
 .label-status {
   top: -8vh;
-  left: -4.5vw;
+  left: -2.5vw;
 }
 
 .label-priority {
-  top: -7vh;
-  left: 15.8vw;
+  top: -8vh;
+  left: 13vw;
 }
 
 .box-label {
@@ -95,7 +95,7 @@
   cursor: pointer;
   padding: 10px 0px;
   font-size: 20px;
-  margin-top: 40%;
+  margin-top: 5%;
   text-align: center;
   width: 100%;
   color: rgba(25, 115, 250, 0.466);

@@ -18,7 +18,6 @@ export async function query() {
 }
 
 async function saveChat(room, allRooms) {
-  debugger
   console.log('room', room)
 
   let roomToApply;
@@ -50,7 +49,6 @@ function createNewRoom(chatWith, messageList, id, type) {
 }
 
 function remove(boardId, rooms) {
-  debugger
   let fixedId = _getMongoIdByBoardId(boardId, rooms)
   return HttpService.delete(`chat/${fixedId}`);
 }

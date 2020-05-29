@@ -38,7 +38,14 @@ export default {
     addTaskToGroup,
     removeLabel,
     addLikeMsg,
-    changeGroupColor
+    changeGroupColor,
+    changeBoardName
+}
+
+
+function changeBoardName(board, name) {
+    board.name = name
+    return board
 }
 
 function addUpdateMsg(board, update, msg) {
