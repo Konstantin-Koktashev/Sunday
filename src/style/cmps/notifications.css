@@ -74,3 +74,13 @@
 .update-card-action {
   margin-left: 10px;
 }
+
+.notifications-popup-number {
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  top: 28vh;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}

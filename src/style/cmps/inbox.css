@@ -1,5 +1,6 @@
 .inbox-container {
   background-color: #b2b2b2;
+  overflow: scroll;
 }
 .user-history {
   border: 1px solid rgba(187, 186, 186, 0.295);
