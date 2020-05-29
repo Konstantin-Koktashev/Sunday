@@ -41,22 +41,20 @@ export default {
     changeGroupColor,
     changeBoardName,
     changeBoardDesc,
+    addTaskHistory,
     addUserToUpdateIsSeen,
     checkIfUpdateSeen
 }
 function checkIfUpdateSeen(update, currUserId) {
-    if (update && update.seenBy && update.isSeen.length > 0) {
-        let isUserSeen = update.seenBy.find(user => {
-            if (user._id === currUserId) return true
+    if (update && update.seenBy && !update.seenBy.length > 0) return false
 
-
-
-
-        })
-        if (isUserSeen) {
-            return true
-        }
+    let isUserSeen = update.seenBy.find(user => {
+        if (user._id === currUserId) return true
+    })
+    if (isUserSeen) {
+        return true
     }
+    return false
 
 }
 function addUserToUpdateIsSeen(update, myUser) {
@@ -378,6 +376,32 @@ function addBoardHistory(board, updateInfo) {
     board.history.unshift(update)
     return board
 }
+function addTaskHistory(board, updateInfo) {
+    const { user, group, task, column, nextValue, updateType, seenBy, color, likes } = updateInfo
+    const prevValue = column ? column.value : ''
+    const boardId = board._id
+    const update = {
+        _id: uuidv4(),
+        timeStamp: Date.now(),
+        prevValue,
+        nextValue,
+        boardId,
+        assignedBy: user._id,
+        user,
+        taskId: (task) ? task._id : false,
+        group: (group) ? group : false,
+        updateType,
+        title: (task) ? task.taskTitle : '',
+        boardName: board.name,
+        seenBy: [],
+        messeges: [],
+        prevColor: (column) ? column.color : '',
+        nextColor: (color) ? color : '',
+        likes: []
+    }
+    task.history.unshift(update)
+    return board
+}
 
 function removeFromHistory(board, taskId, currUserId) {
     board.forEach(board => {
@@ -389,6 +413,7 @@ function removeFromHistory(board, taskId, currUserId) {
     return board
 }
 function addLikeMsg(board, update, user) {
+    if (update.likes.some(like => like._id === user._id)) return board
     update.likes.push(user)
     return board
 }

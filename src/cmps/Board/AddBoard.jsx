@@ -151,6 +151,7 @@ class AddBoard extends Component {
               text: "text about task",
               link: "",
               files: [],
+              history:[]
             },
             {
               _id: uuidv4(),
@@ -183,6 +184,7 @@ class AddBoard extends Component {
               text: "text about task",
               link: "",
               files: [],
+              history:[]
             },
             {
               _id: uuidv4(),
@@ -215,6 +217,7 @@ class AddBoard extends Component {
               text: "text about task",
               link: "",
               files: [],
+              history:[]
             },
             {
               _id: uuidv4(),
@@ -247,6 +250,7 @@ class AddBoard extends Component {
               text: "text about task",
               link: "",
               files: [],
+              history:[]
             },
           ], // Task object
           color: randomColor(),

@@ -11,6 +11,7 @@
 @import "./cmps/labelColors.css";
 @import "./cmps/dialog.css";
 @import "./cmps/gridTry.css";
+@import "./cmps/task-inbox.css"
 
 h2 {
   font-size: 16px;

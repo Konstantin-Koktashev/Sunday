@@ -1,24 +1,17 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-// import Editupdate from '../cmps/Editupdate'
 import { connect } from 'react-redux'
-import theme from '../style/themes/inboxTheme';
-import '../style/pages/inbox.css'
-import checkbox from '../style/img/checkbox.png'
-import SimpleReactCalendar from 'simple-react-calendar'
-import { loadBoards, saveBoard, setCurrBoard } from '../actions/BoardActions';
-import TimeLine from '../cmps/Timeline';
-import calendar from 'simple-react-calendar/lib/calendar/calendar';
-import DatePicker from '../cmps/Calendar';
-import TimeLineTest from '../cmps/TimeLineTest';
-import { loadUsers } from '../actions/UserActions'
+import { loadBoards, saveBoard, setCurrBoard } from '../../actions/BoardActions';
+import { loadUsers } from '../../actions/UserActions'
 import { NavLink } from 'react-router-dom';
-import LocalBoardService from '../services/LocalBoardService.js';
-import SmallImg from "../cmps/SmallImg";
+import LocalBoardService from '../../services/LocalBoardService';
+import SmallImg from "../../cmps/SmallImg";
+import checkbox from '../../style/img/checkbox.png'
 
 
 
-class Inbox extends Component {
+
+
+class TaskInbox extends Component {
     state = {
         user: this.props.currUser,
         filtertedUpdates: [],
@@ -26,7 +19,7 @@ class Inbox extends Component {
     }
     componentDidMount() {
         // await this.props.loadUsers()
-        this.checkUserHistory()
+        this.checkTaskHistory()
     }
     findBoard = (boardId) => {
         const board = this.props.userBoards.board.find(b => {
@@ -39,22 +32,21 @@ class Inbox extends Component {
         await this.props.saveBoard(newBoard)
         await this.props.setCurrBoard(currBoard)
         await this.props.loadBoards()
-        await this.checkUserHistory()
+        await this.checkTaskHistory()
     }
 
-    checkUserHistory = () => {
+    checkTaskHistory = () => {
         const board = this.props.userBoards.board
+        const task = this.props.task
         if (!board) return
         if (!this.props.currUser) return
         const currUserId = this.props.currUser._id
         const historyToRender = []
-        for (var i = 0; i < board.length; i++) {
-            let currBoard = board[i]
-            for (var j = 0; j < currBoard.history.length; j++) {
-                let currHistory = currBoard.history[j]
-                if (!currHistory.user) continue;
-                if (currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
-            }
+        for (var i = 0; i < task.history.length; i++) {
+            let currHistory = task.history[i]
+            if (!currHistory.user) continue;
+            if (currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
+
         }
 
 
@@ -79,26 +71,29 @@ class Inbox extends Component {
         return Promise.resolve()
     }
 
-    async updateById(newUpdate) {
+    async updateById(boardId, update) {
+        const board = this.props.currBoard
+        const task = this.props.task
         const user = this.props.currUser
-        let board = this.props.userBoards.board
-        board.forEach(board => {
-            board.history.forEach(async update => {
-                if (update._id === newUpdate._id) {
-                    update.seenBy.push(user)
-                    await this.props.saveBoard(board)
-                    await this.props.setCurrBoard(board)
-                    await this.props.loadBoards()
-                    await this.checkUserHistory()
-                }
+        board.groups.forEach(group => {
+            group.tasks.forEach(t => {
+                t.history.forEach(async h => {
+                    if (h._id === update._id) {
+                        update.seenBy.push(user)
+                        await this.props.saveBoard(board)
+                        await this.props.setCurrBoard(board)
+                        await this.props.loadBoards()
+                        await this.checkTaskHistory()
+                    }
+                })
             })
         })
 
     }
 
 
-    setUpdateAsSeen = async (update) => {
-        await this.updateById(update)
+    setUpdateAsSeen = async (boardId, update) => {
+        await this.updateById(boardId, update)
 
     }
     sendUpdateMsg = async (e, update, boardId) => {
@@ -153,7 +148,7 @@ class Inbox extends Component {
                 {!isHistory && <h1 className="inbox-empty">Inbox Is Empty</h1>}
                 {isHistory && isLoading && userHistory.map((update, idx) => {
                     return (<article className='user-history flex col' key={idx}>
-                        <img className='complete-task' src={checkbox} onClick={() => { this.setUpdateAsSeen(update) }}></img>
+                        <img className='complete-task' src={checkbox} onClick={() => { this.setUpdateAsSeen(update.boardId, update) }}></img>
                         <section className='history-header flex col a-start'>
                             <div className='user-logo'>
                                 <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
@@ -180,9 +175,9 @@ class Inbox extends Component {
                                 <button className='next-value-inbox' style={{ backgroundColor: `${update.nextColor}` }}>{update.nextValue}</button>
                             </div>
                             <section className='likes'>
-                                {update.likes && update.likes.length > 0 && update.likes.map((like, idx) => {
+                                {update.likes && update.likes.length > 0 && update.likes.map(like => {
 
-                                    return (<NavLink key={idx} className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
+                                    return (<NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
                                         <SmallImg type={'myweek'}
                                             name={like.username} ></SmallImg></NavLink>)
                                 })}
@@ -238,6 +233,7 @@ const mapDispatchToProps = {
     setCurrBoard
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Inbox)
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskInbox)
 
 
