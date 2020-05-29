@@ -64,11 +64,14 @@ class Notifications extends Component {
     let newNotifNum = 0;
     let filteredBySeen = [];
     totalUserHistory.forEach((update) => {
-      if (update && update.seenBy) {
-        let isSeen = LocalBoardService.checkIfUpdateSeen(update, currUserId);
-        if (!isSeen) {
-          filteredBySeen.push(update);
-          newNotifNum++;
+      // debugger;
+      if (update.user._id !== currUserId) {
+        if (update && update.seenBy) {
+          let isSeen = LocalBoardService.checkIfUpdateSeen(update, currUserId);
+          if (!isSeen) {
+            filteredBySeen.push(update);
+            newNotifNum++;
+          }
         }
       }
     });
