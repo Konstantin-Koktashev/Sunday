@@ -4,10 +4,11 @@ import BoardHeader from "../cmps/Board/BoardHeader.jsx";
 import Board from '../cmps/Board/Board.jsx'
 import '../style/pages/boards.css'
 import SocketService from '../services/SocketService'
-import { login } from '../actions/UserActions';
+import { login, loadUsers } from '../actions/UserActions';
 import { loadBoards, setCurrBoard, removeBoard } from "../actions/BoardActions"
-import { loadUsers } from '../../src/actions/UserActions'
 import DropZone, { DropFileToAsk } from "../cmps/Tasks/DropZone.jsx";
+import ChatService from "../services/ChatService.js";
+import { loadRooms } from '../actions/ChatActions'
 class BoardApp extends React.Component {
     state = {
         currBoard: null,
@@ -109,8 +110,12 @@ class BoardApp extends React.Component {
 
     removeBoard = async (boardId) => {
         console.log("BoardApp -> removeBoard -> boardId", boardId)
+        await this.props.loadRooms()
+        const { chatRooms } = this.props.chat
+        console.log("BoardApp -> removeBoard -> chatRooms", chatRooms)
+        console.log('chatRooms', this.props.chat)
+        ChatService.remove(boardId, chatRooms)
         await this.props.removeBoard(boardId)
-
         await this.props.loadBoards()
         await this.props.history.push('/board/')
         await this.loadboards()
@@ -161,7 +166,8 @@ const mapStateToProps = (state) => {
     return {
         boards: state.userBoards.board,
         currBoard: state.userBoards.currBoard,
-        user: state.user.loggedInUser
+        user: state.user.loggedInUser,
+        chat: state.chat
 
     };
 };
@@ -170,7 +176,8 @@ const mapDispatchToProps = {
     setCurrBoard,
     removeBoard,
     loadUsers,
-    login
+    login,
+    loadRooms
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardApp);

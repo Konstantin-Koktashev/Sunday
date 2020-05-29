@@ -12,6 +12,7 @@ import UserList from "../UserList";
 export default function BoardHeader(props) {
   const confirmDelete = () => {
     let boardId = props.board._id;
+
     props.removeBoard(boardId);
   };
 

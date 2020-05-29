@@ -14,16 +14,29 @@ export async function query() {
   return res;
 }
 
-async function saveChat(room) {
+async function saveChat(room, allRooms) {
+  console.log('room', room)
+
   let roomToApply;
+  let ifTrue = true
   if (!room._id) roomToApply = await HttpService.post('chat', room)
-  else roomToApply = await HttpService.put(`chat/${room._id}`, room)
+
+  if (room.type === 'board') {
+    allRooms.forEach(r => {
+      if (r.chatRoomId === room.chatRoomId) ifTrue = false
+    })
+
+
+  }
+  else if (true) roomToApply = await HttpService.put(`chat/${room._id}`, room)
   return roomToApply
 }
 
 
-function remove(roomId) {
-  return HttpService.delete(`chat/${roomId}`);
+function remove(boardId, rooms) {
+  debugger
+  let fixedId = _getMongoIdByBoardId(boardId, rooms)
+  return HttpService.delete(`chat/${fixedId}`);
 }
 
 
@@ -64,4 +77,10 @@ function addMsg(room, newMsg) {
   if (!room.history) room.history = [];
   room.history.push(newMsg)
   return room
+}
+
+function _getMongoIdByBoardId(boardId, rooms) {
+  var currRoom = rooms.find(room => room.chatRoomId === `${boardId}${boardId}`)
+  return currRoom._id
+
 }

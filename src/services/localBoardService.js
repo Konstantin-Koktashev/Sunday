@@ -308,7 +308,7 @@ function _getIdxById(boardId) {
 }
 
 function addBoardHistory(board, updateInfo) {
-    const { user, group, task, column, nextValue, updateType, seenBy, color,likes } = updateInfo
+    const { user, group, task, column, nextValue, updateType, seenBy, color, likes } = updateInfo
     const prevValue = column ? column.value : ''
     const boardId = board._id
     const update = {
@@ -343,9 +343,9 @@ function removeFromHistory(board, taskId, currUserId) {
     })
     return board
 }
-function addLikeMsg(board,update,user){
-update.likes.push(user)
-return board
+function addLikeMsg(board, update, user) {
+    update.likes.push(user)
+    return board
 }
 
 
