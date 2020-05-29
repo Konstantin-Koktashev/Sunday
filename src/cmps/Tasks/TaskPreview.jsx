@@ -13,6 +13,7 @@ import {
   setCurrBoard,
 } from "../../actions/BoardActions";
 import InfoBoxes from "../InfoBoxes";
+import TaskDetails from "./TaskDetails";
 
 class TaskPreview extends Component {
   state = {
@@ -123,8 +124,11 @@ class TaskPreview extends Component {
     return (
       <div className="task-bar flex j-start space-between">
         {isInfoBoxShown && (
-          <InfoBoxes task={task} hideInfoBox={this.hideInfoBox}></InfoBoxes>
+          <TaskDetails task={task} hideInfoBox={this.hideInfoBox}></TaskDetails>
         )}
+        {/* {isInfoBoxShown && (
+          <InfoBoxes task={task} hideInfoBox={this.hideInfoBox}></InfoBoxes>
+        )} */}
         <div
           onClick={(ev) => this.toggleInfoBox(ev)}
           className="task-bar-title-container flex space-between a-center"

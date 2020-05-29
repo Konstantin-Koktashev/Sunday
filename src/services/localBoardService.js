@@ -40,7 +40,8 @@ export default {
     addLikeMsg,
     changeGroupColor,
     changeBoardName,
-    changeBoardDesc
+    changeBoardDesc,
+    addTaskHistory
 }
 
 
@@ -346,6 +347,32 @@ function addBoardHistory(board, updateInfo) {
     board.history.unshift(update)
     return board
 }
+function addTaskHistory(board, updateInfo) {
+    const { user, group, task, column, nextValue, updateType, seenBy, color, likes } = updateInfo
+    const prevValue = column ? column.value : ''
+    const boardId = board._id
+    const update = {
+        _id: uuidv4(),
+        timeStamp: Date.now(),
+        prevValue,
+        nextValue,
+        boardId,
+        assignedBy: user._id,
+        user,
+        taskId: (task) ? task._id : false,
+        group: (group) ? group : false,
+        updateType,
+        title: (task) ? task.taskTitle : '',
+        boardName: board.name,
+        seenBy: [],
+        messeges: [],
+        prevColor: (column) ? column.color : '',
+        nextColor: (color) ? color : '',
+        likes: []
+    }
+    task.history.unshift(update)
+    return board
+}
 
 function removeFromHistory(board, taskId, currUserId) {
     board.forEach(board => {
@@ -357,6 +384,8 @@ function removeFromHistory(board, taskId, currUserId) {
     return board
 }
 function addLikeMsg(board, update, user) {
+    debugger
+    if(update.likes.some(like=>like._id===user._id)) return board
     update.likes.push(user)
     return board
 }
