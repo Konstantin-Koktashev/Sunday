@@ -16,8 +16,6 @@ export default function BoardHeader(props) {
     props.removeBoard(boardId);
   };
 
-  function toggleUserList() {}
-
   const board = props.board;
   return (
     <div className="board-header-container flex a-center space-between">
@@ -42,12 +40,6 @@ export default function BoardHeader(props) {
         </div>
       </div>
 
-      {/* <h2> {props.user.username}</h2> */}
-
-      {/* 
-      <button className="toggle-chart-btn" onClick={props.toggleChart}>
-        {props.chartIsOpen ? "Board View" : "Chart View"}
-      </button> */}
       <div className="flex col space-between">
         <div className="flex space-between">
           <div

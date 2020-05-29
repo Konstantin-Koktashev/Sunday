@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../../style/cmps/taskList.css";
 import TaskPreview from "./TaskPreview.jsx";
-import resize from "../../style/img/resize.png";
+import resize from "../../style/img/resize.svg";
 import pencil from "../../style/img/pencil.svg";
 import { TaskBoxList } from "./TaskBoxList.jsx";
 import AddTask from "./AddTask";

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import "../../style/cmps/boardNav.css";
-import resize from "../../style/img/resize.png";
+import resize from "../../style/img/resize.svg";
 import AddBoard from "./AddBoard.jsx";
 import { setChatType } from "../../actions/UserActions";
 
