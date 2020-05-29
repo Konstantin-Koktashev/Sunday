@@ -6,6 +6,8 @@ import { loadUsers } from "../../actions/UserActions";
 import UsersPreviewBox from "../UsersPreviewBox";
 import deletePng from "../../style/img/delete.svg";
 import { NavLink } from "react-router-dom";
+import moment from "moment";
+
 class AddPerson extends Component {
   state = {
     usersToAdd: null,
@@ -61,11 +63,15 @@ class AddPerson extends Component {
           people={users}
           togglePersonBox={this.togglePersonBox}
         ></UsersPreviewBox>
+
+        {isShown && (
+          <div
+            onClick={this.togglePersonBox}
+            className="exit-btn-persons"
+          ></div>
+        )}
         {isShown && (
           <div className="person-component flex col">
-            <div onClick={this.togglePersonBox} className="exit-btn-person">
-              X
-            </div>
             <input
               placeholder="Search People"
               onChange={(e) => this.searchPeople(e)}
@@ -95,30 +101,34 @@ class AddPerson extends Component {
               {/* {!users&&    <input onChange={(e)=>this.searchPeople(e)}></input>} */}
             </section>
             <hr></hr>
-            <span>Invite your Team:</span>
-            <section className="found-people">
-              {usersToAdd &&
-                usersToAdd.map((user, idx) => {
-                  return (
-                    <article
-                      key={idx}
-                      className="min-user-card"
-                      onClick={() => this.addPerson(user)}
-                    >
-                      <span>{user.username}</span>
-                    </article>
-                  );
-                })}
-              <div className="invite-with-email"></div>
-            </section>
+            <div id="style-5" className="found-people-container">
+              <span>Invite your Team:</span>
+              <section className="found-people">
+                {usersToAdd &&
+                  usersToAdd.map((user, idx) => {
+                    return (
+                      <article
+                        key={idx}
+                        className="min-user-card flex"
+                        onClick={() => this.addPerson(user)}
+                      >
+                        <div
+                          className="user-preview-circle-column"
+                          title={`${user.username} Last seen at ${moment(
+                            user.lastSeen
+                          ).fromNow()}`}
+                          key={idx}
+                        >
+                          {user.username.charAt(0).toUpperCase()}
+                        </div>
+                        <span>{user.username}</span>
+                      </article>
+                    );
+                  })}
+                <div className="invite-with-email"></div>
+              </section>
+            </div>
           </div>
-        )}
-
-        {this.state.isShown && (
-          <div
-            onClick={this.togglePersonBox}
-            className="back-screen-label-container"
-          ></div>
         )}
       </React.Fragment>
     );

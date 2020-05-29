@@ -16,7 +16,13 @@
   text-align: start;
   padding: 0px 10px;
 }
+.task-list-card-small {
+  height: 5vh;
+}
 
+.task-list-container-small {
+  min-height: 2vh;
+}
 .resize-png {
   width: 20px;
   margin-right: 15px;

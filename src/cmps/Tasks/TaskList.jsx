@@ -95,113 +95,131 @@ class TaskList extends Component {
   render() {
     const { groupColor } = this.state;
     return (
-      <div className="task-list-container flex col space-evenly">
-        {this.props.tasks && !this.props.tasks.length > 0 ? (
-          <h3>No Tasks Found!</h3>
-        ) : (
-          <div className="task-list-card ">
-            <div className="task-box-toplist-container flex a-center space-between">
-              <div className="task-list-top flex a-center">
-                <img
-                  className="resize-png"
-                  onClick={this.toggleList}
-                  src={resize}
-                  alt="Resize"
-                  title="Toggle Group"
-                />
-                {!this.state.groupNameIsEdit ? (
-                  <>
-                    <div
-                      className="toggle-group-color"
-                      title="Change group color"
-                      style={{ backgroundColor: `${this.props.group.color}` }}
-                      onClick={(ev) => this.groupToggleColor(ev)}
-                    >
-                      {groupColor && (
-                        <div className="circle-group-container">
-                          <CirclePicker
-                            onChangeComplete={(color, ev) =>
-                              this.setGroupColor(color, ev)
-                            }
-                          />
-                        </div>
-                      )}
-                    </div>
-                    <h2
-                      onClick={(ev) => this.toggleEdit(ev)}
-                      style={{ color: `${this.props.group.color}` }}
-                    >
-                      {this.props.name}
-                      <img
-                        className="pencil-svg"
-                        onClick={(ev) => this.toggleEdit(ev)}
-                        src={pencil}
-                        alt="Edit"
-                        title="Edit"
-                      />
-                    </h2>
-
-                    {groupColor && (
-                      <div
-                        className="group-color-screen"
-                        onClick={(ev) => this.groupToggleColor(ev)}
-                      ></div>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <form>
-                      <input
-                        type="text"
-                        name="groupName"
-                        value={this.state.groupName}
-                        onChange={(ev) => this.handleChange(ev)}
-                        onBlur={(ev) => this.updateGroupName(ev)}
-                      />
-                    </form>
-                  </>
-                )}
-              </div>
-              <div className="task-box-list-container">
-                <TaskBoxList
-                  updateBoardColOrder={this.updateBoardColOrder}
-                  items={this.props.cols}
-                  board={this.props.board}
-                ></TaskBoxList>
-              </div>
-            </div>
+      <div
+        className={`   flex col ${
+          this.state.taskIsShown ? "group-list" : "group-list-small"
+        }`}
+      >
+        <div
+          className={`task-list-container flex col space-evenly    flex col ${
+            this.state.taskIsShown ? "" : "task-list-container-small"
+          }`}
+        >
+          {this.props.tasks && !this.props.tasks.length > 0 ? (
+            <h3>No Tasks Found!</h3>
+          ) : (
             <div
-              className={`task-list  flex col ${
-                this.state.taskIsShown ? "" : "hide"
+              className={`task-list-card   flex col ${
+                this.state.taskIsShown ? "" : "task-list-card-small"
               }`}
             >
-              {/* // HERE Is the Task List */}
-              {this.props.tasks.map((task, idx) => (
-                <TaskPreview
-                  deleteTask={this.deleteTask}
-                  task={task}
-                  key={idx}
-                  board={this.props.board}
-                  toggleTaskEdit={this.toggleTaskEdit}
-                  updateTaskName={this.updateTaskName}
-                  handleChangeTask={this.handleChangeTask}
-                  taskNameIsEdit={this.state.taskNameIsEdit}
-                  group={this.props.group}
-                />
-              ))}
+              <div className="task-box-toplist-container flex a-center space-between">
+                <div className="task-list-top flex a-center">
+                  <img
+                    className="resize-png"
+                    onClick={this.toggleList}
+                    src={resize}
+                    alt="Resize"
+                    title="Toggle Group"
+                  />
+                  {!this.state.groupNameIsEdit ? (
+                    <>
+                      <div
+                        className="toggle-group-color"
+                        title="Change group color"
+                        style={{ backgroundColor: `${this.props.group.color}` }}
+                        onClick={(ev) => this.groupToggleColor(ev)}
+                      >
+                        {groupColor && (
+                          <div className="circle-group-container">
+                            <CirclePicker
+                              onChangeComplete={(color, ev) =>
+                                this.setGroupColor(color, ev)
+                              }
+                            />
+                          </div>
+                        )}
+                      </div>
+                      <h2
+                        onClick={(ev) => this.toggleEdit(ev)}
+                        style={{ color: `${this.props.group.color}` }}
+                      >
+                        {this.props.name}
+                        <img
+                          className="pencil-svg"
+                          onClick={(ev) => this.toggleEdit(ev)}
+                          src={pencil}
+                          alt="Edit"
+                          title="Edit"
+                        />
+                      </h2>
 
-              {/* /// Until Here           */}
-              <AddTask group={this.props.group}></AddTask>
-              <div className="task-bar-for-progress">
-                <div className="div40">
-                  <GenereicProgBar group={this.props.group} />
-                  <SumBar group={this.props.group} />
+                      {groupColor && (
+                        <div
+                          className="group-color-screen"
+                          onClick={(ev) => this.groupToggleColor(ev)}
+                        ></div>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <form>
+                        <input
+                          type="text"
+                          name="groupName"
+                          value={this.state.groupName}
+                          onChange={(ev) => this.handleChange(ev)}
+                          onBlur={(ev) => this.updateGroupName(ev)}
+                        />
+                      </form>
+                    </>
+                  )}
+                </div>
+                <div
+                  className={`task-box-list-container  flex col ${
+                    this.state.taskIsShown ? "" : "hide"
+                  }`}
+                >
+                  <TaskBoxList
+                    updateBoardColOrder={this.updateBoardColOrder}
+                    items={this.props.cols}
+                    board={this.props.board}
+                  ></TaskBoxList>
+                </div>
+              </div>
+              <div
+                className={`task-list  flex col ${
+                  this.state.taskIsShown ? "" : "hide"
+                }`}
+              >
+                {/* // HERE Is the Task List */}
+                {this.props.tasks.map((task, idx) => (
+                  <TaskPreview
+                    deleteTask={this.deleteTask}
+                    task={task}
+                    key={idx}
+                    board={this.props.board}
+                    toggleTaskEdit={this.toggleTaskEdit}
+                    updateTaskName={this.updateTaskName}
+                    handleChangeTask={this.handleChangeTask}
+                    taskNameIsEdit={this.state.taskNameIsEdit}
+                    group={this.props.group}
+                  />
+                ))}
+
+                {/* /// Until Here           */}
+                <AddTask group={this.props.group}></AddTask>
+                <div className="task-bar-for-progress">
+                  <div className="div40">
+                    <GenereicProgBar group={this.props.group} />
+                    <SumBar group={this.props.group} />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-        {/* <ProgressBar group={this.props.group}></ProgressBar> */}
+          )}
+          {/* <ProgressBar group={this.props.group}></ProgressBar> */}
+        </div>
       </div>
     );
   }

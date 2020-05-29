@@ -11,9 +11,12 @@ export default function GroupList(props) {
       ) : (
         props.groups.map((group, idx) => {
           return (
-            <div className="group-list" key={idx}>
+            <>
+              {/* //{" "} */}
+              {/* <div className="group-list" key={idx}> */}
               {
                 <TaskList
+                  key={idx}
                   group={group}
                   name={group.name}
                   tasks={group.tasks}
@@ -21,7 +24,8 @@ export default function GroupList(props) {
                   sortColumnsByBox={props.sortColumnsByBox}
                 />
               }
-            </div>
+              {/* </div> */}
+            </>
           );
         })
       )}
