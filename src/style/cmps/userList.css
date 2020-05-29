@@ -11,6 +11,7 @@
   min-height: 70vh;
   max-height: 80vh;
   padding: 0px 10px;
+  cursor: auto;
 }
 
 .user-list-topbar {
@@ -20,6 +21,12 @@
 
 .user-list-container h2 {
   color: rgba(0, 0, 0, 0.534);
+  width: 30vw;
+  text-align: start;
+}
+
+.user-list-container h2:hover {
+  color: #1cabf3b0;
 }
 .user-search-bar span {
   margin-left: 15px;
@@ -73,4 +80,11 @@
   margin-right: 10px;
   border: none;
   /* margin-right: -40vw; */
+}
+
+.user-list-preview-container {
+  height: 50vh;
+  overflow-y: scroll;
+  padding: 15px 0px;
+  border-top: 1px solid rgba(128, 128, 128, 0.11);
 }
