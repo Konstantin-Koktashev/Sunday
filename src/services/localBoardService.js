@@ -46,18 +46,15 @@ export default {
     checkIfUpdateSeen
 }
 function checkIfUpdateSeen(update, currUserId) {
-    if (update && update.seenBy && update.isSeen.length > 0) {
-        let isUserSeen = update.seenBy.find(user => {
-            if (user._id === currUserId) return true
+    if (update && update.seenBy && !update.seenBy.length > 0) return false
 
-
-
-
-        })
-        if (isUserSeen) {
-            return true
-        }
+    let isUserSeen = update.seenBy.find(user => {
+        if (user._id === currUserId) return true
+    })
+    if (isUserSeen) {
+        return true
     }
+    return false
 
 }
 function addUserToUpdateIsSeen(update, myUser) {
@@ -408,8 +405,7 @@ function removeFromHistory(board, taskId, currUserId) {
     return board
 }
 function addLikeMsg(board, update, user) {
-    debugger
-    if(update.likes.some(like=>like._id===user._id)) return board
+    if (update.likes.some(like => like._id === user._id)) return board
     update.likes.push(user)
     return board
 }
