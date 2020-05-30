@@ -140,6 +140,7 @@ class TaskList extends Component {
     let board = this.props.board;
     let newBoard = LocalBoardService.changeGroupColor(board, group, color.hex);
     await this.props.setCurrBoard(newBoard);
+    this.props.saveBoard(newBoard);
     this.props.loadBoards();
   };
 
