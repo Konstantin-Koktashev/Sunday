@@ -145,10 +145,8 @@ class Signup extends Component {
                     <Link href="/login" variant="body2">
                         Already have an account? Sign in
               </Link>
-                    <div>
-                        <Facebook signUpFacebook={this.signUpFacebook} />
-                        <img className="facebook-img" src={facebook}></img>
-                    </div>
+                    <Facebook signUpFacebook={this.signUpFacebook} />
+                    <img className="facebook-img" src={facebook}></img>
 
 
                 </form>
