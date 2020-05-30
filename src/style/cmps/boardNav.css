@@ -33,7 +33,7 @@
     font-size: 5px;
     flex-direction: row;
     border-radius: 0px;
-    height: 3vh;
+    height: 7vh;
     justify-content: space-evenly;
   }
   .board-list-btn {
@@ -48,7 +48,8 @@
   .board-list-btn a {
     text-decoration: none;
     color: black;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: bold;
     margin-left: 10px;
   }
 
@@ -123,6 +124,7 @@
     text-decoration: none;
     color: black;
     font-size: 17px;
+
     margin-left: 10px;
   }
 }

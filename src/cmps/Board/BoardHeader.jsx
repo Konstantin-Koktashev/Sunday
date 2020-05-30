@@ -78,7 +78,7 @@ class BoardHeader extends React.Component {
     const { board } = this.props;
     const { boardNameEdit, boardDescEdit } = this.state;
     return (
-      <div className="board-header-container flex a-center space-between">
+      <div className="board-header-container flex  space-between">
         <div className="header-box flex col ">
           <div className="flex a-start col board-name-dec-container">
             {!boardNameEdit && (
@@ -113,14 +113,17 @@ class BoardHeader extends React.Component {
                 onKeyPress={(ev) => this.handleKeyPressedDesc(ev)}
               ></TextField>
             )}
-            <div className="view-select-box">
-              <SelectCmp
-                handleChange={this.props.toggleChart}
-                name={"viewType"}
-                label={"Select Table"}
-                options={["board", "pie", "radar"]}
-              />
-            </div>
+          </div>
+        </div>
+
+        <div className="header-select">
+          <div className="view-select-box">
+            <SelectCmp
+              handleChange={this.props.toggleChart}
+              name={"viewType"}
+              label={"Select Table"}
+              options={["board", "pie", "radar"]}
+            />
           </div>
         </div>
 

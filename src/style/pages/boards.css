@@ -40,8 +40,8 @@
   }
 
   .filter-add-container {
-    margin-right: 50px;
-    width: 30vw;
+    flex-direction: column;
+    margin-right: 1vh;
   }
 
   .div40 {
@@ -54,7 +54,14 @@
   }
 
   .board-header-container {
+    height: 20vh;
     margin-top: 5vh !important;
+  }
+
+  .board-header-container h2 {
+    position: absolute;
+    top: 15vh;
+    font-size: 2em;
   }
 
   .task-bar-progress {
@@ -177,5 +184,52 @@
   .week-modal-opts {
     width: 57vw !important;
     height: 38vh;
+  }
+
+  .over-view-profile {
+    width: 80vw !important;
+    align-items: flex-start !important;
+    margin: 0 auto;
+    margin-left: 15vw !important;
+  }
+
+  .over-view-profile span {
+    font-size: 16px !important;
+  }
+
+  .user-profile-form {
+    margin-top: 130px !important;
+  }
+  .user-profile-form input {
+    width: 35vw !important;
+  }
+
+  .user-profile-form div {
+    width: 40vw;
+  }
+
+  .user-map {
+    display: none;
+  }
+
+  .profile-header-container {
+    height: 24vh !important;
+    margin-top: 16vh;
+  }
+
+  .toggle-edit-profile {
+    left: 74vw !important;
+    bottom: 56vh;
+    font-weight: bold;
+  }
+
+  .profile-circle-big {
+    width: 25vw !important;
+    height: 27vw !important;
+  }
+  .over-view-header-text {
+    margin-left: 0px !important;
+    margin-bottom: 4vh !important;
+    font-weight: bold;
   }
 }
