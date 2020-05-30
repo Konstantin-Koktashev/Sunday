@@ -1,4 +1,4 @@
-import GroupList from "../Tasks/GroupList.jsx";
+import GroupList from "../Groups/GroupList.jsx";
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import LocalBoardService from "../../services/LocalBoardService";

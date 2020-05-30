@@ -43,7 +43,7 @@
     height: 6vh;
     width: 100vw;
     top: 0px;
-    z-index: 5000000000000;
+    z-index: 5;
     /* flex-direction: column; */
     flex-direction: row;
   }

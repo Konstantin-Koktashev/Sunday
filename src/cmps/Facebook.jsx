@@ -15,15 +15,17 @@ export default class Facebook extends Component {
 
   render() {
     return (
-      <FacebookProvider appId="273810577170429">
-        <LoginButton
-          scope="email"
-          onCompleted={this.handleResponse}
-          onError={this.handleError}
-        >
-          <span>Login via Facebook</span>
-        </LoginButton>
-      </FacebookProvider>
+      <div className="facebook-login">
+        <FacebookProvider appId="273810577170429">
+          <LoginButton
+            scope="email"
+            onCompleted={this.handleResponse}
+            onError={this.handleError}
+          >
+            <span>Login via Facebook</span>
+          </LoginButton>
+        </FacebookProvider>
+      </div>
     );
   }
 }

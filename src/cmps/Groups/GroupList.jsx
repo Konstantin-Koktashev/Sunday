@@ -1,6 +1,6 @@
 import React from "react";
 import "../../style/cmps/groupList.css";
-import TaskList from "./TaskList";
+import TaskList from "../Tasks/TaskList";
 import TrelloView from "../TrelloViewTEST.jsx";
 export default function GroupList(props) {
   return (
