@@ -15,12 +15,17 @@ class AddPerson extends Component {
   state = {
     usersToAdd: null,
     isShown: false,
-    persons: this.props.column.persons&&this.props.column.persons.length > 0 ? this.props.column.persons : [],
+    persons:
+      this.props.column.persons && this.props.column.persons.length > 0
+        ? this.props.column.persons
+        : [],
   };
   async componentDidMount() {
-
-    const peopleToSet=this.props.column.persons&&this.props.column.persons.length > 0 ? this.props.column.persons : []
-    this.setState({persons:peopleToSet})
+    const peopleToSet =
+      this.props.column.persons && this.props.column.persons.length > 0
+        ? this.props.column.persons
+        : [];
+    this.setState({ persons: peopleToSet });
     // await this.props.loadUsers();
     this.getAllPersons();
   }
@@ -41,11 +46,11 @@ class AddPerson extends Component {
       user: this.props.currUser,
       updateType: "Member Add",
       task,
-      assignedTo:person
+      assignedTo: person,
     };
     newBoard = LocalBoardService.addBoardHistory(currBoard, updateInfo);
-    await this.props.saveBoard(newBoard);
     this.props.setCurrBoard(newBoard);
+    await this.props.saveBoard(newBoard);
     this.props.loadBoards();
   };
   searchPeople = (e) => {

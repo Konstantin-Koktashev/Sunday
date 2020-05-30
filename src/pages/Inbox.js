@@ -153,7 +153,7 @@ class Inbox extends Component {
         const isLoading = this.props.currBoard
         if (!this.props.currUser) return <h1>No Logged User . </h1>
         return (
-            <div className='inbox-container'>
+            <div id="style-5" className='inbox-container'>
                 <h2>Inbox</h2>
                 {!isHistory && <h1 className="inbox-empty">Inbox Is Empty</h1>}
                 {isHistory && isLoading && userHistory.map((update, idx) => {
@@ -217,8 +217,8 @@ class Inbox extends Component {
                         </section>
 
                         <section className='update-msgs'>
-                            {update.messeges && update.messeges.length > 0 && update.messeges.map(msg => {
-                                return <div className='sent-msg-box'>
+                            {update.messeges && update.messeges.length > 0 && update.messeges.map((msg, idx) => {
+                                return <div key={idx} className='sent-msg-box'>
                                     <NavLink to={`/profile/${msg.sendBy._id}`}>{msg.sendBy.username} :<span className='update-msg-content'>{msg.msg}</span></NavLink>
                                 </div>
                             })}
