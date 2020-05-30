@@ -121,7 +121,11 @@ class TaskPreview extends Component {
     return (
       <div className="task-bar flex j-start space-between">
         {isInfoBoxShown && (
-          <TaskDetails task={task} hideInfoBox={this.hideInfoBox}></TaskDetails>
+          <TaskDetails
+            task={task}
+            toggleInfoBox={this.toggleInfoBox}
+            hideInfoBox={this.hideInfoBox}
+          ></TaskDetails>
         )}
         {/* {isInfoBoxShown && (
           <InfoBoxes task={task} hideInfoBox={this.hideInfoBox}></InfoBoxes>

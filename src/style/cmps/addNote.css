@@ -45,17 +45,15 @@
 }
 .clickbgc-info-box {
   /* width: 100vw; */
-  width: 50vw;
+  width: 30vw;
   height: 100vh;
   background-color: rgba(19, 18, 18, 0.548);
   position: fixed;
   right: 0px;
   top: 0px;
   z-index: 9000;
-  animation: bgc-slow 0.5s linear;
+  /* animation: bgc-slow 0.5s linear; */
   background-color: white;
-  /* display: grid; */
-  /* grid-template-rows: 1fr 6fr  ; */
 }
 
 @keyframes bgc-slow {
@@ -80,3 +78,11 @@
   }
 }
 
+.backscreen-info-box {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 128, 0, 0);
+}
