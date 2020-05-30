@@ -51,7 +51,6 @@ class Inbox extends Component {
         const historyToRender = []
         for (var i = 0; i < board.length; i++) {
             let currBoard = board[i]
-            debugger
             for (var j = 0; j < currBoard.history.length; j++) {
                 let currHistory = currBoard.history[j]
                 if (!currHistory.user) continue;
@@ -158,31 +157,41 @@ class Inbox extends Component {
         const isLoading = this.props.currBoard
         if (!this.props.currUser) return <h1>No Logged User . </h1>
         return (
-            <div className='inbox-container'>
+            <div id="style-5" className='inbox-container'>
                 <h2>Inbox</h2>
                 {!isHistory && <h1 className="inbox-empty">Inbox Is Empty</h1>}
                 {isHistory && isLoading && userHistory.map((update, idx) => {
                     return (<article className='user-history flex col' key={idx}>
                         <img className='complete-task' src={checkbox} onClick={() => { this.setUpdateAsSeen(update) }}></img>
                         <section className='history-header flex col a-start'>
-                            <div className='user-logo'>
+                            <section className='likes-container'>
+                                {update.likes && update.likes.length > 0 && update.likes.map((like, idx) => {
+
+                                    return (<NavLink key={idx} className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
+                                        {/* <SmallImg type={'myweek'}
+                                            name={like.username} ></SmallImg> */}
+
+                                    </NavLink>)
+
+                                })}
+                                <span className='likes-amount'>
+                                    Liked {update.likes.length} Times
+                                        </span>
+                            </section>
+                            <div className='user-logo flex a-center'>
                                 <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
                                     <SmallImg url={update.user.imgUrl}
-                                        name={update.user.username} ></SmallImg>{update.user.username}</NavLink>
+                                        name={update.user.username} ></SmallImg><p>{update.user.username}</p></NavLink>
                             </div>
-                            {/* <div className='updating-user'>
-                                {update.title}
 
-                            </div> */}
                             <div className='history-origin'>
                                 <NavLink to={`/board/${update.boardId}`}>{update.boardName}</NavLink>
 
                             </div>
-                            {/* <div className='inbox-icons'>11 22 33</div> */}
                         </section>
                         <section className='update-msg flex a-center'>
                             <span>{update.title}</span>
-                           {update.updateType==='Label Change'&& <div className='user-history-main-btns flex a-center ' >
+                            {update.updateType === 'Label Change' && <div className='user-history-main-btns flex a-center ' >
 
                                 <button className='prev-value-inbox' style={{ backgroundColor: `${update.prevColor}` }}> {update.prevValue}</button>
                                 <span className='arrow-logo'> </span>
@@ -198,18 +207,10 @@ class Inbox extends Component {
                                     <SmallImg url={update.assignedTo.imgUrl}
                                         name={update.assignedTo.username} ></SmallImg>{update.assignedTo.username}</NavLink>
                                 </div>} */}
-                     
-                        </section>
-                        <section className='likes'>
-                            {update.likes && update.likes.length > 0 && update.likes.map((like, idx) => {
 
-                                return (<NavLink key={idx} className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
-                                    <SmallImg type={'myweek'}
-                                        name={like.username} ></SmallImg></NavLink>)
-                            })}
                         </section>
                         <section className='seen-by-count'>
-                            Seen By:  {update.seenBy.length}
+                            {update.seenBy.length} Seen
                         </section>
                         <section className='like-reply-btns'>
                             <button className='reply' onClick={() => this.openReply()}>Reply</button>
@@ -222,8 +223,8 @@ class Inbox extends Component {
                         </section>
 
                         <section className='update-msgs'>
-                            {update.messeges && update.messeges.length > 0 && update.messeges.map(msg => {
-                                return <div className='sent-msg-box'>
+                            {update.messeges && update.messeges.length > 0 && update.messeges.map((msg, idx) => {
+                                return <div key={idx} className='sent-msg-box'>
                                     <NavLink to={`/profile/${msg.sendBy._id}`}>{msg.sendBy.username} :<span className='update-msg-content'>{msg.msg}</span></NavLink>
                                 </div>
                             })}

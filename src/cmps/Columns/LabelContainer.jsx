@@ -143,9 +143,9 @@ class LabelContainer extends Component {
       className
     );
 
-    // board = LocalBoardService.addTaskHistory(currBoard, updateInfo);
+    board = LocalBoardService.addTaskHistory(currBoard, updateInfo);
     board = LocalBoardService.setColumn(board, column, color, text, task);
-    // board = LocalBoardService.addBoardHistory(board, updateInfo)
+    board = LocalBoardService.addBoardHistory(board, updateInfo);
     this.props.saveBoard(board);
     this.props.toggleContainer();
     this.props.loadBoards();

@@ -132,7 +132,7 @@ class Notifications extends Component {
         )}
 
         {this.props.notificationsIsShown && (
-          <div className="notifications-container">
+          <div id="style-5" className="notifications-container">
             <div
               className="close-notifications"
               onClick={this.props.toggleNotifications}

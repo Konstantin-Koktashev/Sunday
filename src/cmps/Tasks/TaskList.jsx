@@ -52,13 +52,6 @@ const getListStyle = (isDraggingOver) => ({
 });
 
 class TaskList extends Component {
-  // state = {
-  //   taskIsShown: true,
-  //   groupName: this.props.name,
-  //   groupNameIsEdit: false,
-  //   groupColor: false,
-  // };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -203,16 +196,16 @@ class TaskList extends Component {
   //   await this.props.setCurrBoard(newBoard);
   //   // this.props.loadBoards();
   // };
-  // hideInfoBox = () => {
-  //   this.setState({ taskInfoBox: null });
-  // };
+  hideInfoBox = () => {
+    this.setState({ taskInfoBox: null });
+  };
 
-  // openTaskInfoBox = (task) => {
-  //   console.log("task", task);
-  //   this.setState({ taskInfoBox: task }, () => {
-  //     console.log("this.state", this.state.taskInfoBox);
-  //   });
-  // };
+  openTaskInfoBox = (task) => {
+    console.log("task", task);
+    this.setState({ taskInfoBox: task }, () => {
+      console.log("this.state", this.state.taskInfoBox);
+    });
+  };
 
   render() {
     const { taskInfoBox } = this.state;
@@ -223,12 +216,12 @@ class TaskList extends Component {
           this.state.taskIsShown ? "group-list" : "group-list-small flex"
         }`}
       >
-        {/* {taskInfoBox && (
+        {taskInfoBox && (
           <TaskDetails
             task={taskInfoBox}
             hideInfoBox={this.hideInfoBox}
           ></TaskDetails>
-        )} */}
+        )}
         <div
           className={`task-list-container flex col space-evenly    flex col ${
             this.state.taskIsShown ? "" : "task-list-container-small"

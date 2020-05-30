@@ -60,6 +60,25 @@
   font-size: 12px;
 }
 
+.update-card a {
+  width: 10vw;
+  text-align: start;
+}
+
+#style-5
+  > div
+  > div
+  > div
+  > div.notification-user-box.flex
+  > div.flex.a-center
+  > div {
+  background-color: rgb(55, 162, 233) !important;
+  width: 30px;
+  height: 30px;
+}
+.user-preview-circle .update-card {
+}
+
 .notification-user-box {
   align-content: space-between;
   /* align-self: start; */

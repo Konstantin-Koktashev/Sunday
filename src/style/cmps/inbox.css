@@ -276,3 +276,56 @@
 .update-msg-content:hover {
   color: rgb(95, 145, 238);
 }
+
+.seen-by-count {
+  color: rgba(48, 48, 48, 0.336);
+  margin-right: -55vw;
+}
+
+.seen-by-count:hover {
+  color: rgb(48, 48, 48);
+}
+
+.user-logo {
+  width: 30vw;
+  flex-direction: row;
+}
+
+.user-name-header-inbox p {
+  margin-left: 20px;
+  color: #00aaffb0;
+}
+
+.user-name-header-inbox p:hover {
+  color: #00aaffb0;
+}
+.history-header .user-preview-circle {
+  opacity: 0.8;
+  background-color: rgb(227, 66, 91);
+  width: 35px;
+  height: 35px;
+}
+
+.history-header .user-preview-circle:hover {
+  opacity: 1;
+  background-color: rgb(248, 76, 102);
+}
+
+.user-name-header-inbox {
+  display: flex;
+  align-items: center;
+  width: 20vw;
+}
+.likes-amount {
+  margin-left: 55vw;
+  display: inline;
+}
+
+.user-name-header-inbox a {
+  background-color: blue;
+}
+
+.user-name-header-inbox span {
+  font-size: 14px;
+  color: rgba(63, 61, 61, 0.678);
+}

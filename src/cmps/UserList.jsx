@@ -64,7 +64,7 @@ class UserList extends Component {
             users={this.props.users}
           />
         </div>
-        <div className="user-list-preview-container">
+        <div id="style-5" className="user-list-preview-container">
           {this.UserFilter().map((user, idx) => {
             return (
               <div className="user-search-bar flex a-center space-between">
