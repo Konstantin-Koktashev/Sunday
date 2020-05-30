@@ -35,3 +35,25 @@
 .logout {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+  #root .side-nav-container {
+    position: fixed;
+    /* left: 0px; */
+    height: 6vh;
+    width: 100vw;
+    top: 0px;
+    z-index: 5000000000000;
+    /* flex-direction: column; */
+    flex-direction: row;
+  }
+
+  #root.side-nav-img img {
+    width: 10px;
+    height: 10px;
+  }
+
+  #root.side-nav-img a {
+    width: 10px;
+  }
+}

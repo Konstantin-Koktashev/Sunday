@@ -9,6 +9,35 @@
   border-radius: 20px 0px 0px 0px;
   /* z-index: -1; */
 }
+
+@media only screen and (max-width: 600px) {
+  #root .board-nav-container {
+    position: fixed;
+    height: 15vh;
+    /* left: 5vw; */
+    width: 100vw;
+    top: 6vh;
+    z-index: 60;
+    flex-direction: row;
+    border-radius: 0px;
+    justify-content: space-evenly;
+  }
+  .board-list {
+    font-size: 5px;
+    flex-direction: row;
+    border-radius: 0px;
+    height: 3vh;
+    justify-content: space-evenly;
+  }
+
+  .board-list-btn a {
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    margin-left: 10px;
+  }
+}
+
 .board-nav-container-hidden {
   /* position: fixed; */
   height: 100vh;
@@ -33,11 +62,6 @@
   /* padding-bottom: 30px; */
 }
 
-.board-list {
-  height: 100vh;
-  padding: 0px 5px;
-}
-
 .board-list-btn {
   padding: 10px 0px;
   width: 100%;
@@ -51,11 +75,17 @@
   background-color: rgba(197, 190, 190, 0.329);
 }
 
-.board-list-btn a {
-  text-decoration: none;
-  color: black;
-  font-size: 20px;
-  margin-left: 10px;
+@media only screen and (min-width: 600px) {
+  .board-list {
+    height: 100vh;
+    padding: 0px 5px;
+  }
+  .board-list-btn a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    margin-left: 10px;
+  }
 }
 
 .board-list-btn a:focus {
