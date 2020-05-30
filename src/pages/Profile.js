@@ -8,10 +8,12 @@ import { setChatType, upload } from "../actions/UserActions";
 import { setCurrChatRoom, loadRooms } from '../actions/ChatActions'
 import { Button, ButtonGroup } from '@material-ui/core'
 
+
 import UserService from '../../src/services/UserService'
 import ChatService from '../services/ChatService';
 import moment from 'moment'
 import UserProfileEdit from '../cmps/UserProfileEdit';
+import { MapToDisplay } from '../cmps/Map';
 class Profile extends Component {
     state = {
         user: null,
@@ -99,7 +101,7 @@ class Profile extends Component {
                             <p>Last Seen: <span>{moment(user.lastSeenAt).fromNow()}</span>{this.props.loggedInUser._id !== user._id && <button title="Click To Chat" className="chat-with-btn" onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>}</p>
 
                         </div>}
-
+            <MapToDisplay></MapToDisplay>
                 </div>}
             </>
         );

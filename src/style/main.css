@@ -438,4 +438,6 @@ html {
 }
 .user-preview-circle-myweek{
   background-color: black;
+  display: flex;
+  
 }
