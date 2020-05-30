@@ -54,7 +54,7 @@ class Inbox extends Component {
             for (var j = 0; j < currBoard.history.length; j++) {
                 let currHistory = currBoard.history[j]
                 if (!currHistory.user) continue;
-                if (currHistory.user._id!==currUserId&&currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
+                if (currHistory.user._id !== currUserId && currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
             }
         }
 
