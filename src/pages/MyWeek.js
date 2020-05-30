@@ -66,15 +66,21 @@ class MyWeek extends Component {
                         <img src={coffe}></img>
                         <h3><span>Hey {user}</span> Welcome to My Week</h3>
                     </div>
-                    <p>   {openTasks && openTasks.length > 0 ? 'You have open items' : 'No open items..\n Guess you can take a Day off'}</p>
-                    <section className="my-week">
 
-                        {openTasks && openTasks.length > 0 && <h3>Open Tasks</h3>}
-                        {openTasks && openTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
-                    </section>
-                    <section className="my-week">
-                        {closeTasks && closeTasks.length > 0 && <h3>Closed Tasks</h3>}
-                        {closeTasks && closeTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
+                    <section className="myweek-list-container">
+
+                        <p>   {openTasks && openTasks.length > 0 ? 'You have open items' : 'No open items..\n Guess you can take a Day off'}</p>
+                        <section className="my-week">
+
+                            {openTasks && openTasks.length > 0 && <h3>Open Tasks</h3>}
+                            {openTasks && openTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
+                        </section>
+                        <section className="my-week">
+                            {closeTasks && closeTasks.length > 0 && <h3>Closed Tasks</h3>}
+                            {closeTasks && closeTasks.map((task, idx) => <WeekPreview {...task} key={idx} />)}
+                        </section>
+
+
                     </section>
                 </div>
             </>
