@@ -75,4 +75,18 @@
     font-size: 7px;
     font-weight: bold;
   }
+
+  .label-container {
+    flex-direction: row !important;
+    width: 28vw;
+    left: -8vw;
+  }
+
+  .label-submit {
+    display: none;
+  }
+
+  .react-datepicker-popper {
+    left: -10vw !important;
+  }
 }
