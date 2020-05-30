@@ -201,19 +201,7 @@ class TaskList extends Component {
   //   await this.props.setCurrBoard(newBoard);
   //   // this.props.loadBoards();
   // };
-  // sortByKey(array, key) {
-  //   return array.sort(function (a, b) {
-  //     var x = a[key];
-  //     var y = b[key];
-  //     return x < y ? -1 : x > y ? 1 : 0;
-  //   });
-  // }
-  // sortTasks = () => {
-  //   let { items, sortBy } = this.state;
-  //   let sortedItems = this.sortByKey(items, "createdAt");
 
-  //   this.setState({ items: sortedItems });
-  // };
   render() {
     const { groupColor } = this.state;
     return (
@@ -237,7 +225,6 @@ class TaskList extends Component {
             >
               <div className="task-box-toplist-container flex a-center space-between">
                 <div className="task-list-top flex a-center">
-                  <button onClick={this.sortTasks}>SORT DATE</button>
                   <img
                     className="resize-png"
                     onClick={this.toggleList}
