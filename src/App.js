@@ -32,11 +32,18 @@ class App extends React.Component {
   }
   async componentDidMount() {
     SocketService.setup()
+    console.log("App -> componentDidMount -> window.location.href", window.location.href)
+
+    if (!this.props.currUser) {
+      let redirect = true
+      if (window.location.href.includes('login')) redirect = false
+      if (window.location.href.includes('signup')) redirect = false
+      if (window.location.href.includes('home')) redirect = false
+      if (redirect) history.push('/home/')
 
 
-    if (!this.props.currUser && window.location.href !== 'http://localhost:3000/login/') {
 
-      history.push('/home/')
+
     } else {
 
       SocketService.emit('login', this.props.currUser)

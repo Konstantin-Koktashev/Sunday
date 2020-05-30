@@ -8,7 +8,6 @@ import {
     logout,
     signup
 } from '../actions/UserActions';
-import facebook from '../../src/style/img/facebook.svg'
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -146,7 +145,6 @@ class Signup extends Component {
                         Already have an account? Sign in
               </Link>
                     <Facebook signUpFacebook={this.signUpFacebook} />
-                    <img className="facebook-img" src={facebook}></img>
 
 
                 </form>
