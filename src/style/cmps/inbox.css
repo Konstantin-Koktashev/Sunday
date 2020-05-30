@@ -241,6 +241,7 @@
 .send-btn-inbox {
   width: 100%;
   margin: 0 auto;
+  outline: none;
 }
 .sent-msg-box {
   text-align: start;

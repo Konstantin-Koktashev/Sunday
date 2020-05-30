@@ -23,7 +23,6 @@ class TaskDetails extends Component {
     return (
       <>
         <div
-          onDragStart={(ev) => this.test(ev)}
           onClick={this.props.toggleInfoBox}
           className="backscreen-info-box bgc-slow"
         ></div>
@@ -48,12 +47,6 @@ class TaskDetails extends Component {
               onClick={() => this.setChosenOpt("info-boxes")}
             >
               Info Boxes
-            </div>
-            <div
-              className="opt-select"
-              onClick={() => this.setChosenOpt("activity-log")}
-            >
-              Activity Log
             </div>
             {/* {task.users.map((user, idx) => <SmallImg zindex={idx} url={user.imgUrl} name={user.name} key={idx} />)} */}
           </div>
