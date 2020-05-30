@@ -66,18 +66,19 @@ class TaskList extends Component {
       groupName: this.props.name,
       groupNameIsEdit: false,
       groupColor: false,
+      sortBy: null,
       // index,
     };
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    if (
-      JSON.stringify(prevProps.groupEL) !== JSON.stringify(this.props.groupEL)
-    ) {
-      this.setState({ items: this.props.groupEL });
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (
+  //     JSON.stringify(prevProps.groupEL) !== JSON.stringify(this.props.groupEL)
+  //   ) {
+  //     this.setState({ items: this.props.groupEL });
+  //   }
+  // }
 
   toggleList = () => {
     if (this.state.taskIsShown) {
@@ -170,36 +171,49 @@ class TaskList extends Component {
     await this.props.setCurrBoard(newBoard);
     this.props.loadBoards();
   };
-  refreshItems = () => {
-    this.setState({ items: this.props.groupEl });
-  };
+  // refreshItems = () => {
+  //   this.setState({ items: this.props.groupEl });
+  // };
 
-  moveMe = async (board, group, task, index) => {
-    // const items = reorder(this.state.items, index, 0);
+  // moveMe = async (board, group, task, index) => {
+  //   // const items = reorder(this.state.items, index, 0);
 
-    let itemsStr = JSON.stringify(this.state.items);
-    let items = JSON.parse(itemsStr);
+  //   let itemsStr = JSON.stringify(this.state.items);
+  //   let items = JSON.parse(itemsStr);
 
-    // let sortedItems = reorder(items, index, false);
+  //   // let sortedItems = reorder(items, index, false);
 
-    // const items = reorder(
-    //   this.state.items,
-    //   result.source.index,
-    //   result.destination.index
-    // );
+  //   // const items = reorder(
+  //   //   this.state.items,
+  //   //   result.source.index,
+  //   //   result.destination.index
+  //   // );
 
-    // items.splice(index, 1);
-    // this.setState({
-    //   index,
-    // });
-    this.props.moveMe(board, group, task);
+  //   // items.splice(index, 1);
+  //   // this.setState({
+  //   //   index,
+  //   // });
+  //   this.props.moveMe(board, group, task);
 
-    // const { group, board } = this.props;
-    const newBoard = LocalBoardService.changeTaskOrder(board, group, items);
-    // await this.props.saveBoard(newBoard);
-    await this.props.setCurrBoard(newBoard);
-    // this.props.loadBoards();
-  };
+  //   // const { group, board } = this.props;
+  //   const newBoard = LocalBoardService.changeTaskOrder(board, group, items);
+  //   // await this.props.saveBoard(newBoard);
+  //   await this.props.setCurrBoard(newBoard);
+  //   // this.props.loadBoards();
+  // };
+  // sortByKey(array, key) {
+  //   return array.sort(function (a, b) {
+  //     var x = a[key];
+  //     var y = b[key];
+  //     return x < y ? -1 : x > y ? 1 : 0;
+  //   });
+  // }
+  // sortTasks = () => {
+  //   let { items, sortBy } = this.state;
+  //   let sortedItems = this.sortByKey(items, "createdAt");
+
+  //   this.setState({ items: sortedItems });
+  // };
   render() {
     const { groupColor } = this.state;
     return (
@@ -223,6 +237,7 @@ class TaskList extends Component {
             >
               <div className="task-box-toplist-container flex a-center space-between">
                 <div className="task-list-top flex a-center">
+                  <button onClick={this.sortTasks}>SORT DATE</button>
                   <img
                     className="resize-png"
                     onClick={this.toggleList}

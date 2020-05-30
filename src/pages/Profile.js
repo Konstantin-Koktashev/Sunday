@@ -14,7 +14,8 @@ import moment from 'moment'
 import UserProfileEdit from '../cmps/UserProfileEdit';
 class Profile extends Component {
     state = {
-        user: null
+        user: null,
+        isEdit: false
     };
 
 
@@ -59,12 +60,18 @@ class Profile extends Component {
         this.loadUser()
 
     }
-
+    toggleProfileEdit = () => {
+        this.setState(({ isEdit }) => ({
+            isEdit: !isEdit,
+        }));
+    };
 
     render() {
         const { user } = this.state
         return (
             <>
+
+
                 {user && <div className="profile-page-container">
                     <label htmlFor="file-upload" className="custom-file-upload">
                         Change Profile Image
@@ -74,18 +81,25 @@ class Profile extends Component {
                         {user.imgUrl ? <img className="user-image-profile" src={user.imgUrl} alt="USER IMAGE" title={'Last seen: ' + moment(user.lastSeenAt).fromNow()}></img> :
                             <div className="profile-circle-big flex a-center j-center">{user.username.charAt(0).toUpperCase()}</div>}
                         <h2>{user.username} Profile</h2>
+                        {user._id === this.props.match.params.id && <div className="toggle-edit-profile" onClick={this.toggleProfileEdit}> Edit Profile</div>}
                     </div>
 
 
                     {this.props.loggedInUser._id === user._id && <input onChange={(ev) => this.uploadImg(ev, user)} type="file" id="file-upload" className="upload" accept="image/png, image/jpeg" hidden></input>}
-                    <div className="over-view-profile flex col">
-                        <h2>Over View</h2>
-                        <p>Name: <span>{user.username}</span></p>
-                        <p>Email: <span>{user.email}</span></p>
-                        <p>Last Seen: <span>{moment(user.lastSeenAt).fromNow()}</span>{this.props.loggedInUser._id !== user._id && <button title="Click To Chat" className="chat-with-btn" onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>}</p>
+                    {this.state.isEdit ? <UserProfileEdit toggleProfileEdit={this.toggleProfileEdit}></UserProfileEdit> :
+                        <div className="over-view-profile flex col">
 
-                    </div>
-                    <UserProfileEdit></UserProfileEdit>
+                            <p className="over-view-header-text">Over View </p>
+                            <p>Name: <span>{user.username}</span></p>
+                            <p>Email: <span>{user.email}</span></p>
+                            <p>Phone number: <span>{user.profile.phone}</span></p>
+                            <p>Birthday: <span>{user.profile.birthday}</span></p>
+                            <p>Location: <span>{user.profile.location}</span></p>
+                            <p>Company: <span>{user.profile.company}</span></p>
+                            <p>Last Seen: <span>{moment(user.lastSeenAt).fromNow()}</span>{this.props.loggedInUser._id !== user._id && <button title="Click To Chat" className="chat-with-btn" onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>}</p>
+
+                        </div>}
+
                 </div>}
             </>
         );

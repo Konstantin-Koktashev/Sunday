@@ -13,7 +13,7 @@ import DatePicker from '../cmps/Calendar';
 import TimeLineTest from '../cmps/TimeLineTest';
 import { loadUsers } from '../actions/UserActions'
 import { NavLink } from 'react-router-dom';
-import LocalBoardService from '../services/LocalBoardService.js';
+import LocalBoardService from '../services/LocalBoardService';
 import SmallImg from "../cmps/SmallImg";
 
 
@@ -54,7 +54,7 @@ class Inbox extends Component {
             for (var j = 0; j < currBoard.history.length; j++) {
                 let currHistory = currBoard.history[j]
                 if (!currHistory.user) continue;
-                if (currHistory.user._id!==currUserId&&currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
+                if (currHistory.user._id !== currUserId && currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
             }
         }
 

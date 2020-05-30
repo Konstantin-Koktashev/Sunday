@@ -30,6 +30,7 @@ function remove(userId) {
 }
 
 async function update(user) {
+
     return HttpService.put(`user/${user._id}`, user)
 
 }
