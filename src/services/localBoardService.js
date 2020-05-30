@@ -410,7 +410,7 @@ function addTaskHistory(board, updateInfo) {
         nextColor: (color) ? color : '',
         likes: []
     }
-    task.history=(task.history)?task.history:[]
+    task.history = (task.history) ? task.history : []
     task.history.unshift(update)
     return board
 }

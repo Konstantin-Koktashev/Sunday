@@ -6,11 +6,73 @@
 }
 
 @media only screen and (max-width: 600px) {
+  * {
+    font-size: 9px;
+  }
   .main-board-container {
     position: fixed;
-    top: 20vh;
+    top: 0;
+    z-index: 3;
 
     width: 100%;
     background: white;
+  }
+
+  .task-box-list-cont-new {
+    display: grid !important;
+    grid-template-columns: repeat(6, 8vw);
+    overflow: hidden !important;
+  }
+  .task-bar-columns-container-new {
+    grid-template-columns: repeat(6, 8vw);
+  }
+
+  .task-bar-columns-container-new {
+    grid-template-columns: repeat(6, 8vw) !important;
+  }
+
+  .sum-container {
+    padding-right: 15px;
+  }
+
+  .group-list {
+    margin-top: 21px;
+  }
+
+  .filter-add-container {
+    margin-right: 50px;
+    width: 30vw;
+  }
+
+  .div40 {
+    width: 46vw;
+    grid-template-columns: repeat(6, 8vw) !important;
+  }
+
+  .MuiInputBase-input {
+    min-width: 20vw !important;
+  }
+
+  .board-header-container {
+    margin-top: 5vh !important;
+  }
+
+  .task-bar-progress {
+    height: 0px;
+  }
+
+  .s-progress-container {
+    height: 2vh;
+  }
+
+  .task-bar h2 {
+    overflow: hidden;
+    padding: 0;
+    width: 27vw;
+  }
+
+  .box-div {
+    font-size: 7px;
+    font-weight: bold;
   }
 }

@@ -204,8 +204,7 @@
     padding: 0px 2px;
     margin-bottom: 1px;
     background-color: #dfe6e957;
-    height: 12vh;
-    flex-direction: column;
+    height: 4vh;
   }
   .task-bar-icon {
     display: none;
