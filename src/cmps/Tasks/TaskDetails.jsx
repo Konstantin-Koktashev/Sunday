@@ -9,12 +9,13 @@ import TaskInbox from "./TaskInbox";
 
 class TaskDetails extends Component {
   state = {
-    chosenRender: null,
+    chosenRender: "info-boxes",
   };
 
   setChosenOpt = (val) => {
     this.setState({ chosenRender: val });
   };
+
   render() {
     const { chosenRender } = this.state;
     const { task } = this.props;
@@ -22,6 +23,7 @@ class TaskDetails extends Component {
     return (
       <>
         <div
+          onDragStart={(ev) => this.test(ev)}
           onClick={this.props.toggleInfoBox}
           className="backscreen-info-box bgc-slow"
         ></div>
