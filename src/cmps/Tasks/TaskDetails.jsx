@@ -23,7 +23,7 @@ class TaskDetails extends Component {
     return (
       <>
         <div
-          onClick={this.props.toggleInfoBox}
+          onClick={() => this.props.hideInfoBox()}
           className="backscreen-info-box bgc-slow"
         ></div>
         <section className="clickbgc-info-box slide-in-right-info">

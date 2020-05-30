@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import ProgressBar from "../Statistics/ProgressBar";
 import GenereicProgBar from "../Statistics/GenereicProgBar";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import TaskDetails from "./TaskDetails";
 
 import {
   saveBoard,
@@ -67,6 +68,8 @@ class TaskList extends Component {
       groupNameIsEdit: false,
       groupColor: false,
       sortBy: null,
+      taskInfoBox: false,
+
       // index,
     };
     this.onDragEnd = this.onDragEnd.bind(this);
@@ -202,8 +205,19 @@ class TaskList extends Component {
   //   await this.props.setCurrBoard(newBoard);
   //   // this.props.loadBoards();
   // };
+  hideInfoBox = () => {
+    this.setState({ taskInfoBox: null });
+  };
+
+  openTaskInfoBox = (task) => {
+    console.log("task", task);
+    this.setState({ taskInfoBox: task }, () => {
+      console.log("this.state", this.state.taskInfoBox);
+    });
+  };
 
   render() {
+    const { taskInfoBox } = this.state;
     const { groupColor } = this.state;
     return (
       <div
@@ -211,6 +225,12 @@ class TaskList extends Component {
           this.state.taskIsShown ? "group-list" : "group-list-small flex"
         }`}
       >
+        {taskInfoBox && (
+          <TaskDetails
+            task={taskInfoBox}
+            hideInfoBox={this.hideInfoBox}
+          ></TaskDetails>
+        )}
         <div
           className={`task-list-container flex col space-evenly    flex col ${
             this.state.taskIsShown ? "" : "task-list-container-small"
@@ -350,6 +370,7 @@ class TaskList extends Component {
                                   // }
                                   >
                                     <TaskPreview
+                                      setInfoTask={this.openTaskInfoBox}
                                       deleteTask={this.deleteTask}
                                       task={task}
                                       key={index}
