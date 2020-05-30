@@ -4,7 +4,9 @@
 }
 @media only screen and (max-width: 600px) {
   #root .user-history {
-    height: 20vh;
+    height: 57vh;
+    width: 75vw;
+    margin-top: 10vh;
   }
   #root .inbox-container {
     overflow: scroll;
@@ -19,7 +21,19 @@
     font-size: 11px !important;
   }
   .add-update-msg button {
-    width: 20vw !important;
+    width: 5vw !important;
+  }
+
+  .next-value-inbox {
+    width: 15vw !important;
+  }
+  .prev-value-inbox {
+    width: 15vw !important;
+  }
+
+  .person-preview {
+    grid-template-columns: 6px 6px 6px !important;
+    height: 15px;
   }
 }
 

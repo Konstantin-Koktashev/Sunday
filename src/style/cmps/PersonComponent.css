@@ -245,7 +245,7 @@
 
 @media only screen and (max-width: 600px) {
   .person-component {
-    width: 50vw;
-    height: 54vh;
+    width: 43vw;
+    height: 28vh;
   }
 }

@@ -184,7 +184,9 @@ class Inbox extends Component {
 
                                 <button className='next-value-inbox' style={{ backgroundColor: `${update.nextColor}` }}>{update.nextValue}</button>
                             </div>
-                            <section className='likes'>
+                     
+                        </section>
+                        <section className='likes'>
                                 {update.likes && update.likes.length > 0 && update.likes.map((like, idx) => {
 
                                     return (<NavLink key={idx} className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
@@ -192,6 +194,8 @@ class Inbox extends Component {
                                             name={like.username} ></SmallImg></NavLink>)
                                 })}
                             </section>
+                        <section className='seen-by-count'>
+                          Seen By:  {update.seenBy.length}
                         </section>
                         <section className='like-reply-btns'>
                             <button className='reply' onClick={() => this.openReply()}>Reply</button>
