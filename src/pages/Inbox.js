@@ -51,7 +51,6 @@ class Inbox extends Component {
         const historyToRender = []
         for (var i = 0; i < board.length; i++) {
             let currBoard = board[i]
-            debugger
             for (var j = 0; j < currBoard.history.length; j++) {
                 let currHistory = currBoard.history[j]
                 if (!currHistory.user) continue;
@@ -177,7 +176,7 @@ class Inbox extends Component {
                         </section>
                         <section className='update-msg flex a-center'>
                             <span>{update.title}</span>
-                           {update.updateType==='Label Change'&& <div className='user-history-main-btns flex a-center ' >
+                            {update.updateType === 'Label Change' && <div className='user-history-main-btns flex a-center ' >
 
                                 <button className='prev-value-inbox' style={{ backgroundColor: `${update.prevColor}` }}> {update.prevValue}</button>
                                 <span className='arrow-logo'> </span>
@@ -193,7 +192,7 @@ class Inbox extends Component {
                                     <SmallImg url={update.assignedTo.imgUrl}
                                         name={update.assignedTo.username} ></SmallImg>{update.assignedTo.username}</NavLink>
                                 </div>} */}
-                     
+
                         </section>
                         <section className='likes'>
                             {update.likes && update.likes.length > 0 && update.likes.map((like, idx) => {
