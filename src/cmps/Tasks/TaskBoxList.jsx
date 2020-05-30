@@ -18,14 +18,14 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   fontSize: "13px",
 
   // change background colour if dragging
-  background: isDragging ? "#b2bec3" : "white",
+  // background: isDragging ? "#b2bec3" : "white",
 
   // styles we need to apply on draggables
   ...draggableStyle,
 });
 
 const getListStyle = (isDraggingOver) => ({
-  background: isDraggingOver ? "#74b9ff" : "white",
+  // background: isDraggingOver ? "#74b9ff" : "white",
   display: "flex",
   overflow: "auto",
 });
