@@ -177,13 +177,22 @@ class Inbox extends Component {
                         </section>
                         <section className='update-msg flex a-center'>
                             <span>{update.title}</span>
-                            <div className='user-history-main-btns flex a-center ' >
+                           {update.type==='Label Change'&& <div className='user-history-main-btns flex a-center ' >
 
                                 <button className='prev-value-inbox' style={{ backgroundColor: `${update.prevColor}` }}> {update.prevValue}</button>
                                 <span className='arrow-logo'> </span>
 
                                 <button className='next-value-inbox' style={{ backgroundColor: `${update.nextColor}` }}>{update.nextValue}</button>
-                            </div>
+                            </div>}
+                            {update.type==='Member Add'&& <div className='person-update' >
+                            <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
+                                    <SmallImg url={update.user.imgUrl}
+                                        name={update.user.username} ></SmallImg>{update.user.username}</NavLink>
+                                        <span>Assigned to Task </span>
+                                        <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
+                                    <SmallImg url={update.assignedTo.imgUrl}
+                                        name={update.assignedTo.username} ></SmallImg>{update.assignedTo.username}</NavLink>
+                                </div>}
                      
                         </section>
                         <section className='likes'>
