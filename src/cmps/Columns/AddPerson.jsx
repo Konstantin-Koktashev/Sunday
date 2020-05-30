@@ -22,7 +22,11 @@ class AddPerson extends Component {
     this.getAllPersons();
   }
   addPerson = async (person) => {
-    this.setState({ isShown: false, persons: [...this.state.persons, person] });
+    // this.setState({ isShown: false, persons: [...this.state.persons, person] });
+    this.setState(prevState => ({ ...prevState,person:{
+      ...prevState.person,person
+    } }))
+    debugger
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const task = this.props.task;
