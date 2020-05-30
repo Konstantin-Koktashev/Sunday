@@ -65,10 +65,11 @@ class Chat extends Component {
     this.setState({
       messageList: [...this.state.messageList, msg.msg],
     });
-
+    
     /// Update data Messegae
   };
   startChat = async () => {
+    debugger
     this.setState({ newMessagesCount: 0 });
 
     if (!this.props.userState.chatWith) return;

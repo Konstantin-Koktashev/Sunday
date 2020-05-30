@@ -27,7 +27,9 @@ export function addRoom(room) {
 }
 
 export function saveRoom(room, allRooms) {
+  // debugger
   return async dispatch => {
+
     try {
       const type = room._id ? 'UPDATE_ROOM' : 'ADD_ROOM'
       room.lastUpdate = Date.now()

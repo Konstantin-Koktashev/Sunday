@@ -51,6 +51,7 @@ class Inbox extends Component {
         const historyToRender = []
         for (var i = 0; i < board.length; i++) {
             let currBoard = board[i]
+            debugger
             for (var j = 0; j < currBoard.history.length; j++) {
                 let currHistory = currBoard.history[j]
                 if (!currHistory.user) continue;
@@ -70,7 +71,6 @@ class Inbox extends Component {
             })
             if (!isSeen) filtertedUpdates.push(update)
         })
-
         filtertedUpdates.sort(function compare(a, b) {
             var dateA = new Date(a.timeStamp);
             var dateB = new Date(b.timeStamp);
@@ -177,23 +177,23 @@ class Inbox extends Component {
                         </section>
                         <section className='update-msg flex a-center'>
                             <span>{update.title}</span>
-                            {update.type === 'Label Change' && <div className='user-history-main-btns flex a-center ' >
+                           {update.updateType==='Label Change'&& <div className='user-history-main-btns flex a-center ' >
 
                                 <button className='prev-value-inbox' style={{ backgroundColor: `${update.prevColor}` }}> {update.prevValue}</button>
                                 <span className='arrow-logo'> </span>
 
                                 <button className='next-value-inbox' style={{ backgroundColor: `${update.nextColor}` }}>{update.nextValue}</button>
                             </div>}
-                            {update.type === 'Member Add' && <div className='person-update' >
-                                <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
+                            {/* {update.type==='Member Add'&& <div className='person-update' >
+                            <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
                                     <SmallImg url={update.user.imgUrl}
                                         name={update.user.username} ></SmallImg>{update.user.username}</NavLink>
                                 <span>Assigned to Task </span>
                                 <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
                                     <SmallImg url={update.assignedTo.imgUrl}
                                         name={update.assignedTo.username} ></SmallImg>{update.assignedTo.username}</NavLink>
-                            </div>}
-
+                                </div>} */}
+                     
                         </section>
                         <section className='likes'>
                             {update.likes && update.likes.length > 0 && update.likes.map((like, idx) => {

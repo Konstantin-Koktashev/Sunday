@@ -135,7 +135,7 @@ class LabelContainer extends Component {
 
     let board = LocalBoardService.addBoardHistory(currBoard, updateInfo);
     board = LocalBoardService.setColumn(
-      currBoard,
+      currBoard, 
       column,
       color,
       text,
