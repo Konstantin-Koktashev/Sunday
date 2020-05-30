@@ -75,13 +75,11 @@ class TaskList extends Component {
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (
-  //     JSON.stringify(prevProps.groupEL) !== JSON.stringify(this.props.groupEL)
-  //   ) {
-  //     this.setState({ items: this.props.groupEL });
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps.group) !== JSON.stringify(this.props.group)) {
+      this.setState({ items: this.props.group.tasks });
+    }
+  }
 
   toggleList = () => {
     if (this.state.taskIsShown) {
@@ -205,16 +203,16 @@ class TaskList extends Component {
   //   await this.props.setCurrBoard(newBoard);
   //   // this.props.loadBoards();
   // };
-  hideInfoBox = () => {
-    this.setState({ taskInfoBox: null });
-  };
+  // hideInfoBox = () => {
+  //   this.setState({ taskInfoBox: null });
+  // };
 
-  openTaskInfoBox = (task) => {
-    console.log("task", task);
-    this.setState({ taskInfoBox: task }, () => {
-      console.log("this.state", this.state.taskInfoBox);
-    });
-  };
+  // openTaskInfoBox = (task) => {
+  //   console.log("task", task);
+  //   this.setState({ taskInfoBox: task }, () => {
+  //     console.log("this.state", this.state.taskInfoBox);
+  //   });
+  // };
 
   render() {
     const { taskInfoBox } = this.state;
@@ -225,12 +223,12 @@ class TaskList extends Component {
           this.state.taskIsShown ? "group-list" : "group-list-small flex"
         }`}
       >
-        {taskInfoBox && (
+        {/* {taskInfoBox && (
           <TaskDetails
             task={taskInfoBox}
             hideInfoBox={this.hideInfoBox}
           ></TaskDetails>
-        )}
+        )} */}
         <div
           className={`task-list-container flex col space-evenly    flex col ${
             this.state.taskIsShown ? "" : "task-list-container-small"
@@ -359,18 +357,9 @@ class TaskList extends Component {
                                     provided.draggableProps.style
                                   )}
                                 >
-                                  <div
-                                  // onMouseDown={() =>
-                                  //   this.moveMe(
-                                  //     this.props.board,
-                                  //     this.props.group,
-                                  // task,
-                                  // index
-                                  // )
-                                  // }
-                                  >
+                                  <div>
                                     <TaskPreview
-                                      setInfoTask={this.openTaskInfoBox}
+                                      // setInfoTask={this.openTaskInfoBox}
                                       deleteTask={this.deleteTask}
                                       task={task}
                                       key={index}

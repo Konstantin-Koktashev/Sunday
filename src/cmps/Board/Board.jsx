@@ -52,7 +52,7 @@ class Board extends Component {
       default:
         view = (
           <GroupList
-            swapTaskFromGroup={this.swapTaskFromGroup}
+            // swapTaskFromGroup={this.swapTaskFromGroup}
             sortColumnsByBox={this.sortColumnsByBox}
             groups={this.props.currBoard.groups}
             board={this.props.currBoard}

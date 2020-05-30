@@ -10,7 +10,7 @@ export function loadRooms() {
       dispatch(setRooms(roomsAfterCheck));
 
     } catch (err) {
-      console.log('ReviewActions: err in loatchats', err);
+      console.log('ChatActions: err in loatchats', err);
     }
   };
 }
@@ -21,7 +21,7 @@ export function addRoom(room) {
       const addedRoom = await ChatService.add(room);
       dispatch(_addRoom(addedRoom));
     } catch (err) {
-      console.log('ReviewActions: err in addRooms', err);
+      console.log('ChatActions: err in addRooms', err);
     }
   };
 }
@@ -35,7 +35,7 @@ export function saveRoom(room, allRooms) {
       SocketService.emit('doRefresh', 'js')
       dispatch({ type, savedRoom })
     } catch (err) {
-      console.log('boardActions: err in add or update board', err);
+      console.log('ChatActions: err in add or update board', err);
     }
   }
 }

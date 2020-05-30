@@ -132,6 +132,7 @@ class LabelContainer extends Component {
       task,
       color,
     };
+
     let board = LocalBoardService.addBoardHistory(currBoard, updateInfo);
     board = LocalBoardService.setColumn(
       currBoard,
@@ -142,8 +143,8 @@ class LabelContainer extends Component {
       className
     );
 
-    board = LocalBoardService.addTaskHistory(currBoard, updateInfo);
-    board = LocalBoardService.setColumn(currBoard, column, color, text, task);
+    // board = LocalBoardService.addTaskHistory(currBoard, updateInfo);
+    board = LocalBoardService.setColumn(board, column, color, text, task);
     // board = LocalBoardService.addBoardHistory(board, updateInfo)
     this.props.saveBoard(board);
     this.props.toggleContainer();
