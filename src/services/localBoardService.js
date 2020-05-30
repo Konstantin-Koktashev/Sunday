@@ -362,7 +362,7 @@ function _getIdxById(boardId) {
 }
 
 function addBoardHistory(board, updateInfo) {
-    const { user, group, task, column, nextValue, updateType, seenBy, color, likes,assignedTo } = updateInfo
+    const { user, group, task, column, nextValue, updateType, seenBy, color, likes, assignedTo } = updateInfo
     const prevValue = column ? column.value : ''
     const boardId = board._id
     const update = {
@@ -383,7 +383,7 @@ function addBoardHistory(board, updateInfo) {
         prevColor: (column) ? column.color : '',
         nextColor: (color) ? color : '',
         likes: [],
-        assignedTo:assignedTo?assignedTo:null
+        assignedTo: assignedTo ? assignedTo : null
     }
     board.history.unshift(update)
     return board
