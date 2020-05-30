@@ -15,18 +15,18 @@ class AddPerson extends Component {
   state = {
     usersToAdd: null,
     isShown: false,
-    persons: this.props.column.persons,
+    persons: this.props.column.persons&&this.props.column.persons.length > 0 ? this.props.column.persons : [],
   };
   async componentDidMount() {
-    await this.props.loadUsers();
+
+    const peopleToSet=this.props.column.persons&&this.props.column.persons.length > 0 ? this.props.column.persons : []
+    this.setState({persons:peopleToSet})
+    // await this.props.loadUsers();
     this.getAllPersons();
   }
   addPerson = async (person) => {
-    // this.setState({ isShown: false, persons: [...this.state.persons, person] });
-    this.setState(prevState => ({ ...prevState,person:{
-      ...prevState.person,person
-    } }))
-    debugger
+    this.setState({ isShown: false, persons: [...this.state.persons, person] });
+
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const task = this.props.task;
