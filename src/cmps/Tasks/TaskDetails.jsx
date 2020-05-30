@@ -23,12 +23,17 @@ class TaskDetails extends Component {
       <>
         <div
           onClick={this.props.toggleInfoBox}
-          className="backscreen-info-box"
+          className="backscreen-info-box bgc-slow"
         ></div>
         <section className="clickbgc-info-box slide-in-right-info">
+          <div
+            className="info-box-exit-btn"
+            onClick={() => this.props.hideInfoBox()}
+          >
+            X
+          </div>
           {/* <h3>{task.text}</h3> */}
-          <h3>HARD CODED TASK TEXT</h3>
-          <div onClick={() => this.props.hideInfoBox()}>XX</div>
+          <h3>{task.taskTitle}</h3>
           <div className="details-opts">
             <div
               className="opt-select"

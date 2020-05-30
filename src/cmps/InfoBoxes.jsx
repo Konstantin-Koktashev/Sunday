@@ -97,27 +97,19 @@ class InfoBoxes extends React.Component {
         <div className=""></div>
 
         <div className="">
-          <div onClick={() => this.props.hideInfoBox()}>XX</div>
-
-          <h2>{this.props.task.taskTitle}</h2>
           <div className="info-boxes-btns flex a-center space-evenly">
             <div onClick={(ev) => this.openNoteBox(ev)}>Add Note</div>
             <DropZone savefileToTask={this.savefileToTask}></DropZone>
           </div>
 
           <div className="info-box-main-content">
-            {(
-              <NoteBox
-                task={this.props.task}
-                addNoteToTask={this.addNoteToTask}
-              ></NoteBox>
-            )}
+            <h3>Notes</h3>
             {boxesToRender &&
-              boxesToRender.length &&
+              boxesToRender.length > 0 &&
               boxesToRender.map((box) => {
                 return (
                   <article className="info-box note">
-                    <h3>{box.type}</h3>
+                    <p>{box.type}</p>
                     <span>{box.txt}</span>
                     {box.type === "file" && (
                       <div className="task-img-box">
@@ -127,6 +119,12 @@ class InfoBoxes extends React.Component {
                   </article>
                 );
               })}
+            {
+              <NoteBox
+                task={this.props.task}
+                addNoteToTask={this.addNoteToTask}
+              ></NoteBox>
+            }
           </div>
         </div>
       </>

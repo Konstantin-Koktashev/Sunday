@@ -8,7 +8,7 @@
   z-index: 90000;
 }
 .slide-in-right-info {
-  animation: slide-in-right-info 0.5s linear;
+  animation: slide-in-right-info 0.3s linear;
 }
 
 .info-boxes-btns-container h2 {
@@ -19,6 +19,35 @@
 .info-boxes-btns {
   border-bottom: 1px solid rgba(89, 89, 90, 0.349);
   padding-bottom: 20px;
+  cursor: pointer;
+}
+
+#style-5
+  > div
+  > div
+  > div
+  > div
+  > div.task-list.flex.col
+  > div:nth-child(1)
+  > div:nth-child(4)
+  > div
+  > div
+  > section
+  > div.detail-container
+  > div:nth-child(2)
+  > div.info-boxes-btns.flex.a-center.space-evenly
+  > form
+  > label {
+  cursor: pointer;
+  text-align: center;
+}
+.info-boxes-btns div {
+  text-align: center;
+}
+.info-boxes-btns > * {
+  cursor: pointer;
+  padding: 10px 20px;
+  width: 50%;
 }
 .note {
   /* margin-left: 15px; */
@@ -36,7 +65,36 @@
 .send-btn-inbox {
   width: 10vw;
 }
+.info-box-main-content h3 {
+  margin: 0 auto;
+  text-align: center;
+}
+.info-box-main-content input {
+  background-color: rgba(107, 107, 107, 0.432);
+  border: none;
+  padding: 5px 20px;
+  margin-top: 10px;
+  border-radius: 20px;
+  text-align: center;
+  width: 20vw;
+  outline: none;
+}
 
+.info-box-main-content button {
+  color: white;
+  background-color: rgb(0, 168, 255);
+  border: none;
+  padding: 5px 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.info-box-main-content button:hover {
+  transform: scale(1.05);
+  background-color: rgb(45, 175, 240);
+}
 .info-box-main-content {
   padding-top: 20px;
   display: grid;
@@ -44,6 +102,7 @@
   /* grid-template-rows: repeat(auto-fill,minmax(100px,350px)); */
 }
 .clickbgc-info-box {
+  border-left: 2px solid rgba(0, 0, 0, 0.575);
   /* width: 100vw; */
   width: 30vw;
   height: 100vh;
@@ -53,7 +112,30 @@
   top: 0px;
   z-index: 9000;
   /* animation: bgc-slow 0.5s linear; */
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+}
+
+.clickbgc-info-box h3 {
+  margin: 0 auto;
+  width: 15vw;
+  padding: 20px 0px;
+}
+.info-box-exit-btn {
+  position: fixed;
+  top: 5px;
+  right: 28vw;
+  font-size: 20px;
+
+  color: rgba(63, 63, 63, 0.507);
+}
+
+.info-box-exit-btn:hover {
+  transform: scale(1.1);
+  color: rgb(63, 63, 63);
+}
+
+.bgc-slow {
+  animation: bgc-slow 0.3s linear;
 }
 
 @keyframes bgc-slow {
@@ -84,5 +166,5 @@
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: rgba(0, 128, 0, 0);
+  background-color: rgba(28, 29, 28, 0.568);
 }
