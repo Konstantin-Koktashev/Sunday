@@ -108,24 +108,28 @@ class Inbox extends Component {
         const board = this.findBoard(boardId)
         const updateMsg = { msg: this.state.txt, sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
+        this.setState({ isInputShown: true })
         await this.saveAndUpdate(newBoard)
     }
     sendGreatJob = async (update, boardId) => {
         const board = this.findBoard(boardId)
         const updateMsg = { msg: 'Great Job!', sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
+        this.setState({ isInputShown: true })
         await this.saveAndUpdate(newBoard)
     }
     sendTakeItFromHere = async (update, boardId) => {
         const board = this.findBoard(boardId)
         const updateMsg = { msg: 'Thanks Ill Take It From Here', sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
+        this.setState({ isInputShown: true })
         await this.saveAndUpdate(newBoard)
     }
     sendNiceWork = async (update, boardId) => {
         const board = this.findBoard(boardId)
         const updateMsg = { msg: 'Nice Work! Whats Next?', sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addUpdateMsg(board, update, updateMsg)
+        this.setState({ isInputShown: true })
         await this.saveAndUpdate(newBoard)
     }
     likeUpdate = async (update, boardId) => {
@@ -133,6 +137,7 @@ class Inbox extends Component {
         const board = this.findBoard(boardId)
         const updateMsg = { msg: user, sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addLikeMsg(board, update, user)
+        
         await this.saveAndUpdate(newBoard)
     }
 
