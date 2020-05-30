@@ -48,12 +48,6 @@ class TaskDetails extends Component {
             >
               Info Boxes
             </div>
-            <div
-              className="opt-select"
-              onClick={() => this.setChosenOpt("activity-log")}
-            >
-              Activity Log
-            </div>
             {/* {task.users.map((user, idx) => <SmallImg zindex={idx} url={user.imgUrl} name={user.name} key={idx} />)} */}
           </div>
 
