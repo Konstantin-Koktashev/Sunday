@@ -1,6 +1,10 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
-import { saveBoard, loadBoards, setCurrBoard } from "../../actions/BoardActions";
+import {
+  saveBoard,
+  loadBoards,
+  setCurrBoard,
+} from "../../actions/BoardActions";
 import { loadUsers } from "../../actions/UserActions";
 import LocalBoardService from "../../services/LocalBoardService";
 import add from "../../../src/style/img/add.png";
@@ -151,7 +155,7 @@ class AddBoard extends Component {
               text: "text about task",
               link: "",
               files: [],
-              history:[]
+              history: [],
             },
             {
               _id: uuidv4(),
@@ -184,7 +188,7 @@ class AddBoard extends Component {
               text: "text about task",
               link: "",
               files: [],
-              history:[]
+              history: [],
             },
             {
               _id: uuidv4(),
@@ -217,7 +221,7 @@ class AddBoard extends Component {
               text: "text about task",
               link: "",
               files: [],
-              history:[]
+              history: [],
             },
             {
               _id: uuidv4(),
@@ -250,7 +254,7 @@ class AddBoard extends Component {
               text: "text about task",
               link: "",
               files: [],
-              history:[]
+              history: [],
             },
           ], // Task object
           color: randomColor(),
@@ -271,9 +275,9 @@ class AddBoard extends Component {
     let addBoard = this.state.board;
     addBoard.name = value;
     try {
-   await this.props.saveBoard(addBoard);
-     this.props.setCurrBoard(addBoard)
-      // await this.props.loadBoards();
+      await this.props.saveBoard(addBoard);
+      this.props.setCurrBoard(addBoard);
+      await this.props.loadBoards();
     } catch (error) {
       console.log("couldnt add board");
     }
@@ -299,7 +303,7 @@ const mapDispatchToProps = {
   saveBoard,
   loadBoards,
   loadUsers,
-  setCurrBoard
+  setCurrBoard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddBoard);

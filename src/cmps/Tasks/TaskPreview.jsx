@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../../style/cmps/taskPreview.css";
-import chat from "../../style/img/chat.png";
 import TaskBox from "../../cmps/Tasks/TaskBox";
 import deletePng from "../../style/img/delete.svg";
 import LocalBoardService from "../../services/LocalBoardService";
@@ -164,14 +163,6 @@ class TaskPreview extends Component {
                 />
               </form>
             )}
-          </div>
-          <div className="task-bar-icon">
-            <img
-              src={chat}
-              alt="Chat"
-              title="Click to Chat"
-              onClick={(ev) => this.toggleInfoBox(ev)}
-            />
           </div>
         </div>
 

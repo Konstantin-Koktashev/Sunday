@@ -32,11 +32,18 @@ class App extends React.Component {
   }
   async componentDidMount() {
     SocketService.setup()
+    console.log("App -> componentDidMount -> window.location.href", window.location.href)
+
+    if (!this.props.currUser) {
+      let redirect = true
+      if (window.location.href.includes('login')) redirect = false
+      if (window.location.href.includes('signup')) redirect = false
+      if (window.location.href.includes('home')) redirect = false
+      if (redirect) history.push('/home/')
 
 
-    if (!this.props.currUser && window.location.href !== 'http://localhost:3000/login/') {
 
-      history.push('/home/')
+
     } else {
 
       SocketService.emit('login', this.props.currUser)
@@ -99,20 +106,16 @@ class App extends React.Component {
 
 
   render() {
-    let locationIsntHome = true
-    if (window.location.href.includes('home')) locationIsntHome = false
+
     return (
       <div className="App flex">
         <Router history={history}>
 
-          {/* <div className="bgc-black"> */}
-          {/* <> */}
-          {/* <userChatList chatObjects={} ></userChatList> */}
-          {locationIsntHome && this.props.currUser && <SideNav logOut={this.logOut} toggleNotifications={this.toggleNotifications} user={this.props.currUser}></SideNav>}
-          {locationIsntHome && this.props.currUser && <BoardNav></BoardNav>}
+
+          {this.props.currUser && <SideNav logOut={this.logOut} toggleNotifications={this.toggleNotifications} user={this.props.currUser}></SideNav>}
+          {this.props.currUser && <BoardNav></BoardNav>}
           {this.props.currUser && this.props.board && <Notifications notificationsIsShown={this.state.notificationsIsShown} toggleNotifications={this.toggleNotifications}></Notifications>}
-          {/* </> */}
-          {/* </div> */}
+
           {this.props.currUser && this.props.board && this.props.chatWith && <Chat history={history} user={this.props.currUser} ></Chat>}
 
 

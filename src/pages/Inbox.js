@@ -188,23 +188,23 @@ class Inbox extends Component {
                             <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
                                     <SmallImg url={update.user.imgUrl}
                                         name={update.user.username} ></SmallImg>{update.user.username}</NavLink>
-                                        <span>Assigned to Task </span>
-                                        <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
+                                <span>Assigned to Task </span>
+                                <NavLink className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
                                     <SmallImg url={update.assignedTo.imgUrl}
                                         name={update.assignedTo.username} ></SmallImg>{update.assignedTo.username}</NavLink>
                                 </div>} */}
                      
                         </section>
                         <section className='likes'>
-                                {update.likes && update.likes.length > 0 && update.likes.map((like, idx) => {
+                            {update.likes && update.likes.length > 0 && update.likes.map((like, idx) => {
 
-                                    return (<NavLink key={idx} className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
-                                        <SmallImg type={'myweek'}
-                                            name={like.username} ></SmallImg></NavLink>)
-                                })}
-                            </section>
+                                return (<NavLink key={idx} className='user-name-header-inbox' to={`/profile/${update.user._id}`}>
+                                    <SmallImg type={'myweek'}
+                                        name={like.username} ></SmallImg></NavLink>)
+                            })}
+                        </section>
                         <section className='seen-by-count'>
-                          Seen By:  {update.seenBy.length}
+                            Seen By:  {update.seenBy.length}
                         </section>
                         <section className='like-reply-btns'>
                             <button className='reply' onClick={() => this.openReply()}>Reply</button>

@@ -64,10 +64,6 @@
   outline: none;
   cursor: pointer;
 }
-.facebook-img {
-  width: 40px;
-  height: 40px;
-}
 
 .login-form button:hover {
   background-color: #54bbee;
@@ -147,7 +143,7 @@
 .text-float-2 {
   position: fixed;
   top: 50vh;
-  right: 10vw;
+  right: 5vw;
   color: rgba(49, 49, 49, 0.883);
   font-size: 35px;
   line-height: 50px;
@@ -163,7 +159,7 @@
 .text-float-3 {
   position: fixed;
   top: 60vh;
-  left: 10vw;
+  left: 6vw;
   color: rgba(49, 49, 49, 0.883);
   font-size: 35px;
   line-height: 50px;

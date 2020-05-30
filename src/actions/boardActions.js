@@ -58,6 +58,7 @@ export function removeBoard(boardId) {
 }
 
 export function setCurrBoard(board) {
+  console.log("setCurrBoard -> board", board)
   return dispatch => {
     dispatch({ type: 'SET_CURRBOARD', board });
   }

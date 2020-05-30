@@ -60,11 +60,9 @@ class Notifications extends Component {
       });
     });
     // Check Notification Number
-    // debugger;
     let newNotifNum = 0;
     let filteredBySeen = [];
     totalUserHistory.forEach((update) => {
-      // debugger;
       if (update.user._id !== currUserId) {
         if (update && update.seenBy) {
           let isSeen = LocalBoardService.checkIfUpdateSeen(update, currUserId);
