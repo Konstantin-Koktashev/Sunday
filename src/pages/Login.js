@@ -114,9 +114,10 @@ class Login extends Component {
             variant="contained"
             color="primary"
           >
-            Sign In
+            Log In
           </Button>
         </form>
+
         <Link href='/signup' variant="body2">
           {"Don't have an account? Sign Up"}
         </Link>

@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Avatar from '@material-ui/core/Avatar';
+import Facebook from '../cmps/Facebook';
 
 
 class Signup extends Component {
@@ -22,7 +23,7 @@ class Signup extends Component {
             password: '',
             username: '',
             history: [],
-           
+
         }
     };
 
@@ -38,11 +39,10 @@ class Signup extends Component {
         }));
     };
 
-    doLogin = async ev => {
-        ev.preventDefault();
-        const { email, password } = this.state.loginCred;
+    doLogin = async (email, password) => {
+        // const { email, password } = this.state.loginCred;
         if (!email || !password) {
-            return this.setState({ msg: 'Please enter user/password' });
+            return
         }
         const userCreds = { email, password };
         this.props.login(userCreds);
@@ -52,13 +52,22 @@ class Signup extends Component {
     doSignup = async ev => {
         ev.preventDefault();
         const { email, password, username, history } = this.state.signupCred;
+        console.log("Signup -> history", history)
         if (!email || !password || !username) {
             return this.setState({ msg: 'All inputs are required!' });
         }
         const signupCreds = { email, password, username, history };
-        this.props.signup(signupCreds);
+        await this.props.signup(signupCreds);
+        this.doLogin(email, password)
         this.setState({ signupCred: { email: '', password: '', username: '' } });
     };
+
+    signUpFacebook = (email, id, name) => {
+        const history = [];
+        const signUpCreds = { email, password: id, username: name, history }
+        this.props.signup(signUpCreds)
+        this.doLogin(email, id)
+    }
 
     removeUser = userId => {
         this.props.removeUser(userId);
@@ -130,14 +139,17 @@ class Signup extends Component {
                     >
                         Sign Up
           </Button>
+
+
                     <Link href="/login" variant="body2">
                         Already have an account? Sign in
               </Link>
+
+                    <Facebook signUpFacebook={this.signUpFacebook} />
+
+
                 </form>
-                <div className="signup-onlogin col a-center">
-                    {/* <h2>Allready Have An Account?</h2>
-                    <button onClick={() => this.props.history.push('/login')}>Click Here To Login</button> */}
-                </div>
+
             </div>
         )
     }
