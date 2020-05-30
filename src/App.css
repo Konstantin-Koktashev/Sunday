@@ -24,10 +24,16 @@
   animation-delay: 1s;
 }
 .board-list-btn .active {
-  color: #0057e7 !important;
+  color: #58bdff !important;
+  background-color: #e5f4ff;
+  padding: 1vh 8vw 1vh 6px;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 .board-list-btn.active + .board-list-btn {
   background-color: grey;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 @keyframes fade-out {
