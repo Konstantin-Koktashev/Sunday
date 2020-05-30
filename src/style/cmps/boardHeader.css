@@ -60,9 +60,24 @@
 
 @media only screen and (max-width: 600px) {
   .add-group-btn {
-    width: 25vw !important;
-    height: 6vh !important;
-    font-size: 10px !important;
+    margin-right: -20px;
+    position: fixed;
+    right: -10px;
+    top: 17vh;
+    width: 15vw !important;
+    height: 3vh !important;
+    font-size: 9px !important;
+  }
+  #root
+    > div
+    > section
+    > div.board-header-container.flex.a-center.space-between
+    > div.flex.col.space-between
+    > div.filter-add-container.flex.a-end
+    > div:nth-child(2) {
+    position: fixed;
+    left: 45vw;
+    top: 16.5vh;
   }
 }
 .add-group-btn {
