@@ -39,9 +39,13 @@
 
 .info-box-main-content {
   padding-top: 20px;
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); */
+  /* grid-template-rows: repeat(auto-fill,minmax(100px,350px)); */
 }
 .clickbgc-info-box {
   /* width: 100vw; */
+  width: 50vw;
   height: 100vh;
   background-color: rgba(19, 18, 18, 0.548);
   position: fixed;
@@ -49,6 +53,9 @@
   top: 0px;
   z-index: 9000;
   animation: bgc-slow 0.5s linear;
+  background-color: white;
+  /* display: grid; */
+  /* grid-template-rows: 1fr 6fr  ; */
 }
 
 @keyframes bgc-slow {
@@ -72,3 +79,4 @@
     opacity: 1;
   }
 }
+
