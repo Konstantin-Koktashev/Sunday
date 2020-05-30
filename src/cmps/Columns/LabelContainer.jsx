@@ -103,10 +103,10 @@ class LabelContainer extends Component {
       color,
       text
     );
-    await this.props.saveBoard(board);
-    // await this.props.toggleContainer();
-    this.props.loadBoards();
     this.props.setCurrBoard(board);
+    await this.props.saveBoard(board);
+    this.props.loadBoards();
+    // await this.props.toggleContainer();
 
     //find the label with the order and set the label on the props who props column who submit the label
   };

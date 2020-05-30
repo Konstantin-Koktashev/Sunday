@@ -150,7 +150,6 @@ class TaskInbox extends Component {
     if (!this.props.currUser) return <h1>No Logged User . </h1>;
     return (
       <div className="inbox-container task-inbox-container">
-        <h2>Inbox</h2>
         {!isHistory && <h1 className="inbox-empty">Inbox Is Empty</h1>}
         {isHistory &&
           isLoading &&

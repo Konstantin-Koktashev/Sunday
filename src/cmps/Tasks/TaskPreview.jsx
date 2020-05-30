@@ -14,6 +14,7 @@ import {
 } from "../../actions/BoardActions";
 import InfoBoxes from "../InfoBoxes";
 import TaskDetails from "./TaskDetails";
+import { useEventCallback } from "@material-ui/core";
 
 class TaskPreview extends Component {
   state = {
@@ -110,9 +111,9 @@ class TaskPreview extends Component {
   };
 
   toggleInfoBox = (ev) => {
-    this.setState(({ isInfoBoxShown }) => ({
-      isInfoBoxShown: !isInfoBoxShown,
-    }));
+    ev.preventDefault();
+    const { task } = this.props;
+    this.props.setInfoTask(task);
   };
 
   render() {
@@ -120,20 +121,10 @@ class TaskPreview extends Component {
     const { task } = this.props;
     return (
       <div className="task-bar flex j-start space-between">
-        {isInfoBoxShown && (
-          <TaskDetails
-            task={task}
-            toggleInfoBox={this.toggleInfoBox}
-            hideInfoBox={this.hideInfoBox}
-          ></TaskDetails>
-        )}
         {/* {isInfoBoxShown && (
           <InfoBoxes task={task} hideInfoBox={this.hideInfoBox}></InfoBoxes>
         )} */}
-        <div
-          onClick={(ev) => this.toggleInfoBox(ev)}
-          className="task-bar-title-container flex space-between a-center"
-        >
+        <div className="task-bar-title-container flex space-between a-center">
           <div className="title-box flex  a-center">
             <img
               className="delete-icon"
@@ -175,7 +166,12 @@ class TaskPreview extends Component {
             )}
           </div>
           <div className="task-bar-icon">
-            <img src={chat} alt="Chat" title="Click to Chat" />
+            <img
+              src={chat}
+              alt="Chat"
+              title="Click to Chat"
+              onClick={(ev) => this.toggleInfoBox(ev)}
+            />
           </div>
         </div>
 

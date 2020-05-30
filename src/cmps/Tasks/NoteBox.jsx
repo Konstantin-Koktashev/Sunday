@@ -15,7 +15,6 @@ class NoteBox extends Component {
   render() {
     return (
       <div>
-        <h3>Notes List</h3>
         <form
           className="send-btn-inbox flex col a a-center"
           onSubmit={(e) => {

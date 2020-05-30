@@ -10,7 +10,7 @@ import {
 } from '../actions/UserActions';
 
 
-
+import facebook from '../../src/style/img/facebook.svg'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';

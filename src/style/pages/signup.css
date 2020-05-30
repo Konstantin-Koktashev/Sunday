@@ -78,13 +78,14 @@
 }
 
 .get-started-facebook-btn {
-  width: 20vw;
+  width: 15vw;
   /* height: 5vh; */
-  margin-top: 20px;
-  font-size: 12px;
-  background-color: #1092f4;
+  margin-top: 15px;
+  font-size: 25px;
+  /* background-color: #1092f4; */
+
   border: none;
-  color: white;
+  color: rgba(29, 28, 28, 0.678);
   border-radius: 20px;
   padding: 10px 20px;
   transition-duration: 0.4s;
@@ -92,12 +93,15 @@
   outline: none;
 }
 
+.get-started-facebook-btn:hover {
+  color: rgb(27, 26, 26);
+}
 .facebook-home {
   right: 0;
   top: 0;
-  margin-right: 14px;
+  /* margin-right: 10px; */
   position: fixed;
-  margin-top: 14px;
+  /* margin-top: 10px; */
 }
 
 .facebook-login {
@@ -105,27 +109,43 @@
   /* height: 5vh; */
   margin-top: 20px;
   font-size: 16px;
-  background-color: #1092f4;
+  /* background-color: #1092f4; */
   border: none;
-  color: white;
+  color: rgb(24, 23, 23);
   border-radius: 10px;
   padding: 10px 20px;
   transition-duration: 0.4s;
   cursor: pointer;
   outline: none;
 }
-
+#root
+  > div
+  > section
+  > div.signup-form-container
+  > form
+  > div:nth-child(11)
+  > div
+  > button
+  > span {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 15px;
+  border: 0;
+  color: rgb(15, 14, 14);
+}
 #root
   > div
   > section
   > div.signup-form-container
   > form
   > div.facebook-login
+  > div
   > button {
   cursor: pointer;
 
   background-color: transparent;
-  font-size: 12px;
+  font-size: 15px;
   border: 0;
-  color: rgb(224, 224, 224);
+  color: rgb(15, 14, 14);
 }

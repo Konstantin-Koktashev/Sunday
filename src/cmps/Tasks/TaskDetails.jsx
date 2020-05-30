@@ -9,12 +9,13 @@ import TaskInbox from "./TaskInbox";
 
 class TaskDetails extends Component {
   state = {
-    chosenRender: null,
+    chosenRender: "info-boxes",
   };
 
   setChosenOpt = (val) => {
     this.setState({ chosenRender: val });
   };
+
   render() {
     const { chosenRender } = this.state;
     const { task } = this.props;
@@ -22,13 +23,18 @@ class TaskDetails extends Component {
     return (
       <>
         <div
-          onClick={this.props.toggleInfoBox}
-          className="backscreen-info-box"
+          onClick={() => this.props.hideInfoBox()}
+          className="backscreen-info-box bgc-slow"
         ></div>
         <section className="clickbgc-info-box slide-in-right-info">
+          <div
+            className="info-box-exit-btn"
+            onClick={() => this.props.hideInfoBox()}
+          >
+            X
+          </div>
           {/* <h3>{task.text}</h3> */}
-          <h3>HARD CODED TASK TEXT</h3>
-          <div onClick={() => this.props.hideInfoBox()}>XX</div>
+          <h3>{task.taskTitle}</h3>
           <div className="details-opts">
             <div
               className="opt-select"
@@ -41,12 +47,6 @@ class TaskDetails extends Component {
               onClick={() => this.setChosenOpt("info-boxes")}
             >
               Info Boxes
-            </div>
-            <div
-              className="opt-select"
-              onClick={() => this.setChosenOpt("activity-log")}
-            >
-              Activity Log
             </div>
             {/* {task.users.map((user, idx) => <SmallImg zindex={idx} url={user.imgUrl} name={user.name} key={idx} />)} */}
           </div>
