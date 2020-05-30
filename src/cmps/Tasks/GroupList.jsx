@@ -1,6 +1,7 @@
 import React from "react";
 import "../../style/cmps/groupList.css";
 import TaskList from "./TaskList";
+import TrelloView from "../TrelloViewTEST.jsx";
 export default function GroupList(props) {
   return (
     <div className="group-list-container " id="style-5">
@@ -9,6 +10,13 @@ export default function GroupList(props) {
           <h3>No Groups Found!</h3>
         </div>
       ) : (
+        // <TrelloView
+        //   groups={props.groups}
+        //   swapTaskFromGroup={props.swapTaskFromGroup}
+        //   // addTaskToGroup={props.addTaskToGroup}
+        // ></TrelloView>
+
+        //// REGULAR
         props.groups.map((group, idx) => {
           return (
             <div key={idx}>

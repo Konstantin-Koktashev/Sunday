@@ -1,24 +1,28 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import LocalBoardService from "../../services/LocalBoardService";
-import { saveBoard, loadBoards } from "../../actions/BoardActions";
+import {
+  saveBoard,
+  loadBoards,
+  setCurrBoard,
+} from "../../actions/BoardActions";
 import { loadUsers } from "../../actions/UserActions";
 import UsersPreviewBox from "../UsersPreviewBox";
 import deletePng from "../../style/img/delete.svg";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
-
 class AddPerson extends Component {
   state = {
     usersToAdd: null,
     isShown: false,
+    persons: this.props.column.persons,
   };
   async componentDidMount() {
     await this.props.loadUsers();
     this.getAllPersons();
   }
-  addPerson = (person) => {
-    this.setState({ isShown: false });
+  addPerson = async (person) => {
+    this.setState({ isShown: false, persons: [...this.state.persons, person] });
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const task = this.props.task;
@@ -28,7 +32,8 @@ class AddPerson extends Component {
       task,
       person
     );
-    this.props.saveBoard(newBoard);
+    await this.props.saveBoard(newBoard);
+    this.props.setCurrBoard(newBoard);
     this.props.loadBoards();
   };
   searchPeople = (e) => {
@@ -39,7 +44,6 @@ class AddPerson extends Component {
     });
     this.setState({ usersToAdd });
   };
-
   getAllPersons = () => {
     const users = this.props.users;
     const usersToAdd = users.filter((user) => {
@@ -63,7 +67,7 @@ class AddPerson extends Component {
     }));
   };
   render() {
-    const users = this.props.column.persons;
+    const users = this.state.persons;
     const isShown = this.state.isShown;
     const usersToAdd = this.state.usersToAdd;
     return (
@@ -72,7 +76,6 @@ class AddPerson extends Component {
           people={users}
           togglePersonBox={this.togglePersonBox}
         ></UsersPreviewBox>
-
         {isShown && (
           <div
             onClick={this.togglePersonBox}
@@ -86,31 +89,32 @@ class AddPerson extends Component {
               placeholder="Search People"
               onChange={(e) => this.searchPeople(e)}
             />
-            <section className="people-in-task">
-              {users &&
-                users.map((user, idx) => {
-                  return (
-                    <section key={idx} className="peron-preview-delet">
-                      <div className="flex space-between">
-                        <NavLink to={`/profile/${user._id}`}>
-                          <button className="person-preview-btn">
-                            {user.username}
-                          </button>
-                        </NavLink>
-                        <img
-                          className="delete-icon person-remove"
-                          src={deletePng}
-                          alt="Delete"
-                          title="Delete Task"
-                          onClick={() => this.removePerson(user)}
-                        />
-                      </div>
-                    </section>
-                  );
-                })}
-              {/* {!users&&    <input onChange={(e)=>this.searchPeople(e)}></input>} */}
+            <section className="person-scroll-conatiner">
+              <section className="people-in-task">
+                {users &&
+                  users.map((user, idx) => {
+                    return (
+                      <section key={idx} className="peron-preview-delet">
+                        <div className="flex space-between">
+                          <NavLink to={`/profile/${user._id}`}>
+                            <button className="person-preview-btn">
+                              {user.username}
+                            </button>
+                          </NavLink>
+                          <img
+                            className="delete-icon person-remove"
+                            src={deletePng}
+                            alt="Delete"
+                            title="Delete Task"
+                            onClick={() => this.removePerson(user)}
+                          />
+                        </div>
+                      </section>
+                    );
+                  })}
+                {/* {!users&&    <input onChange={(e)=>this.searchPeople(e)}></input>} */}
+              </section>
             </section>
-            <hr></hr>
             <div id="style-5" className="found-people-container">
               <span>Invite your Team:</span>
               <section className="found-people">
@@ -148,10 +152,12 @@ const mapStateToProps = (state) => ({
   users: state.user.users,
   currBoard: state.userBoards.currBoard,
   currUser: state.user.loggedInUser,
+  board: state.userBoards,
 });
 const mapDispatchToProps = {
   saveBoard,
   loadBoards,
   loadUsers,
+  setCurrBoard,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AddPerson);

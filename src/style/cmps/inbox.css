@@ -2,6 +2,27 @@
   background-color: #b2b2b2;
   overflow: scroll;
 }
+@media only screen and (max-width: 600px) {
+  #root .user-history {
+    height: 20vh;
+  }
+  #root .inbox-container {
+    overflow: scroll;
+    height: 74vh;
+  }
+  .task-reply-btns {
+    flex-direction: row !important;
+    font-size: 11px !important;
+  }
+
+  .task-reply-btns {
+    font-size: 11px !important;
+  }
+  .add-update-msg button {
+    width: 20vw !important;
+  }
+}
+
 .user-history {
   border: 1px solid rgba(187, 186, 186, 0.295);
   border-radius: 5px;

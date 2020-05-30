@@ -25,12 +25,9 @@
 }
 
 .board-name-dec-container p:hover {
-  padding: 0px 2vw 0px 2vw;
-
   border: 1px dotted rgba(121, 119, 119, 0.609);
 }
 .board-name-dec-container h2:hover {
-  padding: 0px 2vw 0px 2vw;
   border: 1px dotted rgba(121, 119, 119, 0.609);
 }
 
@@ -61,6 +58,13 @@
   margin-left: -20px;
 }
 
+@media only screen and (max-width: 600px) {
+  .add-group-btn {
+    width: 25vw !important;
+    height: 6vh !important;
+    font-size: 10px !important;
+  }
+}
 .add-group-btn {
   /* width: 7vw; */
   height: 4vh;
@@ -153,7 +157,6 @@
   margin-top: 9vh;
   margin-bottom: -5px;
   align-self: end;
-  margin-right: 2vw;
 }
 
 /* .view-select-box {

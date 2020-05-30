@@ -24,6 +24,7 @@ import Chat from './cmps/Chat/Chat';
 import DoughnutChart from './cmps/Statistics/DoughnutChart'
 import Notifications from './cmps/Notifications';
 import ConfirmDialog from './cmps/Board/ConfirmDialog';
+import Facebook from './cmps/Facebook';
 class App extends React.Component {
   state = {
     notificationsIsShown: false,
@@ -33,7 +34,8 @@ class App extends React.Component {
     SocketService.setup()
 
 
-    if (!this.props.currUser) {
+    if (!this.props.currUser && window.location.href !== 'http://localhost:3000/login/') {
+
       history.push('/home/')
     } else {
 
@@ -127,6 +129,7 @@ class App extends React.Component {
               <Route path="/user/inbox" component={Inbox} exact />
               <Route path="/details" component={TaskDetails} exact />
               <Route path="/profile/:id?" component={Profile} exact />
+              <Route path="/face" component={Facebook} exact />
             </Switch>
             <div className="loading-container fade-out">
               <div className="col-sm-2">

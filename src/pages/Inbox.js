@@ -23,7 +23,7 @@ class Inbox extends Component {
         user: this.props.currUser,
         filtertedUpdates: [],
         txt: '',
-        isInputShown:false
+        isInputShown: false
     }
     componentDidMount() {
         // await this.props.loadUsers()
@@ -143,11 +143,11 @@ class Inbox extends Component {
         this.setState({ txt: e.target.value });
 
     }
-    openReply=()=>{
-        this.setState({isInputShown:true})
+    openReply = () => {
+        this.setState({ isInputShown: true })
     }
     render() {
-        const isInputShown=this.state.isInputShown
+        const isInputShown = this.state.isInputShown
         let userHistory = this.state.filtertedUpdates
         const isHistory = (userHistory.length) ? true : false
         const isLoading = this.props.currBoard
@@ -194,7 +194,7 @@ class Inbox extends Component {
                             </section>
                         </section>
                         <section className='like-reply-btns'>
-                            <button className='reply' onClick={()=>this.openReply()}>Reply</button>
+                            <button className='reply' onClick={() => this.openReply()}>Reply</button>
                             <button className='like' onClick={() => { this.likeUpdate(update, update.boardId) }}> Like</button>
                         </section>
                         <section className='task-reply-btns'>
@@ -213,7 +213,7 @@ class Inbox extends Component {
                         <section className='add-update-msg flex'>
                             {/* <NavLink to={`/profile/${this.props.currUser._id}`}></NavLink> */}
 
-                        {isInputShown&&    <form className="send-btn-inbox flex col a a-center" onSubmit={(e) => { this.sendUpdateMsg(e, update, update.boardId) }}>
+                            {isInputShown && <form className="send-btn-inbox flex col a a-center" onSubmit={(e) => { this.sendUpdateMsg(e, update, update.boardId) }}>
                                 <input placeholder="Write a reply..." onChange={(e) => this.handleChange(e)} ></input>
                                 <button type='submit'>Send</button>
                             </form>}

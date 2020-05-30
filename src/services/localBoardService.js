@@ -43,8 +43,20 @@ export default {
     changeBoardDesc,
     addTaskHistory,
     addUserToUpdateIsSeen,
-    checkIfUpdateSeen
+    checkIfUpdateSeen,
+    changeTaskOrder
 }
+
+function changeTaskOrder(board, group, tasks) {
+    console.log("changeTaskOrder -> tasks", tasks)
+    console.log("changeTaskOrder -> group", group)
+    console.log("changeTaskOrder -> board", board)
+
+    group.tasks = tasks
+    return board
+
+}
+
 function checkIfUpdateSeen(update, currUserId) {
     if (update && update.seenBy && !update.seenBy.length > 0) return false
 
