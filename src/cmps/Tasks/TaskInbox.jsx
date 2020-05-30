@@ -46,7 +46,7 @@ class TaskInbox extends Component {
         for (var i = 0; i < task.history.length; i++) {
             let currHistory = task.history[i]
             if (!currHistory.user) continue;
-            if (currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
+            if ( currHistory.user._id!==currUserId&&currHistory.updateType === 'Label Change') historyToRender.push(currHistory)
 
         }
 
@@ -148,7 +148,7 @@ class TaskInbox extends Component {
         const isLoading = this.props.currBoard
         if (!this.props.currUser) return <h1>No Logged User . </h1>
         return (
-            <div className='inbox-container'>
+            <div className='inbox-container task-inbox-container'>
                 <h2>Inbox</h2>
                 {!isHistory && <h1 className="inbox-empty">Inbox Is Empty</h1>}
                 {isHistory && isLoading && userHistory.map((update, idx) => {

@@ -11,6 +11,7 @@ import { Button, ButtonGroup } from '@material-ui/core'
 import UserService from '../../src/services/UserService'
 import ChatService from '../services/ChatService';
 import moment from 'moment'
+import UserProfileEdit from '../cmps/UserProfileEdit';
 class Profile extends Component {
     state = {
         user: null
@@ -65,7 +66,7 @@ class Profile extends Component {
         return (
             <>
                 {user && <div className="profile-page-container">
-                    <label for="file-upload" class="custom-file-upload">
+                    <label htmlFor="file-upload" className="custom-file-upload">
                         Change Profile Image
 </label>
                     <div className="profile-header-container">
@@ -84,6 +85,7 @@ class Profile extends Component {
                         <p>Last Seen: <span>{moment(user.lastSeenAt).fromNow()}</span>{this.props.loggedInUser._id !== user._id && <button title="Click To Chat" className="chat-with-btn" onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>}</p>
 
                     </div>
+                    <UserProfileEdit></UserProfileEdit>
                 </div>}
             </>
         );

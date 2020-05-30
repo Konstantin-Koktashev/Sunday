@@ -94,9 +94,9 @@ class InfoBoxes extends React.Component {
     const isAddNoteShows = this.state.isNoteBoxShown;
     return (
       <>
-        <div className="clickbgc-info-box"></div>
+        <div className=""></div>
 
-        <div className="info-boxes-btns-container slide-in-right-info col a-center">
+        <div className="">
           <div onClick={() => this.props.hideInfoBox()}>XX</div>
 
           <h2>{this.props.task.taskTitle}</h2>
@@ -106,7 +106,7 @@ class InfoBoxes extends React.Component {
           </div>
 
           <div className="info-box-main-content">
-            {isAddNoteShows && (
+            {(
               <NoteBox
                 task={this.props.task}
                 addNoteToTask={this.addNoteToTask}
