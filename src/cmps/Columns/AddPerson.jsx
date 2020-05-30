@@ -30,12 +30,20 @@ class AddPerson extends Component {
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const task = this.props.task;
-    const newBoard = LocalBoardService.addPersonToColumn(
+    let newBoard = LocalBoardService.addPersonToColumn(
       currBoard,
       column,
       task,
       person
     );
+    let updateInfo = {
+      column,
+      user: this.props.currUser,
+      updateType: "Member Add",
+      task,
+      assignedTo:person
+    };
+    newBoard = LocalBoardService.addBoardHistory(currBoard, updateInfo);
     await this.props.saveBoard(newBoard);
     this.props.setCurrBoard(newBoard);
     this.props.loadBoards();
