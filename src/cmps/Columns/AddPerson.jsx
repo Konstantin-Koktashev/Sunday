@@ -16,6 +16,7 @@ class AddPerson extends Component {
   state = {
     usersToAdd: null,
     isShown: false,
+    persons: this.props.column.persons,
   };
   async componentDidMount() {
     await this.props.loadUsers();
@@ -23,7 +24,7 @@ class AddPerson extends Component {
   }
 
   addPerson = async (person) => {
-    this.setState({ isShown: false });
+    this.setState({ isShown: false, persons: [...this.state.persons, person] });
     const column = this.props.column;
     const currBoard = this.props.currBoard;
     const task = this.props.task;
@@ -69,7 +70,7 @@ class AddPerson extends Component {
     }));
   };
   render() {
-    const users = this.props.column.persons;
+    const users = this.state.persons;
     const isShown = this.state.isShown;
     const usersToAdd = this.state.usersToAdd;
     return (

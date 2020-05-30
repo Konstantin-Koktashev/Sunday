@@ -52,6 +52,7 @@ class Board extends Component {
       default:
         view = (
           <GroupList
+            swapTaskFromGroup={this.swapTaskFromGroup}
             sortColumnsByBox={this.sortColumnsByBox}
             groups={this.props.currBoard.groups}
             board={this.props.currBoard}
@@ -59,6 +60,33 @@ class Board extends Component {
         );
     }
     return view;
+  };
+
+  swapTaskFromGroup = async (board, groupToRemoveFrom, groupToAdd, taskStr) => {
+    let task = JSON.parse(taskStr);
+
+    // let newBoard = LocalBoardService.removeTaskFromGroup(
+    //   board,
+    //   groupToRemoveFrom,
+    //   task
+    // );
+
+    let newBoardAfterAdd = LocalBoardService.addTaskToGroup(
+      board,
+      groupToAdd,
+      task
+    );
+
+    this.props.setCurrBoard(newBoardAfterAdd);
+    await this.props.saveBoard(newBoardAfterAdd);
+    this.props.loadBoards();
+  };
+
+  addTaskToGroup = async (board, group, task) => {
+    let newBoard = LocalBoardService.addTaskToGroup(board, group, task);
+    await this.props.saveBoard(newBoard);
+    this.props.setCurrBoard(newBoard);
+    this.props.loadBoards();
   };
 
   render() {

@@ -69,3 +69,6 @@
 .closed-group-items-txt {
   color: rgba(0, 0, 0, 0.322);
 }
+
+@media only screen and (max-width: 600px) {
+}
