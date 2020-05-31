@@ -9,39 +9,10 @@ import {
 import UserService from "../services/UserService";
 import { useEffect } from "react";
 import { compose, withProps } from "recompose";
-
+import { loadUsers, setUser } from '../actions/UserActions.js';
 const API_KEY = "AIzaSyA61EAVmAo2YECcoYMVz_hJITa6l67Mm1E";
 // const API_KEY='AIzaSyA4SHtEoWU34-H_zLBuEhO6BMYDakaQV5g'
 
-// function Map(props) {
-//     useEffect(()=>{
-
-//     },[])
-
-//     const user = props.user
-//     debugger
-//     const userLocation=user.profile.location
-//     const [markers, setMarkers] = useState({userLocation})
-//     useEffect(async () => {
-//         user.profile.location=markers
-//        await UserService.updateUser(user)
-//         }, [markers])
-//     return (
-//         <GoogleMap
-//             defaultZoom={10}
-//             defaultCenter={{ lat: 32.0853, lng: 34.7818 }}
-//             onClick={(event) => {
-//                 setMarkers({
-//                     lat: event.latLng.lat(),
-//                     lng: event.latLng.lng(),
-//                     time: new Date()
-//                 })
-//             }}
-//         >
-//             <Marker position={{ lat: markers.lat, lng: markers.lng }}></Marker>
-//         </GoogleMap>
-//     )
-// }
 const MyMapComponent = compose(
   withProps({
     googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&v=3.exp&libraries=geometry,drawing,places`,
@@ -51,18 +22,21 @@ const MyMapComponent = compose(
   }),
   withScriptjs,
   withGoogleMap
-)((props) => (
-  <GoogleMap
+  )((props) => (
+    
+    <GoogleMap
     defaultZoom={8}
     defaultCenter={{ lat: 32.0853, lng: 34.7818 }}
     onClick={(event) => {
       props.setMarkers({
         lat: event.latLng.lat(),
         lng: event.latLng.lng(),
-        time: new Date(),
+        
       });
     }}
   >
+  
+    {props.user.profile && <Marker position={{ lat: props.user.profile.location.lat, lng: props.user.profile.location.lng }}></Marker>}
     {/* {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} onClick={props.onMarkerClick} />} */}
   </GoogleMap>
 ));
@@ -72,36 +46,36 @@ const MyMapComponent = compose(
 class WrappedMap extends React.PureComponent {
   state = {
     isMarkerShown: false,
+    user:null
   };
-
   componentDidMount() {
-    this.delayedShowMarker();
+    this.loadUser();
   }
+  componentDidUpdate(){
+    const user = this.props.user
+    this.setState({ user })
+  }
+  loadUser = async () => {
+    let user = this.props.user
+    this.setState({ user })
+}
 
-  delayedShowMarker = () => {
-    setTimeout(() => {
-      this.setState({ isMarkerShown: true });
-    }, 3000);
-  };
-
-  handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false });
-    this.delayedShowMarker();
-  };
-  setMarkers = (data) => {
+  setMarkers = async(data) => {
     console.log("WrappedMap -> onClick -> data", data);
-    const user=this.props.user
-    user.profile.location=data
-    UserService.updateUser(user)
-    
+    const user = this.props.user
+    user.profile.location = data
+    const updatedUser= await UserService.update(user)
+    this.setState({ user })
+
   };
+  
 
   render() {
     return (
       <MyMapComponent
-        isMarkerShown={this.state.isMarkerShown}
-        onMarkerClick={this.handleMarkerClick}
-        user={this.props.user}
+        // isMarkerShown={this.state.isMarkerShown}
+        // onMarkerClick={this.handleMarkerClick}
+        user={this.state.user}
         setMarkers={this.setMarkers}
       />
     );
@@ -112,6 +86,9 @@ const mapStateToProps = (state) => ({
   user: state.user.loggedInUser,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  loadUsers,
+  setUser
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedMap);

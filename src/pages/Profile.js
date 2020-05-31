@@ -96,7 +96,7 @@ class Profile extends Component {
                             <p>Email: <span>{user.email}</span></p>
                             <p>Phone number: <span>{user.profile && user.profile.phone}</span></p>
                             <p>Birthday: <span>{user.profile && user.profile.birthday}</span></p>
-                            <p>Location: <span>{user.profile && user.profile.location}</span></p>
+                            {/* <p>Location: <span>{user.profile && user.profile.location}</span></p> */}
                             <p>Company: <span>{user.profile && user.profile.company}</span></p>
                             <p>Last Seen: <span>{moment(user.lastSeenAt).fromNow()}</span>{this.props.loggedInUser._id !== user._id && <button title="Click To Chat" className="chat-with-btn" onClick={() => this.setPrivateChat(this.props.loggedInUser._id, user._id)}>Chat With {user.username}</button>}</p>
 
