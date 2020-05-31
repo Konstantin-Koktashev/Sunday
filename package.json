@@ -16,6 +16,7 @@
     "interactjs": "^1.9.18",
     "material-ui-dropzone": "^3.0.0",
     "moment": "^2.26.0",
+    "random-color": "^1.0.1",
     "randomcolor": "^0.5.4",
     "react": "^16.13.1",
     "react-beautiful-dnd": "^13.0.0",

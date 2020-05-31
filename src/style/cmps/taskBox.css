@@ -99,17 +99,17 @@
   top: 0px;
 }
 .colEdit-input {
-  width: 5vw;
+  width: 4.8vw;
   border: none;
   outline: none;
   background-color: rgba(255, 255, 255, 0);
-  border-left: 1px solid rgba(128, 128, 128, 0.301);
+  border-left: 1px solid rgb(255, 255, 255);
   height: 4vh;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-  outline: 1px dotted #b8b6b6d2;
+  /* outline: 1px dotted #b8b6b6d2; */
 }
 
 @media only screen and (max-width: 600px) {

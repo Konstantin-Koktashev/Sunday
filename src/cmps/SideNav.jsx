@@ -9,10 +9,11 @@ import person from "../style/img/person.svg";
 import { connect } from "react-redux";
 import notification from "../style/img/notification.png";
 import logout from "../style/img/logout.png";
+import sparkle from "../style/img/sparkle.png";
 class SideNav extends React.Component {
   render() {
     return (
-      <div className="side-nav-container flex col space-evenly">
+      <div className="side-nav-container flex col">
         <NavLink to="/board">
           <img title="Sunday" className="logo" src={logo} alt="Sunday"></img>
         </NavLink>
@@ -32,6 +33,15 @@ class SideNav extends React.Component {
             alt="Notifications"
           ></img>
         </div>
+
+        {/* <div className="logout-sidenav">
+          <div className="logout-button-text-with-icon">
+            <div className="text-wrapper">
+              <img src={sparkle} alt="" className="sparkle" />
+              <span>Logout</span>
+            </div>
+          </div>
+        </div> */}
 
         <NavLink to="/user/inbox" className="inbox">
           <div>
