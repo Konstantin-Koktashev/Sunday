@@ -4,7 +4,7 @@
   z-index: 21;
   width: 13vw;
   position: absolute;
-  height: 29vh;
+  height: 39vh;
   /* padding: 30px; */
   border-radius: 15px;
   box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 0.75);
@@ -12,6 +12,7 @@
   box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.171);
   padding: 2px 0px;
   top: 4vh;
+  padding-bottom: 10px;
 }
 
 .person-component > * {
@@ -133,7 +134,7 @@
 }
 
 .found-people {
-  height: 12vh;
+  height: 22vh;
   /* width: 20vw; */
   overflow-y: visible;
   scroll-behavior: smooth;

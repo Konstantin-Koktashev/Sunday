@@ -242,7 +242,13 @@
   width: 100%;
   margin: 0 auto;
   outline: none;
+  border: none;
 }
+.send-btn-inbox button {
+  outline: none;
+  border: none;
+}
+
 .sent-msg-box {
   text-align: start;
   margin: 0px 20px;

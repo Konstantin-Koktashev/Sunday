@@ -103,7 +103,7 @@ class InfoBoxes extends React.Component {
             <DropZone savefileToTask={this.savefileToTask}></DropZone>
           </div>
 
-          <div className="info-box-main-content">
+          <div id="style-5" className="info-box-main-content">
             <h3>Notes</h3>
             <div className="notes-container">
               {boxesToRender &&

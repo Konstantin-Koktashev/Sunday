@@ -52,7 +52,7 @@ export class BoardNav extends Component {
             />
             <div className="board-nav-title flex  a-center space-between">
               <h3>Your Boards</h3>
-              <AddBoard></AddBoard>
+              {this.state.boardIsShown && <AddBoard></AddBoard>}
             </div>
             <div className="board-list flex col">
               {this.props.boards && !this.props.boards.length ? (
