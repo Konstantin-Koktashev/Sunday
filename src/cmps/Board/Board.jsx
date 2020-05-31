@@ -32,15 +32,18 @@ class Board extends Component {
     let viewType = this.props.viewType;
     let view;
     switch (viewType) {
-      case "radar":
+      case "charts":
         view = (
-          <div className="chart-container">
+          <div className="chart-container flex col">
+            <ChartDetails board={this.props.currBoard} />
             <div className="nivo-bar">
               <NivoBar board={this.props.currBoard} />
             </div>
             <div className="chart-radar-pie">
-              <ChartDetails board={this.props.currBoard} />
-              <RadarChart board={this.props.currBoard} />
+              <div className="stats-radar-pie-container flex space-evenly">
+                <RadarChart board={this.props.currBoard} />
+                <DoughnutChart board={this.props.currBoard} />
+              </div>
             </div>
           </div>
         );
@@ -58,13 +61,8 @@ class Board extends Component {
           <GroupList
             // swapTaskFromGroup={this.swapTaskFromGroup}
             sortColumnsByBox={this.sortColumnsByBox}
-<<<<<<< HEAD
-            groups={this.props.currBoard}
-            board={this.props.currBoard}
-=======
             groups={board.groups}
             board={board}
->>>>>>> 52b5620d4f664a3fdb767d5fff1448013bda3d3a
           />
         );
     }

@@ -2,7 +2,6 @@ import React from "react";
 import moment from "moment";
 
 export default function ChartDetails({ board }) {
-
   const getTasksNums = () => {
     let counter = 0;
     board.groups.forEach((gr) => {
@@ -19,7 +18,6 @@ export default function ChartDetails({ board }) {
         </h2>
 
         <p>{getTasksNums()} Tasks</p>
-        <div className="flex space-between"></div>
       </div>
     </>
   );

@@ -22,6 +22,21 @@ class UsersPreviewBox extends Component {
         {people.reverse() &&
           people.map((person, idx) => {
             if (idx > 2) return;
+            if (person.imgUrl) {
+              return (
+                <div className="user-preview-circle-column-img flex a-center j-center">
+                  <img
+                    src={person.imgUrl}
+                    title={`${person.username} Last seen at ${moment(
+                      person.lastSeenAt
+                    ).fromNow()}`} //// NEED TO FIX LAST SEEN -DONE!
+                    key={idx}
+                    alt=""
+                    className="user-preview-circle-column-img-inside"
+                  />
+                </div>
+              );
+            }
             return (
               <div
                 className="user-preview-circle-column"

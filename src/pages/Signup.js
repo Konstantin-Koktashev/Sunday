@@ -62,9 +62,11 @@ class Signup extends Component {
         this.setState({ signupCred: { email: '', password: '', username: '' } });
     };
 
-    signUpFacebook = (email, id, name) => {
+    signUpFacebook = (email, id, name, imgUrl) => {
+        console.log("Signup -> signUpFacebook -> imgUrl", imgUrl)
+
         const history = [];
-        const signUpCreds = { email, password: id, username: name, history }
+        const signUpCreds = { email, password: id, username: name, history, imgUrl }
         this.props.signup(signUpCreds)
         this.doLogin(email, id)
     }

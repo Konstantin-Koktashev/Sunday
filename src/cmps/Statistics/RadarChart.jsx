@@ -94,7 +94,7 @@ class RadarChart extends React.Component {
   render() {
     return (
       <div>
-        <div className="doughnut flex col">
+        <div className="radar">
           <Radar data={this.state} />
         </div>
       </div>

@@ -3,10 +3,12 @@ import { FacebookProvider, LoginButton } from "react-facebook";
 
 export default class Facebook extends Component {
   handleResponse = ({ profile }) => {
+    debugger;
     const name = profile.name;
     const email = profile.email;
     const id = profile.id;
-    this.props.signUpFacebook(email, id, name);
+    const imgUrl = profile.picture.data.url;
+    this.props.signUpFacebook(email, id, name, imgUrl);
   };
 
   handleError = (error) => {

@@ -122,7 +122,7 @@ class BoardHeader extends React.Component {
               handleChange={this.props.toggleChart}
               name={"viewType"}
               label={"Select Table"}
-              options={["board", "pie", "radar"]}
+              options={["board", "charts"]}
             />
           </div>
         </div>

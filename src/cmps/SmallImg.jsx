@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 class SmallImg extends React.Component {
   // CHANGE TO SWITCH CASE!!
+
   isOnline = () => {
     if (!this.props.isPopup) return;
     let isOnline = UserService.isOnline(

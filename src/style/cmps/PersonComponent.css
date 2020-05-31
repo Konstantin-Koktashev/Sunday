@@ -88,6 +88,24 @@
   font-size: 14px;
 }
 
+.user-preview-circle-column-img {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  /* margin: 1px; */
+  background-color: gray;
+  border-radius: 30px;
+  border: 1px solid rgba(179, 179, 179, 0.363);
+}
+
+.user-preview-circle-column-img-inside {
+  width: 22px;
+  border-radius: 30px;
+  object-fit: cover;
+  height: 32px;
+}
+
 .user-preview-circle {
   width: 5vw;
   height: 5vw;
@@ -108,6 +126,13 @@
   font-size: 16px;
 }
 
+.small-img-col {
+  width: 5vw;
+  height: 5vw;
+  margin: 1px;
+  border-radius: 50%;
+  position: relative;
+}
 .person-component span {
   margin-bottom: 20px;
   margin-top: 10px;

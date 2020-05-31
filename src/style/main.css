@@ -58,12 +58,7 @@ html {
   /* animation: 1s bgc-black linear both; */
   z-index: 0;
 }
-.chart-container {
-  height: 40vh;
-  width: 60vw;
-  margin-left: 30vw;
-  display: inline;
-}
+
 @keyframes bgc-black {
   0% {
   }
@@ -78,13 +73,6 @@ html {
   padding-top: 8vh;
   /* height: 70vh; */
   /* background-color: #292f4c; */
-}
-.doughnut {
-  width: 45vw;
-  margin: 0 auto;
-  height: 70vh;
-  padding-bottom: 12vh;
-  background-color: #ffffff;
 }
 
 #style-5::-webkit-scrollbar-track {

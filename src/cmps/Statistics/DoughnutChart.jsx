@@ -1,5 +1,5 @@
 import React from "react";
-import { Polar} from "react-chartjs-2";
+import { Polar } from "react-chartjs-2";
 import { connect } from "react-redux";
 
 import { loadBoards } from "../../actions/BoardActions";
@@ -93,12 +93,8 @@ class DoughnutChart extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="doughnut flex col">
-          <Polar data={this.state} />
-
-        </div>
-        <h2>HEY IM GOOD STUF TO TYPE</h2>
+      <div className="doughnut flex col">
+        <Polar data={this.state} />
       </div>
     );
   }
