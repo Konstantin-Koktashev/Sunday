@@ -116,10 +116,10 @@
 }
 
 .user-preview-circle-myweek {
-  width: 3vw;
-  height: 3vw;
+  width: 2vw;
+  height: 2vw;
   margin: 1px;
-  /* background-color: rgba(86, 88, 86, 0.226); */
+  background-color: rgba(82, 82, 82, 0.226);
   border-radius: 50%;
   text-align: center;
   position: relative;

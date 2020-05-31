@@ -1,0 +1,19 @@
+.hover-preview-container {
+  position: fixed;
+  width: 30vw;
+  height: 20vw;
+  /* top: 40vh;
+  left: 20vw; */
+  z-index: 50000;
+  border-radius: 20px;
+  background: white;
+}
+
+.hover-preview-container .info-box-main-content {
+  /* height: 70vw; */
+  height: 60vh;
+}
+
+.hover-preview-container .info-boxes-btns {
+  height: 30vh;
+}

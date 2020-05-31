@@ -129,6 +129,10 @@
   }
 }
 
+.board-list-btn a:active {
+  /* padding: 30px 30px; */
+}
+
 .board-list-btn a:focus {
   color: blue;
 }
