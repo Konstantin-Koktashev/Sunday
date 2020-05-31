@@ -16,9 +16,11 @@ export function loadRooms() {
 }
 
 export function addRoom(room) {
+  console.log("addRoom -> room", room)
   return async dispatch => {
     try {
-      const addedRoom = await ChatService.add(room);
+      const addedRoom = await ChatService.saveChat(room);
+      console.log("addRoom -> addedRoom", addedRoom)
       dispatch(_addRoom(addedRoom));
     } catch (err) {
       console.log('ChatActions: err in addRooms', err);

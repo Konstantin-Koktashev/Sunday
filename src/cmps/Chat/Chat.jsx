@@ -41,11 +41,11 @@ class Chat extends Component {
       JSON.stringify(this.props.userState.chatWith)
     ) {
       let { type } = this.props.userState.chatWith;
-      // if (type === "private") {
-      SocketService.off("private_room_new_msg", this.renderMessage);
-      // } else {
-      SocketService.off("board_room_new_msg", this.renderMessage);
-      // }
+      if (type === "private") {
+        SocketService.off("private_room_new_msg", this.renderMessage);
+      } else {
+        SocketService.off("board_room_new_msg", this.renderMessage);
+      }
       await this.startChat();
     }
   };
@@ -68,9 +68,9 @@ class Chat extends Component {
 
     /// Update data Messegae
   };
+
   startChat = async () => {
     this.setState({ newMessagesCount: 0 });
-
     if (!this.props.userState.chatWith) return;
     // Get The room By Id// will return null if it didnt found
     await this.props.loadRooms();
