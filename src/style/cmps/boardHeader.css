@@ -28,10 +28,10 @@
 }
 
 .board-name-dec-container p:hover {
-  border: 1px dotted rgba(121, 119, 119, 0.609);
+  outline: 1px dotted rgba(121, 119, 119, 0.609);
 }
 .board-name-dec-container h2:hover {
-  border: 1px dotted rgba(121, 119, 119, 0.609);
+  outline: 1px dotted rgba(121, 119, 119, 0.609);
 }
 
 .board-name-dec-container .makeStyles-formControl-2 {

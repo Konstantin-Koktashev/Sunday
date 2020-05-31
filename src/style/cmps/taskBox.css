@@ -81,7 +81,7 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
 
   z-index: -2;
   left: 0px;
@@ -101,6 +101,8 @@
 .colEdit-input {
   width: 4.8vw;
   border: none;
+  margin: 0px;
+  /* padding: 0px; */
   outline: none;
   background-color: rgba(255, 255, 255, 0);
   border-left: 1px solid rgb(255, 255, 255);
