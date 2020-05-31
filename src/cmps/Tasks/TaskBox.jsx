@@ -154,6 +154,7 @@ class TaskBox extends React.Component {
           <div
             onClick={(ev) => this.toggleColEdit(ev)}
             className="text-box box-div"
+            title={col.value}
           >
             {`${isTaskBox ? "Text" : col.value}`}
           </div>
