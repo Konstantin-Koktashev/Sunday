@@ -116,6 +116,10 @@ class TaskPreview extends Component {
     this.props.setInfoTask(task);
   };
 
+  precDef = (ev) => {
+    ev.preventDefault();
+  };
+
   render() {
     const isInfoBoxShown = this.state.isInfoBoxShown;
     const { task } = this.props;
@@ -151,7 +155,7 @@ class TaskPreview extends Component {
                 />
               </>
             ) : (
-              <form>
+              <form onSubmit={(ev) => this.precDef(ev)}>
                 <input
                   type="text"
                   name="taskName"
@@ -160,6 +164,7 @@ class TaskPreview extends Component {
                   onChange={(ev) => this.handleChange(ev)}
                   onBlur={(ev) => this.updateTaskName(ev, task)}
                   placeholder="Enter a name.."
+                  onSubmit={(ev) => this.updateTaskName(ev)}
                   required
                 />
               </form>
