@@ -1,6 +1,8 @@
 .hover-preview-container {
-  position: fixed;
-  width: 30vw;
+  position: absolute;
+  width: 20vw;
+  top: 3vh;
+  right: -12vw;
   /* height: 20vh; */
   /* top: 40vh;
   left: 20vw; */
@@ -12,7 +14,7 @@
 
 .hover-preview-container .info-box-main-content {
   /* height: 70vw; */
-  height: 30vh;
+  height: 20vh;
   background: white;
   border-radius: 10px;
   padding-bottom: 20px;
@@ -25,4 +27,12 @@
 
 .hover-preview-container .send-btn-inbox {
   height: 20vh;
+}
+
+.hover-to-open {
+  position: relative;
+}
+
+.hover-to-open .info-box {
+  width: 18vw;
 }

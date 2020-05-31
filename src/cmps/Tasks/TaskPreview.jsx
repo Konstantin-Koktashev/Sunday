@@ -201,7 +201,6 @@ class TaskPreview extends Component {
               className="preview-note-task"
               onClick={() => this.props.setInfoTask(task)}
             />
-
             {this.state.hoverShown && (
               <TaskHoverPreview task={this.props.task}></TaskHoverPreview>
             )}
