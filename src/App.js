@@ -134,7 +134,6 @@ class App extends React.Component {
               <Route path="/user/inbox" component={Inbox} exact />
               <Route path="/details" component={TaskDetails} exact />
               <Route path="/profile/:id?" component={Profile} exact />
-              <Route path="/face" component={Facebook} exact />
             </Switch>
             <div className="loading-container fade-out">
               <div className="col-sm-2">

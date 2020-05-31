@@ -11,6 +11,7 @@ import {
 import DoughnutChart from "../Statistics/DoughnutChart";
 import RadarChart from "../Statistics/RadarChart";
 import ChartDetails from "../Statistics/ChartDetails";
+import NivoBar from "../Statistics/NivoBar.jsx";
 
 class Board extends Component {
   state = {};
@@ -36,25 +37,30 @@ class Board extends Component {
       case "radar":
         view = (
           <div className="chart-container">
-            <ChartDetails board={this.props.currBoard} />
-            <RadarChart board={this.props.currBoard} />
+            <div className="nivo-bar">
+              <NivoBar board={this.props.currBoard} />
+            </div>
+            <div className="chart-radar-pie">
+              <ChartDetails board={this.props.currBoard} />
+              <RadarChart board={this.props.currBoard} />
+            </div>
           </div>
         );
         break;
-      case "pie":
-        view = (
-          <div className="chart-container">
-            <ChartDetails board={this.props.currBoard} />
-            <DoughnutChart board={this.props.currBoard} />
-          </div>
-        );
-        break;
+      // case "pie":
+      //   view = (
+      //     <div className="chart-container">
+      //       <ChartDetails board={this.props.currBoard} />
+      //       <DoughnutChart board={this.props.currBoard} />
+      //     </div>
+      //   );
+      //   break;
       default:
         view = (
           <GroupList
             // swapTaskFromGroup={this.swapTaskFromGroup}
             sortColumnsByBox={this.sortColumnsByBox}
-            groups={this.props.currBoard.groups}
+            groups={this.props.currBoard}
             board={this.props.currBoard}
           />
         );
