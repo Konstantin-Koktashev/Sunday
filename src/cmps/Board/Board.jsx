@@ -13,8 +13,6 @@ import RadarChart from "../Statistics/RadarChart";
 import ChartDetails from "../Statistics/ChartDetails";
 
 class Board extends Component {
-  state = {};
-
   sortColumnsByBox = async (order) => {
     let board = LocalBoardService.sortColumnsByBox(this.props.currBoard, order);
     this.props.saveBoard(board);
@@ -62,26 +60,6 @@ class Board extends Component {
     return view;
   };
 
-  swapTaskFromGroup = async (board, groupToRemoveFrom, groupToAdd, taskStr) => {
-    let task = JSON.parse(taskStr);
-
-    // let newBoard = LocalBoardService.removeTaskFromGroup(
-    //   board,
-    //   groupToRemoveFrom,
-    //   task
-    // );
-
-    let newBoardAfterAdd = LocalBoardService.addTaskToGroup(
-      board,
-      groupToAdd,
-      task
-    );
-
-    this.props.setCurrBoard(newBoardAfterAdd);
-    await this.props.saveBoard(newBoardAfterAdd);
-    this.props.loadBoards();
-  };
-
   addTaskToGroup = async (board, group, task) => {
     let newBoard = LocalBoardService.addTaskToGroup(board, group, task);
     await this.props.saveBoard(newBoard);
@@ -91,20 +69,7 @@ class Board extends Component {
 
   render() {
     const board = this.boardToDisplay;
-    return (
-      <>
-        {this.getViewByType(board)}
-        {/* {!this.props.chartIsOpen ? (
-          <GroupList
-            sortColumnsByBox={this.sortColumnsByBox}
-            groups={board.groups}
-            board={board}
-          />
-        ) : (
-          <DoughnutChart board={board} />
-        )} */}
-      </>
-    );
+    return <>{this.getViewByType(board)}</>;
   }
 }
 
