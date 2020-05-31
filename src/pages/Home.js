@@ -34,6 +34,11 @@ class Home extends Component {
             Sign up
         </button>
         </NavLink>
+        <NavLink className="login-container" to="/login">
+          <button className="get-started-facebook-btn">
+            Login
+        </button>
+        </NavLink>
 
 
 

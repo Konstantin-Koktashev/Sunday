@@ -65,8 +65,9 @@
 }
 .info-boxes-btns > * {
   cursor: pointer;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   width: 50%;
+  padding: 1em;
 }
 .note {
   /* margin-left: 15px; */

@@ -3,6 +3,8 @@ import { saveBoard, loadBoards } from "../actions/BoardActions";
 import { connect } from "react-redux";
 import axios from "axios";
 import NoteBox from "./Tasks/NoteBox";
+import note from '../style/img/file.svg'
+
 import "../style/cmps/addNote.css";
 import DropZone from "./Tasks/DropZone";
 class InfoBoxes extends React.Component {
@@ -15,7 +17,7 @@ class InfoBoxes extends React.Component {
   componentDidMount() {
     this.getBoxesToRender();
   }
-  componentWillUnmount() {}
+  componentWillUnmount() { }
   getBoxesToRender = () => {
     const task = this.props.task;
     let boxesToRender;
@@ -85,7 +87,7 @@ class InfoBoxes extends React.Component {
   handleFileAdd = (event) => {
     event.stopPropagation();
   };
-  AddNoteBox = () => {};
+  AddNoteBox = () => { };
   creatInfoBox = (type) => {
     return {};
   };
@@ -96,13 +98,22 @@ class InfoBoxes extends React.Component {
     return (
       <>
         <div className="info-boxes-btns flex a-center space-evenly">
-          <div onClick={(ev) => this.openNoteBox(ev)}>Add Note</div>
+
+          <div className="note-btn" onClick={(ev) => this.openNoteBox(ev)}><img src={note}></img><span>Add Note</span></div>
           <DropZone savefileToTask={this.savefileToTask}></DropZone>
         </div>
 
         <div id="style-5" className="info-box-main-content">
+
           <h3>Notes</h3>
+
           <div className="notes-container">
+          {isAddNoteShows&&
+              <NoteBox
+                task={this.props.task}
+                addNoteToTask={this.addNoteToTask}
+              ></NoteBox>
+            }
             {boxesToRender &&
               boxesToRender.length > 0 &&
               boxesToRender.map((box) => {
@@ -118,12 +129,7 @@ class InfoBoxes extends React.Component {
                   </article>
                 );
               })}
-            {
-              <NoteBox
-                task={this.props.task}
-                addNoteToTask={this.addNoteToTask}
-              ></NoteBox>
-            }
+      
           </div>
         </div>
       </>

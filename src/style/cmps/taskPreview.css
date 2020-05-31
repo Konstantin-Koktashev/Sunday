@@ -205,6 +205,17 @@
   transition: 0.2s linear;
 }
 
+.preview-note-task {
+  height: 3vh;
+  width: 3vh;
+  opacity: 0.6;
+  margin-right: 1vw;
+  transition: 0.2s linear;
+}
+
+.preview-note-task:hover {
+  opacity: 1;
+}
 .note-task:hover {
   opacity: 1;
 }
@@ -235,4 +246,22 @@
   .date-box input {
     font-size: 9px !important;
   }
+}
+
+#root
+  > div
+  > section
+  > div.myweek-container
+  > section
+  > section
+  > div
+  > div.week-modal
+  > div
+  > section
+  > div
+  > div.opts-bar.flex
+  > div
+  > div
+  > div.css-g1d714-ValueContainer {
+  width: 5vw !important;
 }

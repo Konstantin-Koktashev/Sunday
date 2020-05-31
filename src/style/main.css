@@ -428,3 +428,40 @@ html {
   background-color: black;
   display: flex;
 } */
+
+.reply-btn{
+  display: flex;
+  align-items:center
+}
+.reply-btn img{
+  width: 20px;
+}
+.like-btn{
+  display: flex;
+  align-items:center
+}
+.like-btn img{
+  display: flex;
+  justify-content:space-evenly;
+  width: 20px;
+}
+.note-btn{
+  display: flex;
+  justify-content:space-evenly;
+
+}
+.note-btn img{
+  width: 20px;
+}
+
+.download-wrapper{
+display: flex;
+justify-content:space-evenly;
+
+}
+.download-wrapper form{
+  cursor: pointer;
+}
+.download-wrapper img{
+  width: 20px;
+}

@@ -168,10 +168,12 @@
   border-bottom: 1px solid rgba(187, 186, 186, 0.295);
   user-select: none;
   outline: none;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .like-reply-btns :nth-child(1) {
-  border-right: 1px solid rgba(187, 186, 186, 0.295);
+  /* border-right: 1px solid rgba(187, 186, 186, 0.295); */
 }
 
 .task-reply-btns button {

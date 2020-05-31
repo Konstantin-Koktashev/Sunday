@@ -15,6 +15,9 @@ import { loadUsers } from '../actions/UserActions'
 import { NavLink } from 'react-router-dom';
 import LocalBoardService from '../services/LocalBoardService';
 import SmallImg from "../cmps/SmallImg";
+import reply from '../../src/style/img/reply.svg'
+import like from '../../src/style/img/like.svg'
+
 
 
 
@@ -213,8 +216,14 @@ class Inbox extends Component {
                             {update.seenBy.length} Seen
                         </section>
                         <section className='like-reply-btns'>
+                            <div className='reply-btn'>
+                            <img src={reply}></img>
                             <button className='reply' onClick={() => this.openReply()}>Reply</button>
+                            </div>
+                            <div className='like-btn'>
+                                <img src={like}></img>
                             <button className='like' onClick={() => { this.likeUpdate(update, update.boardId) }}> Like</button>
+                            </div>
                         </section>
                         <section className='task-reply-btns'>
                             <button className='great-job' onClick={() => this.sendGreatJob(update, update.boardId)}>Great Job!</button>
