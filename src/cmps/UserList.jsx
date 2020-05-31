@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadBoards, saveBoard } from "../actions/BoardActions";
+import { loadBoards, saveBoard, setCurrBoard } from "../actions/BoardActions";
 import { setChatType, loadUsers } from "../actions/UserActions";
 import moment from "moment";
 import "../style/cmps/userList.css";
@@ -9,14 +9,25 @@ import { setCurrChatRoom, loadRooms } from "../actions/ChatActions";
 import FilterByText from "../cmps/Filters/FilterByText";
 import ChatService from "../services/ChatService";
 import chat from "../style/img/chat.png";
+import checkmark from "../style/img/tick.svg";
 
 class UserList extends Component {
   state = {
     text: "",
+    currBoard: this.props.currBoard,
   };
 
   setUserFilter = (value) => {
     this.setState({ text: value });
+  };
+
+  componentDidUpdate = async (prevProps) => {
+    if (
+      JSON.stringify(prevProps.currBoard) !==
+      JSON.stringify(this.props.currBoard)
+    ) {
+      this.setState({ currBoard: this.props.currBoard });
+    }
   };
 
   UserFilter = () => {
@@ -44,12 +55,23 @@ class UserList extends Component {
     const board = this.props.currBoard;
     board.users.push(user);
     await this.props.saveBoard(board);
+    this.props.setCurrBoard(board);
     this.props.loadBoards();
+    this.setState({ currBoard: this.props.currBoard });
   };
 
   toggle = () => {
     this.props.toggleAddUserToBoard();
     this.props.toggleMoreOptions();
+  };
+
+  isUserOnBoard = (userToAdd) => {
+    let board = this.state.currBoard;
+    let isOnBoard = false;
+    let isUserOnBoard = board.users.find((user) => {
+      if (user._id === userToAdd._id) isOnBoard = true;
+    });
+    return isOnBoard;
   };
 
   render() {
@@ -98,9 +120,9 @@ class UserList extends Component {
                   <button
                     title={`Add to ${this.props.currBoard.name}`}
                     className="add-to-board-btn"
-                    onClick={(user) => this.addUserToBoard(user)}
+                    onClick={() => this.addUserToBoard(user)}
                   >
-                    Add to Board
+                    {this.isUserOnBoard(user) ? "Invited" : "Add to Board"}
                   </button>
                 </div>
               </div>
@@ -126,6 +148,7 @@ const mapDispatchToProps = {
   setCurrChatRoom,
   loadRooms,
   saveBoard,
+  setCurrBoard,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);

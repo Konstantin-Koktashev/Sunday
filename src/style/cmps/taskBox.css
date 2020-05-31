@@ -81,7 +81,7 @@
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
 
   z-index: -2;
   left: 0px;
@@ -101,15 +101,17 @@
 .colEdit-input {
   width: 5vw;
   border: none;
+  margin: 0px;
+  /* padding: 0px; */
   outline: none;
   background-color: rgba(255, 255, 255, 0);
-  border-left: 1px solid rgba(128, 128, 128, 0.301);
+  /* border-left: 1px solid rgba(128, 128, 128, 0.301); */
   height: 4vh;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-  outline: 1px dotted #b8b6b6d2;
+  /* outline: 1px dotted #b8b6b6d2; */
 }
 
 @media only screen and (max-width: 600px) {

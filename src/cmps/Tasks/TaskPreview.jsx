@@ -14,7 +14,7 @@ import {
 import InfoBoxes from "../InfoBoxes";
 import TaskDetails from "./TaskDetails";
 import { useEventCallback } from "@material-ui/core";
-import note from "../../style/img/note.png";
+import note from "../../style/img/note.svg";
 
 class TaskPreview extends Component {
   state = {
