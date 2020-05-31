@@ -95,39 +95,35 @@ class InfoBoxes extends React.Component {
     const isAddNoteShows = this.state.isNoteBoxShown;
     return (
       <>
-        <div className=""></div>
+        <div className="info-boxes-btns flex a-center space-evenly">
+          <div onClick={(ev) => this.openNoteBox(ev)}>Add Note</div>
+          <DropZone savefileToTask={this.savefileToTask}></DropZone>
+        </div>
 
-        <div className="">
-          <div className="info-boxes-btns flex a-center space-evenly">
-            <div onClick={(ev) => this.openNoteBox(ev)}>Add Note</div>
-            <DropZone savefileToTask={this.savefileToTask}></DropZone>
-          </div>
-
-          <div id="style-5" className="info-box-main-content">
-            <h3>Notes</h3>
-            <div className="notes-container">
-              {boxesToRender &&
-                boxesToRender.length > 0 &&
-                boxesToRender.map((box) => {
-                  return (
-                    <article className="info-box note">
-                      <p>{box.type}</p>
-                      <span>{box.txt}</span>
-                      {box.type === "file" && (
-                        <div className="task-img-box">
-                          <img src={box.imgUrl}></img>
-                        </div>
-                      )}
-                    </article>
-                  );
-                })}
-              {
-                <NoteBox
-                  task={this.props.task}
-                  addNoteToTask={this.addNoteToTask}
-                ></NoteBox>
-              }
-            </div>
+        <div id="style-5" className="info-box-main-content">
+          <h3>Notes</h3>
+          <div className="notes-container">
+            {boxesToRender &&
+              boxesToRender.length > 0 &&
+              boxesToRender.map((box) => {
+                return (
+                  <article className="info-box note">
+                    <p>{box.type}</p>
+                    <span>{box.txt}</span>
+                    {box.type === "file" && (
+                      <div className="task-img-box">
+                        <img src={box.imgUrl}></img>
+                      </div>
+                    )}
+                  </article>
+                );
+              })}
+            {
+              <NoteBox
+                task={this.props.task}
+                addNoteToTask={this.addNoteToTask}
+              ></NoteBox>
+            }
           </div>
         </div>
       </>

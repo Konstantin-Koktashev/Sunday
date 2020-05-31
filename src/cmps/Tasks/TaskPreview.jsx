@@ -15,12 +15,14 @@ import InfoBoxes from "../InfoBoxes";
 import TaskDetails from "./TaskDetails";
 import { useEventCallback } from "@material-ui/core";
 import note from "../../style/img/note.svg";
+import TaskHoverPreview from "../TaskHoverPreview";
 
 class TaskPreview extends Component {
   state = {
     taskTitle: this.props.task.taskTitle,
     taskNameIsEdit: false,
     isInfoBoxShown: false,
+    hoverShown: false,
   };
   componentDidMount() {
     // let SortedCols = matchTaskBoxToBoardColumns(props);
@@ -110,10 +112,22 @@ class TaskPreview extends Component {
     }));
   };
 
+  toggleHover = (ev) => {
+    // ev.stopPropagation();
+    // ev.preventDefault();
+    this.setState(({ hoverShown }) => ({
+      hoverShown: !hoverShown,
+    }));
+  };
+
   toggleInfoBox = (ev) => {
     ev.preventDefault();
     const { task } = this.props;
     this.props.setInfoTask(task);
+  };
+
+  precDef = (ev) => {
+    ev.preventDefault();
   };
 
   render() {
@@ -151,7 +165,7 @@ class TaskPreview extends Component {
                 />
               </>
             ) : (
-              <form>
+              <form onSubmit={(ev) => this.precDef(ev)}>
                 <input
                   type="text"
                   name="taskName"
@@ -160,6 +174,7 @@ class TaskPreview extends Component {
                   onChange={(ev) => this.handleChange(ev)}
                   onBlur={(ev) => this.updateTaskName(ev, task)}
                   placeholder="Enter a name.."
+                  onSubmit={(ev) => this.updateTaskName(ev)}
                   required
                 />
               </form>
@@ -173,12 +188,17 @@ class TaskPreview extends Component {
             onClick={() => this.props.setInfoTask(task)}
           />
         </div>
-
+        <div
+          className="hover-to-open"
+          onMouseEnter={this.toggleHover}
+          // onMouseLeave={this.toggleHover}
+        >
+          hover
+          {this.state.hoverShown && (
+            <TaskHoverPreview task={this.props.task}></TaskHoverPreview>
+          )}
+        </div>
         <div className="task-bar-columns-container-new  space-evenly a-center">
-          {/* <p>{task.createdAt}</p> */}
-          {/* <div className="box-div">
-          <img src={person} alt="Person" />
-        </div> */}
           {this.matchTaskBoxToBoardColumns().map((col, idx) => {
             return <TaskBox key={idx} col={col} task={this.props.task} />;
           })}

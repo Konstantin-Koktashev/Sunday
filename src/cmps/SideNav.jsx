@@ -14,6 +14,9 @@ class SideNav extends React.Component {
   render() {
     return (
       <div className="side-nav-container flex col">
+        <div className="username-hello flex a-center j-center">
+          Hello {this.props.user.username}
+        </div>
         <NavLink to="/board">
           <img title="Sunday" className="logo" src={logo} alt="Sunday"></img>
         </NavLink>
@@ -104,6 +107,7 @@ const mapStateToProps = (state) => {
   //State of the store to this.props of the cmp
   return {
     userState: state.user,
+    user: state.user.loggedInUser,
   };
 };
 const mapDispatchToProps = {};

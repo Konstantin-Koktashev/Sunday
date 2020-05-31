@@ -29,7 +29,7 @@ class Board extends Component {
     // return filteredBoard
   }
   RadarChart;
-  getViewByType = () => {
+  getViewByType = (board) => {
     let viewType = this.props.viewType;
     let view;
     switch (viewType) {
@@ -54,8 +54,8 @@ class Board extends Component {
           <GroupList
             // swapTaskFromGroup={this.swapTaskFromGroup}
             sortColumnsByBox={this.sortColumnsByBox}
-            groups={this.props.currBoard.groups}
-            board={this.props.currBoard}
+            groups={board.groups}
+            board={board}
           />
         );
     }
@@ -93,7 +93,7 @@ class Board extends Component {
     const board = this.boardToDisplay;
     return (
       <>
-        {this.getViewByType()}
+        {this.getViewByType(board)}
         {/* {!this.props.chartIsOpen ? (
           <GroupList
             sortColumnsByBox={this.sortColumnsByBox}

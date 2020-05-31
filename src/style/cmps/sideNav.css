@@ -44,6 +44,32 @@
   width: 3vw;
 } */
 
+.username-hello {
+  position: fixed;
+  /* left: -6vw; */
+  width: 30vh;
+  height: 3vw;
+  margin-left: -7%;
+  top: 52vh;
+  background-color: rgb(0, 202, 114);
+  transform: rotate(-90deg);
+  border-radius: 0px 0px 30px 30px;
+  font-size: 20px;
+}
+@media only screen and (max-width: 1350px) {
+  .username-hello {
+    display: none;
+  }
+}
+
+.jss2 {
+  margin: 0px !important;
+}
+
+.username-hello:hover {
+  transform: scaleX(1.02) rotate(-90deg);
+}
+
 @media only screen and (max-width: 600px) {
   #root .side-nav-container {
     position: fixed;

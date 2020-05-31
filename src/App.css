@@ -24,11 +24,11 @@
   animation-delay: 1s;
 }
 
-.board-list-btn a.active + .board-list-btn {
+/* .board-list-btn a.active + .board-list-btn {
   background-color: grey;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-}
+} */
 
 @keyframes fade-out {
   0% {
