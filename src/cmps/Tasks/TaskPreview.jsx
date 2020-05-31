@@ -14,6 +14,7 @@ import {
 import InfoBoxes from "../InfoBoxes";
 import TaskDetails from "./TaskDetails";
 import { useEventCallback } from "@material-ui/core";
+import note from "../../style/img/note.png";
 
 class TaskPreview extends Component {
   state = {
@@ -164,6 +165,13 @@ class TaskPreview extends Component {
               </form>
             )}
           </div>
+
+          <img
+            src={note}
+            alt=""
+            className="note-task"
+            onClick={() => this.props.setInfoTask(task)}
+          />
         </div>
 
         <div className="task-bar-columns-container-new  space-evenly a-center">

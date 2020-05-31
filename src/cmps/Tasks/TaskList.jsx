@@ -352,7 +352,7 @@ class TaskList extends Component {
                                 >
                                   <div>
                                     <TaskPreview
-                                      // setInfoTask={this.openTaskInfoBox}
+                                      setInfoTask={this.openTaskInfoBox}
                                       deleteTask={this.deleteTask}
                                       task={task}
                                       key={index}

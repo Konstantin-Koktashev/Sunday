@@ -197,6 +197,11 @@
   text-align: center;
 }
 
+.note-task {
+  height: 4vh;
+  margin-right: 1vw;
+}
+
 @media only screen and (max-width: 600px) {
   .task-bar {
     border-radius: 2px;
