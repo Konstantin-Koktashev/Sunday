@@ -90,6 +90,10 @@ class WrappedMap extends React.PureComponent {
   };
   setMarkers = (data) => {
     console.log("WrappedMap -> onClick -> data", data);
+    const user=this.props.user
+    user.profile.location=data
+    UserService.updateUser(user)
+    
   };
 
   render() {
