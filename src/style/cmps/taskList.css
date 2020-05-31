@@ -30,7 +30,10 @@
   cursor: pointer;
   z-index: 123;
   transform: rotate(-90deg);
-  filter: opacity(0.7);
+  filter: opacity(0.6);
+}
+
+.preview-note-task {
 }
 
 .resize-png:hover {
@@ -82,4 +85,11 @@
     width: 15vw !important;
     font-size: 10px;
   }
+}
+
+.task-list-top input {
+  /* font-size: 10px; */
+  border: none;
+  padding: 5px 10px;
+  outline: 1px dashed #5e61633b;
 }

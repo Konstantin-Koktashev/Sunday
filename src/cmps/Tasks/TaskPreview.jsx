@@ -16,6 +16,7 @@ import TaskDetails from "./TaskDetails";
 import { useEventCallback } from "@material-ui/core";
 import note from "../../style/img/note.svg";
 import TaskHoverPreview from "../TaskHoverPreview";
+import eye from "../../style/img/eye.svg";
 
 class TaskPreview extends Component {
   state = {
@@ -188,15 +189,23 @@ class TaskPreview extends Component {
             onClick={() => this.props.setInfoTask(task)}
           />
         </div>
-        <div
-          className="hover-to-open"
-          onMouseEnter={this.toggleHover}
-          // onMouseLeave={this.toggleHover}
-        >
-          hover
-          {this.state.hoverShown && (
-            <TaskHoverPreview task={this.props.task}></TaskHoverPreview>
-          )}
+        <div className=" flex a-center j-center">
+          <div
+            onMouseEnter={this.toggleHover}
+            onMouseLeave={this.toggleHover}
+            className="hover-to-open"
+          >
+            <img
+              src={eye}
+              alt=""
+              className="preview-note-task"
+              onClick={() => this.props.setInfoTask(task)}
+            />
+
+            {this.state.hoverShown && (
+              <TaskHoverPreview task={this.props.task}></TaskHoverPreview>
+            )}
+          </div>
         </div>
         <div className="task-bar-columns-container-new  space-evenly a-center">
           {this.matchTaskBoxToBoardColumns().map((col, idx) => {

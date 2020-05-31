@@ -113,6 +113,13 @@
   }
 }
 
+.login-container {
+  position: fixed;
+  top: 0vh;
+  right: 12vw;
+  /* width: 5vw; */
+}
+
 .puff-in-center {
   animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) both;
   animation-delay: 1s;

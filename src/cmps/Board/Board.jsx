@@ -58,13 +58,8 @@ class Board extends Component {
           <GroupList
             // swapTaskFromGroup={this.swapTaskFromGroup}
             sortColumnsByBox={this.sortColumnsByBox}
-<<<<<<< HEAD
-            groups={this.props.currBoard}
-            board={this.props.currBoard}
-=======
             groups={board.groups}
             board={board}
->>>>>>> 52b5620d4f664a3fdb767d5fff1448013bda3d3a
           />
         );
     }
