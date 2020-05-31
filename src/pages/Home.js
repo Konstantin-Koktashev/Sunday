@@ -6,7 +6,7 @@ import { loadUsers } from '../actions/UserActions.js';
 import { NavLink } from 'react-router-dom';
 import '../style/pages/home.css'
 import logo from "../style/img/logo.png";
-
+import colors from '../../src/style/img/colors.gif'
 class Home extends Component {
   render() {
     return (
@@ -22,7 +22,7 @@ class Home extends Component {
           <p className="puff-in-center">For every minute spent organizing, an hour is earned</p>
         </div>
 
-
+        <img className="colors-blowing colors-anim" src={colors}></img>
 
 
         <NavLink to="/board/guest/true">
