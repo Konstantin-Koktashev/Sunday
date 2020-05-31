@@ -56,6 +56,7 @@ function remove(boardId, rooms) {
 function filterChatsByUser(chatRooms, myUser) {
   if (!chatRooms.length) return
   let filteredRooms = chatRooms.filter((room) => {
+    if (room && !room.userA) return false
     if (room.userA === myUser._id || room.userB === myUser._id) return true;
   });
 

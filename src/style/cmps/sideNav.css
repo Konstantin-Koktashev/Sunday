@@ -44,6 +44,22 @@
   width: 3vw;
 } */
 
+.username-hello {
+  position: fixed;
+  left: -6vw;
+  width: 30vh;
+  height: 3vw;
+  top: 55vh;
+  background-color: rgb(0, 202, 114);
+  transform: rotate(-90deg);
+  border-radius: 0px 0px 30px 30px;
+  font-size: 20px;
+}
+
+.username-hello:hover {
+  transform: scaleX(1.02) rotate(-90deg);
+}
+
 @media only screen and (max-width: 600px) {
   #root .side-nav-container {
     position: fixed;

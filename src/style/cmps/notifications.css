@@ -108,13 +108,13 @@
 
 .notifications-popup-number {
   position: absolute;
-  width: 1.5vw;
-  height: 1.5vw;
-  top: 28vh;
+  width: 1.2vw;
+  height: 1.2vw;
+  top: 15vh;
   border-radius: 50%;
   background-color: red;
   color: white;
-  left: 2vw;
+  left: 2.5vw;
   z-index: 0;
   font-size: 14px;
   text-align: center;
