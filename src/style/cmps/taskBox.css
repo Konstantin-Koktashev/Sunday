@@ -99,13 +99,13 @@
   top: 0px;
 }
 .colEdit-input {
-  width: 5vw;
+  width: 4.8vw;
   border: none;
   margin: 0px;
   /* padding: 0px; */
   outline: none;
   background-color: rgba(255, 255, 255, 0);
-  /* border-left: 1px solid rgba(128, 128, 128, 0.301); */
+  border-left: 1px solid rgb(255, 255, 255);
   height: 4vh;
   white-space: nowrap;
   overflow: hidden;

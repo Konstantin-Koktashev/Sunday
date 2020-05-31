@@ -186,6 +186,7 @@
 
 .backscreen-info-box {
   width: 100vw;
+  z-index: 3;
   height: 100vh;
   position: fixed;
   top: 0px;

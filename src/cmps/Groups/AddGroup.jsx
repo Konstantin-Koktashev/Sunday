@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { saveBoard, loadBoards } from "../../actions/BoardActions";
 import LocalBoardService from "../../services/LocalBoardService";
 import { v4 as uuidv4 } from "uuid";
-import randomColor from "randomcolor";
+import randomColor from "random-color";
 
 class AddGroup extends Component {
   state = {
@@ -236,19 +236,18 @@ class AddGroup extends Component {
           people: [],
         },
       ], // Task object
-      color: randomColor(),
+      color: randomColor(0.99, 0.99).hexString(),
       lastUpdatedAt: "",
     },
   };
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   AddGroup = async () => {
     this.setState({
       group: {
         ...this.state.group,
-        color: randomColor(),
+        color: randomColor(0.99, 0.99).hexString(),
       },
     });
     let addGroup = this.state.group;

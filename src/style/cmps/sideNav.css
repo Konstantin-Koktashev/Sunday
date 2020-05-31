@@ -4,8 +4,8 @@
   background-color: rgb(41, 47, 76);
   height: 100vh;
   color: white;
-  width: 5vw;
   /* top: 0px; */
+  padding: 4vh 0.8vw;
 }
 
 .side-nav-img {
@@ -14,6 +14,7 @@
   transition: 0.3s;
   padding: 12px;
   filter: brightness(1.8);
+  margin-bottom: 2vh;
 }
 
 .side-nav-img:hover {
@@ -26,6 +27,9 @@
   width: 30px;
 }
 
+.inbox {
+  margin-bottom: 48vh;
+}
 /* 
 .my-week-img {
   width: 30px;
@@ -35,6 +39,10 @@
 .logout {
   cursor: pointer;
 }
+
+/* .side-nav-container {
+  width: 3vw;
+} */
 
 @media only screen and (max-width: 600px) {
   #root .side-nav-container {
@@ -56,4 +64,35 @@
   #root.side-nav-img a {
     width: 10px;
   }
+}
+
+.logout-button-text-with-icon {
+  display: flex;
+  padding: 3px 17px 11px 17px;
+  width: 13vw;
+}
+
+.sparkle {
+  width: 3vw;
+  height: 2vh;
+  margin-right: 1vw;
+}
+
+.logout-sidenav {
+  position: absolute;
+  height: 25vh;
+  left: 0;
+  bottom: 45%;
+  width: 2.5%;
+  background-color: #00ca72;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.logout-button-text-with-icon span {
+  color: #ffffff;
+}
+
+.text-wrapper {
+  transform: rotate(-90deg);
 }
