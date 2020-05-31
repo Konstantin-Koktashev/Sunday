@@ -11,10 +11,9 @@ import {
 import DoughnutChart from "../Statistics/DoughnutChart";
 import RadarChart from "../Statistics/RadarChart";
 import ChartDetails from "../Statistics/ChartDetails";
+import NivoBar from "../Statistics/NivoBar.jsx";
 
 class Board extends Component {
-  state = {};
-
   sortColumnsByBox = async (order) => {
     let board = LocalBoardService.sortColumnsByBox(this.props.currBoard, order);
     this.props.saveBoard(board);
@@ -36,50 +35,40 @@ class Board extends Component {
       case "radar":
         view = (
           <div className="chart-container">
-            <ChartDetails board={this.props.currBoard} />
-            <RadarChart board={this.props.currBoard} />
+            <div className="nivo-bar">
+              <NivoBar board={this.props.currBoard} />
+            </div>
+            <div className="chart-radar-pie">
+              <ChartDetails board={this.props.currBoard} />
+              <RadarChart board={this.props.currBoard} />
+            </div>
           </div>
         );
         break;
-      case "pie":
-        view = (
-          <div className="chart-container">
-            <ChartDetails board={this.props.currBoard} />
-            <DoughnutChart board={this.props.currBoard} />
-          </div>
-        );
-        break;
+      // case "pie":
+      //   view = (
+      //     <div className="chart-container">
+      //       <ChartDetails board={this.props.currBoard} />
+      //       <DoughnutChart board={this.props.currBoard} />
+      //     </div>
+      //   );
+      //   break;
       default:
         view = (
           <GroupList
             // swapTaskFromGroup={this.swapTaskFromGroup}
             sortColumnsByBox={this.sortColumnsByBox}
+<<<<<<< HEAD
+            groups={this.props.currBoard}
+            board={this.props.currBoard}
+=======
             groups={board.groups}
             board={board}
+>>>>>>> 52b5620d4f664a3fdb767d5fff1448013bda3d3a
           />
         );
     }
     return view;
-  };
-
-  swapTaskFromGroup = async (board, groupToRemoveFrom, groupToAdd, taskStr) => {
-    let task = JSON.parse(taskStr);
-
-    // let newBoard = LocalBoardService.removeTaskFromGroup(
-    //   board,
-    //   groupToRemoveFrom,
-    //   task
-    // );
-
-    let newBoardAfterAdd = LocalBoardService.addTaskToGroup(
-      board,
-      groupToAdd,
-      task
-    );
-
-    this.props.setCurrBoard(newBoardAfterAdd);
-    await this.props.saveBoard(newBoardAfterAdd);
-    this.props.loadBoards();
   };
 
   addTaskToGroup = async (board, group, task) => {
@@ -91,20 +80,7 @@ class Board extends Component {
 
   render() {
     const board = this.boardToDisplay;
-    return (
-      <>
-        {this.getViewByType(board)}
-        {/* {!this.props.chartIsOpen ? (
-          <GroupList
-            sortColumnsByBox={this.sortColumnsByBox}
-            groups={board.groups}
-            board={board}
-          />
-        ) : (
-          <DoughnutChart board={board} />
-        )} */}
-      </>
-    );
+    return <>{this.getViewByType(board)}</>;
   }
 }
 

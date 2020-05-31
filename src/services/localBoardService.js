@@ -44,7 +44,8 @@ export default {
     addTaskHistory,
     addUserToUpdateIsSeen,
     checkIfUpdateSeen,
-    changeTaskOrder
+    changeTaskOrder,
+    getNivoData
 }
 
 function changeTaskOrder(board, group, tasks) {
@@ -496,4 +497,55 @@ function makeId(length = 3) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;
+}
+
+
+
+
+
+
+
+
+function getNivoData(board) {
+    let data = board.groups.map(group => _getGroupStats(group))
+    console.log('data', data)
+    return data
+
+}
+
+
+
+function _getGroupStats(group) {
+    const doneMissions = group.tasks.filter((task) => task.status === "Done");
+    const workingMissions = group.tasks.filter(
+        (task) => task.status === "Working"
+    );
+    const stuckMissions = group.tasks.filter((task) => task.status === "Stuck");
+    const reviewMissions = group.tasks.filter(
+        (task) => task.status === "Review"
+    );
+
+    //// make them number of length
+    const stuckMissionsL = stuckMissions.length;
+    const workingMissionsL = workingMissions.length;
+    const doneMissionsL = doneMissions.length;
+    const reviewMissionsL = reviewMissions.length;
+    const otherMissionsL = group.tasks.length - (doneMissionsL + workingMissionsL + stuckMissionsL + reviewMissionsL);
+
+    let stat = {
+        group: group.name,
+        'done': doneMissionsL,
+        'doneColor': 'rgb(0,200,117)',
+        'working': workingMissionsL,
+        'workingColor': 'rgb(253,171,61)',
+        'stuck': stuckMissionsL,
+        'stuckColor': 'rgb(226,68,92)',
+        'review': reviewMissionsL,
+        'reviewColor': 'rgb(103,204,255)',
+        'others': otherMissionsL,
+        'othersColor': 'rgb(196,196,196)'
+    }
+
+    return stat
+
 }
