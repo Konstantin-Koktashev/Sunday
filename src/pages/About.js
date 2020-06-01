@@ -9,7 +9,7 @@ export default class About extends Component {
   };
 
   componentDidMount() {
-    SocketService.setup();
+    // SocketService.setup();
     SocketService.emit('chat topic', this.state.topic);
     SocketService.on('chat addMsg', this.addMsg);
   }
@@ -26,7 +26,7 @@ export default class About extends Component {
   changeTopic = () => {
     SocketService.emit('chat topic', this.state.topic);
   };
-  
+
   sendMsg = ev => {
     ev.preventDefault();
     SocketService.emit('chat newMsg', this.state.msg.txt);

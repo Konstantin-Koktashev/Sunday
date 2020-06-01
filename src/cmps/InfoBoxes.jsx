@@ -117,9 +117,9 @@ class InfoBoxes extends React.Component {
             )}
             {boxesToRender &&
               boxesToRender.length > 0 &&
-              boxesToRender.map((box) => {
+              boxesToRender.map((box, idx) => {
                 return (
-                  <article className="info-box note">
+                  <article className="info-box note" key={idx}>
                     <p>{box.type}</p>
                     <span>{box.txt}</span>
                     {box.type === "file" && (

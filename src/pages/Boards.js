@@ -20,7 +20,6 @@ class BoardApp extends React.Component {
 
 
     componentDidMount = async () => {
-        console.log('ifHETEQTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT')
 
         if (this.props.match.params.GuestMode === 'true') {
 
@@ -32,7 +31,6 @@ class BoardApp extends React.Component {
         // let allBoards = this.props.boards
         await this.loadboards()
         if (this.props.currBoard) {
-            console.log('yeshCurrBoard')
             const boardId = this.props.currBoard._id
             SocketService.emit('boardViewed', boardId)
         }
@@ -94,7 +92,7 @@ class BoardApp extends React.Component {
         const boardId = this.props.currBoard._id
         await this.props.loadBoards()
         let board = this.getBoardByID(boardId)
-        this.loadAndSetBoards(board)
+        this.props.setCurrBoard(board)
 
     }
 

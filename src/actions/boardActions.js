@@ -31,6 +31,8 @@ export function setFilter(text) {
 
 
 export function saveBoard(board) {
+
+
   return async dispatch => {
     try {
       const type = board._id ? 'UPDATE_BOARD' : 'ADD_BOARD'

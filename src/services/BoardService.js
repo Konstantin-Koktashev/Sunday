@@ -1,4 +1,6 @@
 import HttpService from './HttpService';
+import SocketService from '../services/SocketService'
+
 
 export default {
   query,
