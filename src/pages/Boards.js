@@ -20,6 +20,8 @@ class BoardApp extends React.Component {
 
 
     componentDidMount = async () => {
+        console.log('ifHETEQTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT')
+
         if (this.props.match.params.GuestMode === 'true') {
 
             this.doGuestModeLogin()
@@ -27,14 +29,21 @@ class BoardApp extends React.Component {
         // if (this.props.currBoard && !this.props.currBoard._id || !this.props.currBoard) return
 
         // var allBoards = await this.props.loadBoards()
-        let allBoards = this.props.boards
+        // let allBoards = this.props.boards
         await this.loadboards()
         if (this.props.currBoard) {
+            console.log('yeshCurrBoard')
             const boardId = this.props.currBoard._id
             SocketService.emit('boardViewed', boardId)
         }
         SocketService.on('doRefresh', this.loadAndSetBoards)
+
+
+
     }
+
+
+
     async doGuestModeLogin() {
         const userCreds = { email: 'guest', password: 'guest' };
         try {
@@ -49,13 +58,7 @@ class BoardApp extends React.Component {
     };
 
 
-    loadAndSetBoards = async () => {
-        const boardId = this.props.currBoard._id
-        await this.props.loadBoards()
-        let board = this.getBoardByID(boardId)
-        this.setBoard(board)
 
-    }
 
     componentWillUnmount() {
         SocketService.off('doRefresh', this.loadAndSetBoards)
@@ -86,6 +89,15 @@ class BoardApp extends React.Component {
         }
     }
 
+    loadAndSetBoards = async () => {
+        console.log('LISTENER WORKING')
+        const boardId = this.props.currBoard._id
+        await this.props.loadBoards()
+        let board = this.getBoardByID(boardId)
+        this.loadAndSetBoards(board)
+
+    }
+
     getBoardByID = (id) => {
         const { boards } = this.props;
         const board = boards.find(board => {
@@ -107,6 +119,8 @@ class BoardApp extends React.Component {
         await this.props.history.push('/board/')
         await this.loadboards()
     }
+
+
     removeHistory = () => {
         const { boards } = this.props;
         const { currBoard } = this.state;

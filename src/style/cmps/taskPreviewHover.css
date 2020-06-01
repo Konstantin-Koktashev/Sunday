@@ -25,9 +25,9 @@
   background: white;
 }
 
-.hover-preview-container .send-btn-inbox {
+/* .hover-preview-container .send-btn-inbox {
   height: 20vh;
-}
+} */
 
 .hover-to-open {
   position: relative;
@@ -35,4 +35,8 @@
 
 .hover-to-open .info-box {
   width: 18vw;
+}
+
+.hover-to-open .info-box-main-content input {
+  width: 11vw;
 }

@@ -1,3 +1,5 @@
+
+
 import { v4 as uuidv4 } from 'uuid';
 
 let gBoards = null
@@ -43,8 +45,7 @@ export default {
     addUserToUpdateIsSeen,
     checkIfUpdateSeen,
     changeTaskOrder,
-    getNivoData,
-    checkIfUpdateNotified
+    getNivoData
 }
 
 function changeTaskOrder(board, group, tasks) {
@@ -56,30 +57,6 @@ function changeTaskOrder(board, group, tasks) {
     return board
 
 }
-
-
-
-// function setNotified(update, user) {
-
-//         update.push(user)
-
-// }
-
-function checkIfUpdateNotified(update, currUserId) {
-    if (update && update.notifiedUsers && !update.notifiedUsers.length > 0) return false
-    update.notifiedUsers = update.notifiedUsers
-        ? update.notifiedUsers
-        : [];
-    let isUserSeen = update.notifiedUsers.find(user => {
-        if (user._id === currUserId) return true
-    })
-    if (isUserSeen) {
-        return true
-    }
-    return false
-
-}
-
 
 function checkIfUpdateSeen(update, currUserId) {
     if (update && update.seenBy && !update.seenBy.length > 0) return false
@@ -326,7 +303,6 @@ function changeLabelColumn(board, label, color, text) {
 
 function setColumn(board, column, color, value, task, statusOrPriority) {
     console.log("setColumn -> value", statusOrPriority)
-    // let newBoard = getById(allBoards, board._id)
     if (statusOrPriority === 'label-status') {
         task.status = value
         column.value = value
@@ -338,9 +314,6 @@ function setColumn(board, column, color, value, task, statusOrPriority) {
         column.color = color
         return board
     }
-
-
-
 }
 
 
@@ -411,8 +384,7 @@ function addBoardHistory(board, updateInfo) {
         prevColor: (column) ? column.color : '',
         nextColor: (color) ? color : '',
         likes: [],
-        assignedTo: assignedTo ? assignedTo : null,
-        wasNotified: []
+        assignedTo: assignedTo ? assignedTo : null
     }
     board.history.unshift(update)
     return board

@@ -27,7 +27,7 @@
   .board-list {
     position: fixed;
     left: 5px;
-    top: 10vh;
+    top: 13vh;
     /* margin-bottom: -5vh; */
     font-size: 5px;
     flex-direction: row;
@@ -40,9 +40,6 @@
     padding: 0px;
     margin-bottom: -10px;
     width: 10vw;
-  }
-  .board-list-btn:active {
-    background-color: none;
   }
 
   .board-list-btn a {
@@ -124,7 +121,8 @@
     text-decoration: none;
     color: black;
     font-size: 17px;
-
+    overflow: hidden;
+    width: 7vw !important;
     margin-left: 10px;
   }
 }

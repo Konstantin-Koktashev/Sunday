@@ -57,6 +57,8 @@
 
 .s-progress-container {
   color: gray;
+
+  grid-row-start: 1;
   width: 5vw;
   height: 3vh;
   display: flex;
@@ -141,3 +143,11 @@
 }
 
 /* ////////////////////////////////////////////// */
+
+.statistics-createdAt {
+  justify-content: start;
+  width: 15vw;
+  margin-top: -40px;
+  font-size: 14px;
+  color: rgba(49, 49, 49, 0.527);
+}

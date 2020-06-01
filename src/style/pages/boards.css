@@ -47,6 +47,7 @@
   .div40 {
     width: 46vw;
     grid-template-columns: repeat(6, 8vw) !important;
+    grid-row-start: 1;
   }
 
   .MuiInputBase-input {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { saveBoard, loadBoards } from "../../actions/BoardActions";
-import file from '../../style/img/file.svg'
+import file from "../../style/img/sideimg.png";
 class DropZone extends Component {
   state = {
     selectedFile: null,
@@ -19,7 +19,9 @@ class DropZone extends Component {
     return (
       <form className="download-wrapper" onSubmit={this.onFormSubmit}>
         <img src={file}></img>
-        <label htmlFor="file" style={ { cursor:'pointer' }}>Add Photos</label>
+        <label htmlFor="file" style={{ cursor: "pointer" }}>
+          Add Photos
+        </label>
         <input
           type="file"
           name="file"

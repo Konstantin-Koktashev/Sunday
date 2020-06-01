@@ -36,7 +36,7 @@ export function saveRoom(room, allRooms) {
       const type = room._id ? 'UPDATE_ROOM' : 'ADD_ROOM'
       room.lastUpdate = Date.now()
       const savedRoom = await ChatService.saveChat(room, allRooms)
-      SocketService.emit('doRefresh', 'js')
+      // SocketService.emit('doRefresh', 'js')
       dispatch({ type, savedRoom })
     } catch (err) {
       console.log('ChatActions: err in add or update board', err);

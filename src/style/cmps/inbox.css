@@ -158,9 +158,6 @@
   background-color: #fff;
   outline: none;
 }
-.like-reply-btns button:hover {
-  background-color: rgba(228, 224, 224, 0.459);
-}
 
 .like-reply-btns {
   margin-bottom: 10px;

@@ -31,8 +31,8 @@ html {
 
 .online {
   background-color: #4cd137;
-  width: 15px;
-  height: 15px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   margin-top: -20px;
   position: relative;
@@ -429,39 +429,45 @@ html {
   display: flex;
 } */
 
-.reply-btn{
+.reply-btn {
   display: flex;
-  align-items:center
+  align-items: center;
 }
-.reply-btn img{
+.reply-btn img {
   width: 20px;
 }
-.like-btn{
+.like-btn {
   display: flex;
-  align-items:center
+  align-items: center;
 }
-.like-btn img{
+.like-btn img {
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   width: 20px;
 }
-.note-btn{
+.note-btn {
   display: flex;
-  justify-content:space-evenly;
-
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.note-btn img{
-  width: 20px;
+.note-btn img {
+  width: 45px;
 }
 
-.download-wrapper{
-display: flex;
-justify-content:space-evenly;
-
+.download-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.download-wrapper form{
+.download-wrapper form {
   cursor: pointer;
 }
-.download-wrapper img{
-  width: 20px;
+.download-wrapper img {
+  width: 45px;
+}
+
+.hover-to-open img {
+  width: 35px;
 }

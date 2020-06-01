@@ -24,7 +24,10 @@ class UsersPreviewBox extends Component {
             if (idx > 2) return;
             if (person.imgUrl) {
               return (
-                <div className="user-preview-circle-column-img flex a-center j-center">
+                <div
+                  className="user-preview-circle-column-img flex a-center j-center"
+                  key={idx}
+                >
                   <img
                     src={person.imgUrl}
                     title={`${person.username} Last seen at ${moment(

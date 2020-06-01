@@ -32,6 +32,7 @@ class App extends React.Component {
   }
   async componentDidMount() {
     SocketService.setup()
+
     console.log("App -> componentDidMount -> window.location.href", window.location.href)
 
     if (!this.props.currUser) {
@@ -69,6 +70,16 @@ class App extends React.Component {
       }
     })
 
+  }
+
+
+
+  getBoardByID = (id) => {
+    const { boards } = this.props;
+    const board = boards.find(board => {
+      return board._id === id
+    })
+    return board
   }
 
   componentWillUnmount() {

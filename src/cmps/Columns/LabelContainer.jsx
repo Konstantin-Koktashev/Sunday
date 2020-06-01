@@ -103,8 +103,8 @@ class LabelContainer extends Component {
       color,
       text
     );
-    this.props.setCurrBoard(board);
     await this.props.saveBoard(board);
+    this.props.setCurrBoard(board);
     this.props.loadBoards();
     // await this.props.toggleContainer();
 
@@ -136,7 +136,7 @@ class LabelContainer extends Component {
     let board = LocalBoardService.addBoardHistory(currBoard, updateInfo);
     board = LocalBoardService.addTaskHistory(currBoard, updateInfo);
     board = LocalBoardService.setColumn(
-      currBoard, 
+      currBoard,
       column,
       color,
       text,
@@ -146,10 +146,10 @@ class LabelContainer extends Component {
 
     // board = LocalBoardService.setColumn(board, column, color, text, task);
     // board = LocalBoardService.addBoardHistory(board, updateInfo);
-    this.props.saveBoard(board);
     this.props.toggleContainer();
-    this.props.loadBoards();
     this.props.setCurrBoard(board);
+    await this.props.saveBoard(board);
+    this.props.loadBoards();
   };
 
   onRemove = (onRemove, orderId) => {};

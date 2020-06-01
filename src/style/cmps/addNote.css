@@ -146,12 +146,11 @@
   padding: 20px 0px;
 }
 .info-box-exit-btn {
-  position: fixed;
-  top: 5px;
-  right: 28vw;
-  font-size: 20px;
-
-  color: rgba(63, 63, 63, 0.507);
+  float: left;
+  height: 3vh;
+  margin-left: 1vw;
+  margin-top: 1vh;
+  cursor: pointer;
 }
 
 .info-box-exit-btn:hover {

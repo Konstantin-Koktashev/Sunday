@@ -17,6 +17,7 @@ class FilterByText extends Component {
     return (
       <div>
         <TextField
+          autoComplete="off"
           id="standard-basic"
           label="Filter"
           placeholder="Search By Text"

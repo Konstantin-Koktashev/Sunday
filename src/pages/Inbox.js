@@ -92,8 +92,8 @@ class Inbox extends Component {
                     await this.props.saveBoard(board)
                     await this.props.setCurrBoard(board)
                     await this.props.loadBoards()
-                    await this.checkUserHistory()
                 }
+                await this.checkUserHistory()
             })
         })
 
@@ -139,7 +139,7 @@ class Inbox extends Component {
         const board = this.findBoard(boardId)
         const updateMsg = { msg: user, sendBy: this.props.currUser }
         const newBoard = LocalBoardService.addLikeMsg(board, update, user)
-        
+
         await this.saveAndUpdate(newBoard)
     }
 
@@ -217,12 +217,12 @@ class Inbox extends Component {
                         </section>
                         <section className='like-reply-btns'>
                             <div className='reply-btn'>
-                            <img src={reply}></img>
-                            <button className='reply' onClick={() => this.openReply()}>Reply</button>
+                                <img src={reply}></img>
+                                <button className='reply' onClick={() => this.openReply()}>Reply</button>
                             </div>
                             <div className='like-btn'>
                                 <img src={like}></img>
-                            <button className='like' onClick={() => { this.likeUpdate(update, update.boardId) }}> Like</button>
+                                <button className='like' onClick={() => { this.likeUpdate(update, update.boardId) }}> Like</button>
                             </div>
                         </section>
                         <section className='task-reply-btns'>
